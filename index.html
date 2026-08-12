@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>爱琴海与南意慢调之旅 · 终极云端路线随身路书</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>爱琴海与南意慢调之旅 · 终极云端随身路书</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -41,25 +41,40 @@
             background-size: 24px 24px;
             color: #2D3748;
             font-family: 'Noto Sans SC', sans-serif;
+            overflow-x: hidden;
         }
 
         .watercolor-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(8px);
             border: 2px solid #E6CCB2;
             border-radius: 20px;
             box-shadow: 4px 6px 15px rgba(217, 107, 67, 0.08);
+            max-width: 100%;
         }
 
-        .tbl-min { border-collapse: collapse; }
+        /* 移动端表格水平滑动容器 */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 0.5rem;
+        }
+
+        .tbl-min { 
+            border-collapse: collapse; 
+            width: 100%;
+            min-width: 650px;
+        }
         .tbl-min th, .tbl-min td {
             border: none;
             border-bottom: 1px solid rgba(230,204,178,0.55);
             padding: 10px 12px;
-            vertical-align: top;
+            vertical-align: middle;
+            white-space: nowrap;
         }
         .tbl-min thead th {
-            background: transparent;
+            background: rgba(245,239,230,0.8);
             color: #D96B43;
             border-bottom: 2px solid #D96B43;
             font-weight: 700;
@@ -80,74 +95,74 @@
 </head>
 <body class="min-h-screen pb-20 md:pb-12 relative">
 
-    <!-- 全局 Toast 提示框 -->
+    <!-- 全局 Toast 提示 -->
     <div id="toast-notification" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-stone-800/90 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl backdrop-blur-sm transition-all duration-300 opacity-0 pointer-events-none flex items-center space-x-2">
         <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
-        <span id="toast-msg">链接已复制到剪贴板！</span>
+        <span id="toast-msg">操作成功！</span>
     </div>
 
     <!-- 顶部 Header -->
-    <header class="max-w-5xl mx-auto pt-8 px-4 text-center">
-        <div class="inline-block bg-sand/40 px-6 py-1.5 rounded-full text-xs font-semibold tracking-widest text-terracotta mb-3 uppercase">
+    <header class="max-w-5xl mx-auto pt-6 px-4 text-center">
+        <div class="inline-block bg-sand/40 px-5 py-1 rounded-full text-xs font-semibold tracking-widest text-terracotta mb-2 uppercase">
             🎨 Travel Booklet & Roadbook · 2026.10.01 - 10.11
         </div>
-        <h1 class="text-3xl md:text-5xl font-bold font-serif text-ink tracking-tight mb-2">
+        <h1 class="text-2xl md:text-4xl font-bold font-serif text-ink tracking-tight mb-1">
             爱琴海与南意慢调之旅
         </h1>
-        <p class="text-warmGray text-sm md:text-base font-medium max-w-xl mx-auto mb-3">
+        <p class="text-warmGray text-xs md:text-sm font-medium max-w-xl mx-auto mb-3">
             广州 ➔ 雅典 ➔ 圣托里尼 ➔ 罗马 ➔ 那不勒斯 (庞贝/卡普里) ➔ 雅典 ➔ 广州
         </p>
 
         <!-- 倒计时与云端同步状态 -->
         <div class="flex flex-wrap justify-center items-center gap-2 mb-4 text-xs">
-            <div id="countdown-badge" class="bg-amber-50 border border-amber-200 text-amber-800 px-3.5 py-1 rounded-full font-medium shadow-sm">
+            <div id="countdown-badge" class="bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1 rounded-full font-medium shadow-sm">
                 ⏳ 距出发还有 <span id="days-left" class="font-bold text-terracotta">--</span> 天
             </div>
             <div id="cloud-sync-status" class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full font-medium shadow-sm flex items-center">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>
-                <span id="cloud-status-text">☁️ 云端实时同步已连接</span>
+                <span id="cloud-pulse-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>
+                <span id="cloud-status-text">☁️ 云端实时同步已连接 (greece-trip)</span>
             </div>
         </div>
 
-        <!-- 导航标签 -->
-        <nav class="flex flex-wrap justify-center gap-2 md:gap-3 px-2">
-            <button onclick="switchTab('daily')" id="tab-daily" class="tab-btn active px-4 py-2 text-xs md:text-sm font-semibold rounded-full border border-sand transition-all">
+        <!-- 顶部主 Tabs 菜单 -->
+        <nav class="flex space-x-2 md:justify-center overflow-x-auto custom-scrollbar pb-2 px-1 text-xs md:text-sm">
+            <button onclick="switchTab('daily')" id="tab-daily" class="tab-btn active flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all">
                 📅 每日路线 (动态谷歌地图)
             </button>
-            <button onclick="switchTab('inspiration')" id="tab-inspiration" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-full border border-sand transition-all bg-white text-ink">
+            <button onclick="switchTab('inspiration')" id="tab-inspiration" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">
                 💡 小红书链接灵感箱
             </button>
-            <button onclick="switchTab('food')" id="tab-food" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-full border border-sand transition-all bg-white text-ink">
+            <button onclick="switchTab('food')" id="tab-food" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">
                 🍴 16家餐厅与忌口卡
             </button>
-            <button onclick="switchTab('transport')" id="tab-transport" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-full border border-sand transition-all bg-white text-ink">
-                🚆 交通时刻表
+            <button onclick="switchTab('transport')" id="tab-transport" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">
+                🚆 交通与船班表
             </button>
-            <button onclick="switchTab('tips')" id="tab-tips" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-full border border-sand transition-all bg-white text-ink">
+            <button onclick="switchTab('tips')" id="tab-tips" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">
                 💡 预订与防坑指南
             </button>
-            <button onclick="switchTab('packing')" id="tab-packing" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-full border border-sand transition-all bg-white text-ink">
+            <button onclick="switchTab('packing')" id="tab-packing" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">
                 🧳 智能准备清单
             </button>
         </nav>
     </header>
 
-    <main class="max-w-5xl mx-auto mt-8 px-4">
+    <main class="max-w-5xl mx-auto mt-4 px-4">
 
-        <!-- ================= TAB 1: 每日路书（谷歌路线地图 + 路线编辑） ================= -->
+        <!-- ================= TAB 1: 每日路书 ================= -->
         <section id="sec-daily" class="tab-content block space-y-4">
             
             <!-- 工具控制条 -->
-            <div class="flex flex-wrap justify-between items-center bg-paper p-3 rounded-2xl border border-sand gap-2">
+            <div class="flex flex-wrap justify-between items-center bg-paper p-3 rounded-2xl border border-sand gap-2 text-xs">
                 <div class="flex space-x-2">
-                    <button onclick="toggleEditMode()" id="edit-mode-btn" class="text-xs bg-terracotta hover:bg-terracotta/90 text-white font-bold px-3 py-1.5 rounded-lg shadow-sm transition flex items-center">
+                    <button onclick="toggleEditMode()" id="edit-mode-btn" class="bg-terracotta hover:bg-terracotta/90 text-white font-bold px-3 py-1.5 rounded-lg shadow-sm transition flex items-center">
                         <i class="fa-solid fa-pen-to-square mr-1.5"></i> <span id="edit-btn-text">编辑路线与行程</span>
                     </button>
                     <span class="text-[11px] text-warmGray flex items-center pl-2">
-                        🗺️ 已启用 Google Directions 动态折线地图
+                        ✨ 任何修改均会瞬间云端同步给同伴！
                     </span>
                 </div>
-                <button onclick="resetToDefaultItinerary()" class="text-[11px] text-warmGray hover:text-red-600 underline">
+                <button onclick="resetToDefaultItinerary()" class="text-warmGray hover:text-red-600 underline text-[11px]">
                     恢复初始规划
                 </button>
             </div>
@@ -206,20 +221,20 @@
 
         <!-- ================= TAB 2: 小红书一键粘贴解析灵感箱 ================= -->
         <section id="sec-inspiration" class="tab-content hidden space-y-4">
-            <div class="watercolor-card p-6 space-y-4">
+            <div class="watercolor-card p-5 md:p-6 space-y-4">
                 <div class="flex justify-between items-center border-b pb-3">
                     <div>
-                        <h2 class="text-lg font-serif font-bold text-ink flex items-center">
+                        <h2 class="text-base md:text-lg font-serif font-bold text-ink flex items-center">
                             <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i> 小红书一键粘贴灵感箱
                         </h2>
-                        <p class="text-xs text-warmGray">从小红书『分享 - 复制链接』，把长文案整段直接粘贴在下方，自动解析标题与链接！</p>
+                        <p class="text-xs text-warmGray">从小红书『分享 - 复制链接』，把整段文案粘贴在下方，自动解析标题与直达链接！</p>
                     </div>
                 </div>
 
                 <!-- 智能解析粘贴框 -->
-                <div class="bg-paper p-4 rounded-xl border border-sand space-y-3">
-                    <label class="text-xs font-bold text-stone-700 block">📋 直接粘贴整段小红书分享文案：</label>
-                    <textarea id="xhs-raw-text" rows="3" placeholder="直接粘贴小红书复制的内容，例如：&#10;🇬🇷雅典最好吃的海鲜餐厅 只有本地人知道的一家餐馆... http://xhslink.cn/o/YSjDdk0HWS 复制后打开【小红书】App..." class="w-full text-xs p-2.5 border border-sand rounded-lg bg-white focus:outline-none focus:border-terracotta"></textarea>
+                <div class="bg-paper p-3.5 rounded-xl border border-sand space-y-3">
+                    <label class="text-xs font-bold text-stone-700 block">📋 粘贴小红书分享文案：</label>
+                    <textarea id="xhs-raw-text" rows="3" placeholder="可以直接粘贴整段，例如：&#10;🇬🇷雅典最好吃的海鲜餐厅 只有本地人知道的一家餐馆... http://xhslink.cn/o/YSjDdk0HWS 复制后打开【小红书】App..." class="w-full text-xs p-2.5 border border-sand rounded-lg bg-white focus:outline-none focus:border-terracotta"></textarea>
                     
                     <div class="flex justify-between items-center">
                         <select id="new-insp-category" class="text-xs p-2 border border-sand rounded-lg bg-white">
@@ -229,13 +244,12 @@
                             <option value="购物">🛍️ 购物/特产</option>
                         </select>
                         <button onclick="parseAndAddXhsInspiration()" class="text-xs bg-terracotta hover:bg-terracotta/90 text-white font-bold px-4 py-2 rounded-lg shadow-sm transition flex items-center">
-                            <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> 智能解析并添加卡片
+                            <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> 解析并同步保存
                         </button>
                     </div>
                 </div>
 
-                <!-- 灵感卡片列表 -->
-                <div id="inspiration-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs"></div>
+                <div id="inspiration-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1"></div>
             </div>
         </section>
 
@@ -272,215 +286,151 @@
             <!-- 16家完整餐厅表格 -->
             <div class="watercolor-card p-4 md:p-6">
                 <div class="flex justify-between items-center mb-3">
-                    <h2 class="text-lg font-serif font-bold text-ink flex items-center">
+                    <h2 class="text-base md:text-lg font-serif font-bold text-ink flex items-center">
                         <span class="text-xl mr-2">🍴</span> 此行精选餐厅推荐（完整 16 家）
                     </h2>
-                    <span class="text-xs font-bold text-terracotta bg-terracotta/10 px-2.5 py-1 rounded-full">希腊 12 家 + 意大利 4 家</span>
+                    <span class="text-[11px] font-bold text-terracotta bg-terracotta/10 px-2 py-0.5 rounded-full">↔️ 手机端可左右滑动表格</span>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="tbl-min w-full text-xs">
+                <div class="table-wrapper">
+                    <table class="tbl-min text-xs">
                         <thead>
                             <tr class="text-terracotta">
-                                <th class="whitespace-nowrap">城市</th>
-                                <th class="whitespace-nowrap">餐厅</th>
+                                <th>城市</th>
+                                <th>餐厅</th>
                                 <th>地址 / 区域</th>
                                 <th>推荐吃什么</th>
                                 <th>注意事项与建议</th>
-                                <th class="whitespace-nowrap">📍 地图导航</th>
+                                <th>📍 地图导航</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-700">
                             <tr>
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 圣托里尼</td>
-                                <td class="font-bold whitespace-nowrap">⭐ Krinaki Tavern</td>
-                                <td class="whitespace-nowrap">Finikia, Oia</td>
+                                <td class="font-bold text-terracotta">🇬🇷 圣托里尼</td>
+                                <td class="font-bold">⭐ Krinaki Tavern</td>
+                                <td>Finikia, Oia</td>
                                 <td>🥔 炸土豆、🦐 虾、Eggplant Salad、希腊香肠</td>
                                 <td>10/4 可选；远离 Oia 主街，建议提前确认营业时间</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Krinaki+Tavern+Finikia+Oia+Santorini', 'Krinaki Tavern 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Krinaki+Tavern+Finikia+Oia+Santorini', 'Krinaki 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr class="bg-white/50">
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 圣托里尼</td>
-                                <td class="font-bold whitespace-nowrap">⭐ Kritikos Taverna</td>
-                                <td class="whitespace-nowrap">Mesaria</td>
+                                <td class="font-bold text-terracotta">🇬🇷 圣托里尼</td>
+                                <td class="font-bold">⭐ Kritikos Taverna</td>
+                                <td>Mesaria</td>
                                 <td>🥩 烤羊排、烤猪排、烤香肠、传统希腊菜</td>
                                 <td class="font-bold text-terracotta">10/4 午餐主推；与 Pyrgos → Kamari 路线顺路</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Kritikos+Taverna+Mesaria+Santorini', 'Kritikos 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Kritikos+Taverna+Mesaria+Santorini', 'Kritikos 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr>
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 圣托里尼</td>
-                                <td class="font-bold whitespace-nowrap">Thalami</td>
-                                <td class="whitespace-nowrap">Oia</td>
+                                <td class="font-bold text-terracotta">🇬🇷 圣托里尼</td>
+                                <td class="font-bold">Thalami</td>
+                                <td>Oia</td>
                                 <td>🍢 Souvlaki、海鲜 Pasta</td>
                                 <td>🌅 可安排 Oia 日落晚餐；建议提前订位 / 提前到店</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Thalami+Oia+Santorini', 'Thalami 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Thalami+Oia+Santorini', 'Thalami 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr class="bg-white/50">
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 圣托里尼</td>
-                                <td class="font-bold whitespace-nowrap">⭐ SKALA Restaurant</td>
-                                <td class="whitespace-nowrap">Oia Main St.</td>
+                                <td class="font-bold text-terracotta">🇬🇷 圣托里尼</td>
+                                <td class="font-bold">⭐ SKALA Restaurant</td>
+                                <td>Oia Main St.</td>
                                 <td>🍅 Ntomatokeftedes、海鲜、传统希腊菜</td>
                                 <td class="font-bold text-terracotta">10/4 Oia 日落晚餐主推；建议预约</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=SKALA+Restaurant+Oia+Santorini', 'SKALA 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=SKALA+Restaurant+Oia+Santorini', 'SKALA 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr>
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 圣托里尼</td>
-                                <td class="font-bold whitespace-nowrap">Santorini Mou</td>
-                                <td class="whitespace-nowrap">Finikia, Oia</td>
+                                <td class="font-bold text-terracotta">🇬🇷 圣托里尼</td>
+                                <td class="font-bold">Santorini Mou</td>
+                                <td>Finikia, Oia</td>
                                 <td>🥩 希腊烤肉、小菜、当地特色菜</td>
                                 <td>🎸 特色是现场音乐和老板互动；适合体验本地氛围</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Santorini+Mou+Finikia+Oia', 'Santorini Mou 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Santorini+Mou+Finikia+Oia', 'Santorini Mou 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr class="bg-white/50">
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 雅典</td>
-                                <td class="font-bold whitespace-nowrap">⭐ Athinaikon</td>
-                                <td class="whitespace-nowrap">Themistokleous 2</td>
+                                <td class="font-bold text-terracotta">🇬🇷 雅典</td>
+                                <td class="font-bold">⭐ Athinaikon</td>
+                                <td>Themistokleous 2</td>
                                 <td>🍆 Moussaka、Greek Salad、海鲜</td>
                                 <td>10/9 晚餐备选；传统希腊菜，靠近宪法广场</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Athinaikon+Restaurant+Athens', 'Athinaikon 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Athinaikon+Restaurant+Athens', 'Athinaikon 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr>
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 雅典</td>
-                                <td class="font-bold whitespace-nowrap">ERGON House</td>
-                                <td class="whitespace-nowrap">Mitropoleos 42</td>
+                                <td class="font-bold text-terracotta">🇬🇷 雅典</td>
+                                <td class="font-bold">ERGON House</td>
+                                <td>Mitropoleos 42</td>
                                 <td>🍳 Brunch、现代希腊菜、本地食材</td>
                                 <td>🥂 适合午餐 / Brunch；繁忙时段服务可能较慢</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=ERGON+House+Athens', 'ERGON House 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=ERGON+House+Athens', 'ERGON House 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr class="bg-white/50">
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 雅典</td>
-                                <td class="font-bold whitespace-nowrap">⭐ Lefteris O Politis</td>
-                                <td class="whitespace-nowrap">Satovriandou 20</td>
+                                <td class="font-bold text-terracotta">🇬🇷 雅典</td>
+                                <td class="font-bold">⭐ Lefteris O Politis</td>
+                                <td>Satovriandou 20</td>
                                 <td>🥙 牛肉 Souvlaki / Pita</td>
                                 <td>💡 单份不算大，可买 2 个；排队通常较快</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Lefteris+O+Politis+Athens', 'Lefteris O Politis 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Lefteris+O+Politis+Athens', 'Lefteris O Politis 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr>
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 雅典</td>
-                                <td class="font-bold whitespace-nowrap">Stani</td>
-                                <td class="whitespace-nowrap">Marikas Kotopouli 10</td>
+                                <td class="font-bold text-terracotta">🇬🇷 雅典</td>
+                                <td class="font-bold">Stani</td>
+                                <td>Marikas Kotopouli 10</td>
                                 <td>🥛 传统希腊酸奶、蜂蜜核桃、Cream Pie、Freddo</td>
                                 <td>☕ 适合早餐 / 下午甜点；百年老店</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Stani+Athens', 'Stani 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Stani+Athens', 'Stani 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr class="bg-white/50">
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 雅典</td>
-                                <td class="font-bold whitespace-nowrap">Coffee Joint</td>
-                                <td class="whitespace-nowrap">Athens</td>
+                                <td class="font-bold text-terracotta">🇬🇷 雅典</td>
+                                <td class="font-bold">Coffee Joint</td>
+                                <td>Athens</td>
                                 <td>☕ Coffee、Omelette、轻食</td>
                                 <td>💡 适合卫城附近逛累后休息；外带价格更友好</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Coffee+Joint+Athens', 'Coffee Joint 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Coffee+Joint+Athens', 'Coffee Joint 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr>
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 雅典</td>
-                                <td class="font-bold whitespace-nowrap">⭐ O Thanasis</td>
-                                <td class="whitespace-nowrap">Mitropoleos 69</td>
+                                <td class="font-bold text-terracotta">🇬🇷 雅典</td>
+                                <td class="font-bold">⭐ O Thanasis</td>
+                                <td>Mitropoleos 69</td>
                                 <td>🥙 Kebab、Souvlaki、Pita</td>
                                 <td class="font-bold text-terracotta">10/9 Monastiraki 主推；热门时段可能排队</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=O+Thanasis+Monastiraki+Athens', 'O Thanasis 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=O+Thanasis+Monastiraki+Athens', 'O Thanasis 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr class="bg-white/50">
-                                <td class="font-bold text-terracotta whitespace-nowrap">🇬🇷 雅典</td>
-                                <td class="font-bold whitespace-nowrap">To Steki tou Ilia</td>
-                                <td class="whitespace-nowrap">Evmorfopoulou 2</td>
+                                <td class="font-bold text-terracotta">🇬🇷 雅典</td>
+                                <td class="font-bold">To Steki tou Ilia</td>
+                                <td>Evmorfopoulou 2</td>
                                 <td>🥩 烤羊排、炭烤肉、本地菜</td>
                                 <td>🍖 小馆风格；适合最后一晚体验</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=To+Steki+tou+Ilia+Athens', 'To Steki tou Ilia 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=To+Steki+tou+Ilia+Athens', 'To Steki tou Ilia 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr>
-                                <td class="font-bold text-aegean whitespace-nowrap">🇮🇹 罗马</td>
-                                <td class="font-bold whitespace-nowrap">⭐ Armando al Pantheon</td>
-                                <td class="whitespace-nowrap">Salita de' Crescenzi 31</td>
+                                <td class="font-bold text-aegean">🇮🇹 罗马</td>
+                                <td class="font-bold">⭐ Armando al Pantheon</td>
+                                <td>Salita de' Crescenzi 31</td>
                                 <td>🍝 Carbonara、Cacio e Pepe、Amatriciana</td>
                                 <td class="font-bold text-terracotta">强烈建议提前预约；就在万神殿旁</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Armando+al+Pantheon+Rome', 'Armando 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Armando+al+Pantheon+Rome', 'Armando 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr class="bg-white/50">
-                                <td class="font-bold text-aegean whitespace-nowrap">🇮🇹 罗马</td>
-                                <td class="font-bold whitespace-nowrap">Pastasciutta</td>
-                                <td class="whitespace-nowrap">Via delle Grazie 5</td>
+                                <td class="font-bold text-aegean">🇮🇹 罗马</td>
+                                <td class="font-bold">Pastasciutta</td>
+                                <td>Via delle Grazie 5</td>
                                 <td>🍝 Fresh Pasta、Carbonara、Cacio e Pepe</td>
                                 <td>💰 平价快餐；适合白天逛街途中快速解决</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Pastasciutta+Rome', 'Pastasciutta 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Pastasciutta+Rome', 'Pastasciutta 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr>
-                                <td class="font-bold text-olive whitespace-nowrap">🇮🇹 那不勒斯</td>
-                                <td class="font-bold whitespace-nowrap">⭐ da Michele</td>
-                                <td class="whitespace-nowrap">Via Cesare Sersale 1</td>
+                                <td class="font-bold text-olive">🇮🇹 那不勒斯</td>
+                                <td class="font-bold">⭐ da Michele</td>
+                                <td>Via Cesare Sersale 1</td>
                                 <td>🍕 Margherita 玛格丽特披萨</td>
                                 <td>⭐ 百年老店现场取号；⚠️<span class="font-bold text-red-600">不吃蒜不要点 Marinara</span></td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=L+Antica+Pizzeria+da+Michele+Naples', 'da Michele 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=L+Antica+Pizzeria+da+Michele+Naples', 'da Michele 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                             <tr class="bg-white/50">
-                                <td class="font-bold text-olive whitespace-nowrap">🇮🇹 卡普里</td>
-                                <td class="font-bold whitespace-nowrap">⭐ Lo Zodiaco</td>
-                                <td class="whitespace-nowrap">Marina Grande</td>
+                                <td class="font-bold text-olive">🇮🇹 卡普里</td>
+                                <td class="font-bold">⭐ Lo Zodiaco</td>
+                                <td>Marina Grande</td>
                                 <td>🦐 海鲜 Pasta、鱼料理、Pizza</td>
                                 <td class="font-bold text-terracotta">10/8 午餐主推；上下船极为方便</td>
-                                <td class="whitespace-nowrap">
-                                    <button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Lo+Zodiaco+Marina+Grande+Capri', 'Lo Zodiaco 谷歌地图导航链接已复制！')" class="text-aegean font-medium underline hover:text-terracotta">
-                                        地图 ➔
-                                    </button>
-                                </td>
+                                <td><button onclick="copyToClipboard('https://www.google.com/maps/search/?api=1&query=Lo+Zodiaco+Marina+Grande+Capri', 'Lo Zodiaco 导航链接已复制！')" class="text-aegean font-medium underline">地图 ➔</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -496,8 +446,8 @@
 
             <div class="watercolor-card p-4 md:p-6">
                 <h3 class="font-serif font-bold text-terracotta text-sm mb-2">✈️ 全程 11 天大交通一览</h3>
-                <div class="overflow-x-auto">
-                    <table class="tbl-min w-full text-xs">
+                <div class="table-wrapper">
+                    <table class="tbl-min text-xs">
                         <thead>
                             <tr class="text-terracotta">
                                 <th>日期</th><th>交通</th><th>班次</th><th>路线</th><th>时间</th><th>提前量</th>
@@ -518,11 +468,11 @@
                 </div>
             </div>
 
-            <!-- Napoli ↔ Capri 渡轮时刻表 (13条完整) -->
+            <!-- Napoli ↔ Capri 渡轮时刻表 -->
             <div class="watercolor-card p-4 md:p-6">
                 <h3 class="font-serif font-bold text-olive text-sm mb-2">🍋 10/08 那不勒斯 ↔ 卡普里岛 (Capri) 渡轮时刻表</h3>
-                <div class="overflow-x-auto">
-                    <table class="tbl-min w-full text-xs">
+                <div class="table-wrapper">
+                    <table class="tbl-min text-xs">
                         <thead>
                             <tr class="text-olive">
                                 <th>方向</th><th>出发</th><th>到达</th><th>出发码头</th><th>到达码头</th><th>船公司</th><th>类型</th>
@@ -550,15 +500,15 @@
 
         <!-- ================= TAB 5: 预订与防坑指南 ================= -->
         <section id="sec-tips" class="tab-content hidden space-y-6">
-            <div class="watercolor-card p-6 md:p-8">
-                <h2 class="text-2xl font-serif font-bold text-ink mb-6 flex items-center">
+            <div class="watercolor-card p-5 md:p-8 space-y-5">
+                <h2 class="text-lg md:text-2xl font-serif font-bold text-ink flex items-center">
                     <span class="text-2xl mr-2">💡</span> 行程隐形避坑与官方预订清单
                 </h2>
 
-                <div class="space-y-6">
+                <div class="space-y-4">
                     <div class="bg-paper p-4 rounded-xl border-l-4 border-terracotta">
                         <h3 class="font-bold text-terracotta text-sm md:text-base">⚠️ 1. 瑞安航空 (Ryanair FR3021) 严苛规定 (10/5)</h3>
-                        <p class="text-xs md:text-sm text-gray-700 mt-1">
+                        <p class="text-xs md:text-sm text-gray-700 mt-1 leading-relaxed">
                             • <span class="font-bold">在线值机 (Online Check-in)：</span>必须在起飞前 24 小时在 App 完成 Online Check-in，否则现场收取约 55 欧/人罚款。<br>
                             • <span class="font-bold">行李额：</span>随身仅限小包，所有拉杆箱必须提前购买托运行李额。
                         </p>
@@ -566,41 +516,41 @@
 
                     <div class="bg-paper p-4 rounded-xl border-l-4 border-olive">
                         <h3 class="font-bold text-olive text-sm md:text-base">🏛️ 2. 庞贝古城门票与路况 (10/7)</h3>
-                        <p class="text-xs md:text-sm text-gray-700 mt-1">
+                        <p class="text-xs md:text-sm text-gray-700 mt-1 leading-relaxed">
                             • <span class="font-bold">门票预订：</span>建议通过 TicketOne 预订时段票，避开排队。<br>
                             • <span class="font-bold">行李与鞋履：</span>庞贝全是大石板路，<span class="font-bold text-red-600">绝对不能拉行李箱进入</span>！建议先去那不勒斯酒店寄存行李。
                         </p>
                     </div>
 
-                    <div class="mt-8 border-t pt-4">
-                        <h3 class="font-serif font-bold text-ink mb-3">🔗 官方预订网址直达索引</h3>
+                    <div class="mt-6 border-t pt-4">
+                        <h3 class="font-serif font-bold text-ink mb-3 text-sm md:text-base">🔗 官方预订网址直达索引</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                            <div class="p-3 bg-white rounded-lg border border-sand hover:border-olive flex justify-between items-center text-gray-700 font-medium">
+                            <div class="p-3 bg-white rounded-lg border border-sand flex justify-between items-center text-gray-700">
                                 <span>🏛️ 庞贝古城官方购票 (Pompeii Sites)</span>
                                 <div class="flex space-x-2">
                                     <a href="https://pompeiisites.org/" target="_blank" class="text-olive font-bold underline">打开 ➔</a>
-                                    <button onclick="copyToClipboard('https://pompeiisites.org/', '庞贝购票网址已复制！')" class="text-stone-500 hover:text-stone-800">📋 复制</button>
+                                    <button onclick="copyToClipboard('https://pompeiisites.org/', '庞贝购票网址已复制！')" class="text-warmGray hover:text-stone-800">📋 复制</button>
                                 </div>
                             </div>
-                            <div class="p-3 bg-white rounded-lg border border-sand hover:border-olive flex justify-between items-center text-gray-700 font-medium">
+                            <div class="p-3 bg-white rounded-lg border border-sand flex justify-between items-center text-gray-700">
                                 <span>🚠 卡普里 Monte Solaro 缆车官网</span>
                                 <div class="flex space-x-2">
                                     <a href="https://www.capriseggiovia.it/" target="_blank" class="text-olive font-bold underline">打开 ➔</a>
-                                    <button onclick="copyToClipboard('https://www.capriseggiovia.it/', '缆车官网网址已复制！')" class="text-stone-500 hover:text-stone-800">📋 复制</button>
+                                    <button onclick="copyToClipboard('https://www.capriseggiovia.it/', '缆车官网网址已复制！')" class="text-warmGray hover:text-stone-800">📋 复制</button>
                                 </div>
                             </div>
-                            <div class="p-3 bg-white rounded-lg border border-sand hover:border-aegean flex justify-between items-center text-gray-700 font-medium">
+                            <div class="p-3 bg-white rounded-lg border border-sand flex justify-between items-center text-gray-700">
                                 <span>🎨 博尔盖塞美术馆官方预约</span>
                                 <div class="flex space-x-2">
                                     <a href="https://galleriaborghese.beniculturali.it/" target="_blank" class="text-aegean font-bold underline">打开 ➔</a>
-                                    <button onclick="copyToClipboard('https://galleriaborghese.beniculturali.it/', '博尔盖塞预约网址已复制！')" class="text-stone-500 hover:text-stone-800">📋 复制</button>
+                                    <button onclick="copyToClipboard('https://galleriaborghese.beniculturali.it/', '博尔盖塞预约网址已复制！')" class="text-warmGray hover:text-stone-800">📋 复制</button>
                                 </div>
                             </div>
-                            <div class="p-3 bg-white rounded-lg border border-sand hover:border-terracotta flex justify-between items-center text-gray-700 font-medium">
-                                <span>✈️ 瑞安航空 Ryanair 值机与行李加购</span>
+                            <div class="p-3 bg-white rounded-lg border border-sand flex justify-between items-center text-gray-700">
+                                <span>✈️ 瑞安航空 Ryanair 值机加购</span>
                                 <div class="flex space-x-2">
                                     <a href="https://www.ryanair.com/" target="_blank" class="text-terracotta font-bold underline">打开 ➔</a>
-                                    <button onclick="copyToClipboard('https://www.ryanair.com/', '瑞安航空网址已复制！')" class="text-stone-500 hover:text-stone-800">📋 复制</button>
+                                    <button onclick="copyToClipboard('https://www.ryanair.com/', '瑞安航空网址已复制！')" class="text-warmGray hover:text-stone-800">📋 复制</button>
                                 </div>
                             </div>
                         </div>
@@ -629,13 +579,12 @@
         <p class="mt-1">Designed for 2026.10.01 - 10.11 | Personal Cloud Roadbook</p>
     </footer>
 
-    <!-- Firebase Firestore 实时云端同步 SDK -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    <!-- Firebase Realtime Database 实时云端同步 SDK (Compat 模式，完美契合您的配置与 GitHub Pages) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
-        // 全局 Toast 提示函数
+    <script>
+        // 全局 Toast 提示
         window.showToast = function(msg) {
             const toast = document.getElementById('toast-notification');
             const msgEl = document.getElementById('toast-msg');
@@ -646,11 +595,10 @@
                 setTimeout(() => {
                     toast.classList.remove('opacity-100');
                     toast.classList.add('opacity-0', 'pointer-events-none');
-                }, 3000);
+                }, 2500);
             }
         };
 
-        // 一键复制到剪贴板 (解决 iframe 沙盒限制)
         window.copyToClipboard = function(text, successMsg) {
             if (!text) return;
             const textArea = document.createElement("textarea");
@@ -664,7 +612,7 @@
             
             try {
                 document.execCommand('copy');
-                window.showToast(successMsg || "链接已复制到剪贴板！可粘贴至浏览器/App中打开。");
+                window.showToast(successMsg || "链接已复制！可粘贴至浏览器/App中打开。");
             } catch (err) {
                 window.showToast("复制失败，请手动选中复制");
             }
@@ -901,19 +849,18 @@
             return url;
         }
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'shared-trip-app';
-        const dummyConfig = { apiKey: "", authDomain: "", projectId: "sandbox" };
-       const firebaseConfig = {
-  apiKey: "AIzaSyB0BC_ATnwr5xegYNLQBKq1HyhSu_m0FrE",
-  authDomain: "greece-trip-c4cc7.firebaseapp.com",
-  databaseURL: "https://greece-trip-c4cc7-default-rtdb.firebaseio.com",
-  projectId: "greece-trip-c4cc7",
-  storageBucket: "greece-trip-c4cc7.firebasestorage.app",
-  messagingSenderId: "332482796388",
-  appId: "1:332482796388:web:a1df835258b2a92534b871"
-};
-        let db, auth;
-        let currentUser = null;
+        // 您的专属 Firebase 项目凭证配置
+        const firebaseConfig = {
+            apiKey: "AIzaSyB0BC_ATnwr5xegYNLQBKq1HyhSu_m0FrE",
+            authDomain: "greece-trip-c4cc7.firebaseapp.com",
+            databaseURL: "https://greece-trip-c4cc7-default-rtdb.firebaseio.com",
+            projectId: "greece-trip-c4cc7",
+            storageBucket: "greece-trip-c4cc7.firebasestorage.app",
+            messagingSenderId: "332482796388",
+            appId: "1:332482796388:web:a1df835258b2a92534b871"
+        };
+
+        let dbRef = null;
         let currentDay = 1;
         let isEditMode = false;
         
@@ -921,68 +868,60 @@
         let globalInspirations = defaultInspirations;
         let globalChecklist = {};
 
-        async function initFirebase() {
+        // 初始化 Firebase Realtime Database 并实现极速云端实时监听
+        function initFirebase() {
             try {
-                const app = initializeApp(firebaseConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
+                firebase.initializeApp(firebaseConfig);
+                dbRef = firebase.database().ref('greece_trip_sync');
 
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-
-                onAuthStateChanged(auth, (user) => {
-                    currentUser = user;
-                    if (user) {
-                        setupRealtimeSync();
+                // 实时监听（监听任何人修改的旅途数据）
+                dbRef.on('value', (snapshot) => {
+                    const val = snapshot.val();
+                    if (val) {
+                        if (val.itinerary) globalTripData = val.itinerary;
+                        if (val.inspirations) globalInspirations = val.inspirations;
+                        if (val.checklist) globalChecklist = val.checklist;
                     }
+                    
+                    document.getElementById('cloud-status-text').innerText = "☁️ 云端实时同步已连接 (greece-trip)";
+                    document.getElementById('cloud-pulse-dot').classList.add('bg-emerald-500', 'animate-pulse');
+                    document.getElementById('cloud-pulse-dot').classList.remove('bg-amber-500');
+
+                    renderAllViews();
+                }, (error) => {
+                    console.warn("Realtime DB 连接受阻，降级为本地读取:", error);
+                    fallbackToLocal();
                 });
             } catch(e) {
-                document.getElementById('cloud-status-text').innerText = "📱 本地模式 (离线)";
-                loadLocalData();
-                renderAllViews();
+                console.warn("Firebase 初始化异常:", e);
+                fallbackToLocal();
             }
         }
 
-        function setupRealtimeSync() {
-            if (!currentUser) return;
-            const tripDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'trips', 'shared_trip_data');
-
-            onSnapshot(tripDocRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-                    if (data.itinerary) globalTripData = data.itinerary;
-                    if (data.inspirations) globalInspirations = data.inspirations;
-                    if (data.checklist) globalChecklist = data.checklist;
-                    document.getElementById('cloud-status-text').innerText = "☁️ 云端实时同步已连接";
-                } else {
-                    syncToCloud();
-                }
-                renderAllViews();
-            }, (error) => {
-                document.getElementById('cloud-status-text').innerText = "📱 本地模式 (已保存)";
-                loadLocalData();
-                renderAllViews();
-            });
+        function fallbackToLocal() {
+            document.getElementById('cloud-status-text').innerText = "📱 本地同步模式";
+            document.getElementById('cloud-pulse-dot').classList.remove('bg-emerald-500', 'animate-pulse');
+            document.getElementById('cloud-pulse-dot').classList.add('bg-amber-500');
+            loadLocalData();
+            renderAllViews();
         }
 
-        async function syncToCloud() {
+        function syncToCloud() {
             localStorage.setItem('local_trip_data', JSON.stringify(globalTripData));
             localStorage.setItem('local_inspirations', JSON.stringify(globalInspirations));
             localStorage.setItem('local_checklist', JSON.stringify(globalChecklist));
 
-            if (db && currentUser) {
+            if (dbRef) {
                 try {
-                    const tripDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'trips', 'shared_trip_data');
-                    await setDoc(tripDocRef, {
+                    dbRef.set({
                         itinerary: globalTripData,
                         inspirations: globalInspirations,
                         checklist: globalChecklist,
                         lastUpdated: new Date().toISOString()
-                    }, { merge: true });
-                } catch(e) {}
+                    });
+                } catch(e) {
+                    console.error("云端实时写入失败:", e);
+                }
             }
         }
 
@@ -1010,12 +949,19 @@
                 b.classList.add('bg-white', 'text-ink');
             });
 
-            document.getElementById('sec-' + tabName).classList.remove('hidden');
+            const targetSection = document.getElementById('sec-' + tabName);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+
             const targetBtn = document.getElementById('tab-' + tabName);
             if (targetBtn) {
                 targetBtn.classList.add('active');
                 targetBtn.classList.remove('bg-white', 'text-ink');
             }
+
+            if(tabName === 'inspiration') renderInspirations();
+            if(tabName === 'packing') renderChecklist();
         };
 
         window.selectDay = function(dayNum) {
@@ -1042,6 +988,7 @@
         function renderCurrentDayCard() {
             const data = globalTripData[currentDay] || defaultDayData[currentDay];
             const container = document.getElementById('day-details-container');
+            if(!container) return;
 
             if (!isEditMode) {
                 let timelineHTML = data.timeline.map(item => `
@@ -1216,7 +1163,7 @@
         };
 
         window.addTimelineItem = function() {
-            globalTripData[currentDay].timeline.push({ time: "12:00", text: "新新增自定义打卡点" });
+            globalTripData[currentDay].timeline.push({ time: "12:00", text: "新增自定义打卡点" });
             syncToCloud();
             renderCurrentDayCard();
         };
@@ -1228,14 +1175,14 @@
         };
 
         window.resetToDefaultItinerary = function() {
-            if(confirm("确定清空云端修改并恢复初始规划吗？")) {
+            if(confirm("确定恢复初始规划吗？")) {
                 globalTripData = defaultDayData;
                 syncToCloud();
                 renderCurrentDayCard();
             }
         };
 
-        // 智能解析小红书长文案逻辑
+        // 智能解析小红书长文案
         window.parseAndAddXhsInspiration = function() {
             const rawText = document.getElementById('xhs-raw-text').value.trim();
             const category = document.getElementById('new-insp-category').value;
@@ -1260,7 +1207,7 @@
             }
 
             globalInspirations.unshift({
-                title: cleanTitle || "新保存的小红书笔记",
+                title: cleanTitle || "小红书笔记",
                 url: linkUrl,
                 category: category
             });
@@ -1268,7 +1215,7 @@
             syncToCloud();
             document.getElementById('xhs-raw-text').value = "";
             renderInspirations();
-            window.showToast("成功添加小红书笔记灵感！");
+            window.showToast("已成功同步保存小红书笔记卡片！");
         };
 
         window.removeInspiration = function(idx) {
@@ -1313,7 +1260,7 @@
             }).join('');
         }
 
-        // Checklist
+        // Checklist 渲染
         window.togglePackingItem = function(id) {
             globalChecklist[id] = !globalChecklist[id];
             syncToCloud();
@@ -1365,3 +1312,4 @@
     </script>
 </body>
 </html>
+
