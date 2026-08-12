@@ -903,8 +903,15 @@
 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'shared-trip-app';
         const dummyConfig = { apiKey: "", authDomain: "", projectId: "sandbox" };
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : dummyConfig;
-
+       const firebaseConfig = {
+  apiKey: "AIzaSyB0BC_ATnwr5xegYNLQBKq1HyhSu_m0FrE",
+  authDomain: "greece-trip-c4cc7.firebaseapp.com",
+  databaseURL: "https://greece-trip-c4cc7-default-rtdb.firebaseio.com",
+  projectId: "greece-trip-c4cc7",
+  storageBucket: "greece-trip-c4cc7.firebasestorage.app",
+  messagingSenderId: "332482796388",
+  appId: "1:332482796388:web:a1df835258b2a92534b871"
+};
         let db, auth;
         let currentUser = null;
         let currentDay = 1;
