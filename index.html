@@ -266,7 +266,7 @@
                 </h3>
                 <div class="flex gap-2 text-xs">
                     <input type="text" id="smart-rest-input" placeholder="输入餐厅名或粘贴地图/小红书链接..." class="flex-1 p-2.5 border border-sand rounded-lg bg-white">
-                    <button onclick="promptCitySelection()" class="bg-terracotta hover:bg-terracotta/90 text-white font-bold px-5 py-2.5 rounded-lg transition flex items-center">
+                    <button onclick="promptCitySelection()" class="bg-terracotta hover:bg-terracotta/90 text-white font-bold px-5 py-2.5 rounded-lg transition flex items-center whitespace-nowrap">
                         <i class="fa-solid fa-location-dot mr-1"></i> 选择城市并添加
                     </button>
                 </div>
@@ -299,7 +299,7 @@
             </div>
         </section>
 
-        <!-- ================= TAB 4: 酒店备选清单 (含谷歌链接自动识别) ================= -->
+        <!-- ================= TAB 4: 酒店备选清单 ================= -->
         <section id="sec-hotel" class="tab-content hidden space-y-5">
             <div class="watercolor-card p-5 space-y-4">
                 <div class="flex justify-between items-center border-b pb-2">
@@ -622,16 +622,16 @@
                     </div>
                 </div>
 
-                <!-- 自定义添加 Checklist 项 -->
-                <div class="bg-paper p-3 rounded-xl border border-sand flex gap-2 text-xs">
-                    <select id="new-check-cat" class="p-2 border border-sand rounded bg-white">
+                <!-- 优化手机端排版的自定义添加 Checklist 项 -->
+                <div class="bg-paper p-3 rounded-xl border border-sand flex flex-col sm:flex-row gap-2 text-xs">
+                    <select id="new-check-cat" class="p-2 border border-sand rounded bg-white w-full sm:w-auto">
                         <option value="行前打卡">🎯 行前打卡</option>
                         <option value="证件财务">📄 证件财务</option>
                         <option value="电子数码">🔌 电子数码</option>
                         <option value="衣物药品">👟 衣物药品</option>
                     </select>
-                    <input type="text" id="new-check-text" placeholder="输入待办事项..." class="flex-1 p-2 border border-sand rounded bg-white">
-                    <button onclick="addNewChecklistItem()" class="bg-olive hover:bg-olive/90 text-white font-bold px-4 py-2 rounded transition">添加任务</button>
+                    <input type="text" id="new-check-text" placeholder="输入待办事项..." class="flex-1 p-2 border border-sand rounded bg-white w-full">
+                    <button onclick="addNewChecklistItem()" class="bg-olive hover:bg-olive/90 text-white font-bold px-4 py-2 rounded transition w-full sm:w-auto whitespace-nowrap">添加任务</button>
                 </div>
 
                 <div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
@@ -824,7 +824,7 @@
         function initFirebase() {
             try {
                 firebase.initializeApp(firebaseConfig);
-                dbRef = firebase.database().ref('greece_trip_sync_v8');
+                dbRef = firebase.database().ref('greece_trip_sync_v9');
 
                 dbRef.on('value', (snapshot) => {
                     const val = snapshot.val();
@@ -852,7 +852,7 @@
         }
 
         function syncToCloud() {
-            localStorage.setItem('trip_all_v8', JSON.stringify({
+            localStorage.setItem('trip_all_v9', JSON.stringify({
                 trip: globalTripData, insp: globalInspirations, rest: globalRestaurants,
                 hotel: globalHotels, ledger: globalLedger, sos: globalSOS, check: globalChecklist
             }));
@@ -871,7 +871,7 @@
 
         function loadLocalData() {
             try {
-                const data = JSON.parse(localStorage.getItem('trip_all_v8'));
+                const data = JSON.parse(localStorage.getItem('trip_all_v9'));
                 if (data) {
                     if (data.trip) globalTripData = data.trip;
                     if (data.insp) globalInspirations = data.insp;
@@ -1080,7 +1080,6 @@
             `).join('');
         }
 
-        // 餐厅手动选择城市并时序插入
         window.promptCitySelection = function() {
             const input = document.getElementById('smart-rest-input').value.trim();
             if(!input) { window.showToast("请输入餐厅名称或链接！"); return; }
@@ -1138,7 +1137,7 @@
             `).join('');
         }
 
-        // 酒店备选清单 (支持自动根据名称或链接生成谷歌地图导航)
+        // 酒店备选清单 (自动按名称生成谷歌地图链接)
         window.addNewHotel = function() {
             const name = document.getElementById('hotel-name').value.trim();
             const dates = document.getElementById('hotel-dates').value.trim();
@@ -1147,8 +1146,6 @@
             const platform = document.getElementById('hotel-platform').value;
 
             if(!name) { window.showToast("请输入酒店名称！"); return; }
-            
-            // 如果用户没填谷歌链接，自动根据酒店名称生成谷歌地图搜索链接
             if(!link) {
                 link = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name + ' hotel')}`;
             }
@@ -1183,7 +1180,6 @@
             `).join('');
         }
 
-        // 旅途小账本 (支持 CNY/EUR 切换 & DJ/Runze)
         window.addExpenseItem = function() {
             const title = document.getElementById('expense-title').value.trim();
             const rawAmount = parseFloat(document.getElementById('expense-amount').value);
@@ -1229,7 +1225,6 @@
             document.getElementById('ledger-count').innerText = `${globalLedger.length} 笔`;
         }
 
-        // SOS 锦囊自定义保险
         window.addInsuranceSOS = function() {
             const name = document.getElementById('sos-insurance-name').value.trim();
             const phone = document.getElementById('sos-insurance-phone').value.trim();
@@ -1258,7 +1253,6 @@
             `).join('');
         }
 
-        // Checklist 逻辑
         window.addNewChecklistItem = function() {
             const cat = document.getElementById('new-check-cat').value;
             const text = document.getElementById('new-check-text').value.trim();
