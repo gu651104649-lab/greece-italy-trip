@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>爱琴海与南意慢调之旅 · 终极云端随身路书</title>
+    <title>希腊爱琴海自驾之旅 · 2026浪漫双人云端路书</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -20,8 +20,8 @@
                         paper: '#F5EFE6',
                         terracotta: '#D96B43',
                         olive: '#6B8E23',
-                        aegean: '#2B6CB0',
-                        aegeanLight: '#EBF8FF',
+                        aegean: '#1E56A0',
+                        aegeanLight: '#EBF3FA',
                         sand: '#E6CCB2',
                         ink: '#2D3748',
                         warmGray: '#718096'
@@ -49,7 +49,7 @@
             backdrop-filter: blur(8px);
             border: 2px solid #E6CCB2;
             border-radius: 20px;
-            box-shadow: 4px 6px 15px rgba(217, 107, 67, 0.08);
+            box-shadow: 4px 6px 15px rgba(30, 86, 160, 0.08);
             max-width: 100%;
         }
 
@@ -63,7 +63,7 @@
         .tbl-min { 
             border-collapse: collapse; 
             width: 100%;
-            min-width: 650px;
+            min-width: 680px;
         }
         .tbl-min th, .tbl-min td {
             border: none;
@@ -73,26 +73,26 @@
             white-space: nowrap;
         }
         .tbl-min thead th {
-            background: rgba(245,239,230,0.8);
-            color: #D96B43;
-            border-bottom: 2px solid #D96B43;
+            background: rgba(245,239,230,0.85);
+            color: #1E56A0;
+            border-bottom: 2px solid #1E56A0;
             font-weight: 700;
         }
         .tbl-min tbody tr:nth-child(even) { background-color: rgba(245,239,230,0.45); }
-        .tbl-min tbody tr:hover { background-color: rgba(217,107,67,0.06); }
+        .tbl-min tbody tr:hover { background-color: rgba(30,86,160,0.06); }
 
         .tab-btn.active {
-            background-color: #D96B43;
+            background-color: #1E56A0;
             color: white;
-            border-color: #D96B43;
-            box-shadow: 0 4px 10px rgba(217, 107, 67, 0.3);
+            border-color: #1E56A0;
+            box-shadow: 0 4px 12px rgba(30, 86, 160, 0.3);
         }
 
         .custom-scrollbar::-webkit-scrollbar { height: 4px; width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #E6CCB2; border-radius: 4px; }
     </style>
 </head>
-<body class="min-h-screen pb-20 md:pb-12 relative">
+<body class="min-h-screen pb-20 md:pb-12 relative" onload="initApp()">
 
     <!-- 全局 Toast 提示 -->
     <div id="toast-notification" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-stone-800/90 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl backdrop-blur-sm transition-all duration-300 opacity-0 pointer-events-none flex items-center space-x-2">
@@ -100,47 +100,42 @@
         <span id="toast-msg">操作成功！</span>
     </div>
 
-    <!-- 城市选择弹窗模态框 -->
-    <div id="city-modal" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-paper border-2 border-terracotta rounded-2xl p-6 max-w-sm w-full space-y-4 shadow-2xl">
-            <h3 class="font-serif font-bold text-ink text-base flex items-center">
-                <i class="fa-solid fa-location-dot text-terracotta mr-2"></i> 请选择该餐厅所属的城市行程：
-            </h3>
-            <p id="modal-rest-preview" class="text-xs text-warmGray bg-white p-2 rounded border border-sand font-mono break-all"></p>
-            <div class="grid grid-cols-1 gap-2 text-xs">
-                <button onclick="confirmCitySelect('🇬🇷 圣托里尼')" class="p-2.5 bg-white hover:bg-terracotta hover:text-white rounded-xl border border-sand font-bold text-left transition">🇬🇷 圣托里尼</button>
-                <button onclick="confirmCitySelect('🇮🇹 罗马')" class="p-2.5 bg-white hover:bg-terracotta hover:text-white rounded-xl border border-sand font-bold text-left transition">🇮🇹 罗马</button>
-                <button onclick="confirmCitySelect('🇮🇹 那不勒斯')" class="p-2.5 bg-white hover:bg-terracotta hover:text-white rounded-xl border border-sand font-bold text-left transition">🇮🇹 那不勒斯 (含庞贝)</button>
-                <button onclick="confirmCitySelect('🇮🇹 卡普里')" class="p-2.5 bg-white hover:bg-terracotta hover:text-white rounded-xl border border-sand font-bold text-left transition">🇮🇹 卡普里岛</button>
-                <button onclick="confirmCitySelect('🇬🇷 雅典')" class="p-2.5 bg-white hover:bg-terracotta hover:text-white rounded-xl border border-sand font-bold text-left transition">🇬🇷 雅典</button>
+    <!-- 全局通用删除确认 Modal -->
+    <div id="delete-modal" class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center hidden backdrop-blur-sm p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-sand space-y-4 text-center">
+            <div class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center mx-auto text-xl">
+                <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
-            <div class="flex justify-end pt-2">
-                <button onclick="closeCityModal()" class="text-xs text-warmGray hover:text-stone-800 underline">取消</button>
+            <h3 class="font-bold text-stone-800 text-base">确认要删除此项吗？</h3>
+            <p id="delete-modal-msg" class="text-xs text-warmGray">删除后无法直接撤销，请确认是否继续。</p>
+            <div class="flex space-x-2 pt-2">
+                <button onclick="closeDeleteModal()" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold rounded-xl text-xs transition">取消</button>
+                <button id="confirm-delete-btn" class="flex-1 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl text-xs transition shadow-md">确认删除</button>
             </div>
         </div>
     </div>
 
     <!-- 顶部 Header -->
     <header class="max-w-5xl mx-auto pt-6 px-4 text-center">
-        <div class="inline-block bg-sand/40 px-5 py-1 rounded-full text-xs font-semibold tracking-widest text-terracotta mb-2 uppercase">
-            🎨 Travel Booklet & Roadbook · 2026.10.01 - 10.11
+        <div class="inline-block bg-sand/40 px-5 py-1 rounded-full text-xs font-semibold tracking-widest text-aegean mb-2 uppercase">
+            🏛️ Greece Travel Booklet · 2026.10.01 - 10.11
         </div>
         <h1 class="text-2xl md:text-4xl font-bold font-serif text-ink tracking-tight mb-1">
-            爱琴海与南意慢调之旅
+            希腊爱琴海自驾之旅
         </h1>
-        <p class="text-warmGray text-xs md:text-sm font-medium max-w-xl mx-auto mb-2">
-            广州 ➔ 雅典 ➔ 圣托里尼 ➔ 罗马 ➔ 那不勒斯 (庞贝/卡普里) ➔ 雅典 ➔ 广州
+        <p class="text-warmGray text-xs md:text-sm font-medium max-w-2xl mx-auto mb-2">
+            广州 ➔ 北京 ➔ 圣托里尼 ➔ 克里特岛 ➔ Meteora天空之城 ➔ 雅典 ➔ 广州
         </p>
 
-        <!-- 实时天气/汇率小工具微型状态栏 -->
-        <div class="bg-paper border border-sand rounded-xl p-2.5 max-w-xl mx-auto mb-3 flex flex-wrap justify-around items-center text-xs shadow-sm gap-2">
+        <!-- 实时信息提示栏 -->
+        <div class="bg-paper border border-sand rounded-xl p-2.5 max-w-2xl mx-auto mb-3 flex flex-wrap justify-around items-center text-xs shadow-sm gap-2">
             <div class="flex items-center space-x-1 text-stone-700">
-                <i class="fa-solid fa-cloud-sun text-amber-500"></i>
-                <span>雅典/圣托: 18°C~25°C (晴)</span>
+                <i class="fa-solid fa-cloud-sun text-amber-500 text-sm"></i>
+                <span>当日天气: <b>晴朗 22°C ~ 26°C</b></span>
             </div>
             <div class="flex items-center space-x-1 text-stone-700">
-                <i class="fa-solid fa-cloud-rain text-aegean"></i>
-                <span>罗马/南意: 16°C~23°C (多云)</span>
+                <i class="fa-solid fa-suitcase text-aegean"></i>
+                <span>GQ346: 15kg 行李额/人</span>
             </div>
             <div class="flex items-center space-x-1.5 border-l pl-3 border-sand">
                 <i class="fa-solid fa-euro-sign text-olive font-bold"></i>
@@ -148,27 +143,35 @@
             </div>
         </div>
 
-        <!-- 倒计时与云端同步状态 -->
+        <!-- 倒计时与数据管理 -->
         <div class="flex flex-wrap justify-center items-center gap-2 mb-4 text-xs">
             <div id="countdown-badge" class="bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1 rounded-full font-medium shadow-sm">
                 ⏳ 距出发还有 <span id="days-left" class="font-bold text-terracotta">--</span> 天
             </div>
             <div id="cloud-sync-status" class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full font-medium shadow-sm flex items-center">
                 <span id="cloud-pulse-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>
-                <span id="cloud-status-text">☁️ 云端实时同步已连接</span>
+                <span id="cloud-status-text">☁️ 双人自定义慢调路书（全功能可编辑）</span>
+            </div>
+            <div class="flex space-x-1 ml-1">
+                <button onclick="exportDataJSON()" class="bg-white hover:bg-stone-50 border border-sand text-stone-700 px-2.5 py-1 rounded-full shadow-sm text-[11px] font-bold transition">
+                    <i class="fa-solid fa-download text-aegean mr-1"></i>导出路书
+                </button>
+                <label class="bg-white hover:bg-stone-50 border border-sand text-stone-700 px-2.5 py-1 rounded-full shadow-sm text-[11px] font-bold transition cursor-pointer">
+                    <i class="fa-solid fa-upload text-olive mr-1"></i>导入备份
+                    <input type="file" id="import-file-input" onchange="importDataJSON(event)" class="hidden" accept=".json">
+                </label>
             </div>
         </div>
 
         <!-- 顶部主 Tabs 菜单 -->
         <nav class="flex space-x-2 md:justify-center overflow-x-auto custom-scrollbar pb-2 px-1 text-xs md:text-sm">
             <button onclick="switchTab('daily')" id="tab-daily" class="tab-btn active flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all">📅 每日路线</button>
-            <button onclick="switchTab('inspiration')" id="tab-inspiration" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">💡 小红书灵感箱</button>
-            <button onclick="switchTab('restaurant')" id="tab-restaurant" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🍴 餐厅收藏</button>
-            <button onclick="switchTab('hotel')" id="tab-hotel" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🏨 酒店备选</button>
-            <button onclick="switchTab('transport')" id="tab-transport" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🚆 交通明细</button>
-            <button onclick="switchTab('ledger')" id="tab-ledger" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">💰 旅途小账本</button>
-            <button onclick="switchTab('sos')" id="tab-sos" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🛟 SOS 锦囊</button>
-            <button onclick="switchTab('packing')" id="tab-packing" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🧳 Checklist</button>
+            <button onclick="switchTab('pending')" id="tab-pending" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">📌 待办与确认项</button>
+            <button onclick="switchTab('hotel')" id="tab-hotel" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🏨 酒店预订看板</button>
+            <button onclick="switchTab('transport')" id="tab-transport" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">✈️ 航班与渡轮明细</button>
+            <button onclick="switchTab('food')" id="tab-food" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🍽️ 美食种草导航</button>
+            <button onclick="switchTab('ledger')" id="tab-ledger" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">💰 双人 AA 账本</button>
+            <button onclick="switchTab('packing')" id="tab-packing" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🧳 行前 Checklist</button>
         </nav>
     </header>
 
@@ -178,169 +181,111 @@
         <section id="sec-daily" class="tab-content block space-y-4">
             <div class="flex flex-wrap justify-between items-center bg-paper p-3 rounded-2xl border border-sand gap-2 text-xs">
                 <div class="flex space-x-2">
-                    <button onclick="toggleEditMode()" id="edit-mode-btn" class="bg-terracotta hover:bg-terracotta/90 text-white font-bold px-3 py-1.5 rounded-lg shadow-sm transition flex items-center">
-                        <i class="fa-solid fa-pen-to-square mr-1.5"></i> <span id="edit-btn-text">编辑路线与行程</span>
+                    <button onclick="toggleEditMode()" id="edit-mode-btn" class="bg-aegean hover:bg-aegean/90 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center">
+                        <i class="fa-solid fa-pen-to-square mr-1.5"></i> <span id="edit-btn-text">开启每日路线编辑</span>
                     </button>
                 </div>
-                <button onclick="resetToDefaultItinerary()" class="text-warmGray hover:text-red-600 underline text-[11px]">恢复初始规划</button>
+                <button onclick="resetToDefaultItinerary()" class="text-warmGray hover:text-red-600 underline text-[11px]">恢复最新定稿方案</button>
             </div>
 
             <!-- 天数选择器 -->
-            <div class="flex space-x-2 overflow-x-auto pb-2 custom-scrollbar">
-                <button onclick="selectDay(1)" id="day-picker-1" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-terracotta text-white rounded-xl shadow-sm text-left transition text-xs"><div class="opacity-80 text-[10px]">10/01 周四</div><div class="font-bold">D1 广州启程</div></button>
-                <button onclick="selectDay(2)" id="day-picker-2" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/02 周五</div><div class="font-bold">D2 落地圣托</div></button>
-                <button onclick="selectDay(3)" id="day-picker-3" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/03 周六</div><div class="font-bold">D3 悬崖徒步</div></button>
-                <button onclick="selectDay(4)" id="day-picker-4" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/04 周日</div><div class="font-bold">D4 山城与火山船</div></button>
-                <button onclick="selectDay(5)" id="day-picker-5" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/05 周一</div><div class="font-bold">D5 飞罗马夜游</div></button>
-                <button onclick="selectDay(6)" id="day-picker-6" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/06 周二</div><div class="font-bold">D6 罗马二刷</div></button>
-                <button onclick="selectDay(7)" id="day-picker-7" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/07 周三</div><div class="font-bold">D7 那不勒斯+庞贝</div></button>
-                <button onclick="selectDay(8)" id="day-picker-8" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/08 周四</div><div class="font-bold">D8 卡普里岛</div></button>
-                <button onclick="selectDay(9)" id="day-picker-9" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/09 周五</div><div class="font-bold">D9 飞雅典老城</div></button>
-                <button onclick="selectDay(10)" id="day-picker-10" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/10 周六</div><div class="font-bold">D10 雅典采买返程</div></button>
-                <button onclick="selectDay(11)" id="day-picker-11" class="day-picker-btn flex-shrink-0 px-3 py-1.5 bg-white text-ink border border-sand rounded-xl text-left transition text-xs"><div class="text-warmGray text-[10px]">10/11 周日</div><div class="font-bold">D11 落地广州</div></button>
+            <div class="flex space-x-2 overflow-x-auto pb-2 custom-scrollbar" id="day-picker-container">
+                <!-- 动态渲染 11 天 Picker -->
             </div>
 
             <div id="day-details-container"></div>
         </section>
 
-        <!-- ================= TAB 2: 小红书灵感箱 ================= -->
-        <section id="sec-inspiration" class="tab-content hidden space-y-4">
+        <!-- ================= TAB 2: 待确认事项 Dashboard ================= -->
+        <section id="sec-pending" class="tab-content hidden space-y-4">
             <div class="watercolor-card p-4 md:p-6 space-y-4">
-                <div class="flex justify-between items-center border-b pb-3">
-                    <div>
-                        <h2 class="text-base md:text-lg font-serif font-bold text-ink flex items-center">
-                            <i class="fa-solid fa-lightbulb text-amber-500 mr-2"></i> 小红书一键粘贴灵感箱
-                        </h2>
-                        <p class="text-xs text-warmGray">从小红书复制分享文案粘贴在此，自动提炼标题与直达链接！</p>
-                    </div>
+                <div class="flex justify-between items-center border-b pb-2">
+                    <h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
+                        <i class="fa-solid fa-clipboard-question mr-2 text-terracotta"></i> 📌 待确定与追踪核心事项
+                    </h3>
+                    <span class="text-xs text-warmGray">在线编辑/修改现有事项</span>
                 </div>
 
-                <div class="bg-paper p-3 rounded-xl border border-sand space-y-3">
-                    <label class="text-xs font-bold text-stone-700 block">📋 粘贴小红书分享文案：</label>
-                    <textarea id="xhs-raw-text" rows="3" placeholder="例如：🇬🇷圣托里尼绝美悬崖餐厅... http://xhslink.cn/..." class="w-full text-xs p-2.5 border border-sand rounded-lg bg-white focus:outline-none focus:border-terracotta"></textarea>
-                    
-                    <div class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-2">
-                        <select id="new-insp-category" class="text-xs p-2 border border-sand rounded-lg bg-white">
-                            <option value="美食">🍴 美食推荐</option>
-                            <option value="拍照位">📸 打卡/拍照位</option>
-                            <option value="避坑">⚠️ 避坑提醒</option>
-                            <option value="购物">🛍️ 购物/特产</option>
-                        </select>
-                        <button onclick="parseAndAddXhsInspiration()" class="text-xs bg-terracotta hover:bg-terracotta/90 text-white font-bold px-4 py-2 rounded-lg shadow-sm transition flex items-center justify-center">
-                            <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> 解析并同步保存
+                <!-- 添加/编辑待确认事项表单 -->
+                <div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs">
+                    <div class="sm:col-span-4">
+                        <label class="font-bold block mb-1 text-stone-700">事项标题</label>
+                        <input type="text" id="pending-title" placeholder="如: 10/3 双体帆船预订确认" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">状态标签</label>
+                        <input type="text" id="pending-status" placeholder="如: 比对中 / 待预订 / 已确定" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">方案/备选/细节</label>
+                        <input type="text" id="pending-desc" placeholder="如: Spiridakos vs Santorini Star，含BBQ与接送" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2 flex items-end space-x-1">
+                        <button onclick="savePendingItem()" id="btn-pending-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <i class="fa-solid fa-plus mr-1"></i> <span id="pending-btn-label">新增</span>
+                        </button>
+                        <button onclick="cancelPendingEdit()" id="btn-pending-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-2 py-2 rounded-lg transition text-xs" title="取消编辑">
+                            取消
                         </button>
                     </div>
                 </div>
 
-                <div id="inspiration-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1"></div>
-            </div>
-        </section>
-
-        <!-- ================= TAB 3: 餐厅收藏 (响应式完美收纳修复) ================= -->
-        <section id="sec-restaurant" class="tab-content hidden space-y-6">
-            <div class="bg-amber-50 border border-amber-300 p-4 rounded-2xl shadow-sm">
-                <div class="flex justify-between items-center mb-2">
-                    <h3 class="font-serif font-bold text-terracotta text-sm flex items-center">
-                        <i class="fa-solid fa-utensils mr-2"></i> 点餐沟通卡：无葱 / 蒜 / 洋葱
-                    </h3>
-                    <span class="text-[11px] bg-terracotta text-white font-bold px-2 py-0.5 rounded">建议向服务员展示</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
-                    <div class="p-3 bg-white rounded-xl border border-amber-200">
-                        <span class="font-bold text-terracotta block mb-1">🇬🇷 希腊语 (Greek)</span>
-                        <p class="font-mono text-stone-800 font-semibold text-sm">Χωρίς σκόρδο, παρακαλώ. (不要蒜)</p>
-                        <p class="font-mono text-stone-800 font-semibold text-sm mt-1">Χωρίς κρεμμύδι, παρακαλώ. (不要洋葱)</p>
-                    </div>
-                    <div class="p-3 bg-white rounded-xl border border-amber-200">
-                        <span class="font-bold text-aegean block mb-1">🇮🇹 意大利语 (Italian)</span>
-                        <p class="font-mono text-stone-800 font-semibold text-sm">Senza aglio, per favore. (不要蒜)</p>
-                        <p class="font-mono text-stone-800 font-semibold text-sm mt-1">Senza cipolla, per favore. (不要洋葱)</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 优化后的添加餐厅看板，彻底解决手机端溢出问题 -->
-            <div class="watercolor-card p-4 md:p-5 space-y-3">
-                <h3 class="font-serif font-bold text-ink text-sm flex items-center">
-                    <i class="fa-solid fa-plus-circle text-terracotta mr-2"></i> ➕ 添加新餐厅
-                </h3>
-                <div class="flex flex-col sm:flex-row gap-2 text-xs">
-                    <input type="text" id="smart-rest-input" placeholder="输入餐厅名或粘贴地图/小红书链接..." class="w-full sm:flex-1 p-2.5 border border-sand rounded-lg bg-white">
-                    <button onclick="promptCitySelection()" class="w-full sm:w-auto bg-terracotta hover:bg-terracotta/90 text-white font-bold px-4 py-2.5 rounded-lg transition flex items-center justify-center whitespace-nowrap">
-                        <i class="fa-solid fa-location-dot mr-1"></i> 选择城市并添加
-                    </button>
-                </div>
-            </div>
-
-            <div class="watercolor-card p-4 md:p-6">
-                <div class="flex justify-between items-center mb-3">
-                    <h2 class="text-base md:text-lg font-serif font-bold text-ink flex items-center">
-                        <span class="text-xl mr-2">🍴</span> 此行精选餐厅收藏夹（按行程时序排序）
-                    </h2>
-                    <span class="text-[11px] font-bold text-terracotta bg-terracotta/10 px-2 py-0.5 rounded-full">↔️ 手机左右滑动</span>
-                </div>
-                <div class="table-wrapper">
-                    <table class="tbl-min text-xs">
-                        <thead>
-                            <tr class="text-terracotta">
-                                <th>城市</th>
-                                <th>餐厅</th>
-                                <th>地址 / 区域</th>
-                                <th>推荐吃什么</th>
-                                <th>注意事项与建议</th>
-                                <th>📍 地图导航/链接</th>
-                            </tr>
-                        </thead>
-                        <tbody id="restaurant-table-body" class="text-gray-700">
-                            <!-- 动态渲染 -->
-                        </tbody>
-                    </table>
+                <div id="pending-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <!-- 动态渲染 -->
                 </div>
             </div>
         </section>
 
-        <!-- ================= TAB 4: 酒店备选清单 ================= -->
+        <!-- ================= TAB 3: 酒店预订看板 ================= -->
         <section id="sec-hotel" class="tab-content hidden space-y-5">
             <div class="watercolor-card p-4 md:p-5 space-y-4">
                 <div class="flex justify-between items-center border-b pb-2">
-                    <h3 class="font-serif font-bold text-terracotta text-sm md:text-base flex items-center">
-                        <i class="fa-solid fa-hotel mr-2"></i> 🏨 酒店备选与预订看板
+                    <h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
+                        <i class="fa-solid fa-hotel mr-2"></i> 🏨 已确认预订酒店列表及导航
                     </h3>
-                    <span class="text-[10px] bg-terracotta/10 text-terracotta font-bold px-2 py-0.5 rounded">云端双人共享</span>
+                    <span class="text-[10px] bg-aegean/10 text-aegean font-bold px-2 py-0.5 rounded">双人共享看板</span>
                 </div>
-                <p class="text-xs text-stone-600">在此添加或管理您的酒店备选。输入名字或链接后会自动生成谷歌地图导航链接。已预置 <b>Santorini Palace</b>。</p>
 
-                <!-- 添加新酒店表单 -->
-                <div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                    <input type="text" id="hotel-name" placeholder="酒店名称 (如 Santorini Palace)" class="p-2 border border-sand rounded bg-white">
-                    <input type="text" id="hotel-dates" placeholder="入住退房时间 (如 10.2 - 10.5)" class="p-2 border border-sand rounded bg-white">
-                    <input type="text" id="hotel-price" placeholder="价格/预算 (如 约1200元/晚)" class="p-2 border border-sand rounded bg-white">
-                    <input type="text" id="hotel-link" placeholder="谷歌地图链接 (留空则自动生成)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
-                    <div class="flex flex-col sm:flex-row gap-2">
-                        <select id="hotel-platform" class="p-2 border border-sand rounded bg-white flex-1">
-                            <option value="飞猪">飞猪</option>
-                            <option value="携程">携程</option>
-                            <option value="trip.com">trip.com</option>
-                            <option value="美团">美团</option>
-                            <option value="Booking.com">Booking.com</option>
-                            <option value="Agoda">Agoda</option>
-                            <option value="官网直订">官网直订</option>
-                        </select>
-                        <button onclick="addNewHotel()" class="bg-terracotta hover:bg-terracotta/90 text-white font-bold px-4 py-2 rounded transition">添加酒店</button>
+                <!-- 添加/编辑酒店表单 -->
+                <div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs">
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">酒店名称</label>
+                        <input type="text" id="hotel-name" placeholder="酒店名称" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">入住日期</label>
+                        <input type="text" id="hotel-dates" placeholder="如 10.02-10.03" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">城市/区域</label>
+                        <input type="text" id="hotel-city" placeholder="城市/区域" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">地址或导航关键词</label>
+                        <input type="text" id="hotel-address" placeholder="地址" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">备注提示</label>
+                        <input type="text" id="hotel-note" placeholder="备注" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-1 flex items-end space-x-1">
+                        <button onclick="saveHotelItem()" id="btn-hotel-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <span id="hotel-btn-label">新增</span>
+                        </button>
+                        <button onclick="cancelHotelEdit()" id="btn-hotel-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-2 py-2 rounded-lg transition text-xs">取消</button>
                     </div>
                 </div>
 
-                <!-- 酒店列表表格 -->
                 <div class="table-wrapper">
                     <table class="tbl-min text-xs">
                         <thead>
-                            <tr class="text-terracotta">
-                                <th>状态</th>
-                                <th>酒店名称</th>
+                            <tr class="text-aegean">
                                 <th>入住时间</th>
-                                <th>价格/预算</th>
-                                <th>预订平台</th>
-                                <th>谷歌链接</th>
+                                <th>酒店 / 住宿名称</th>
+                                <th>城市/区域</th>
+                                <th>谷歌地图导航与具体地址</th>
+                                <th>备注与提示</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody id="hotel-table-body" class="text-gray-700">
@@ -351,139 +296,119 @@
             </div>
         </section>
 
-        <!-- ================= TAB 5: 交通明细 ================= -->
+        <!-- ================= TAB 4: 航班与渡轮明细 ================= -->
         <section id="sec-transport" class="tab-content hidden space-y-6">
-            <div class="bg-amber-50 border-l-4 border-terracotta p-3 rounded-xl text-xs text-stone-700">
-                <span class="font-bold text-terracotta">⏰ 时差提醒：</span> 🇬🇷 希腊比 🇮🇹 意大利快 1 小时。本页所有时间均为当地出发/到达时刻。
+            <div class="bg-amber-50 border-l-4 border-aegean p-3 rounded-xl text-xs text-stone-700 space-y-1">
+                <p class="font-bold text-aegean"><i class="fa-solid fa-bell mr-1"></i> 渡轮 Online Check-in 与登船提醒：</p>
+                <p>⛴️ <b>Seajets (10/05 圣托➔克里特)：</b> 订单号 <code class="bg-white px-1.5 py-0.5 rounded border border-amber-200 font-bold text-terracotta">1112UQMYP</code> ➔ <a href="https://webcheckin.seajets.com/" target="_blank" class="text-aegean font-bold underline">Seajets 值机入口</a></p>
+                <p>🚢 <b>Minoan Lines 夜船 (10/07 克里特HER港➔雅典Piraeus)：</b> 约 21:30 发船，请由伊拉克利翁 <b>HER 港口</b> 取票登船（非 Souda 港）。</p>
             </div>
 
-            <!-- 未定航段快捷比价与自定义查询 -->
-            <div class="watercolor-card p-4 md:p-5 space-y-4">
-                <div class="border-b pb-2 flex justify-between items-center">
-                    <h3 class="font-serif font-bold text-terracotta text-sm md:text-base flex items-center">
-                        <i class="fa-solid fa-plane-departure mr-2"></i> ✈️ 未定行程精准比价 & 自定义交通查询
-                    </h3>
-                    <span class="text-[10px] bg-terracotta/10 text-terracotta font-bold px-2 py-0.5 rounded">未定航段专属</span>
+            <div class="watercolor-card p-4 md:p-6 space-y-3">
+                <div class="flex justify-between items-center border-b pb-2">
+                    <h3 class="font-serif font-bold text-aegean text-sm">✈️🚢 11 天全程航班、渡轮与自驾明细</h3>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
-                    <div class="p-3 bg-white rounded-xl border border-sand space-y-2">
-                        <div class="font-bold text-stone-800">1️⃣ 圣托 ➔ 罗马 (10/05)</div>
-                        <div class="flex space-x-2">
-                            <a href="https://www.google.com/travel/flights?q=Flights%20from%20JTR%20to%20ROM%20on%202026-10-05" target="_blank" class="flex-1 text-center bg-aegean/10 hover:bg-aegean/20 text-aegean font-bold py-1.5 rounded transition">Google 航班</a>
-                            <a href="https://www.skyscanner.com/transport/flights/jtr/rom/261005/" target="_blank" class="flex-1 text-center bg-terracotta/10 hover:bg-terracotta/20 text-terracotta font-bold py-1.5 rounded transition">天巡比价</a>
-                        </div>
-                    </div>
-                    <div class="p-3 bg-white rounded-xl border border-sand space-y-2">
-                        <div class="font-bold text-stone-800">2️⃣ 罗马 ➔ 那不勒斯 (10/07)</div>
-                        <div class="flex space-x-2">
-                            <a href="https://www.google.com/travel/flights?q=Trains%20from%20Rome%20to%20Naples%20on%202026-10-07" target="_blank" class="flex-1 text-center bg-aegean/10 hover:bg-aegean/20 text-aegean font-bold py-1.5 rounded transition">Google 路线</a>
-                            <a href="https://www.trenitalia.com/" target="_blank" class="flex-1 text-center bg-olive/10 hover:bg-olive/20 text-olive font-bold py-1.5 rounded transition">意铁官网 🚄</a>
-                        </div>
-                    </div>
-                    <div class="p-3 bg-white rounded-xl border border-sand space-y-2">
-                        <div class="font-bold text-stone-800">3️⃣ 那不勒斯 ➔ 雅典 (10/09)</div>
-                        <div class="flex space-x-2">
-                            <a href="https://www.google.com/travel/flights?q=Flights%20from%20NAP%20to%20ATH%20on%202026-10-09" target="_blank" class="flex-1 text-center bg-aegean/10 hover:bg-aegean/20 text-aegean font-bold py-1.5 rounded transition">Google 航班</a>
-                            <a href="https://www.skyscanner.com/transport/flights/nap/ath/261009/" target="_blank" class="flex-1 text-center bg-terracotta/10 hover:bg-terracotta/20 text-terracotta font-bold py-1.5 rounded transition">天巡比价</a>
-                        </div>
+                <!-- 新增/编辑交通项表单 -->
+                <div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs">
+                    <input type="text" id="trans-date" placeholder="日期(10/01)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-type" placeholder="类型(✈️航班/⛴️渡轮/🚗自驾)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-code" placeholder="班次(CA1328)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-route" placeholder="路线(广州➔北京)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-time" placeholder="时间(18:40-22:00)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-note" placeholder="提示(直挂/Luggage)" class="sm:col-span-1 p-2 border border-sand rounded bg-white">
+                    <div class="sm:col-span-1 flex items-center space-x-1">
+                        <button onclick="saveTransportItem()" id="btn-trans-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <span id="trans-btn-label">保存</span>
+                        </button>
+                        <button onclick="cancelTransportEdit()" id="btn-trans-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-1.5 py-2 rounded-lg transition text-xs">取消</button>
                     </div>
                 </div>
 
-                <!-- 自定义查询与机场代码速查 -->
-                <div class="bg-paper p-3 rounded-xl border border-sand space-y-3 text-xs pt-3">
-                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
-                        <div>
-                            <label class="font-bold text-stone-700 block mb-1">出发地代码</label>
-                            <input type="text" id="flight-origin" value="JTR" class="w-full p-2 border border-sand rounded bg-white uppercase font-mono">
-                        </div>
-                        <div>
-                            <label class="font-bold text-stone-700 block mb-1">目的地代码</label>
-                            <input type="text" id="flight-dest" value="FCO" class="w-full p-2 border border-sand rounded bg-white uppercase font-mono">
-                        </div>
-                        <div>
-                            <label class="font-bold text-stone-700 block mb-1">出行日期</label>
-                            <input type="date" id="flight-date" value="2026-10-05" class="w-full p-2 border border-sand rounded bg-white font-mono">
-                        </div>
-                        <div class="flex items-end space-x-1.5">
-                            <button onclick="searchFlights('google')" class="flex-1 bg-aegean hover:bg-aegean/90 text-white font-bold p-2 rounded transition text-center">Google 搜</button>
-                            <button onclick="searchFlights('skyscanner')" class="flex-1 bg-terracotta hover:bg-terracotta/90 text-white font-bold p-2 rounded transition text-center">天巡比价</button>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-2.5 rounded-lg border border-sand/60">
-                        <span class="text-[11px] font-bold text-stone-600 block mb-1.5">💡 常用机场/车站代码速查（点击可复制）：</span>
-                        <div class="flex flex-wrap gap-1.5 text-[11px]">
-                            <button onclick="copyToClipboard('CAN', '已复制 CAN')" class="px-2 py-0.5 bg-stone-100 rounded font-mono font-bold">CAN 广州</button>
-                            <button onclick="copyToClipboard('PEK', '已复制 PEK')" class="px-2 py-0.5 bg-stone-100 rounded font-mono font-bold">PEK 北京</button>
-                            <button onclick="copyToClipboard('ATH', '已复制 ATH')" class="px-2 py-0.5 bg-stone-100 rounded font-mono font-bold text-aegean">ATH 雅典</button>
-                            <button onclick="copyToClipboard('JTR', '已复制 JTR')" class="px-2 py-0.5 bg-stone-100 rounded font-mono font-bold text-terracotta">JTR 圣托里尼</button>
-                            <button onclick="copyToClipboard('FCO', '已复制 FCO')" class="px-2 py-0.5 bg-stone-100 rounded font-mono font-bold text-aegean">FCO 罗马(菲乌)</button>
-                            <button onclick="copyToClipboard('NAP', '已复制 NAP')" class="px-2 py-0.5 bg-stone-100 rounded font-mono font-bold text-olive">NAP 那不勒斯</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 全程大交通表 -->
-            <div class="watercolor-card p-4 md:p-6">
-                <h3 class="font-serif font-bold text-terracotta text-sm mb-2">✈️ 全程 11 天大交通一览</h3>
                 <div class="table-wrapper">
                     <table class="tbl-min text-xs">
                         <thead>
-                            <tr class="text-terracotta"><th>日期</th><th>交通</th><th>班次</th><th>路线</th><th>时间</th><th>提前量</th></tr>
+                            <tr class="text-aegean"><th>日期</th><th>类型</th><th>班次 / 形式</th><th>航段/路线</th><th>时间</th><th>关键提示</th><th>操作</th></tr>
                         </thead>
-                        <tbody class="text-gray-700">
-                            <tr><td class="font-bold text-terracotta">10/01</td><td>✈️</td><td>CA1328</td><td>广州 → 北京</td><td>18:40 → 22:00</td><td>≥2h</td></tr>
-                            <tr class="bg-white/50"><td class="font-bold text-terracotta">10/02</td><td>✈️</td><td>CA863</td><td>北京 → 雅典</td><td>02:30 → 08:55</td><td>≥3h</td></tr>
-                            <tr><td class="font-bold text-aegean">10/02</td><td>✈️</td><td>GQ346</td><td>雅典 → 圣托里尼</td><td>12:50 → 13:45</td><td>≥1.5–2h</td></tr>
-                            <tr class="bg-white/50"><td class="font-bold text-aegean">10/05</td><td>✈️</td><td>FR3021</td><td>圣托里尼 → 罗马</td><td>17:30 → 18:55</td><td>≥2h</td></tr>
-                            <tr><td class="font-bold text-olive">10/07</td><td>🚄</td><td>Frecciarossa</td><td>罗马 → 那不勒斯</td><td>待确定</td><td>≥30min</td></tr>
-                            <tr class="bg-white/50"><td class="font-bold text-olive">10/08</td><td>⛴️</td><td>Caremar/SNAV</td><td>那不勒斯 ↔ 卡普里</td><td>07:55去 ➔ 17:25回</td><td>≥45min</td></tr>
-                            <tr><td class="font-bold text-terracotta">10/09</td><td>✈️</td><td>A3681</td><td>那不勒斯 → 雅典</td><td>09:40 → 12:15</td><td>≥2h</td></tr>
-                            <tr class="bg-white/50"><td class="font-bold text-terracotta">10/10</td><td>✈️</td><td>CA864</td><td>雅典 → 北京</td><td>14:15 → 05:05+1</td><td>≥3h</td></tr>
-                            <tr><td class="font-bold text-terracotta">10/11</td><td>✈️</td><td>CA1359</td><td>北京 → 广州</td><td>07:00 → 10:25</td><td>≥2h</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Capri 渡轮时刻表 -->
-            <div class="watercolor-card p-4 md:p-6">
-                <h3 class="font-serif font-bold text-olive text-sm mb-2">🍋 10/08 那不勒斯 ↔ 卡普里岛 (Capri) 渡轮时刻表</h3>
-                <div class="table-wrapper">
-                    <table class="tbl-min text-xs">
-                        <thead>
-                            <tr class="text-olive"><th>方向</th><th>出发</th><th>到达</th><th>出发码头</th><th>到达码头</th><th>船公司</th><th>类型</th></tr>
-                        </thead>
-                        <tbody class="text-gray-700">
-                            <tr><td class="font-bold text-olive">Napoli → Capri</td><td>05:35</td><td>06:32</td><td>Porta di Massa</td><td>Marina Grande</td><td>Caremar</td><td>🚤 Fast Ferry</td></tr>
-                            <tr><td class="font-bold text-olive">Napoli → Capri</td><td>07:00</td><td>07:50</td><td>Molo Beverello</td><td>Marina Grande</td><td>SNAV</td><td>🚤 High-speed</td></tr>
-                            <tr class="bg-amber-100/60"><td class="font-bold text-terracotta">Napoli → Capri ⭐</td><td class="font-bold">07:55</td><td>09:17</td><td>Porta di Massa</td><td>Marina Grande</td><td>Caremar</td><td>⛴️ Ferry</td></tr>
-                            <tr><td class="font-bold text-olive">Napoli → Capri</td><td>08:05</td><td>08:55</td><td>Molo Beverello</td><td>Marina Grande</td><td>SNAV</td><td>🚤 High-speed</td></tr>
-                            <tr><td class="font-bold text-olive">Napoli → Capri</td><td>08:35</td><td>09:25</td><td>Molo Beverello</td><td>Marina Grande</td><td>NLG</td><td>🚤 High-speed</td></tr>
-                            <tr><td class="font-bold text-olive">Napoli → Capri</td><td>09:10</td><td>10:00</td><td>Molo Beverello</td><td>Marina Grande</td><td>SNAV</td><td>🚤 High-speed</td></tr>
-                            <tr class="bg-white/50"><td class="font-bold text-olive">Napoli → Capri</td><td>09:30</td><td>10:20</td><td>Molo Beverello</td><td>Marina Grande</td><td>NLG</td><td>🚤 High-speed</td></tr>
-                            <tr><td class="font-bold text-olive">Capri → Napoli</td><td>16:30</td><td>17:20</td><td>Marina Grande</td><td>Molo Beverello</td><td>NLG</td><td>🚤 High-speed</td></tr>
-                            <tr class="bg-amber-100/60"><td class="font-bold text-terracotta">Capri → Napoli ⭐</td><td class="font-bold">17:25</td><td>18:17</td><td>Marina Grande</td><td>Porta di Massa</td><td>Caremar</td><td>🚤 Fast Ferry</td></tr>
-                            <tr><td class="font-bold text-olive">Capri → Napoli</td><td>18:10</td><td>19:00</td><td>Marina Grande</td><td>Molo Beverello</td><td>SNAV</td><td>🚤 High-speed</td></tr>
-                            <tr class="bg-white/50"><td class="font-bold text-olive">Capri → Napoli</td><td>18:55</td><td>19:45</td><td>Marina Grande</td><td>Molo Beverello</td><td>NLG</td><td>🚤 High-speed</td></tr>
-                            <tr><td class="font-bold text-olive">Capri → Napoli</td><td>19:10</td><td>20:32</td><td>Marina Grande</td><td>Porta di Massa</td><td>Caremar</td><td>⛴️ Ferry</td></tr>
-                            <tr class="bg-white/50"><td class="font-bold text-olive">Capri → Napoli</td><td>21:35</td><td>22:27</td><td>Marina Grande</td><td>Porta di Massa</td><td>Caremar</td><td>🚤 Fast Ferry</td></tr>
+                        <tbody id="transport-table-body" class="text-gray-700">
+                            <!-- 动态渲染 -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
-        <!-- ================= TAB 6: 旅途小账本 ================= -->
+        <!-- ================= TAB 5: 美食种草导航 ================= -->
+        <section id="sec-food" class="tab-content hidden space-y-5">
+            <div class="watercolor-card p-4 md:p-6 space-y-4">
+                <div class="flex justify-between items-center border-b pb-2 flex-wrap gap-2">
+                    <h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
+                        <i class="fa-solid fa-utensils mr-2"></i> 🍽️ 希腊精选特色美食与餐厅种草导航表
+                    </h3>
+                    <div class="flex items-center space-x-1 text-xs">
+                        <span class="text-warmGray">按地区筛选:</span>
+                        <select id="food-filter-city" onchange="renderFood()" class="p-1 border border-sand rounded bg-white">
+                            <option value="ALL">全部地区</option>
+                            <option value="圣托里尼 (Santorini)">圣托里尼</option>
+                            <option value="克里特岛 (Crete)">克里特岛</option>
+                            <option value="Meteora天空之城">Meteora天空之城</option>
+                            <option value="雅典 (Athens)">雅典</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 添加/编辑餐厅表单 -->
+                <div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs">
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">城市/岛屿</label>
+                        <select id="food-city" class="w-full p-2 border border-sand rounded bg-white">
+                            <option value="圣托里尼 (Santorini)">圣托里尼 (Santorini)</option>
+                            <option value="克里特岛 (Crete)">克里特岛 (Crete)</option>
+                            <option value="Meteora天空之城">Meteora天空之城</option>
+                            <option value="雅典 (Athens)">雅典 (Athens)</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-4">
+                        <label class="font-bold block mb-1 text-stone-700">餐厅名称 / 种草特色</label>
+                        <input type="text" id="food-name" placeholder="如: Sphinx Restaurant 或小红书笔记标题" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-blue-600"><i class="fa-solid fa-link"></i> 地图/小红书链接 (可选)</label>
+                        <input type="text" id="food-mapurl" placeholder="可粘贴链接，留空自动生成Google地图" class="w-full p-2 border border-blue-200 rounded bg-white text-blue-600 font-mono text-[10px]">
+                    </div>
+                    <div class="sm:col-span-2 flex items-end space-x-1">
+                        <button onclick="saveFoodItem()" id="btn-food-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <span id="food-btn-label">保存</span>
+                        </button>
+                        <button onclick="cancelFoodEdit()" id="btn-food-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-2 py-2 rounded-lg transition text-xs">取消</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="tbl-min text-xs">
+                        <thead>
+                            <tr class="text-aegean">
+                                <th>城市/区域</th>
+                                <th>餐厅名称 / 种草亮点</th>
+                                <th>谷歌地图一键导航 / 来源</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="food-table-body" class="text-gray-700">
+                            <!-- 动态渲染 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 6: 双人 AA 记账本 ================= -->
         <section id="sec-ledger" class="tab-content hidden space-y-5">
             <div class="watercolor-card p-4 md:p-5 space-y-4">
                 <div class="flex justify-between items-center border-b pb-2">
-                    <h3 class="font-serif font-bold text-terracotta text-sm md:text-base flex items-center">
-                        <i class="fa-solid fa-wallet mr-2"></i> 💰 旅途 AA 小账本（DJ & Runze）
+                    <h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
+                        <i class="fa-solid fa-wallet mr-2"></i> 💰 希腊双人旅途 AA 小账本
                     </h3>
-                    <span class="text-[10px] bg-terracotta/10 text-terracotta font-bold px-2 py-0.5 rounded">云端实时同步</span>
                 </div>
 
                 <!-- 汇总仪表盘 -->
@@ -506,41 +431,56 @@
                     </div>
                 </div>
 
-                <!-- 记账录入表单 -->
-                <div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-6 gap-2 text-xs">
-                    <input type="text" id="expense-title" placeholder="消费项目 (如 酒店预订)" class="p-2 border border-sand rounded bg-white sm:col-span-2">
-                    <input type="number" id="expense-amount" placeholder="金额" step="0.01" class="p-2 border border-sand rounded bg-white font-mono">
-                    <select id="expense-currency" class="p-2 border border-sand rounded bg-white">
-                        <option value="EUR">欧元 (EUR)</option>
-                        <option value="CNY">人民币 (CNY)</option>
-                    </select>
-                    <select id="expense-payment" class="p-2 border border-sand rounded bg-white">
-                        <option value="工行万事达卡">工行万事达卡</option>
-                        <option value="建行万事达卡">建行万事达卡</option>
-                        <option value="招行VISA卡">招行VISA卡</option>
-                        <option value="现金">现金</option>
-                        <option value="支付宝">支付宝</option>
-                        <option value="微信支付">微信支付</option>
-                    </select>
-                    <select id="expense-payer" class="p-2 border border-sand rounded bg-white">
-                        <option value="DJ">DJ</option>
-                        <option value="Runze">Runze</option>
-                        <option value="共同平摊 (AA)">共同平摊 (AA)</option>
-                    </select>
-                    <div class="sm:col-span-6 flex justify-end">
-                        <button onclick="addExpenseItem()" class="bg-terracotta hover:bg-terracotta/90 text-white font-bold px-5 py-2 rounded-lg transition">记录一笔消费</button>
+                <!-- 记账录入/编辑表单 -->
+                <div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs">
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">消费项目</label>
+                        <input type="text" id="expense-title" placeholder="如 Seajets船票/雅典卫城门票" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">金额</label>
+                        <input type="number" id="expense-amount" placeholder="金额" step="0.01" class="w-full p-2 border border-sand rounded bg-white font-mono">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">币种</label>
+                        <select id="expense-currency" class="w-full p-2 border border-sand rounded bg-white">
+                            <option value="EUR">欧元 (EUR)</option>
+                            <option value="CNY">人民币 (CNY)</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">支付方式</label>
+                        <select id="expense-payment" class="w-full p-2 border border-sand rounded bg-white">
+                            <option value="信用卡 Visa/MasterCard">信用卡 Visa/MasterCard</option>
+                            <option value="现金 欧元">现金 欧元</option>
+                            <option value="支付宝">支付宝</option>
+                            <option value="微信支付">微信支付</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">付款人</label>
+                        <select id="expense-payer" class="w-full p-2 border border-sand rounded bg-white">
+                            <option value="老公">老公</option>
+                            <option value="老婆">老婆</option>
+                            <option value="共同平摊 (AA)">共同平摊 (AA)</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-1 flex items-end space-x-1">
+                        <button onclick="saveExpenseItem()" id="btn-ledger-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <span id="ledger-btn-label">保存</span>
+                        </button>
+                        <button onclick="cancelExpenseEdit()" id="btn-ledger-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-1.5 py-2 rounded-lg transition text-xs">取消</button>
                     </div>
                 </div>
 
-                <!-- 消费明细列表 -->
                 <div class="table-wrapper">
                     <table class="tbl-min text-xs">
                         <thead>
-                            <tr class="text-terracotta">
+                            <tr class="text-aegean">
                                 <th>项目</th>
                                 <th>原币金额</th>
                                 <th>折合人民币 (¥)</th>
-                                <th>支付卡种 / 方式</th>
+                                <th>支付方式</th>
                                 <th>付款人</th>
                                 <th>操作</th>
                             </tr>
@@ -553,85 +493,32 @@
             </div>
         </section>
 
-        <!-- ================= TAB 7: SOS 锦囊 ================= -->
-        <section id="sec-sos" class="tab-content hidden space-y-5">
-            <div class="watercolor-card p-4 md:p-6 space-y-4">
-                <div class="flex justify-between items-center border-b pb-2">
-                    <h3 class="font-serif font-bold text-red-600 text-sm md:text-base flex items-center">
-                        欧洲应急与 SOS 锦囊（含保险电话自定义）
-                    </h3>
-                    <span class="text-[10px] bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">关键时刻救急</span>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                    <div class="bg-red-50/70 p-3.5 rounded-xl border border-red-200 space-y-1.5">
-                        <span class="font-bold text-red-700 block">欧洲通用紧急求助</span>
-                        <p class="text-stone-700"><b>112</b> - 欧洲统一紧急求助电话（报警/急救/消防，支持英语）</p>
-                        <p class="text-stone-700"><b>113</b> - 意大利紧急救助报警电话</p>
-                        <p class="text-stone-700"><b>166</b> - 希腊医疗急救中心</p>
-                    </div>
-                    <div class="bg-amber-50/70 p-3.5 rounded-xl border border-amber-200 space-y-1.5">
-                        <span class="font-bold text-amber-800 block">中国驻外使领馆电话</span>
-                        <p class="text-stone-700"><b>中国驻希腊大使馆领保电话：</b>+30-210-6735233</p>
-                        <p class="text-stone-700"><b>中国驻意大利大使馆领保电话：</b>+39-393-9110852</p>
-                    </div>
-                </div>
-
-                <!-- 自定义保险与救援电话添加区 -->
-                <div class="bg-paper p-4 rounded-xl border border-sand space-y-3 pt-3">
-                    <h4 class="font-bold text-ink text-xs flex items-center">
-                        我的旅游保险与全球救援电话（可自行添加）
-                    </h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                        <input type="text" id="sos-insurance-name" placeholder="保险公司名称 (如平安/安联)" class="p-2 border border-sand rounded bg-white">
-                        <input type="text" id="sos-insurance-phone" placeholder="24小时救援电话 (+86...)" class="p-2 border border-sand rounded bg-white">
-                        <input type="text" id="sos-insurance-policy" placeholder="保单号 (选填)" class="p-2 border border-sand rounded bg-white">
-                    </div>
-                    <div class="flex justify-end">
-                        <button onclick="addInsuranceSOS()" class="bg-olive hover:bg-olive/90 text-white font-bold px-4 py-1.5 rounded transition text-xs">保存至保险锦囊</button>
-                    </div>
-
-                    <div id="sos-insurance-container" class="space-y-1.5 pt-2"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= TAB 8: Checklist (含行前打卡、防坑指南与自定义) ================= -->
+        <!-- ================= TAB 7: 行前 Checklist ================= -->
         <section id="sec-packing" class="tab-content hidden space-y-4">
             <div class="watercolor-card p-4 md:p-6 space-y-4">
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between items-center flex-wrap gap-2">
                     <h2 class="text-base font-bold text-stone-800 flex items-center">
-                        <i class="fa-solid fa-list-check text-olive mr-2"></i> 🧳 终极准备 Checklist (含防坑指南)
+                        <i class="fa-solid fa-list-check text-olive mr-2"></i> 🧳 希腊行前 Checklist
                     </h2>
-                    <span class="text-xs text-warmGray">勾选后同伴实时同步</span>
-                </div>
-
-                <!-- 行程防坑指南提示卡片 -->
-                <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3 text-xs">
-                    <h3 class="font-bold text-terracotta text-sm flex items-center">
-                        <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 行程隐形避坑与官方预订索引
-                    </h3>
-                    <p class="text-stone-700 leading-relaxed">
-                        • <b>瑞安航空 (Ryanair FR3021) 10/5：</b>必须在起飞前 24 小时在 App 完成 Online Check-in，否则现场收取约 55 欧/人罚款。拉杆箱必须提前购买行李额。<br>
-                        • <b>庞贝古城 (10/7)：</b>全是大石板路，<span class="font-bold text-red-600">绝对不能拉行李箱进入</span>！建议先去那不勒斯酒店寄存。
-                    </p>
-                    <div class="flex flex-wrap gap-2 pt-1">
-                        <a href="https://pompeiisites.org/" target="_blank" class="bg-white px-2.5 py-1 rounded border border-sand text-olive font-bold">🏛️ 庞贝古城官网 ➔</a>
-                        <a href="https://www.capriseggiovia.it/" target="_blank" class="bg-white px-2.5 py-1 rounded border border-sand text-olive font-bold">🚠 卡普里缆车官网 ➔</a>
-                        <a href="https://galleriaborghese.beniculturali.it/" target="_blank" class="bg-white px-2.5 py-1 rounded border border-sand text-aegean font-bold">🎨 博尔盖塞美术馆预约 ➔</a>
+                    <div class="text-xs bg-paper border border-sand px-3 py-1 rounded-full text-stone-700">
+                        已准备: <span id="checklist-progress" class="font-bold text-olive">0/0</span>
                     </div>
                 </div>
 
-                <!-- 优化手机端排版的自定义添加 Checklist 项 -->
-                <div class="bg-paper p-3 rounded-xl border border-sand flex flex-col sm:flex-row gap-2 text-xs">
-                    <select id="new-check-cat" class="p-2 border border-sand rounded bg-white w-full sm:w-auto">
-                        <option value="行前打卡">🎯 行前打卡</option>
-                        <option value="证件财务">📄 证件财务</option>
-                        <option value="电子数码">🔌 电子数码</option>
-                        <option value="衣物药品">👟 衣物药品</option>
+                <!-- 自定义添加/编辑 Checklist 项表单 -->
+                <div class="bg-paper p-3 rounded-xl border border-sand flex flex-wrap gap-2 items-center text-xs">
+                    <select id="new-check-cat" class="p-2 border border-sand rounded bg-white">
+                        <option value="行前打卡">行前打卡</option>
+                        <option value="证件财务">证件财务</option>
+                        <option value="电子数码">电子数码</option>
+                        <option value="随身衣物">随身衣物</option>
+                        <option value="日用药品">日用药品</option>
                     </select>
-                    <input type="text" id="new-check-text" placeholder="输入待办事项..." class="flex-1 p-2 border border-sand rounded bg-white w-full">
-                    <button onclick="addNewChecklistItem()" class="bg-olive hover:bg-olive/90 text-white font-bold px-4 py-2 rounded transition w-full sm:w-auto whitespace-nowrap">添加任务</button>
+                    <input type="text" id="new-check-text" placeholder="输入新的待办或改写的清单项..." class="flex-1 p-2 border border-sand rounded bg-white min-w-[200px]">
+                    <button onclick="saveChecklistItem()" id="btn-check-save" class="bg-olive hover:bg-olive/90 text-white font-bold px-4 py-2 rounded-lg transition">
+                        <span id="check-btn-label">新增项</span>
+                    </button>
+                    <button onclick="cancelChecklistEdit()" id="btn-check-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-3 py-2 rounded-lg transition">取消</button>
                 </div>
 
                 <div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
@@ -640,16 +527,226 @@
 
     </main>
 
-    <footer class="max-w-5xl mx-auto mt-12 text-center text-xs text-warmGray mb-8">
-        <p class="font-serif">🌊 爱琴海与南意慢调之旅 · 祝 DJ & Runze 旅途愉快！</p>
-        <p class="mt-1">Designed for 2026.10.01 - 10.11 | Personal Cloud Roadbook</p>
+    <footer class="max-w-5xl mx-auto mt-12 text-center text-xs text-warmGray mb-8 space-y-1">
+        <p class="font-serif">🌊 浪漫爱琴海双岛与 Meteora 天空之城慢调之旅 · 祝两位旅途愉快！</p>
+        <p class="text-[10px] text-stone-400">已启用全局在线数据自定义编辑系统</p>
     </footer>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
     <script>
+        // ==================== 全局状态与默认数据 ====================
+        let currentExchangeRate = 7.8;
+        let isEditMode = false;
+        let selectedDay = 1;
+        let pendingDeleteAction = null;
+
+        // 编辑 ID 缓存
+        let editingPendingId = null;
+        let editingHotelId = null;
+        let editingTransportId = null;
+        let editingFoodId = null;
+        let editingExpenseId = null;
+        let editingChecklistId = null;
+
+        const defaultDayData = {
+            1: {
+                date: "10月1日 (周四)", title: "DAY 1｜广州 ✈️ 北京", route: "广州白云 (CA1328 18:40) ➔ 北京首都 T3 (22:00抵达)", hotel: "宿 航站楼休整 / 转机",
+                timeline: [
+                    { id: 101, time: "18:40", text: "广州白云机场 T3 搭乘 CA1328 飞往北京首都机场。" }, 
+                    { id: 102, time: "22:00", text: "抵达北京 T3，办理国际联程与核对行李直挂。" }
+                ], 
+                tips: "带好护照原件、申根签证页复印件及欧元现金。",
+                mapUrl: ""
+            },
+            2: {
+                date: "10月2日 (周五)", title: "DAY 2｜飞抵圣托里尼 ➔ 机场取车 ➔ Fira入住 ➔ 悬崖步道日落", route: "北京 T3 (CA863 02:30-08:55) ➔ 雅典 (GQ346 12:50-13:45) ➔ JTR 机场取车 ➔ Asteras Villas ➔ Fira / Firostefani / Imerovigli 悬崖步道日落", hotel: "宿 Santorini / Fira - Asteras Villas 酒店",
+                timeline: [
+                    { id: 201, time: "02:30", text: "搭乘 CA863 直飞雅典 ATH。" }, 
+                    { id: 202, time: "08:55", text: "顺利落地雅典机场，提取行李转内陆航段。" }, 
+                    { id: 203, time: "12:50", text: "搭乘 Sky Express GQ346 飞往圣托里尼（行李限额 15kg/人）。" }, 
+                    { id: 204, time: "13:45", text: "落地圣托里尼机场 JTR，办理机场自驾取车手续。" }, 
+                    { id: 205, time: "15:00", text: "驱车前往 Fira 入住 Asteras Villas 酒店休整。" }, 
+                    { id: 206, time: "17:00", text: "从 Fira 沿悬崖步道漫步至 Firostefani 和 Imerovigli，观赏爱琴海绝美日落并享用晚餐。" }
+                ], 
+                tips: "注意 GQ346 的 15kg 行李额限制，提前 online check-in 免排队。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Santorini+Airport&destination=Imerovigli&waypoints=Asteras+Villas+Santorini%7CFira%7CFirostefani"
+            },
+            3: {
+                date: "10月3日 (周六)", title: "DAY 3｜Fira退房 ➔ Catamaran出海(BBQ) ➔ Kamari放行李 ➔ Oia日落", route: "Asteras Villas 退房 ➔ 码头参加 Catamaran 出海 ➔ 入住 Elixir Del Mar (Kamari) ➔ 驱车至 Oia ➔ Oia日落", hotel: "宿 Santorini / Kamari - Elixir Del Mar on the Beach",
+                timeline: [
+                    { id: 301, time: "09:00", text: "办理 Fira 酒店退房，驱车前往码头参加 Catamaran 双体帆船出海。" }, 
+                    { id: 302, time: "10:00 - 15:00", text: "【双体帆船出海】红沙滩、白沙滩、火山温泉，享用船上海鲜 BBQ 与饮品畅饮。" }, 
+                    { id: 303, time: "15:30", text: "前往 Kamari 海滩，入住 Elixir Del Mar on the Beach 放置行李。" }, 
+                    { id: 304, time: "17:00", text: "驱车前往 Oia 小镇，在风车与蓝顶教堂旁等待“世界最美落日”。" }
+                ], 
+                tips: "出海请备好深色泳衣与防晒霜。Catamaran 商家在 Spiridakos 与 Santorini Star 二选一。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Asteras+Villas+Santorini&destination=Oia+Santorini&waypoints=Vlychada+Port+Santorini%7CElixir+Del+Mar+Santorini"
+            },
+            4: {
+                date: "10月4日 (周日)", title: "DAY 4｜Akrotiri 遗迹 ➔ 红沙滩/南部海岸 ➔ Pyrgos / Megalochori ➔ 轻松逛岛", route: "Kamari ➔ Akrotiri 遗迹 ➔ 红沙滩 / 南部海岸 ➔ Pyrgos / Megalochori 古镇 ➔ Kamari / Fira 轻松逛", hotel: "宿 Santorini / Kamari - Elixir Del Mar on the Beach",
+                timeline: [
+                    { id: 401, time: "09:30", text: "驱车前往 Akrotiri 远古遗迹感受米诺斯文明。" }, 
+                    { id: 402, time: "11:30", text: "探访红沙滩与南部海岸线风貌。" }, 
+                    { id: 403, time: "14:00", text: "探访 Pyrgos 与 Megalochori 传统白色小镇，在巷弄冰淇淋与咖啡店享受慢调。" }, 
+                    { id: 404, time: "17:30", text: "返回 Kamari 黑沙滩或 Fira，轻松海边散步与晚餐。" }
+                ], 
+                tips: "Pyrgos 制高点视野绝佳且游客较少，非常适合拍摄人文照。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Elixir+Del+Mar+Santorini&destination=Kamari+Beach&waypoints=Akrotiri+Santorini%7CRed+Beach+Santorini%7CMegalochori%7CPyrgos+Santorini"
+            },
+            5: {
+                date: "10月5日 (周一)", title: "DAY 5｜圣托里尼 ⛴️ 快艇至克里特岛 ➔ 入住 Kostakis ➔ 海边小憩", route: "圣托码头 ➔ Seajets 快艇 (15:45-17:25) ➔ 克里特岛 ➔ 驱车至 Kostakis Beach Hotel", hotel: "宿 Crete / Gerani - Kostakis Beach Hotel",
+                timeline: [
+                    { id: 501, time: "13:45", text: "确认 Seajets 已完成 48h Online Check-in (订单号: 1112UQMYP)。" }, 
+                    { id: 502, time: "15:45", text: "搭乘 Seajets 高速快艇驶向克里特岛。" }, 
+                    { id: 503, time: "17:25", text: "顺利抵达克里特岛港口，取车驱车前往 Kostakis Beach Hotel。" }, 
+                    { id: 504, time: "19:30", text: "入住酒店，在海边听浪休息，享用克里特橄榄油慢炖美食。" }
+                ], 
+                tips: "Seajets 需提前 48h 在线 check-in 获电子船票。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Athinios+Port+Santorini&destination=Kostakis+Beach+Gerani+Chania"
+            },
+            6: {
+                date: "10月6日 (周二)", title: "DAY 6｜Balos Lagoon + Gramvousa 泻湖一日游 ➔ Chania 老城/威尼斯港晚餐", route: "Kostakis Beach ➔ Kissamos 码头 ➔ Balos Lagoon + Gramvousa 游船 ➔ 返回 ➔ Chania 哈尼亚老城与威尼斯港", hotel: "宿 Crete / Gerani - Kostakis Beach Hotel",
+                timeline: [
+                    { id: 601, time: "09:00", text: "驱车前往 Kissamos 码头搭乘游船。" }, 
+                    { id: 602, time: "10:00 - 16:30", text: "游览 Balos Lagoon 果冻海泻湖与 Gramvousa 海盗岛城堡。" }, 
+                    { id: 603, time: "17:30", text: "返回哈尼亚老城 (Chania Old Town)，漫步威尼斯港口与灯塔。" }, 
+                    { id: 604, time: "19:30", text: "在威尼斯港口海滨餐厅享用地道海鲜晚餐。" }
+                ], 
+                tips: "建议选择 Kissamos 码头的船游方式前往 Balos，避免自驾山路损伤底盘。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Kostakis+Beach+Gerani+Chania&destination=Chania+Old+Town&waypoints=Kissamos+Port%7CBalos+Beach"
+            },
+            7: {
+                date: "10月7日 (周三)", title: "DAY 7｜克里特岛慢游 ➔ 前往 HER (Heraklion) 港 ➔ 约 21:30 Minoan Lines 夜船 🚢", route: "克里特岛慢游 (雷斯蒙/伊拉克利翁) ➔ HER 港 (Heraklion Port) ➔ Minoan Lines 夜船 ➔ Piraeus 雅典", hotel: "宿 Minoan Lines 跨夜渡轮独立舱",
+                timeline: [
+                    { id: 701, time: "10:00", text: "退房后，驱车沿北海岸公路经雷斯蒙 (Rethymno) 往伊拉克利翁 (Heraklion)。" }, 
+                    { id: 702, time: "15:00", text: "游览克里特岛首都 Heraklion 老城与库勒斯堡垒 (Koules Fortress) 或克诺索斯王宫。" }, 
+                    { id: 703, time: "18:30", text: "在 HER 港口附近海鲜餐厅享用晚餐。" }, 
+                    { id: 704, time: "20:00", text: "抵达 HER 港口 (Heraklion Port) 办理 Minoan Lines 登船，入住独立舱。" },
+                    { id: 705, time: "21:30", text: "渡轮启航驶往雅典比雷埃夫斯港 (Piraeus)。" }
+                ], 
+                tips: "特别注意：夜船从 Heraklion (HER) 港口登船，非 Souda 港！预留驾车至 HER 港约 2-2.5 小时车程。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Kostakis+Beach+Gerani+Chania&destination=Port+of+Heraklion&waypoints=Rethymno%7CKoules+Fortress"
+            },
+            8: {
+                date: "10月8日 (周四)", title: "DAY 8｜06:30 抵雅典 Piraeus ➔ 取车直奔 Meteora 天空之城 ➔ 修道院与日落", route: "Piraeus 港 (06:30抵) ➔ 取车 ➔ 驾车前往 Meteora ➔ Hotel Kaikis 入住 ➔ 游览 3 座修道院 ➔ Meteora 日落", hotel: "宿 Meteora / Kalambaka - Hotel Kaikis",
+                timeline: [
+                    { id: 801, time: "06:30", text: "夜船抵达雅典比雷埃夫斯港 (Piraeus)。" }, 
+                    { id: 802, time: "07:30", text: "办理租车取车手续，开启自驾往 Meteora。" }, 
+                    { id: 803, time: "12:00", text: "抵达 Kalambaka 小镇，入住 Hotel Kaikis 休整与午饭。" }, 
+                    { id: 804, time: "14:00 - 18:00", text: "探访圣尼古拉、大气象 (Great Meteoron)、瓦尔拉姆 (Varlaam) 3 座悬崖修道院。" }, 
+                    { id: 805, time: "18:30", text: "在 Sunset Rock 观赏令人震撼的天空之城岩石落日。" }
+                ], 
+                tips: "进入修道院需注意着装，女士需穿过膝长裙或用披肩包裹，男士需穿长裤。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Piraeus+Port+Athens&destination=Sunset+Rock+Meteora&waypoints=Kalabaka%7CHotel+Kaikis%7CHoly+Monastery+of+Great+Meteoron"
+            },
+            9: {
+                date: "10月9日 (周五)", title: "DAY 9｜Meteora 返雅典 ➔ 入住 City Lights ➔ 卫城 (Acropolis) ➔ Plaka / Monastiraki", route: "Meteora 早餐 ➔ 驱车返雅典 ➔ City Lights Athens ➔ Acropolis 雅典卫城 ➔ Plaka & Monastiraki 漫步晚餐", hotel: "宿 Athens - City Lights Athens by YHA",
+                timeline: [
+                    { id: 901, time: "09:00", text: "早餐后驾车返程雅典。" }, 
+                    { id: 902, time: "13:00", text: "抵雅典还车，入住 City Lights Athens by YHA 酒店。" }, 
+                    { id: 903, time: "15:00 - 18:00", text: "【高光时刻】登雅典卫城 (Acropolis)，打卡帕特农神庙与伊瑞克提翁神庙。" }, 
+                    { id: 904, time: "18:30", text: "漫步 Plaka 老城与 Monastiraki 广场，享用希腊烤肉卷 Souvlaki 晚餐。" }
+                ], 
+                tips: "卫城大理石地面较滑，请务必穿着防滑效果好的鞋子。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Kalabaka&destination=Monastiraki+Athens&waypoints=City+Lights+Athens%7CAcropolis+of+Athens%7CPlaka+Athens"
+            },
+            10: {
+                date: "10月10日 (周六)", title: "DAY 10｜雅典自由采买 ➔ 10:00 前往机场 ✈️ CA864 返程", route: "上午自由活动 / 采买纪念品 ➔ 约 10:00 离开酒店前往机场 ➔ CA864 (15:05-05:05+1)", hotel: "宿 飞机上",
+                timeline: [
+                    { id: 1001, time: "08:30", text: "Plaka 采买希腊橄榄油、蜂蜜与手工艺纪念品。" }, 
+                    { id: 1002, time: "10:00", text: "退房并搭乘 M3 地铁或出租车前往雅典国际机场 ATH。" }, 
+                    { id: 1003, time: "15:05", text: "搭乘国航 CA864 启程飞往北京。" }
+                ], 
+                tips: "建议预留 3 小时抵机场办理退税与安检手续。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Plaka+Athens&destination=Athens+International+Airport"
+            },
+            11: {
+                date: "10月11日 (周日)", title: "DAY 11｜北京 ✈️ 广州圆满收官", route: "北京 T3 (CA1359 07:00) ➔ 广州白云 T3 (10:10 落地)", hotel: "回到温馨的家",
+                timeline: [
+                    { id: 1101, time: "05:05", text: "顺利落地北京首都机场 T3。" }, 
+                    { id: 1102, time: "07:00", text: "转乘 CA1359 飞往广州。" }, 
+                    { id: 1103, time: "10:10", text: "顺利落地广州白云机场，行程圆满收官！" }
+                ], 
+                tips: "整理双岛与天空之城的美好照片与回忆。",
+                mapUrl: ""
+            }
+        };
+
+        const defaultPendingList = [
+            { id: 1, title: "1. 10/3 圣托里尼 Catamaran 出海", status: "二选一比对中", statusColor: "bg-amber-100 text-amber-800", desc: "目标商家：Spiridakos vs Santorini Star。路线：红沙滩 ➔ 白沙滩 ➔ 火山温泉 ➔ 船上烤肉海鲜BBQ/畅饮。" },
+            { id: 2, title: "2. 10/6 克里特 Balos Lagoon 游船", status: "待预订", statusColor: "bg-blue-100 text-blue-800", desc: "自 Kissamos 码头出航前往 Balos Lagoon 泻湖与 Gramvousa 岛城堡，关注出航天气。" },
+            { id: 3, title: "3. 10/8 Meteora 悬崖修道院门票", status: "无需预订", statusColor: "bg-emerald-100 text-emerald-800", desc: "现场现金购票 (€3/人/馆)，需备好现金硬币及符合规则的服装。" },
+            { id: 4, title: "4. 10/9 雅典卫城 (Acropolis) 门票", status: "建议提前约时段", statusColor: "bg-purple-100 text-purple-800", desc: "官方预约入场时段，建议购买 15:00-16:00 入场票避开最热与暴晒时段。" }
+        ];
+
+        const defaultHotels = [
+            { id: 1, dates: "10.02 - 10.03", name: "Asteras Villas", city: "圣托里尼 · Fira", address: "Fira, Santorini, Greece", note: "火山悬崖景观，含早餐送到房间服务" },
+            { id: 2, dates: "10.03 - 10.05", name: "Elixir Del Mar on the Beach", city: "圣托里尼 · Kamari", address: "Kamari Beach, Santorini, Greece", note: "黑沙滩海景酒店，停车方便" },
+            { id: 3, dates: "10.05 - 10.07", name: "Kostakis Beach Hotel", city: "克里特岛 · Gerani/Chania", address: "Gerani, Chania, Crete, Greece", note: "海滨独立公寓，带游泳池" },
+            { id: 4, dates: "10.07 - 10.08", name: "Minoan Lines 夜船独立舱", city: "海路跨夜渡轮", address: "Heraklion Port (HER), Crete", note: "21:30 HER港出发，含床位独立卫浴" },
+            { id: 5, dates: "10.08 - 10.09", name: "Hotel Kaikis", city: "Meteora · Kalambaka", address: "Kalambaka, Meteora, Greece", note: "天空之城山脚下，免费停车" },
+            { id: 6, dates: "10.09 - 10.10", name: "City Lights Athens by YHA", city: "雅典 · 市中心", address: "Athens Center, Greece", note: "近 Plaka 老城与卫城步道" }
+        ];
+
+        const defaultTransport = [
+            { id: 1, date: "10/01", type: "✈️ 航班", code: "CA1328", route: "广州白云 ➔ 北京首都 T3", time: "18:40 - 22:00", note: "国航执飞，行李直挂" },
+            { id: 2, date: "10/02", type: "✈️ 航班", code: "CA863", route: "北京首都 T3 ➔ 雅典 ATH", time: "02:30 - 08:55", note: "直飞航段，入境申根" },
+            { id: 3, date: "10/02", type: "✈️ 航班", code: "GQ346", route: "雅典 ATH ➔ 圣托里尼 JTR", time: "12:50 - 13:45", note: " Sky Express，行李15kg/人" },
+            { id: 4, date: "10/02-10/05", type: "🚗 自驾", code: "圣托自驾租车", route: "JTR 机场取车 & 机场还车", time: "全天", note: "注意悬崖陡坡与狭窄弯道" },
+            { id: 5, date: "10/05", type: "⛴️ 快艇", code: "Seajets", route: "圣托 Athinios ➔ 克里特 HER", time: "15:45 - 17:25", note: "订单号 1112UQMYP，提前48h check-in" },
+            { id: 6, date: "10/07", type: "🚢 夜船", code: "Minoan Lines", route: "克里特 HER 港 ➔ 雅典 Piraeus", time: "21:30 - 06:30 (+1)", note: "HER港登船，卧铺独立舱" },
+            { id: 7, date: "10/08-10/09", type: "🚗 自驾", code: "雅典-天空之城", route: "Piraeus港取车 ➔ Meteora ➔ 雅典还", time: "全天", note: "高速过路费备好信用卡/现金" },
+            { id: 8, date: "10/10", type: "✈️ 航班", code: "CA864", route: "雅典 ATH ➔ 北京首都 T3", time: "15:05 - 05:05 (+1)", note: "提前 3h 抵机场办理退税" }
+        ];
+
+        const defaultFood = [
+            { id: 1, city: "圣托里尼 (Santorini)", name: "Sphinx Restaurant (Fira) - 悬崖观景高级希腊餐", mapUrl: "https://maps.google.com/?q=Sphinx+Restaurant+Fira+Santorini" },
+            { id: 2, city: "圣托里尼 (Santorini)", name: "Lucky's Souvlaki (Fira) - 超高性价比 Pita 烤肉卷", mapUrl: "https://maps.google.com/?q=Lucky%27s+Souvlaki+Fira" },
+            { id: 3, city: "克里特岛 (Crete)", name: "Tamam Restaurant (Chania) - 老威尼斯浴室改建地道餐", mapUrl: "https://maps.google.com/?q=Tamam+Restaurant+Chania" },
+            { id: 4, city: "克里特岛 (Crete)", name: "To Antikristo (Chania) - 克里特传统柴火烤羊肉", mapUrl: "https://maps.google.com/?q=To+Antikristo+Chania" },
+            { id: 5, city: "Meteora天空之城", name: "Restaurant Meteora (Kalambaka) - 传统慢炖牛肉与Mousaka", mapUrl: "https://maps.google.com/?q=Restaurant+Meteora+Kalambaka" },
+            { id: 6, city: "雅典 (Athens)", name: "O Thanasis (Monastiraki) - 经典 Souvlaki 与羊肉串", mapUrl: "https://maps.google.com/?q=O+Thanasis+Athens" }
+        ];
+
+        const defaultLedger = [
+            { id: 1, title: "Seajets 渡轮船票 (圣托➔克里特)", amount: 184.00, currency: "EUR", payment: "信用卡 Visa/MasterCard", payer: "共同平摊 (AA)" },
+            { id: 2, title: "GQ346 圣托内陆机票追加行李", amount: 45.00, currency: "EUR", payment: "信用卡 Visa/MasterCard", payer: "老公" },
+            { id: 3, title: "雅典卫城门票预订", amount: 60.00, currency: "EUR", payment: "支付宝", payer: "老婆" }
+        ];
+
+        const defaultChecklist = [
+            { id: 1, category: "行前打卡", text: "护照原件（有效期6个月以上）", completed: true },
+            { id: 2, category: "行前打卡", text: "申根签证页打印件 & 国际驾照翻译件", completed: true },
+            { id: 3, category: "证件财务", text: "芯片信用卡 (Visa/MasterCard) 2张", completed: true },
+            { id: 4, category: "证件财务", text: "欧元零钱现金 (€300-500)", completed: false },
+            { id: 5, category: "电子数码", text: "欧洲标准转换插头 (德标/欧标) 2-3个", completed: true },
+            { id: 6, category: "电子数码", text: "移动电源/充电宝 & 拍摄器材相机", completed: true },
+            { id: 7, category: "随身衣物", text: "出海深色泳衣 & 墨镜 & 防晒帽子", completed: false },
+            { id: 8, category: "随身衣物", text: "修道院穿搭（长裙/披肩/防滑鞋）", completed: false },
+            { id: 9, category: "日用药品", text: "晕船药/晕车药 & 创可贴 & 胃药", completed: false }
+        ];
+
+        // 全局动态响应式数据存储
+        let dayData = JSON.parse(JSON.stringify(defaultDayData));
+        let pendingData = JSON.parse(JSON.stringify(defaultPendingList));
+        let hotelData = JSON.parse(JSON.stringify(defaultHotels));
+        let transportData = JSON.parse(JSON.stringify(defaultTransport));
+        let foodData = JSON.parse(JSON.stringify(defaultFood));
+        let ledgerData = JSON.parse(JSON.stringify(defaultLedger));
+        let checklistData = JSON.parse(JSON.stringify(defaultChecklist));
+
+        // ==================== 初始化与 TAB 切换 ====================
+        window.initApp = function() {
+            calculateCountdown();
+            renderDayPicker();
+            renderDayDetails();
+            renderPending();
+            renderHotels();
+            renderTransport();
+            renderFood();
+            renderLedger();
+            renderChecklist();
+        };
+
         window.showToast = function(msg) {
             const toast = document.getElementById('toast-notification');
             const msgEl = document.getElementById('toast-msg');
@@ -660,667 +757,922 @@
                 setTimeout(() => {
                     toast.classList.remove('opacity-100');
                     toast.classList.add('opacity-0', 'pointer-events-none');
-                }, 2500);
+                }, 2200);
             }
         };
-
-        window.copyToClipboard = function(text, successMsg) {
-            if (!text) return;
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.style.position = "fixed";
-            textArea.style.left = "-999999px";
-            textArea.style.top = "-999999px";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            
-            try {
-                document.execCommand('copy');
-                window.showToast(successMsg || "链接已复制！");
-            } catch (err) {
-                window.showToast("复制失败");
-            }
-            document.body.removeChild(textArea);
-        };
-
-        let currentExchangeRate = 7.8;
-        window.updateExchangeRate = function(val) {
-            currentExchangeRate = parseFloat(val) || 7.8;
-            renderLedger();
-        };
-
-        window.searchFlights = function(platform) {
-            const origin = document.getElementById('flight-origin').value.trim().toUpperCase() || 'JTR';
-            const dest = document.getElementById('flight-dest').value.trim().toUpperCase() || 'FCO';
-            const date = document.getElementById('flight-date').value.trim() || '2026-10-05';
-
-            if (platform === 'google') {
-                const targetUrl = `https://www.google.com/travel/flights?q=Flights%20from%20${origin}%20to%20${dest}%20on%20${date}`;
-                window.open(targetUrl, '_blank');
-                copyToClipboard(targetUrl, 'Google Flights 搜索链接已复制！');
-            } else if (platform === 'skyscanner') {
-                const dateFormatted = date.replace(/-/g, '').substring(2);
-                const targetUrl = `https://www.skyscanner.com/transport/flights/${origin.toLowerCase()}/${dest.toLowerCase()}/${dateFormatted}/`;
-                window.open(targetUrl, '_blank');
-                copyToClipboard(targetUrl, 'Skyscanner 天巡比价链接已复制！');
-            }
-        };
-
-        const defaultDayData = {
-            1: {
-                date: "10月1日 (周四)", title: "DAY 1｜广州启程 ➔ 北京转机 ➔ 飞向雅典", route: "广州白云 (CA1328 18:40) ➔ 北京转机 (CA863 02:30) ➔ 雅典", hotel: "宿 飞机上", hasMap: false, origin: "", destination: "", waypoints: [], mapDesc: "转机枢纽",
-                timeline: [{ time: "18:40", text: "白云机场乘 CA1328 飞往北京。" }, { time: "22:00", text: "抵达北京转机。" }, { time: "02:30", text: "搭乘 CA863 跨夜飞往雅典。" }], tips: "带好护照与充电宝。"
-            },
-            2: {
-                date: "10月2日 (周五)", title: "DAY 2｜落地爱琴海 ➔ 圣托里尼 Oia 初秀日落", route: "雅典 ATH (08:55) ➔ Sky Express GQ346 (12:50-13:45) ➔ 圣托 Check-in ➔ Oia", hotel: "宿 圣托里尼 (Santorini Palace)", hasMap: true, origin: "JTR Airport, Santorini", destination: "Santorini Palace, Fira", waypoints: ["Oia, Santorini"], mapDesc: "机场至酒店与Oia日落",
-                timeline: [{ time: "08:55", text: "抵达雅典机场 ATH。" }, { time: "12:50", text: "搭乘 GQ346 飞往圣托里尼 JTR。" }, { time: "17:30", text: "漫步 Oia 小镇看爱琴海初次日落。" }], tips: "穿防滑平底鞋。"
-            },
-            3: {
-                date: "10月3日 (周六)", title: "DAY 3｜圣托里尼 Oia 晨拍 ➔ Fira 悬崖步道", route: "Oia 蓝顶 ➔ Fira 镇 ➔ Firostefani 悬崖步道 ➔ Oia 夜景", hotel: "宿 圣托里尼 (Santorini Palace)", hasMap: true, origin: "Fira, Santorini", destination: "Oia, Santorini", waypoints: ["Firostefani, Santorini"], mapDesc: "悬崖徒步路线",
-                timeline: [{ time: "08:30", text: "拍摄三蓝顶教堂。" }, { time: "14:00", text: "悬崖步道徒步至 Firostefani。" }], tips: "准备防晒帽。"
-            },
-            4: {
-                date: "10月4日 (周日)", title: "DAY 4｜山城品酒 ➔ 火山温泉船 ➔ SKALA 晚餐", route: "Pyrgos 山城 ➔ Santo Wines ➔ 火山温泉船 ➔ SKALA 晚餐", hotel: "宿 圣托里尼 (Santorini Palace)", hasMap: true, origin: "Pyrgos, Santorini", destination: "Oia Main Street, Santorini", waypoints: ["Santo Wines"], mapDesc: "山城与酒庄动线",
-                timeline: [{ time: "09:30", text: "探访 Pyrgos 山城。" }, { time: "11:30", text: "Santo Wines 品酒。" }, { time: "14:30", text: "火山岛温泉船出海。" }], tips: "穿深色旧泳衣。"
-            },
-            5: {
-                date: "10月5日 (周一)", title: "DAY 5｜告别圣托里尼 ✈️ 罗马 (夜游喷泉)", route: "上午纪念品 ➔ 瑞安 FR3021 (17:30-18:55) ➔ 罗马 Check-in ➔ 纳沃纳/许愿池夜游", hotel: "宿 罗马", hasMap: true, origin: "Piazza Navona, Rome", destination: "Trevi Fountain, Rome", waypoints: ["Pantheon, Rome"], mapDesc: "罗马夜游路线",
-                timeline: [{ time: "17:30", text: "瑞安航空 FR3021 飞罗马 FCO。" }, { time: "20:30", text: "夜游许愿池。" }], tips: "⚠️ 瑞安航空提前 24h 手机 App Check-in！"
-            },
-            6: {
-                date: "10月6日 (周二)", title: "DAY 6｜罗马二刷：博尔盖塞公园与皮恩乔露台", route: "博尔盖塞公园 ➔ 皮恩乔露台日落 ➔ 人民广场 ➔ 西班牙阶梯", hotel: "宿 罗马", hasMap: true, origin: "Villa Borghese, Rome", destination: "Piazza di Spagna, Rome", waypoints: ["Pincian Hill"], mapDesc: "罗马日落路线",
-                timeline: [{ time: "09:30", text: "博尔盖塞公园漫步。" }, { time: "16:30", text: "皮恩乔露台看日落。" }], tips: "提前预约美术馆。"
-            },
-            7: {
-                date: "10月7日 (周三)", title: "DAY 7｜罗马 🚄 那不勒斯 Check-in ➔ 庞贝古城", route: "罗马 ➔ 高铁 ➔ 那不勒斯 ➔ 庞贝半日游 ➔ da Michele 披萨", hotel: "宿 那不勒斯", hasMap: true, origin: "Napoli Centrale", destination: "Pompeii", waypoints: ["da Michele"], mapDesc: "庞贝古城动线",
-                timeline: [{ time: "11:30", text: "高铁赴那不勒斯。" }, { time: "14:00", text: "游览庞贝古城。" }], tips: "庞贝严禁拉行李箱入内！"
-            },
-            8: {
-                date: "10月8日 (周四)", title: "DAY 8｜卡普里岛 (Capri) 一日游", route: "那不勒斯港 (07:55) ➔ Capri ➔ Anacapri 缆车 ➔ Lo Zodiaco 午餐 ➔ 环岛船", hotel: "宿 那不勒斯", hasMap: true, origin: "Molo Beverello, Naples", destination: "Anacapri, Capri", waypoints: ["Marina Grande"], mapDesc: "卡普里岛动线",
-                timeline: [{ time: "07:55", text: "渡轮赴 Capri。" }, { time: "10:00", text: "乘缆车俯瞰全岛。" }], tips: "强推 1 小时环岛游船。"
-            },
-            9: {
-                date: "10月9日 (周五)", title: "DAY 9｜那不勒斯 ✈️ 雅典老城与卫城夜景", route: "A3681 (09:40-12:15) ➔ 雅典放行李 ➔ 宪法广场 ➔ 普拉卡老城 ➔ 卫城夜景晚餐", hotel: "宿 雅典", hasMap: true, origin: "Syntagma Square", destination: "Monastiraki", waypoints: ["Plaka"], mapDesc: "雅典老城动线",
-                timeline: [{ time: "09:40", text: "A3681 飞雅典 ATH。" }, { time: "19:00", text: "屋顶餐厅远眺卫城夜景。" }], tips: "今晚享受老城氛围。"
-            },
-            10: {
-                date: "10月10日 (周六)", title: "DAY 10｜雅典特产采买 ➔ CA864 跨夜返程", route: "Plaka 采买 ➔ 11:00 M3 蓝线赴机场 ➔ CA864 (14:15) 飞北京", hotel: "宿 飞机上", hasMap: true, origin: "Monastiraki", destination: "Athens Airport", waypoints: ["Syntagma"], mapDesc: "机场专线路线",
-                timeline: [{ time: "08:30", text: "采买蜂蜜与纪念品。" }, { time: "14:15", text: "搭乘 CA864 飞北京。" }], tips: "地铁认准飞机图标专线票。"
-            },
-            11: {
-                date: "10月11日 (周日)", title: "DAY 11｜北京转机飞广州，落地圆满收官", route: "CA864 落地北京 (05:05) ➔ CA1359 (07:00-10:25) ➔ 广州白云", hotel: "回到温馨的家", hasMap: false, origin: "", destination: "", waypoints: [], mapDesc: "终点站",
-                timeline: [{ time: "07:00", text: "转机飞广州。" }, { time: "10:25", text: "顺利落地广州！" }], tips: "整理退税单据。"
-            }
-        };
-
-        const defaultInspirations = [
-            { title: "🇬🇷雅典最好吃的海鲜餐厅 只有本地人知道的一家餐馆", url: "http://xhslink.cn/o/YSjDdk0HWS", category: "美食" },
-            { title: "卡普里缆车登顶后买柠檬冰沙 🍋", url: "", category: "美食" }
-        ];
-
-        const defaultRestaurants = [
-            { city: "🇬🇷 圣托里尼", name: "Krinaki Tavern", address: "Finikia, Oia", dish: "🥔 炸土豆、🦐 虾", note: "远离主街", url: "https://www.google.com/maps/search/?api=1&query=Krinaki+Tavern+Finikia+Oia+Santorini" },
-            { city: "🇬🇷 圣托里尼", name: "Kritikos Taverna", address: "Mesaria", dish: "🥩 烤羊排、传统希腊菜", note: "10/4 午餐主推", url: "https://www.google.com/maps/search/?api=1&query=Kritikos+Taverna+Mesaria+Santorini" },
-            { city: "🇬🇷 圣托里尼", name: "Thalami", address: "Oia", dish: "🍢 Souvlaki、海鲜 Pasta", note: "Oia 日落晚餐", url: "https://www.google.com/maps/search/?api=1&query=Thalami+Oia+Santorini" },
-            { city: "🇬🇷 圣托里尼", name: "SKALA Restaurant", address: "Oia Main St.", dish: "🍅 Ntomatokeftedes", note: "10/4 日落晚餐主推", url: "https://www.google.com/maps/search/?api=1&query=SKALA+Restaurant+Oia+Santorini" },
-            { city: "🇬🇷 圣托里尼", name: "Santorini Mou", address: "Finikia, Oia", dish: "🥩 希腊烤肉", note: "现场音乐和老板互动", url: "https://www.google.com/maps/search/?api=1&query=Santorini+Mou+Finikia+Oia" },
-            { city: "🇬🇷 雅典", name: "Athinaikon", address: "Themistokleous 2", dish: "🍆 Moussaka", note: "10/9 晚餐备选", url: "https://www.google.com/maps/search/?api=1&query=Athinaikon+Restaurant+Athens" },
-            { city: "🇬🇷 雅典", name: "ERGON House", address: "Mitropoleos 42", dish: "🍳 Brunch", note: "适合午餐 / Brunch", url: "https://www.google.com/maps/search/?api=1&query=ERGON+House+Athens" },
-            { city: "🇬🇷 雅典", name: "Lefteris O Politis", address: "Satovriandou 20", dish: "🥙 牛肉 Souvlaki", note: "排队较快", url: "https://www.google.com/maps/search/?api=1&query=Lefteris+O+Politis+Athens" },
-            { city: "🇬🇷 雅典", name: "Stani", address: "Marikas Kotopouli 10", dish: "🥛 希腊酸奶", note: "百年老店", url: "https://www.google.com/maps/search/?api=1&query=Stani+Athens" },
-            { city: "🇬🇷 雅典", name: "Coffee Joint", address: "Athens", dish: "☕ Coffee", note: "卫城附近休息", url: "https://www.google.com/maps/search/?api=1&query=Coffee+Joint+Athens" },
-            { city: "🇬🇷 雅典", name: "O Thanasis", address: "Mitropoleos 69", dish: "🥙 Kebab", note: "10/9 Monastiraki 主推", url: "https://www.google.com/maps/search/?api=1&query=O+Thanasis+Monastiraki+Athens" },
-            { city: "🇬🇷 雅典", name: "To Steki tou Ilia", address: "Evmorfopoulou 2", dish: "🥩 炭烤肉", note: "小馆风格", url: "https://www.google.com/maps/search/?api=1&query=To+Steki+tou+Ilia+Athens" },
-            { city: "🇮🇹 罗马", name: "Armando al Pantheon", address: "Salita de' Crescenzi 31", dish: "🍝 Carbonara", note: "万神殿旁；强烈建议提前预约", url: "https://www.google.com/maps/search/?api=1&query=Armando+al+Pantheon+Rome" },
-            { city: "🇮🇹 罗马", name: "Pastasciutta", address: "Via delle Grazie 5", dish: "🍝 Fresh Pasta", note: "平价快餐", url: "https://www.google.com/maps/search/?api=1&query=Pastasciutta+Rome" },
-            { city: "🇮🇹 那不勒斯", name: "da Michele", address: "Via Cesare Sersale 1", dish: "🍕 Margherita 披萨", note: "百年老店；⚠️不吃蒜别点 Marinara", url: "https://www.google.com/maps/search/?api=1&query=L+Antica+Pizzeria+da+Michele+Naples" },
-            { city: "🇮🇹 卡普里", name: "Lo Zodiaco", address: "Marina Grande", dish: "🦐 海鲜 Pasta", note: "10/8 午餐主推", url: "https://www.google.com/maps/search/?api=1&query=Lo+Zodiaco+Marina+Grande+Capri" }
-        ];
-
-        const defaultHotels = [
-            { name: "Santorini Palace", dates: "10.02 - 10.05", price: "约1200元/晚 (可免费取消)", platform: "Booking.com", booked: true, link: "https://www.google.com/maps/search/?api=1&query=Santorini+Palace+Santorini" }
-        ];
-
-        const defaultChecklist = {
-            "行前打卡_0": { text: "预约博尔盖塞美术馆 (提前30天)", checked: false },
-            "行前打卡_1": { text: "购买申根旅游保险 (含24小时救援)", checked: false },
-            "行前打卡_2": { text: "开通欧洲漫游 / 购买 E-SIM 流量卡", checked: false },
-            "行前打卡_3": { text: "检查护照有效期 (需6个月以上)", checked: true },
-            "行前打卡_4": { text: "打印申根签证及往返机票、酒店订单", checked: false },
-            "证件财务_0": { text: "护照原件 + 2份复印件", checked: true },
-            "证件财务_1": { text: "MasterCard / Visa 双币芯片信用卡 (各准备2张)", checked: true },
-            "证件财务_2": { text: "欧元现金 (200-300欧零钱，含硬币)", checked: false },
-            "电子数码_0": { text: "欧标圆孔转换插头 (2-3个)", checked: true },
-            "电子数码_1": { text: "大容量充电宝 (10000-20000mAh)", checked: true },
-            "衣物药品_0": { text: "防滑抓地平底鞋 (悬崖&庞贝必备)", checked: true },
-            "衣物药品_1": { text: "深色旧泳衣 (圣托温泉船专用)", checked: false },
-            "衣物药品_2": { text: "便携晕船药 (10月渡船必备)", checked: false }
-        };
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyB0BC_ATnwr5xegYNLQBKq1HyhSu_m0FrE",
-            authDomain: "greece-trip-c4cc7.firebaseapp.com",
-            databaseURL: "https://greece-trip-c4cc7-default-rtdb.firebaseio.com",
-            projectId: "greece-trip-c4cc7",
-            storageBucket: "greece-trip-c4cc7.firebasestorage.app",
-            messagingSenderId: "332482796388",
-            appId: "1:332482796388:web:a1df835258b2a92534b871"
-        };
-
-        let dbRef = null;
-        let currentDay = 1;
-        let isEditMode = false;
-        
-        let globalTripData = defaultDayData;
-        let globalInspirations = defaultInspirations;
-        let globalRestaurants = defaultRestaurants;
-        let globalHotels = defaultHotels;
-        let globalLedger = [];
-        let globalSOS = [{ name: "平安/安联全球救援", phone: "+86-10-12345678", policy: "保单号待填" }];
-        let globalChecklist = defaultChecklist;
-        let pendingRestaurantInput = "";
-
-        function initFirebase() {
-            try {
-                firebase.initializeApp(firebaseConfig);
-                dbRef = firebase.database().ref('greece_trip_sync_v10');
-
-                dbRef.on('value', (snapshot) => {
-                    const val = snapshot.val();
-                    if (val) {
-                        if (val.itinerary) globalTripData = val.itinerary;
-                        if (val.inspirations) globalInspirations = val.inspirations;
-                        if (val.restaurants) globalRestaurants = val.restaurants;
-                        if (val.hotels) globalHotels = val.hotels;
-                        if (val.ledger) globalLedger = val.ledger;
-                        if (val.sos) globalSOS = val.sos;
-                        if (val.checklist) globalChecklist = val.checklist;
-                    }
-                    document.getElementById('cloud-status-text').innerText = "☁️ 云端实时同步已连接";
-                    renderAllViews();
-                }, (error) => { fallbackToLocal(); });
-            } catch(e) { fallbackToLocal(); }
-        }
-
-        function fallbackToLocal() {
-            document.getElementById('cloud-status-text').innerText = "📱 本地同步模式";
-            document.getElementById('cloud-pulse-dot').classList.remove('bg-emerald-500', 'animate-pulse');
-            document.getElementById('cloud-pulse-dot').classList.add('bg-amber-500');
-            loadLocalData();
-            renderAllViews();
-        }
-
-        function syncToCloud() {
-            localStorage.setItem('trip_all_v10', JSON.stringify({
-                trip: globalTripData, insp: globalInspirations, rest: globalRestaurants,
-                hotel: globalHotels, ledger: globalLedger, sos: globalSOS, check: globalChecklist
-            }));
-
-            if (dbRef) {
-                try {
-                    dbRef.set({
-                        itinerary: globalTripData, inspirations: globalInspirations,
-                        restaurants: globalRestaurants, hotels: globalHotels,
-                        ledger: globalLedger, sos: globalSOS, checklist: globalChecklist,
-                        lastUpdated: new Date().toISOString()
-                    });
-                } catch(e) {}
-            }
-        }
-
-        function loadLocalData() {
-            try {
-                const data = JSON.parse(localStorage.getItem('trip_all_v10'));
-                if (data) {
-                    if (data.trip) globalTripData = data.trip;
-                    if (data.insp) globalInspirations = data.insp;
-                    if (data.rest) globalRestaurants = data.rest;
-                    if (data.hotel) globalHotels = data.hotel;
-                    if (data.ledger) globalLedger = data.ledger;
-                    if (data.sos) globalSOS = data.sos;
-                    if (data.check) globalChecklist = data.check;
-                }
-            } catch(e){}
-        }
-
-        function renderAllViews() {
-            renderCurrentDayCard();
-            renderInspirations();
-            renderRestaurants();
-            renderHotels();
-            renderLedger();
-            renderSOS();
-            renderChecklist();
-        }
 
         window.switchTab = function(tabName) {
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('active');
-                b.classList.add('bg-white', 'text-ink');
+            const tabs = ['daily', 'pending', 'hotel', 'transport', 'food', 'ledger', 'packing'];
+            tabs.forEach(t => {
+                const sec = document.getElementById(`sec-${t}`);
+                const btn = document.getElementById(`tab-${t}`);
+                if (sec) sec.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('active', 'bg-aegean', 'text-white');
+                    btn.classList.add('bg-white', 'text-ink');
+                }
             });
 
-            const targetSection = document.getElementById('sec-' + tabName);
-            if (targetSection) targetSection.classList.remove('hidden');
-
-            const targetBtn = document.getElementById('tab-' + tabName);
+            const targetSec = document.getElementById(`sec-${tabName}`);
+            const targetBtn = document.getElementById(`tab-${tabName}`);
+            if (targetSec) targetSec.classList.remove('hidden');
             if (targetBtn) {
                 targetBtn.classList.add('active');
                 targetBtn.classList.remove('bg-white', 'text-ink');
             }
-            if(tabName === 'restaurant') renderRestaurants();
-            if(tabName === 'hotel') renderHotels();
-            if(tabName === 'ledger') renderLedger();
-            if(tabName === 'packing') renderChecklist();
         };
 
-        window.selectDay = function(dayNum) {
-            currentDay = dayNum;
-            document.querySelectorAll('.day-picker-btn').forEach(btn => {
-                btn.classList.remove('bg-terracotta', 'text-white', 'shadow-sm');
-                btn.classList.add('bg-white', 'text-ink', 'border', 'border-sand');
-            });
-            const activeBtn = document.getElementById(`day-picker-${dayNum}`);
-            if(activeBtn) {
-                activeBtn.classList.remove('bg-white', 'text-ink', 'border', 'border-sand');
-                activeBtn.classList.add('bg-terracotta', 'text-white', 'shadow-sm');
+        function calculateCountdown() {
+            const targetDate = new Date('2026-10-01T00:00:00');
+            const today = new Date();
+            const diffTime = targetDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const badge = document.getElementById('days-left');
+            if (badge) {
+                badge.innerText = diffDays > 0 ? diffDays : 0;
             }
-            renderCurrentDayCard();
+        }
+
+        window.updateExchangeRate = function(val) {
+            currentExchangeRate = parseFloat(val) || 7.8;
+            renderLedger();
+            showToast(`汇率已更新为: 1 EUR ≈ ${currentExchangeRate} CNY`);
+        };
+
+        // ==================== TAB 1: 每日路线逻辑 ====================
+        function renderDayPicker() {
+            const container = document.getElementById('day-picker-container');
+            if (!container) return;
+            let html = '';
+            for (let d = 1; d <= 11; d++) {
+                const dayObj = dayData[d] || {};
+                const isSelected = d === selectedDay;
+                const activeClass = isSelected ? 'bg-aegean text-white shadow-md' : 'bg-white text-ink border border-sand';
+                const dateShort = dayObj.date ? dayObj.date.split(' ')[0] : `D${d}`;
+                
+                html += `
+                    <button onclick="selectDay(${d})" class="day-picker-btn flex-shrink-0 px-3.5 py-2 ${activeClass} rounded-xl text-left transition text-xs">
+                        <div class="${isSelected ? 'opacity-90 text-[10px]' : 'text-warmGray text-[10px]'}">${dateShort}</div>
+                        <div class="font-bold whitespace-nowrap">D${d} ${dayObj.title ? dayObj.title.split('｜')[1] || '' : ''}</div>
+                    </button>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        window.selectDay = function(d) {
+            selectedDay = d;
+            renderDayPicker();
+            renderDayDetails();
         };
 
         window.toggleEditMode = function() {
             isEditMode = !isEditMode;
             const btnText = document.getElementById('edit-btn-text');
-            if(btnText) btnText.innerText = isEditMode ? "保存并实时同步" : "编辑路线与行程";
-            renderCurrentDayCard();
+            const editBtn = document.getElementById('edit-mode-btn');
+            if (btnText && editBtn) {
+                if (isEditMode) {
+                    btnText.innerText = "完成编辑 (退出)";
+                    editBtn.classList.remove('bg-aegean');
+                    editBtn.classList.add('bg-emerald-600');
+                    showToast("已开启路线编辑模式");
+                } else {
+                    btnText.innerText = "开启每日路线编辑";
+                    editBtn.classList.remove('bg-emerald-600');
+                    editBtn.classList.add('bg-aegean');
+                    showToast("修改已保存！");
+                }
+            }
+            renderDayDetails();
         };
 
-        function buildGoogleDirectionsEmbedUrl(origin, destination, waypointsArr) {
-            if (!origin || !destination) return "";
-            let url = `https://maps.google.com/maps?saddr=${encodeURIComponent(origin)}&daddr=${encodeURIComponent(destination)}`;
-            if (waypointsArr && waypointsArr.length > 0) {
-                const waypointsStr = waypointsArr.filter(w => w.trim()).map(w => encodeURIComponent(w.trim())).join('+to:');
-                if (waypointsStr) url += `+to:${waypointsStr}`;
-            }
-            return url + `&output=embed`;
-        }
-
-        function buildGoogleDirectionsNavUrl(origin, destination, waypointsArr) {
-            if (!origin || !destination) return "";
-            let url = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}`;
-            if (waypointsArr && waypointsArr.length > 0) {
-                const waypointsStr = waypointsArr.filter(w => w.trim()).map(w => encodeURIComponent(w.trim())).join('|');
-                if (waypointsStr) url += `&waypoints=${waypointsStr}`;
-            }
-            return url;
-        }
-
-        function renderCurrentDayCard() {
-            const data = globalTripData[currentDay] || defaultDayData[currentDay];
-            const container = document.getElementById('day-details-container');
-            if(!container) return;
-
-            if (!isEditMode) {
-                let timelineHTML = data.timeline.map(item => `
-                    <div class="flex space-x-2.5 items-start">
-                        <div class="bg-aegeanLight text-aegean font-mono text-[10px] font-bold px-1.5 py-0.5 rounded mt-0.5 flex-shrink-0">${item.time}</div>
-                        <div class="text-xs text-stone-700 leading-relaxed">${item.text}</div>
-                    </div>
-                `).join('');
-
-                const embedUrl = buildGoogleDirectionsEmbedUrl(data.origin, data.destination, data.waypoints);
-                const navUrl = buildGoogleDirectionsNavUrl(data.origin, data.destination, data.waypoints);
-
-                let mapModuleHTML = "";
-                if (data.hasMap && embedUrl) {
-                    mapModuleHTML = `
-                        <div class="space-y-1.5 pt-1">
-                            <div class="flex justify-between items-center">
-                                <span class="text-xs font-bold text-aegean flex items-center">
-                                    <i class="fa-solid fa-map-location-dot mr-1.5 text-terracotta"></i> Day ${currentDay} 谷歌路线地图视角
-                                </span>
-                                <a href="${navUrl}" target="_blank" class="text-[11px] bg-aegean/10 hover:bg-aegean/20 text-aegean px-2.5 py-1 rounded font-medium transition flex items-center">
-                                    App 中导航 <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[9px]"></i>
-                                </a>
-                            </div>
-                            <div class="text-[11px] text-warmGray">${data.mapDesc}</div>
-                            <div class="w-full h-60 md:h-72 rounded-xl overflow-hidden border border-sand shadow-inner bg-stone-100">
-                                <iframe class="w-full h-full border-0" loading="lazy" src="${embedUrl}"></iframe>
-                            </div>
-                        </div>
-                    `;
+        function getEmbedMapUrl(mapUrl) {
+            if (!mapUrl) return '';
+            try {
+                const urlObj = new URL(mapUrl);
+                const params = new URLSearchParams(urlObj.search);
+                if (params.has('origin') && params.has('destination')) {
+                    const origin = params.get('origin');
+                    const destination = params.get('destination');
+                    const waypoints = params.get('waypoints');
+                    let routeQuery = `from:${origin}`;
+                    if (waypoints) {
+                        const wpList = waypoints.split('|').map(wp => `to:${wp}`).join(' ');
+                        routeQuery += ` ${wpList}`;
+                    }
+                    routeQuery += ` to:${destination}`;
+                    return `https://maps.google.com/maps?q=${encodeURIComponent(routeQuery)}&t=&z=10&ie=UTF8&iwloc=&output=embed`;
                 }
+            } catch(e) {
+                return `https://maps.google.com/maps?q=${encodeURIComponent(mapUrl)}&output=embed`;
+            }
+            return '';
+        }
 
-                container.innerHTML = `
-                    <div class="watercolor-card p-5 md:p-6 space-y-4">
-                        <div class="flex justify-between items-start border-b border-sand/60 pb-2">
+        function renderDayDetails() {
+            const container = document.getElementById('day-details-container');
+            if (!container) return;
+            const day = dayData[selectedDay] || {};
+
+            let html = `<div class="watercolor-card p-4 md:p-6 space-y-4">`;
+
+            if (isEditMode) {
+                // 编辑模式视图
+                html += `
+                    <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-xl space-y-3 text-xs">
+                        <div class="font-bold text-amber-900 border-b border-amber-200 pb-1">✏️ 正在编辑 D${selectedDay} 路线总览</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             <div>
-                                <span class="text-xs font-bold text-terracotta">${data.date}</span>
-                                <h2 class="text-base font-serif font-bold text-ink">${data.title}</h2>
+                                <label class="font-bold text-stone-700 block mb-1">日期名称</label>
+                                <input type="text" value="${day.date || ''}" onchange="updateDayField(${selectedDay}, 'date', this.value)" class="w-full p-2 border border-sand rounded bg-white">
                             </div>
-                            <span class="bg-paper text-stone-600 text-[11px] px-2.5 py-1 rounded-full border border-sand">${data.hotel}</span>
+                            <div>
+                                <label class="font-bold text-stone-700 block mb-1">当天主题标题</label>
+                                <input type="text" value="${day.title || ''}" onchange="updateDayField(${selectedDay}, 'title', this.value)" class="w-full p-2 border border-sand rounded bg-white">
+                            </div>
                         </div>
-                        <div class="bg-paper p-2.5 rounded-xl border border-sand/80 text-xs text-stone-700 flex items-center">
-                            <i class="fa-solid fa-route text-terracotta mr-2"></i>
-                            <span>${data.route}</span>
+                        <div>
+                            <label class="font-bold text-stone-700 block mb-1">途经路线概览</label>
+                            <input type="text" value="${day.route || ''}" onchange="updateDayField(${selectedDay}, 'route', this.value)" class="w-full p-2 border border-sand rounded bg-white">
                         </div>
-                        ${mapModuleHTML}
-                        <div class="space-y-2 pt-1">
-                            <h3 class="text-xs font-bold text-warmGray uppercase tracking-wider">⏱️ 当天时间节点与安排</h3>
-                            <div class="space-y-2">${timelineHTML}</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <div>
+                                <label class="font-bold text-stone-700 block mb-1">当晚住宿</label>
+                                <input type="text" value="${day.hotel || ''}" onchange="updateDayField(${selectedDay}, 'hotel', this.value)" class="w-full p-2 border border-sand rounded bg-white">
+                            </div>
+                            <div>
+                                <label class="font-bold text-stone-700 block mb-1">地图/路线链接</label>
+                                <input type="text" value="${day.mapUrl || ''}" onchange="updateDayField(${selectedDay}, 'mapUrl', this.value)" class="w-full p-2 border border-sand rounded bg-white text-blue-600 font-mono">
+                            </div>
                         </div>
-                        <div class="bg-amber-50/80 border border-amber-200 p-2.5 rounded-xl text-xs text-amber-900 flex items-start space-x-2">
-                            <i class="fa-solid fa-lightbulb text-amber-600 mt-0.5"></i>
-                            <div><span class="font-bold">随身提醒：</span> ${data.tips}</div>
+                        <div>
+                            <label class="font-bold text-stone-700 block mb-1">关键提醒与Tips</label>
+                            <textarea onchange="updateDayField(${selectedDay}, 'tips', this.value)" class="w-full p-2 border border-sand rounded bg-white h-16">${day.tips || ''}</textarea>
                         </div>
                     </div>
                 `;
             } else {
-                let timelineFormHTML = data.timeline.map((item, idx) => `
-                    <div class="flex items-center space-x-2 bg-paper p-2 rounded-lg border border-sand">
-                        <input type="text" value="${item.time}" onchange="window.updateTimelineItem(${idx}, 'time', this.value)" class="w-20 text-xs p-1 border rounded bg-white font-mono font-bold text-aegean">
-                        <input type="text" value="${item.text}" onchange="window.updateTimelineItem(${idx}, 'text', this.value)" class="flex-1 text-xs p-1 border rounded bg-white">
-                        <button onclick="window.removeTimelineItem(${idx})" class="text-red-500 hover:text-red-700 text-xs px-1"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
-                `).join('');
-
-                container.innerHTML = `
-                    <div class="watercolor-card p-5 md:p-6 space-y-4 border-2 border-terracotta">
-                        <div class="flex justify-between items-center bg-terracotta/10 p-2.5 rounded-xl">
-                            <span class="text-xs font-bold text-terracotta">✏️ 编辑 Day ${currentDay} 路线</span>
-                            <button onclick="window.toggleEditMode()" class="text-xs bg-terracotta text-white font-bold px-3 py-1 rounded">保存路线</button>
+                // 正常展示模式
+                html += `
+                    <div class="border-b pb-3 space-y-1">
+                        <div class="flex justify-between items-center flex-wrap gap-1">
+                            <span class="bg-aegean/10 text-aegean font-bold px-2.5 py-0.5 rounded text-xs">${day.date}</span>
+                            <span class="text-xs text-warmGray font-medium"><i class="fa-solid fa-bed text-olive mr-1"></i>${day.hotel}</span>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                            <div><label class="font-bold block mb-1">主标题</label><input type="text" value="${data.title}" onchange="window.updateDayField('title', this.value)" class="w-full p-2 border border-sand rounded bg-white"></div>
-                            <div><label class="font-bold block mb-1">住宿说明</label><input type="text" value="${data.hotel}" onchange="window.updateDayField('hotel', this.value)" class="w-full p-2 border border-sand rounded bg-white"></div>
-                        </div>
-                        <div class="text-xs"><label class="font-bold block mb-1">路线文字</label><input type="text" value="${data.route}" onchange="window.updateDayField('route', this.value)" class="w-full p-2 border border-sand rounded bg-white"></div>
-                        <div class="space-y-2 text-xs">
-                            <div class="flex justify-between items-center"><label class="font-bold">时间轴节点</label><button onclick="window.addTimelineItem()" class="text-[11px] bg-emerald-600 text-white px-2 py-1 rounded">+ 增加</button></div>
-                            <div class="space-y-2">${timelineFormHTML}</div>
-                        </div>
+                        <h2 class="text-lg md:text-xl font-bold font-serif text-ink pt-1">${day.title}</h2>
+                        <p class="text-xs text-stone-600 flex items-center pt-0.5"><i class="fa-solid fa-route text-terracotta mr-1.5"></i>路线: ${day.route}</p>
                     </div>
                 `;
             }
-        }
 
-        window.updateDayField = function(field, val) { globalTripData[currentDay][field] = val; syncToCloud(); };
-        window.updateTimelineItem = function(idx, key, val) { globalTripData[currentDay].timeline[idx][key] = val; syncToCloud(); };
-        window.addTimelineItem = function() { globalTripData[currentDay].timeline.push({ time: "12:00", text: "新安排" }); syncToCloud(); renderCurrentDayCard(); };
-        window.removeTimelineItem = function(idx) { globalTripData[currentDay].timeline.splice(idx, 1); syncToCloud(); renderCurrentDayCard(); };
-        window.resetToDefaultItinerary = function() { if(confirm("确定恢复初始规划？")) { globalTripData = defaultDayData; syncToCloud(); renderCurrentDayCard(); } };
-
-        window.parseAndAddXhsInspiration = function() {
-            const rawText = document.getElementById('xhs-raw-text').value.trim();
-            const category = document.getElementById('new-insp-category').value;
-            if (!rawText) { window.showToast("请先粘贴文案！"); return; }
-            const urlMatch = rawText.match(/(https?:\/\/[^\s]+)/g);
-            const linkUrl = urlMatch ? urlMatch[0] : "";
-            let cleanTitle = rawText.replace(/(https?:\/\/[^\s]+)/g, '').trim() || "小红书分享";
-            globalInspirations.unshift({ title: cleanTitle, url: linkUrl, category: category });
-            syncToCloud();
-            document.getElementById('xhs-raw-text').value = "";
-            renderInspirations();
-            window.showToast("灵感已保存！");
-        };
-        window.removeInspiration = function(idx) { globalInspirations.splice(idx, 1); syncToCloud(); renderInspirations(); };
-        function renderInspirations() {
-            const container = document.getElementById('inspiration-list-container');
-            if(!container) return;
-            container.innerHTML = globalInspirations.map((item, idx) => `
-                <div class="bg-paper p-3.5 rounded-xl border border-sand flex justify-between items-start">
-                    <div class="space-y-1 flex-1 pr-2">
-                        <span class="px-2 py-0.5 bg-terracotta/10 text-terracotta font-bold rounded text-[10px]">${item.category}</span>
-                        <p class="font-medium text-stone-800 leading-snug">${item.title}</p>
-                        ${item.url ? `<a href="${item.url}" target="_blank" class="inline-flex items-center text-[11px] bg-red-50 text-red-600 px-2 py-0.5 rounded font-bold mt-1">打开原链 ➔</a>` : ''}
+            // 时间轴展现
+            html += `
+                <div class="space-y-3 pt-2">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-serif font-bold text-stone-800 text-sm flex items-center">
+                            <i class="fa-solid fa-clock text-aegean mr-2"></i> 行程时间节点明细
+                        </h3>
+                        ${isEditMode ? `<button onclick="addTimelineStep(${selectedDay})" class="bg-aegean hover:bg-aegean/90 text-white text-xs font-bold px-2.5 py-1 rounded-lg transition"><i class="fa-solid fa-plus mr-1"></i>新增时间节点</button>` : ''}
                     </div>
-                    <button onclick="window.removeInspiration(${idx})" class="text-warmGray hover:text-red-600"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-            `).join('');
-        }
+                    <div class="relative border-l-2 border-sand/80 ml-3 pl-4 space-y-4 py-1 text-xs">
+            `;
 
-        window.promptCitySelection = function() {
-            const input = document.getElementById('smart-rest-input').value.trim();
-            if(!input) { window.showToast("请输入餐厅名称或链接！"); return; }
-            pendingRestaurantInput = input;
-            
-            document.getElementById('modal-rest-preview').innerText = `待添加：${input}`;
-            document.getElementById('city-modal').classList.remove('hidden');
-        };
-
-        window.closeCityModal = function() {
-            document.getElementById('city-modal').classList.add('hidden');
-            pendingRestaurantInput = "";
-        };
-
-        window.confirmCitySelect = function(city) {
-            if(!pendingRestaurantInput) return;
-            const input = pendingRestaurantInput;
-
-            const urlMatch = input.match(/(https?:\/\/[^\s]+)/g);
-            const linkUrl = urlMatch ? urlMatch[0] : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(input + ' ' + city)}`;
-            let name = input.replace(/(https?:\/\/[^\s]+)/g, '').trim() || "精选餐厅";
-
-            const newRest = {
-                city, name, address: "核心区/手动选定", dish: "地道招牌菜", note: "用户自定义添加", url: linkUrl
-            };
-
-            const cityOrder = { "🇬🇷 圣托里尼": 1, "🇮🇹 罗马": 2, "🇮🇹 那不勒斯": 3, "🇮🇹 卡普里": 4, "🇬🇷 雅典": 5 };
-            
-            globalRestaurants.push(newRest);
-            globalRestaurants.sort((a, b) => (cityOrder[a.city] || 99) - (cityOrder[b.city] || 99));
-
-            syncToCloud();
-            document.getElementById('smart-rest-input').value = "";
-            closeCityModal();
-            renderRestaurants();
-            window.showToast(`餐厅已成功加入 ${city} 行程段！`);
-        };
-
-        window.removeRestaurant = function(idx) { globalRestaurants.splice(idx, 1); syncToCloud(); renderRestaurants(); };
-        function renderRestaurants() {
-            const tbody = document.getElementById('restaurant-table-body');
-            if(!tbody) return;
-            tbody.innerHTML = globalRestaurants.map((r, idx) => `
-                <tr>
-                    <td class="font-bold text-terracotta">${r.city}</td>
-                    <td class="font-bold">${r.name}</td>
-                    <td>${r.address}</td>
-                    <td>${r.dish}</td>
-                    <td>${r.note}</td>
-                    <td class="space-x-2">
-                        <a href="${r.url}" target="_blank" class="text-aegean underline font-medium">地图 ➔</a>
-                        <button onclick="window.removeRestaurant(${idx})" class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        window.addNewHotel = function() {
-            const name = document.getElementById('hotel-name').value.trim();
-            const dates = document.getElementById('hotel-dates').value.trim();
-            const price = document.getElementById('hotel-price').value.trim();
-            let link = document.getElementById('hotel-link').value.trim();
-            const platform = document.getElementById('hotel-platform').value;
-
-            if(!name) { window.showToast("请输入酒店名称！"); return; }
-            if(!link) {
-                link = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name + ' hotel')}`;
+            if (day.timeline && day.timeline.length > 0) {
+                day.timeline.forEach((item, index) => {
+                    html += `
+                        <div class="relative group">
+                            <div class="absolute -left-[23px] top-1 w-3 h-3 rounded-full bg-aegean border-2 border-white shadow"></div>
+                            ${isEditMode ? `
+                                <div class="bg-paper p-2.5 rounded-xl border border-sand space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <input type="text" value="${item.time}" onchange="updateTimelineItem(${selectedDay}, ${index}, 'time', this.value)" placeholder="时间(如 09:00)" class="w-28 p-1.5 border border-sand rounded bg-white font-mono text-xs">
+                                        <button onclick="deleteTimelineStep(${selectedDay}, ${index})" class="text-red-500 hover:text-red-700 text-xs px-2 py-1"><i class="fa-solid fa-trash"></i> 删除节点</button>
+                                    </div>
+                                    <textarea onchange="updateTimelineItem(${selectedDay}, ${index}, 'text', this.value)" class="w-full p-2 border border-sand rounded bg-white text-xs">${item.text}</textarea>
+                                </div>
+                            ` : `
+                                <div class="flex flex-col sm:flex-row sm:items-start space-y-0.5 sm:space-y-0">
+                                    <span class="font-mono font-bold text-terracotta w-24 flex-shrink-0">${item.time}</span>
+                                    <span class="text-stone-700 leading-relaxed">${item.text}</span>
+                                </div>
+                            `}
+                        </div>
+                    `;
+                });
+            } else {
+                html += `<div class="text-warmGray text-xs italic">暂无行程时间节点，点击“开启每日路线编辑”添加。</div>`;
             }
 
-            globalHotels.push({ name, dates: dates || "待定日期", price: price || "价格待定", platform, booked: false, link });
-            syncToCloud();
-            document.getElementById('hotel-name').value = "";
-            document.getElementById('hotel-dates').value = "";
-            document.getElementById('hotel-price').value = "";
-            document.getElementById('hotel-link').value = "";
-            renderHotels();
-            window.showToast("酒店已添加并自动生成谷歌地图链接！");
-        };
+            html += `</div></div>`;
 
-        window.toggleHotelBooked = function(idx) { globalHotels[idx].booked = !globalHotels[idx].booked; syncToCloud(); renderHotels(); };
-        window.removeHotel = function(idx) { globalHotels.splice(idx, 1); syncToCloud(); renderHotels(); };
-        function renderHotels() {
-            const tbody = document.getElementById('hotel-table-body');
-            if(!tbody) return;
-            tbody.innerHTML = globalHotels.map((h, idx) => `
-                <tr>
-                    <td><label class="cursor-pointer"><input type="checkbox" ${h.booked ? 'checked' : ''} onchange="window.toggleHotelBooked(${idx})" class="rounded text-terracotta"> <span class="${h.booked ? 'text-emerald-600 font-bold' : 'text-amber-600'}">${h.booked ? '已预定' : '备选中'}</span></label></td>
-                    <td class="font-bold text-ink">${h.name}</td>
-                    <td>${h.dates}</td>
-                    <td>${h.price}</td>
-                    <td><span class="bg-sand/40 px-2 py-0.5 rounded text-[10px] font-bold">${h.platform}</span></td>
-                    <td class="space-x-2">
-                        <a href="${h.link}" target="_blank" class="text-aegean underline">谷歌链接</a>
-                        <button onclick="window.removeHotel(${idx})" class="text-red-500"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-            `).join('');
+            // Tips 与地图展示
+            if (day.tips) {
+                html += `
+                    <div class="bg-amber-50/70 border border-amber-200/60 rounded-xl p-3 text-xs text-amber-900 flex items-start space-x-2">
+                        <i class="fa-solid fa-lightbulb text-amber-500 mt-0.5 flex-shrink-0"></i>
+                        <div><span class="font-bold">行程提示：</span>${day.tips}</div>
+                    </div>
+                `;
+            }
+
+            if (day.mapUrl) {
+                const embedUrl = getEmbedMapUrl(day.mapUrl);
+                html += `
+                    <div class="space-y-2 pt-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-stone-700"><i class="fa-solid fa-map-location-dot text-aegean mr-1"></i> Google 地图全景路线规化</span>
+                            <a href="${day.mapUrl}" target="_blank" class="text-aegean font-bold hover:underline"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>在手机 Google Maps 打开</a>
+                        </div>
+                        ${embedUrl ? `
+                            <div class="w-full h-48 md:h-64 rounded-xl overflow-hidden border border-sand shadow-inner">
+                                <iframe src="${embedUrl}" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
+            html += `</div>`;
+            container.innerHTML = html;
         }
 
-        window.addExpenseItem = function() {
+        window.updateDayField = function(dayNum, field, val) {
+            if (dayData[dayNum]) {
+                dayData[dayNum][field] = val;
+            }
+        };
+
+        window.addTimelineStep = function(dayNum) {
+            if (!dayData[dayNum].timeline) dayData[dayNum].timeline = [];
+            dayData[dayNum].timeline.push({ id: Date.now(), time: "12:00", text: "新增行程事项..." });
+            renderDayDetails();
+        };
+
+        window.updateTimelineItem = function(dayNum, index, field, val) {
+            if (dayData[dayNum] && dayData[dayNum].timeline && dayData[dayNum].timeline[index]) {
+                dayData[dayNum].timeline[index][field] = val;
+            }
+        };
+
+        window.deleteTimelineStep = function(dayNum, index) {
+            if (dayData[dayNum] && dayData[dayNum].timeline) {
+                dayData[dayNum].timeline.splice(index, 1);
+                renderDayDetails();
+            }
+        };
+
+        window.resetToDefaultItinerary = function() {
+            dayData = JSON.parse(JSON.stringify(defaultDayData));
+            renderDayPicker();
+            renderDayDetails();
+            showToast("已重置为初始定稿方案");
+        };
+
+        // ==================== TAB 2: 待确认事项逻辑 ====================
+        function renderPending() {
+            const container = document.getElementById('pending-cards-container');
+            if (!container) return;
+            let html = '';
+
+            pendingData.forEach(item => {
+                const color = item.statusColor || 'bg-amber-100 text-amber-800';
+                html += `
+                    <div class="bg-paper p-4 rounded-xl border border-sand space-y-2 flex flex-col justify-between">
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between items-start gap-2">
+                                <h4 class="font-bold text-stone-800 text-sm">${item.title}</h4>
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${color} flex-shrink-0">${item.status}</span>
+                            </div>
+                            <p class="text-stone-600 text-xs leading-relaxed">${item.desc}</p>
+                        </div>
+                        <div class="flex justify-end space-x-2 border-t border-sand/40 pt-2 mt-2">
+                            <button onclick="editPendingItem(${item.id})" class="text-aegean hover:underline font-bold text-xs"><i class="fa-solid fa-pen-to-square mr-1"></i>修改</button>
+                            <button onclick="askDeletePending(${item.id})" class="text-red-500 hover:underline font-bold text-xs"><i class="fa-solid fa-trash mr-1"></i>删除</button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html || `<p class="text-warmGray text-xs italic col-span-2">暂无待事项。</p>`;
+        }
+
+        window.savePendingItem = function() {
+            const title = document.getElementById('pending-title').value.trim();
+            const status = document.getElementById('pending-status').value.trim() || '待定';
+            const desc = document.getElementById('pending-desc').value.trim();
+
+            if (!title) {
+                showToast("请填写事项标题！");
+                return;
+            }
+
+            if (editingPendingId !== null) {
+                const idx = pendingData.findIndex(p => p.id === editingPendingId);
+                if (idx !== -1) {
+                    pendingData[idx].title = title;
+                    pendingData[idx].status = status;
+                    pendingData[idx].desc = desc;
+                }
+                editingPendingId = null;
+                showToast("已更新待办事项！");
+            } else {
+                pendingData.push({
+                    id: Date.now(),
+                    title,
+                    status,
+                    statusColor: 'bg-amber-100 text-amber-800',
+                    desc
+                });
+                showToast("已新增待办事项！");
+            }
+
+            cancelPendingEdit();
+            renderPending();
+        };
+
+        window.editPendingItem = function(id) {
+            const item = pendingData.find(p => p.id === id);
+            if (!item) return;
+            editingPendingId = id;
+            document.getElementById('pending-title').value = item.title;
+            document.getElementById('pending-status').value = item.status;
+            document.getElementById('pending-desc').value = item.desc;
+
+            document.getElementById('pending-btn-label').innerText = "保存";
+            document.getElementById('btn-pending-cancel').classList.remove('hidden');
+        };
+
+        window.cancelPendingEdit = function() {
+            editingPendingId = null;
+            document.getElementById('pending-title').value = '';
+            document.getElementById('pending-status').value = '';
+            document.getElementById('pending-desc').value = '';
+            document.getElementById('pending-btn-label').innerText = "新增";
+            document.getElementById('btn-pending-cancel').classList.add('hidden');
+        };
+
+        window.askDeletePending = function(id) {
+            openDeleteModal("确认要删除这个待办事项吗？", () => {
+                pendingData = pendingData.filter(p => p.id !== id);
+                renderPending();
+                showToast("已删除该待办事项！");
+            });
+        };
+
+        // ==================== TAB 3: 酒店看板逻辑 ====================
+        function renderHotels() {
+            const tbody = document.getElementById('hotel-table-body');
+            if (!tbody) return;
+            let html = '';
+
+            hotelData.forEach(h => {
+                const mapLink = `https://maps.google.com/?q=${encodeURIComponent(h.address || h.name)}`;
+                html += `
+                    <tr>
+                        <td class="font-mono font-bold text-terracotta">${h.dates}</td>
+                        <td class="font-bold text-stone-800">${h.name}</td>
+                        <td><span class="bg-paper px-2 py-0.5 rounded border border-sand text-stone-700">${h.city}</span></td>
+                        <td>
+                            <a href="${mapLink}" target="_blank" class="text-aegean font-bold hover:underline flex items-center">
+                                <i class="fa-solid fa-location-dot mr-1 text-red-500"></i> ${h.address}
+                            </a>
+                        </td>
+                        <td class="text-stone-600 text-xs">${h.note || '-'}</td>
+                        <td>
+                            <div class="flex space-x-2">
+                                <button onclick="editHotelItem(${h.id})" class="text-aegean hover:underline font-bold"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button onclick="askDeleteHotel(${h.id})" class="text-red-500 hover:underline font-bold"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html || `<tr><td colspan="6" class="text-center text-warmGray py-3">暂无预订酒店信息</td></tr>`;
+        }
+
+        window.saveHotelItem = function() {
+            const name = document.getElementById('hotel-name').value.trim();
+            const dates = document.getElementById('hotel-dates').value.trim();
+            const city = document.getElementById('hotel-city').value.trim();
+            const address = document.getElementById('hotel-address').value.trim();
+            const note = document.getElementById('hotel-note').value.trim();
+
+            if (!name) {
+                showToast("请填写酒店名称！");
+                return;
+            }
+
+            if (editingHotelId !== null) {
+                const idx = hotelData.findIndex(h => h.id === editingHotelId);
+                if (idx !== -1) {
+                    hotelData[idx] = { id: editingHotelId, name, dates, city, address, note };
+                }
+                editingHotelId = null;
+                showToast("已更新酒店信息！");
+            } else {
+                hotelData.push({ id: Date.now(), name, dates, city, address, note });
+                showToast("已新增酒店信息！");
+            }
+
+            cancelHotelEdit();
+            renderHotels();
+        };
+
+        window.editHotelItem = function(id) {
+            const item = hotelData.find(h => h.id === id);
+            if (!item) return;
+            editingHotelId = id;
+            document.getElementById('hotel-name').value = item.name;
+            document.getElementById('hotel-dates').value = item.dates;
+            document.getElementById('hotel-city').value = item.city;
+            document.getElementById('hotel-address').value = item.address;
+            document.getElementById('hotel-note').value = item.note;
+
+            document.getElementById('hotel-btn-label').innerText = "保存";
+            document.getElementById('btn-hotel-cancel').classList.remove('hidden');
+        };
+
+        window.cancelHotelEdit = function() {
+            editingHotelId = null;
+            document.getElementById('hotel-name').value = '';
+            document.getElementById('hotel-dates').value = '';
+            document.getElementById('hotel-city').value = '';
+            document.getElementById('hotel-address').value = '';
+            document.getElementById('hotel-note').value = '';
+            document.getElementById('hotel-btn-label').innerText = "新增";
+            document.getElementById('btn-hotel-cancel').classList.add('hidden');
+        };
+
+        window.askDeleteHotel = function(id) {
+            openDeleteModal("确认删除此酒店预订记录？", () => {
+                hotelData = hotelData.filter(h => h.id !== id);
+                renderHotels();
+                showToast("已删除酒店记录！");
+            });
+        };
+
+        // ==================== TAB 4: 交通明细逻辑 ====================
+        function renderTransport() {
+            const tbody = document.getElementById('transport-table-body');
+            if (!tbody) return;
+            let html = '';
+
+            transportData.forEach(t => {
+                html += `
+                    <tr>
+                        <td class="font-mono font-bold text-terracotta">${t.date}</td>
+                        <td class="font-bold">${t.type}</td>
+                        <td class="font-mono font-bold text-aegean">${t.code}</td>
+                        <td class="font-bold text-stone-800">${t.route}</td>
+                        <td class="font-mono text-stone-600">${t.time}</td>
+                        <td class="text-xs text-stone-600">${t.note || '-'}</td>
+                        <td>
+                            <div class="flex space-x-2">
+                                <button onclick="editTransportItem(${t.id})" class="text-aegean hover:underline font-bold"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button onclick="askDeleteTransport(${t.id})" class="text-red-500 hover:underline font-bold"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html || `<tr><td colspan="7" class="text-center text-warmGray py-3">暂无交通记录</td></tr>`;
+        }
+
+        window.saveTransportItem = function() {
+            const date = document.getElementById('trans-date').value.trim();
+            const type = document.getElementById('trans-type').value.trim() || '✈️ 航班';
+            const code = document.getElementById('trans-code').value.trim();
+            const route = document.getElementById('trans-route').value.trim();
+            const time = document.getElementById('trans-time').value.trim();
+            const note = document.getElementById('trans-note').value.trim();
+
+            if (!code || !route) {
+                showToast("请填写班次和路线！");
+                return;
+            }
+
+            if (editingTransportId !== null) {
+                const idx = transportData.findIndex(t => t.id === editingTransportId);
+                if (idx !== -1) {
+                    transportData[idx] = { id: editingTransportId, date, type, code, route, time, note };
+                }
+                editingTransportId = null;
+                showToast("已更新交通记录！");
+            } else {
+                transportData.push({ id: Date.now(), date, type, code, route, time, note });
+                showToast("已新增交通记录！");
+            }
+
+            cancelTransportEdit();
+            renderTransport();
+        };
+
+        window.editTransportItem = function(id) {
+            const item = transportData.find(t => t.id === id);
+            if (!item) return;
+            editingTransportId = id;
+            document.getElementById('trans-date').value = item.date;
+            document.getElementById('trans-type').value = item.type;
+            document.getElementById('trans-code').value = item.code;
+            document.getElementById('trans-route').value = item.route;
+            document.getElementById('trans-time').value = item.time;
+            document.getElementById('trans-note').value = item.note;
+
+            document.getElementById('trans-btn-label').innerText = "保存";
+            document.getElementById('btn-trans-cancel').classList.remove('hidden');
+        };
+
+        window.cancelTransportEdit = function() {
+            editingTransportId = null;
+            document.getElementById('trans-date').value = '';
+            document.getElementById('trans-type').value = '';
+            document.getElementById('trans-code').value = '';
+            document.getElementById('trans-route').value = '';
+            document.getElementById('trans-time').value = '';
+            document.getElementById('trans-note').value = '';
+            document.getElementById('trans-btn-label').innerText = "保存";
+            document.getElementById('btn-trans-cancel').classList.add('hidden');
+        };
+
+        window.askDeleteTransport = function(id) {
+            openDeleteModal("确认删除此项交通记录？", () => {
+                transportData = transportData.filter(t => t.id !== id);
+                renderTransport();
+                showToast("已删除交通记录！");
+            });
+        };
+
+        // ==================== TAB 5: 美食种草逻辑 ====================
+        function renderFood() {
+            const tbody = document.getElementById('food-table-body');
+            const filterCity = document.getElementById('food-filter-city')?.value || 'ALL';
+            if (!tbody) return;
+
+            let html = '';
+            const filteredList = foodData.filter(f => filterCity === 'ALL' || f.city === filterCity);
+
+            filteredList.forEach(f => {
+                const mapLink = f.mapUrl || `https://maps.google.com/?q=${encodeURIComponent(f.name)}`;
+                html += `
+                    <tr>
+                        <td><span class="bg-paper px-2.5 py-1 rounded-md border border-sand font-bold text-stone-700">${f.city}</span></td>
+                        <td class="font-bold text-stone-800">${f.name}</td>
+                        <td>
+                            <a href="${mapLink}" target="_blank" class="text-aegean font-bold hover:underline flex items-center">
+                                <i class="fa-solid fa-map-location-dot text-red-500 mr-1.5"></i> 一键地图导航/种草链接
+                            </a>
+                        </td>
+                        <td>
+                            <div class="flex space-x-2">
+                                <button onclick="editFoodItem(${f.id})" class="text-aegean hover:underline font-bold"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button onclick="askDeleteFood(${f.id})" class="text-red-500 hover:underline font-bold"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html || `<tr><td colspan="4" class="text-center text-warmGray py-3">该地区暂无种草餐厅</td></tr>`;
+        }
+
+        window.saveFoodItem = function() {
+            const city = document.getElementById('food-city').value;
+            const name = document.getElementById('food-name').value.trim();
+            const mapUrl = document.getElementById('food-mapurl').value.trim();
+
+            if (!name) {
+                showToast("请填写餐厅名称或亮点！");
+                return;
+            }
+
+            if (editingFoodId !== null) {
+                const idx = foodData.findIndex(f => f.id === editingFoodId);
+                if (idx !== -1) {
+                    foodData[idx] = { id: editingFoodId, city, name, mapUrl };
+                }
+                editingFoodId = null;
+                showToast("已更新美食种草！");
+            } else {
+                foodData.push({ id: Date.now(), city, name, mapUrl });
+                showToast("已新增美食种草！");
+            }
+
+            cancelFoodEdit();
+            renderFood();
+        };
+
+        window.editFoodItem = function(id) {
+            const item = foodData.find(f => f.id === id);
+            if (!item) return;
+            editingFoodId = id;
+            document.getElementById('food-city').value = item.city;
+            document.getElementById('food-name').value = item.name;
+            document.getElementById('food-mapurl').value = item.mapUrl || '';
+
+            document.getElementById('food-btn-label').innerText = "保存";
+            document.getElementById('btn-food-cancel').classList.remove('hidden');
+        };
+
+        window.cancelFoodEdit = function() {
+            editingFoodId = null;
+            document.getElementById('food-name').value = '';
+            document.getElementById('food-mapurl').value = '';
+            document.getElementById('food-btn-label').innerText = "保存";
+            document.getElementById('btn-food-cancel').classList.add('hidden');
+        };
+
+        window.askDeleteFood = function(id) {
+            openDeleteModal("确认删除此餐厅种草？", () => {
+                foodData = foodData.filter(f => f.id !== id);
+                renderFood();
+                showToast("已删除餐厅种草！");
+            });
+        };
+
+        // ==================== TAB 6: AA 账本逻辑 ====================
+        function renderLedger() {
+            const tbody = document.getElementById('ledger-table-body');
+            if (!tbody) return;
+
+            let totalCNY = 0;
+            let totalEUR = 0;
+            let html = '';
+
+            ledgerData.forEach(e => {
+                let cnyVal = 0;
+                if (e.currency === 'EUR') {
+                    cnyVal = e.amount * currentExchangeRate;
+                    totalEUR += parseFloat(e.amount);
+                } else {
+                    cnyVal = parseFloat(e.amount);
+                }
+                totalCNY += cnyVal;
+
+                html += `
+                    <tr>
+                        <td class="font-bold text-stone-800">${e.title}</td>
+                        <td class="font-mono font-bold text-olive">${e.currency === 'EUR' ? '€' : '¥'}${parseFloat(e.amount).toFixed(2)}</td>
+                        <td class="font-mono font-bold text-terracotta">¥${cnyVal.toFixed(2)}</td>
+                        <td><span class="bg-paper px-2 py-0.5 rounded border border-sand text-xs text-stone-700">${e.payment}</span></td>
+                        <td><span class="font-bold text-aegean">${e.payer}</span></td>
+                        <td>
+                            <div class="flex space-x-2">
+                                <button onclick="editExpenseItem(${e.id})" class="text-aegean hover:underline font-bold"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button onclick="askDeleteExpense(${e.id})" class="text-red-500 hover:underline font-bold"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html || `<tr><td colspan="6" class="text-center text-warmGray py-3">暂无消费记账记录</td></tr>`;
+
+            // 更新仪表盘数据
+            document.getElementById('ledger-total-cny').innerText = `¥${totalCNY.toFixed(2)}`;
+            document.getElementById('ledger-per-person').innerText = `¥${(totalCNY / 2).toFixed(2)}`;
+            document.getElementById('ledger-total-eur').innerText = `€${totalEUR.toFixed(2)}`;
+            document.getElementById('ledger-count').innerText = `${ledgerData.length} 笔`;
+        }
+
+        window.saveExpenseItem = function() {
             const title = document.getElementById('expense-title').value.trim();
-            const rawAmount = parseFloat(document.getElementById('expense-amount').value);
+            const amount = parseFloat(document.getElementById('expense-amount').value);
             const currency = document.getElementById('expense-currency').value;
             const payment = document.getElementById('expense-payment').value;
             const payer = document.getElementById('expense-payer').value;
-            if(!title || isNaN(rawAmount)) { window.showToast("请填写完整的项目和有效金额！"); return; }
 
-            let amountEur = currency === 'EUR' ? rawAmount : rawAmount / currentExchangeRate;
-            globalLedger.unshift({ title, amountEur, rawAmount, currency, payment, payer });
-            syncToCloud();
-            document.getElementById('expense-title').value = "";
-            document.getElementById('expense-amount').value = "";
+            if (!title || isNaN(amount) || amount <= 0) {
+                showToast("请填写消费名称和有效金额！");
+                return;
+            }
+
+            if (editingExpenseId !== null) {
+                const idx = ledgerData.findIndex(e => e.id === editingExpenseId);
+                if (idx !== -1) {
+                    ledgerData[idx] = { id: editingExpenseId, title, amount, currency, payment, payer };
+                }
+                editingExpenseId = null;
+                showToast("已修改记账项目！");
+            } else {
+                ledgerData.push({ id: Date.now(), title, amount, currency, payment, payer });
+                showToast("已成功新增一笔消费！");
+            }
+
+            cancelExpenseEdit();
             renderLedger();
-            window.showToast("记账成功！");
         };
-        window.removeExpenseItem = function(idx) { globalLedger.splice(idx, 1); syncToCloud(); renderLedger(); };
-        function renderLedger() {
-            const tbody = document.getElementById('ledger-table-body');
-            if(!tbody) return;
-            let totalEur = 0;
-            tbody.innerHTML = globalLedger.map((item, idx) => {
-                totalEur += item.amountEur;
-                const cny = (item.amountEur * currentExchangeRate).toFixed(2);
-                const displayOrig = item.currency === 'EUR' ? `€${item.rawAmount.toFixed(2)}` : `¥${item.rawAmount.toFixed(2)}`;
-                return `
-                    <tr>
-                        <td class="font-bold text-stone-800">${item.title}</td>
-                        <td class="font-mono text-terracotta font-bold">${displayOrig}</td>
-                        <td class="font-mono text-stone-700">¥${cny}</td>
-                        <td><span class="bg-paper px-2 py-0.5 rounded font-semibold text-[11px]">${item.payment}</span></td>
-                        <td><span class="text-aegean font-medium">${item.payer}</span></td>
-                        <td><button onclick="window.removeExpenseItem(${idx})" class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button></td>
-                    </tr>
+
+        window.editExpenseItem = function(id) {
+            const item = ledgerData.find(e => e.id === id);
+            if (!item) return;
+            editingExpenseId = id;
+            document.getElementById('expense-title').value = item.title;
+            document.getElementById('expense-amount').value = item.amount;
+            document.getElementById('expense-currency').value = item.currency;
+            document.getElementById('expense-payment').value = item.payment;
+            document.getElementById('expense-payer').value = item.payer;
+
+            document.getElementById('ledger-btn-label').innerText = "保存";
+            document.getElementById('btn-ledger-cancel').classList.remove('hidden');
+        };
+
+        window.cancelExpenseEdit = function() {
+            editingExpenseId = null;
+            document.getElementById('expense-title').value = '';
+            document.getElementById('expense-amount').value = '';
+            document.getElementById('ledger-btn-label').innerText = "保存";
+            document.getElementById('btn-ledger-cancel').classList.add('hidden');
+        };
+
+        window.askDeleteExpense = function(id) {
+            openDeleteModal("确认删除这笔账目？", () => {
+                ledgerData = ledgerData.filter(e => e.id !== id);
+                renderLedger();
+                showToast("已删除账目！");
+            });
+        };
+
+        // ==================== TAB 7: 清单逻辑 ====================
+        function renderChecklist() {
+            const container = document.getElementById('checklist-container');
+            const progressEl = document.getElementById('checklist-progress');
+            if (!container) return;
+
+            const categories = ['行前打卡', '证件财务', '电子数码', '随身衣物', '日用药品'];
+            let html = '';
+
+            let completedCount = 0;
+            const totalCount = checklistData.length;
+
+            categories.forEach(cat => {
+                const catItems = checklistData.filter(c => c.category === cat);
+                if (catItems.length === 0) return;
+
+                html += `
+                    <div class="bg-paper p-4 rounded-xl border border-sand space-y-2">
+                        <h4 class="font-bold text-aegean text-xs flex items-center border-b border-sand/60 pb-1.5">
+                            <i class="fa-solid fa-tags text-terracotta mr-1.5"></i> ${cat} (${catItems.filter(i => i.completed).length}/${catItems.length})
+                        </h4>
+                        <div class="space-y-1.5 text-xs">
                 `;
-            }).join('');
 
-            const totalCny = totalEur * currentExchangeRate;
-            const perPerson = totalCny / 2;
-            document.getElementById('ledger-total-eur').innerText = `€${totalEur.toFixed(2)}`;
-            document.getElementById('ledger-total-cny').innerText = `¥${totalCny.toFixed(2)}`;
-            document.getElementById('ledger-per-person').innerText = `¥${perPerson.toFixed(2)}`;
-            document.getElementById('ledger-count').innerText = `${globalLedger.length} 笔`;
+                catItems.forEach(item => {
+                    if (item.completed) completedCount++;
+                    html += `
+                        <div class="flex items-center justify-between p-1.5 bg-white rounded border border-sand/40 hover:border-aegean/40 transition">
+                            <label class="flex items-center space-x-2 cursor-pointer flex-1">
+                                <input type="checkbox" ${item.completed ? 'checked' : ''} onchange="toggleChecklistItem(${item.id})" class="rounded text-aegean focus:ring-aegean w-4 h-4">
+                                <span class="${item.completed ? 'line-through text-stone-400 font-medium' : 'text-stone-800 font-bold'}">${item.text}</span>
+                            </label>
+                            <div class="flex space-x-1 ml-2">
+                                <button onclick="editChecklistItem(${item.id})" class="text-warmGray hover:text-aegean px-1"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button onclick="askDeleteChecklist(${item.id})" class="text-warmGray hover:text-red-500 px-1"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+            });
+
+            container.innerHTML = html || `<p class="text-warmGray text-xs italic">暂无 Checklist 待办项。</p>`;
+            if (progressEl) progressEl.innerText = `${completedCount}/${totalCount}`;
         }
 
-        window.addInsuranceSOS = function() {
-            const name = document.getElementById('sos-insurance-name').value.trim();
-            const phone = document.getElementById('sos-insurance-phone').value.trim();
-            const policy = document.getElementById('sos-insurance-policy').value.trim();
-            if(!name || !phone) { window.showToast("请填写保险公司及救援电话！"); return; }
-            globalSOS.push({ name, phone, policy: policy || "未填保单号" });
-            syncToCloud();
-            document.getElementById('sos-insurance-name').value = "";
-            document.getElementById('sos-insurance-phone').value = "";
-            document.getElementById('sos-insurance-policy').value = "";
-            renderSOS();
-            window.showToast("救援电话已保存！");
-        };
-        window.removeSOS = function(idx) { globalSOS.splice(idx, 1); syncToCloud(); renderSOS(); };
-        function renderSOS() {
-            const container = document.getElementById('sos-insurance-container');
-            if(!container) return;
-            container.innerHTML = globalSOS.map((s, idx) => `
-                <div class="bg-white p-2.5 rounded-lg border border-sand flex justify-between items-center text-xs">
-                    <div>
-                        <span class="font-bold text-olive">${s.name}</span>
-                        <p class="text-stone-700 font-mono">📞 救援电话: <a href="tel:${s.phone}" class="text-aegean underline">${s.phone}</a> | 保单: ${s.policy}</p>
-                    </div>
-                    <button onclick="window.removeSOS(${idx})" class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
-                </div>
-            `).join('');
-        }
-
-        window.addNewChecklistItem = function() {
-            const cat = document.getElementById('new-check-cat').value;
-            const text = document.getElementById('new-check-text').value.trim();
-            if(!text) { window.showToast("请输入待办内容！"); return; }
-            const key = `${cat}_${Date.now()}`;
-            globalChecklist[key] = { text, checked: false };
-            syncToCloud();
-            document.getElementById('new-check-text').value = "";
-            renderChecklist();
-            window.showToast("任务已加入 Checklist！");
-        };
-        window.toggleCheckItem = function(key) {
-            if(globalChecklist[key]) {
-                globalChecklist[key].checked = !globalChecklist[key].checked;
-                syncToCloud();
+        window.toggleChecklistItem = function(id) {
+            const item = checklistData.find(c => c.id === id);
+            if (item) {
+                item.completed = !item.completed;
                 renderChecklist();
             }
         };
-        window.removeCheckItem = function(key) {
-            delete globalChecklist[key];
-            syncToCloud();
+
+        window.saveChecklistItem = function() {
+            const cat = document.getElementById('new-check-cat').value;
+            const text = document.getElementById('new-check-text').value.trim();
+
+            if (!text) {
+                showToast("请输入待办内容！");
+                return;
+            }
+
+            if (editingChecklistId !== null) {
+                const idx = checklistData.findIndex(c => c.id === editingChecklistId);
+                if (idx !== -1) {
+                    checklistData[idx].category = cat;
+                    checklistData[idx].text = text;
+                }
+                editingChecklistId = null;
+                showToast("已修改待办项！");
+            } else {
+                checklistData.push({ id: Date.now(), category: cat, text, completed: false });
+                showToast("已新增待办项！");
+            }
+
+            cancelChecklistEdit();
             renderChecklist();
         };
 
-        function renderChecklist() {
-            const container = document.getElementById('checklist-container');
-            if(!container) return;
+        window.editChecklistItem = function(id) {
+            const item = checklistData.find(c => c.id === id);
+            if (!item) return;
+            editingChecklistId = id;
+            document.getElementById('new-check-cat').value = item.category;
+            document.getElementById('new-check-text').value = item.text;
 
-            const categories = ["行前打卡", "证件财务", "电子数码", "衣物药品"];
-            const colors = { "行前打卡": "text-terracotta", "证件财务": "text-aegean", "电子数码": "text-olive", "衣物药品": "text-amber-600" };
+            document.getElementById('check-btn-label').innerText = "保存";
+            document.getElementById('btn-check-cancel').classList.remove('hidden');
+        };
 
-            container.innerHTML = categories.map(cat => {
-                let itemsHTML = "";
-                Object.keys(globalChecklist).forEach(key => {
-                    if(key.startsWith(cat)) {
-                        const item = globalChecklist[key];
-                        itemsHTML += `
-                            <div class="flex items-center justify-between p-1.5 hover:bg-white/50 rounded transition">
-                                <label class="flex items-center space-x-2 cursor-pointer flex-1">
-                                    <input type="checkbox" onchange="window.toggleCheckItem('${key}')" ${item.checked ? 'checked' : ''} class="rounded text-terracotta">
-                                    <span class="${item.checked ? 'line-through text-warmGray' : 'text-stone-800'}">${item.text}</span>
-                                </label>
-                                <button onclick="window.removeCheckItem('${key}')" class="text-warmGray hover:text-red-600 text-[11px] px-1"><i class="fa-solid fa-xmark"></i></button>
-                            </div>
-                        `;
+        window.cancelChecklistEdit = function() {
+            editingChecklistId = null;
+            document.getElementById('new-check-text').value = '';
+            document.getElementById('check-btn-label').innerText = "新增项";
+            document.getElementById('btn-check-cancel').classList.add('hidden');
+        };
+
+        window.askDeleteChecklist = function(id) {
+            openDeleteModal("确认删除此清单待办项？", () => {
+                checklistData = checklistData.filter(c => c.id !== id);
+                renderChecklist();
+                showToast("已删除清单项！");
+            });
+        };
+
+        // ==================== 全局通用弹窗与导入导出 ====================
+        function openDeleteModal(msg, action) {
+            pendingDeleteAction = action;
+            const modal = document.getElementById('delete-modal');
+            const msgEl = document.getElementById('delete-modal-msg');
+            if (msgEl) msgEl.innerText = msg;
+            if (modal) modal.classList.remove('hidden');
+
+            const confirmBtn = document.getElementById('confirm-delete-btn');
+            confirmBtn.onclick = function() {
+                if (pendingDeleteAction) pendingDeleteAction();
+                closeDeleteModal();
+            };
+        }
+
+        window.closeDeleteModal = function() {
+            const modal = document.getElementById('delete-modal');
+            if (modal) modal.classList.add('hidden');
+            pendingDeleteAction = null;
+        };
+
+        // 导出路书数据为 JSON 文件
+        window.exportDataJSON = function() {
+            const fullPayload = {
+                version: "2026-v2",
+                exportTime: new Date().toISOString(),
+                exchangeRate: currentExchangeRate,
+                dayData,
+                pendingData,
+                hotelData,
+                transportData,
+                foodData,
+                ledgerData,
+                checklistData
+            };
+
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(fullPayload, null, 2));
+            const dlAnchorElem = document.createElement('a');
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", `希腊双人慢调路书备份_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(dlAnchorElem);
+            dlAnchorElem.click();
+            dlAnchorElem.remove();
+            showToast("成功导出路书 JSON 文件！");
+        };
+
+        // 导入 JSON 备份文件
+        window.importDataJSON = function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed.dayData) dayData = parsed.dayData;
+                    if (parsed.pendingData) pendingData = parsed.pendingData;
+                    if (parsed.hotelData) hotelData = parsed.hotelData;
+                    if (parsed.transportData) transportData = parsed.transportData;
+                    if (parsed.foodData) foodData = parsed.foodData;
+                    if (parsed.ledgerData) ledgerData = parsed.ledgerData;
+                    if (parsed.checklistData) checklistData = parsed.checklistData;
+                    if (parsed.exchangeRate) {
+                        currentExchangeRate = parsed.exchangeRate;
+                        const input = document.getElementById('exchange-rate-input');
+                        if (input) input.value = currentExchangeRate;
                     }
-                });
 
-                return `
-                    <div class="bg-paper p-4 rounded-xl border border-sand space-y-2">
-                        <h3 class="font-bold ${colors[cat] || 'text-ink'} border-b pb-2 text-sm">📌 ${cat}</h3>
-                        <div class="space-y-1 text-xs">${itemsHTML || '<p class="text-warmGray italic text-[11px]">暂无待办</p>'}</div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function calculateCountdown() {
-            const targetDate = new Date('2026-10-01T00:00:00');
-            const diffDays = Math.ceil((targetDate - new Date()) / (1000 * 60 * 60 * 24));
-            const badgeSpan = document.getElementById('days-left');
-            if (diffDays > 0) badgeSpan.innerText = diffDays;
-            else document.getElementById('countdown-badge').innerHTML = "🎉 旅途进行中！";
-        }
-
-        window.onload = function() {
-            calculateCountdown();
-            initFirebase();
-            selectDay(1);
+                    initApp();
+                    showToast("导入成功！已更新全套自定义路书");
+                } catch(err) {
+                    showToast("导入失败，文件格式不合法！");
+                }
+            };
+            reader.readAsText(file);
         };
     </script>
 </body>
