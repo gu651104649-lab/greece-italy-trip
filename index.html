@@ -1,1533 +1,1762 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>希腊爱琴海自驾之旅 · 2026浪漫双人云端路书</title>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<!-- FontAwesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-<script>
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-cream: '#FAF6F0',
-paper: '#F5EFE6',
-terracotta: '#D96B43',
-olive: '#6B8E23',
-aegean: '#1E56A0',
-aegeanLight: '#EBF3FA',
-sand: '#E6CCB2',
-ink: '#2D3748',
-warmGray: '#718096'
-},
-fontFamily: {
-serif: ['"Noto Serif SC"', '"Playfair Display"', 'serif'],
-sans: ['"Noto Sans SC"', 'sans-serif']
-}
-}
-}
-}
-</script>
-<style>
-body {
-background-color: #FAF6F0;
-background-image: radial-gradient(#E2D9CC 1px, transparent 1px);
-background-size: 24px 24px;
-color: #2D3748;
-font-family: 'Noto Sans SC', sans-serif;
-overflow-x: hidden;
-}
-.watercolor-card {
-background: rgba(255, 255, 255, 0.95);
-backdrop-filter: blur(8px);
-border: 2px solid #E6CCB2;
-border-radius: 20px;
-box-shadow: 4px 6px 15px rgba(30, 86, 160, 0.08);
-max-width: 100%;
-}
-.table-wrapper {
-width: 100%;
-overflow-x: auto;
--webkit-overflow-scrolling: touch;
-margin-bottom: 0.5rem;
-}
-.tbl-min {
-border-collapse: collapse;
-width: 100%;
-min-width: 680px;
-}
-.tbl-min th, .tbl-min td {
-border: none;
-border-bottom: 1px solid rgba(230,204,178,0.55);
-padding: 10px 12px;
-vertical-align: middle;
-white-space: nowrap;
-}
-.tbl-min thead th {
-background: rgba(245,239,230,0.85);
-color: #1E56A0;
-border-bottom: 2px solid #1E56A0;
-font-weight: 700;
-}
-.tbl-min tbody tr:nth-child(even) { background-color: rgba(245,239,230,0.45); }
-.tbl-min tbody tr:hover { background-color: rgba(30,86,160,0.06); }
-.tab-btn.active {
-background-color: #1E56A0;
-color: white;
-border-color: #1E56A0;
-box-shadow: 0 4px 12px rgba(30, 86, 160, 0.3);
-}
-.custom-scrollbar::-webkit-scrollbar { height: 4px; width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: #E6CCB2; border-radius: 4px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>希腊爱琴海自驾之旅 · 2026浪漫双人云端路书</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF6F0',
+                        paper: '#F5EFE6',
+                        terracotta: '#D96B43',
+                        olive: '#6B8E23',
+                        aegean: '#1E56A0',
+                        aegeanLight: '#EBF3FA',
+                        sand: '#E6CCB2',
+                        ink: '#2D3748',
+                        warmGray: '#718096'
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif SC"', '"Playfair Display"', 'serif'],
+                        sans: ['"Noto Sans SC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF6F0;
+            background-image: radial-gradient(#E2D9CC 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: #2D3748;
+            font-family: 'Noto Sans SC', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .watercolor-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 2px solid #E6CCB2;
+            border-radius: 20px;
+            box-shadow: 4px 6px 15px rgba(30, 86, 160, 0.08);
+            max-width: 100%;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 0.5rem;
+        }
+
+        .tbl-min { 
+            border-collapse: collapse; 
+            width: 100%;
+            min-width: 680px;
+        }
+        .tbl-min th, .tbl-min td {
+            border: none;
+            border-bottom: 1px solid rgba(230,204,178,0.55);
+            padding: 10px 12px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        .tbl-min thead th {
+            background: rgba(245,239,230,0.85);
+            color: #1E56A0;
+            border-bottom: 2px solid #1E56A0;
+            font-weight: 700;
+        }
+        .tbl-min tbody tr:nth-child(even) { background-color: rgba(245,239,230,0.45); }
+        .tbl-min tbody tr:hover { background-color: rgba(30,86,160,0.06); }
+
+        .tab-btn.active {
+            background-color: #1E56A0;
+            color: white;
+            border-color: #1E56A0;
+            box-shadow: 0 4px 12px rgba(30, 86, 160, 0.3);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { height: 4px; width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E6CCB2; border-radius: 4px; }
+    </style>
 </head>
 <body class="min-h-screen pb-20 md:pb-12 relative" onload="initApp()">
-<!-- 全局 Toast 提示 -->
-<div id="toast-notification" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-stone-800/90 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl backdrop-blur-sm transition-all duration-300 opacity-0 pointer-events-none flex items-center space-x-2">
-<i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
-<span id="toast-msg">操作成功！</span>
-</div>
-<!-- 全局通用删除确认 Modal -->
-<div id="delete-modal" class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center hidden backdrop-blur-sm p-4">
-<div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-sand space-y-4 text-center">
-<div class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center mx-auto text-xl">
-<i class="fa-solid fa-triangle-exclamation"></i>
-</div>
-<h3 class="font-bold text-stone-800 text-base">确认要删除此项吗？</h3>
-<p id="delete-modal-msg" class="text-xs text-warmGray">删除后无法直接撤销，请确认是否继续。</p>
-<div class="flex space-x-2 pt-2">
-<button onclick="closeDeleteModal()" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold rounded-xl text-xs transition">取消</button>
-<button id="confirm-delete-btn" class="flex-1 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl text-xs transition shadow-md">确认删除</button>
-</div>
-</div>
-</div>
-<!-- 顶部 Header -->
-<header class="max-w-5xl mx-auto pt-6 px-4 text-center">
-<div class="inline-block bg-sand/40 px-5 py-1 rounded-full text-xs font-semibold tracking-widest text-aegean mb-2 uppercase">
-🏛️ Greece Travel Booklet · 2026.10.01 - 10.11
-</div>
-<h1 class="text-2xl md:text-4xl font-bold font-serif text-ink tracking-tight mb-1">
-希腊爱琴海自驾之旅
-</h1>
-<p class="text-warmGray text-xs md:text-sm font-medium max-w-2xl mx-auto mb-2">
-广州 ➔ 北京 ➔ 圣托里尼 ➔ 克里特岛 ➔ Meteora天空之城 ➔ 雅典 ➔ 广州
-</p>
-<!-- 实时信息提示栏 -->
-<div class="bg-paper border border-sand rounded-xl p-2.5 max-w-2xl mx-auto mb-3 flex flex-wrap justify-around items-center text-xs shadow-sm gap-2">
-<div class="flex items-center space-x-1 text-stone-700">
-<i class="fa-solid fa-cloud-sun text-amber-500 text-sm"></i>
-<span>当日天气: <b>晴朗 22°C ~ 26°C</b></span>
-</div>
-<div class="flex items-center space-x-1 text-stone-700">
-<i class="fa-solid fa-suitcase text-aegean"></i>
-<span>GQ346: 15kg 行李额/人</span>
-</div>
-<div class="flex items-center space-x-1.5 border-l pl-3 border-sand">
-<i class="fa-solid fa-euro-sign text-olive font-bold"></i>
-<span>汇率: 1 EUR ≈ <input type="number" id="exchange-rate-input" value="7.8" step="0.05" onchange="updateExchangeRate(this.value)" class="w-12 text-center border border-sand rounded bg-white text-xs font-mono"> CNY</span>
-</div>
-</div>
-<!-- 倒计时与云同步状态栏 -->
-<div class="flex flex-wrap justify-center items-center gap-2 mb-4 text-xs">
-<div id="countdown-badge" class="bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1 rounded-full font-medium shadow-sm">
-⏳ 距出发还有 <span id="days-left" class="font-bold text-terracotta">--</span> 天
-</div>
-<div id="cloud-sync-status" class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full font-medium shadow-sm flex items-center">
-<span id="cloud-pulse-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>
-<span id="cloud-status-text">🟢 云端实时同步连接中...</span>
-</div>
-<div class="flex space-x-1 ml-1">
-<button onclick="shareLink()" class="bg-aegean hover:bg-aegean/90 text-white px-3 py-1 rounded-full shadow-sm text-[11px] font-bold transition flex items-center">
-<i class="fa-solid fa-link mr-1"></i>复制网址给老公
-</button>
-<button onclick="exportDataJSON()" class="bg-white hover:bg-stone-50 border border-sand text-stone-700 px-2.5 py-1 rounded-full shadow-sm text-[11px] font-bold transition">
-<i class="fa-solid fa-download text-aegean mr-1"></i>导出
-</button>
-<label class="bg-white hover:bg-stone-50 border border-sand text-stone-700 px-2.5 py-1 rounded-full shadow-sm text-[11px] font-bold transition cursor-pointer">
-<i class="fa-solid fa-upload text-olive mr-1"></i>导入
-<input type="file" id="import-file-input" onchange="importDataJSON(event)" class="hidden" accept=".json">
-</label>
-</div>
-</div>
-<!-- 顶部主 Tabs 菜单 -->
-<nav class="flex space-x-2 md:justify-center overflow-x-auto custom-scrollbar pb-2 px-1 text-xs md:text-sm">
-<button onclick="switchTab('daily')" id="tab-daily" class="tab-btn active flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all">📅 每日路线</button>
-<button onclick="switchTab('pending')" id="tab-pending" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">📌 待办与确认项</button>
-<button onclick="switchTab('hotel')" id="tab-hotel" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🏨 酒店预订看板</button>
-<button onclick="switchTab('transport')" id="tab-transport" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">✈️ 航班与渡轮明细</button>
-<button onclick="switchTab('food')" id="tab-food" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🍽️ 美食种草导航</button>
-<button onclick="switchTab('ledger')" id="tab-ledger" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">💰 双人 AA 账本</button>
-<button onclick="switchTab('packing')" id="tab-packing" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🧳 行前 Checklist</button>
-</nav>
-</header>
-<main class="max-w-5xl mx-auto mt-4 px-4">
-<!-- ================= TAB 1: 每日路线 ================= -->
-<section id="sec-daily" class="tab-content block space-y-4">
-<div class="flex flex-wrap justify-between items-center bg-paper p-3 rounded-2xl border border-sand gap-2 text-xs">
-<div class="flex space-x-2">
-<button onclick="toggleEditMode()" id="edit-mode-btn" class="bg-aegean hover:bg-aegean/90 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center">
-<i class="fa-solid fa-pen-to-square mr-1.5"></i> <span id="edit-btn-text">开启每日路线编辑</span>
-</button>
-</div>
-<button onclick="resetToDefaultItinerary()" class="text-warmGray hover:text-red-600 underline text-[11px]">恢复初始定稿方案</button>
-</div>
-<!-- 天数选择器 -->
-<div class="flex space-x-2 overflow-x-auto pb-2 custom-scrollbar" id="day-picker-container">
-<!-- 动态渲染 11 天 Picker -->
-</div>
-<div id="day-details-container"></div>
-</section>
-<!-- ================= TAB 2: 待确认事项 Dashboard ================= -->
-<section id="sec-pending" class="tab-content hidden space-y-4">
-<div class="watercolor-card p-4 md:p-6 space-y-4">
-<div class="flex justify-between items-center border-b pb-2">
-<h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
-<i class="fa-solid fa-clipboard-question mr-2 text-terracotta"></i> 📌 待确定与追踪核心事项
-</h3>
-<span class="text-xs text-warmGray">看已有事项 / 下方可编辑或新增</span>
-</div>
-<!-- 1. 已有内容：事项卡片列表 -->
-<div id="pending-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-<!-- 动态渲染 -->
-</div>
-<!-- 2. 新增/编辑待确认事项表单 -->
-<div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
-<div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
-<i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑待确认事项
-</div>
-<div class="sm:col-span-4">
-<label class="font-bold block mb-1 text-stone-700">事项标题</label>
-<input type="text" id="pending-title" placeholder="如: 10/3 双体帆船预订确认" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-3">
-<label class="font-bold block mb-1 text-stone-700">状态标签</label>
-<input type="text" id="pending-status" placeholder="如: 比对中 / 待预订 / 已确定" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-3">
-<label class="font-bold block mb-1 text-stone-700">方案/备选/细节</label>
-<input type="text" id="pending-desc" placeholder="如: Spiridakos vs Santorini Star，含BBQ与接送" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-2 flex items-end space-x-1">
-<button onclick="savePendingItem()" id="btn-pending-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
-<i class="fa-solid fa-plus mr-1"></i> <span id="pending-btn-label">新增</span>
-</button>
-<button onclick="cancelPendingEdit()" id="btn-pending-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-2 py-2 rounded-lg transition text-xs" title="取消编辑">
-取消
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- ================= TAB 3: 酒店预订看板 ================= -->
-<section id="sec-hotel" class="tab-content hidden space-y-5">
-<div class="watercolor-card p-4 md:p-5 space-y-4">
-<div class="flex justify-between items-center border-b pb-2">
-<h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
-<i class="fa-solid fa-hotel mr-2"></i> 🏨 已确认预订酒店列表及导航
-</h3>
-<span class="text-[10px] bg-aegean/10 text-aegean font-bold px-2 py-0.5 rounded">双人共享看板</span>
-</div>
-<!-- 1. 已有内容：酒店表格 -->
-<div class="table-wrapper">
-<table class="tbl-min text-xs">
-<thead>
-<tr class="text-aegean">
-<th>入住时间</th>
-<th>酒店 / 住宿名称</th>
-<th>城市/区域</th>
-<th>谷歌地图导航与具体地址</th>
-<th>备注与提示</th>
-<th>操作</th>
-</tr>
-</thead>
-<tbody id="hotel-table-body" class="text-gray-700">
-<!-- 动态渲染 -->
-</tbody>
-</table>
-</div>
-<!-- 2. 添加/编辑酒店表单 -->
-<div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
-<div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
-<i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑酒店预订
-</div>
-<div class="sm:col-span-3">
-<label class="font-bold block mb-1 text-stone-700">酒店名称</label>
-<input type="text" id="hotel-name" placeholder="酒店名称" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-2">
-<label class="font-bold block mb-1 text-stone-700">入住日期</label>
-<input type="text" id="hotel-dates" placeholder="如 10.02-10.03" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-2">
-<label class="font-bold block mb-1 text-stone-700">城市/区域</label>
-<input type="text" id="hotel-city" placeholder="城市/区域" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-2">
-<label class="font-bold block mb-1 text-stone-700">地址或导航关键词</label>
-<input type="text" id="hotel-address" placeholder="地址" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-2">
-<label class="font-bold block mb-1 text-stone-700">备注提示</label>
-<input type="text" id="hotel-note" placeholder="备注" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-1 flex items-end space-x-1">
-<button onclick="saveHotelItem()" id="btn-hotel-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
-<span id="hotel-btn-label">新增</span>
-</button>
-<button onclick="cancelHotelEdit()" id="btn-hotel-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-2 py-2 rounded-lg transition text-xs">取消</button>
-</div>
-</div>
-</div>
-</section>
-<!-- ================= TAB 4: 航班与渡轮明细 ================= -->
-<section id="sec-transport" class="tab-content hidden space-y-6">
-<div class="bg-amber-50 border-l-4 border-aegean p-3 rounded-xl text-xs text-stone-700 space-y-1">
-<p class="font-bold text-aegean"><i class="fa-solid fa-bell mr-1"></i> 渡轮 Online Check-in 与登船提醒：</p>
-<p>⛴️ <b>Seajets (10/05 圣托➔克里特)：</b> 订单号 <code class="bg-white px-1.5 py-0.5 rounded border border-amber-200 font-bold text-terracotta">1112UQMYP</code> ➔ <a href="https://webcheckin.seajets.com/" target="_blank" class="text-aegean font-bold underline">Seajets 值机入口</a></p>
-<p>🚢 <b>Minoan Lines 夜船 (10/07 克里特HER港➔雅典Piraeus)：</b> 约 21:30 发船，请由伊拉克利翁 <b>HER 港口</b> 取票登船（非 Souda 港）。</p>
-</div>
-<div class="watercolor-card p-4 md:p-6 space-y-3">
-<div class="flex justify-between items-center border-b pb-2">
-<h3 class="font-serif font-bold text-aegean text-sm">✈️🚢 11 天全程航班、渡轮与自驾明细</h3>
-</div>
-<!-- 1. 已有内容：航班与交通表格 -->
-<div class="table-wrapper">
-<table class="tbl-min text-xs">
-<thead>
-<tr class="text-aegean"><th>日期</th><th>类型</th><th>班次 / 形式</th><th>航段/路线</th><th>时间</th><th>关键提示</th><th>操作</th></tr>
-</thead>
-<tbody id="transport-table-body" class="text-gray-700">
-<!-- 动态渲染 -->
-</tbody>
-</table>
-</div>
-<!-- 2. 新增/编辑交通项表单 -->
-<div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
-<div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
-<i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑交通航班
-</div>
-<input type="text" id="trans-date" placeholder="日期(10/01)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
-<input type="text" id="trans-type" placeholder="类型(✈️航班/⛴️渡轮/🚗自驾)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
-<input type="text" id="trans-code" placeholder="班次(CA1328)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
-<input type="text" id="trans-route" placeholder="路线(广州➔北京)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
-<input type="text" id="trans-time" placeholder="时间(18:40-22:00)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
-<input type="text" id="trans-note" placeholder="提示(直挂/Luggage)" class="sm:col-span-1 p-2 border border-sand rounded bg-white">
-<div class="sm:col-span-1 flex items-center space-x-1">
-<button onclick="saveTransportItem()" id="btn-trans-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
-<span id="trans-btn-label">保存</span>
-</button>
-<button onclick="cancelTransportEdit()" id="btn-trans-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-1.5 py-2 rounded-lg transition text-xs">取消</button>
-</div>
-</div>
-</div>
-</section>
-<!-- ================= TAB 5: 美食种草导航 ================= -->
-<section id="sec-food" class="tab-content hidden space-y-5">
-<div class="watercolor-card p-4 md:p-6 space-y-4">
-<div class="flex justify-between items-center border-b pb-2 flex-wrap gap-2">
-<h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
-<i class="fa-solid fa-utensils mr-2"></i> 🍽️ 希腊精选特色美食与餐厅种草导航表
-</h3>
-<div class="flex items-center space-x-1 text-xs">
-<span class="text-warmGray">按地区筛选:</span>
-<select id="food-filter-city" onchange="renderFood()" class="p-1 border border-sand rounded bg-white">
-<option value="ALL">全部地区</option>
-<option value="圣托里尼 (Santorini)">圣托里尼</option>
-<option value="克里特岛 (Crete)">克里特岛</option>
-<option value="Meteora天空之城">Meteora天空之城</option>
-<option value="雅典 (Athens)">雅典</option>
-</select>
-</div>
-</div>
-<!-- 1. 已有内容：美食导航表格 -->
-<div class="table-wrapper">
-<table class="tbl-min text-xs">
-<thead>
-<tr class="text-aegean">
-<th>城市/区域</th>
-<th>餐厅名称 / 种草亮点</th>
-<th>谷歌地图一键导航 / 来源</th>
-<th>操作</th>
-</tr>
-</thead>
-<tbody id="food-table-body" class="text-gray-700">
-<!-- 动态渲染 -->
-</tbody>
-</table>
-</div>
-<!-- 2. 添加/编辑餐厅表单 -->
-<div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
-<div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
-<i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑美食种草
-</div>
-<div class="sm:col-span-3">
-<label class="font-bold block mb-1 text-stone-700">城市/岛屿</label>
-<select id="food-city" class="w-full p-2 border border-sand rounded bg-white">
-<option value="圣托里尼 (Santorini)">圣托里尼 (Santorini)</option>
-<option value="克里特岛 (Crete)">克里特岛 (Crete)</option>
-<option value="Meteora天空之城">Meteora天空之城</option>
-<option value="雅典 (Athens)">雅典 (Athens)</option>
-</select>
-</div>
-<div class="sm:col-span-4">
-<label class="font-bold block mb-1 text-stone-700">餐厅名称 / 种草特色</label>
-<input type="text" id="food-name" placeholder="如: Sphinx Restaurant 或小红书笔记标题" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-3">
-<label class="font-bold block mb-1 text-blue-600"><i class="fa-solid fa-link"></i> 地图/小红书链接 (可选)</label>
-<input type="text" id="food-mapurl" placeholder="可粘贴链接，留空自动生成Google地图" class="w-full p-2 border border-blue-200 rounded bg-white text-blue-600 font-mono text-[10px]">
-</div>
-<div class="sm:col-span-2 flex items-end space-x-1">
-<button onclick="saveFoodItem()" id="btn-food-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
-<span id="food-btn-label">保存</span>
-</button>
-<button onclick="cancelFoodEdit()" id="btn-food-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-2 py-2 rounded-lg transition text-xs">取消</button>
-</div>
-</div>
-</div>
-</section>
-<!-- ================= TAB 6: 双人 AA 记账本 ================= -->
-<section id="sec-ledger" class="tab-content hidden space-y-5">
-<div class="watercolor-card p-4 md:p-5 space-y-4">
-<div class="flex justify-between items-center border-b pb-2">
-<h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
-<i class="fa-solid fa-wallet mr-2"></i> 💰 希腊双人旅途 AA 小账本
-</h3>
-</div>
-<!-- 汇总仪表盘 -->
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-<div class="bg-paper p-3 rounded-xl border border-sand">
-<span class="text-warmGray block">总消费折合 (CNY)</span>
-<span id="ledger-total-cny" class="text-lg font-bold font-mono text-terracotta">¥0.00</span>
-</div>
-<div class="bg-paper p-3 rounded-xl border border-sand">
-<span class="text-warmGray block">人均支出 (CNY)</span>
-<span id="ledger-per-person" class="text-lg font-bold font-mono text-aegean">¥0.00</span>
-</div>
-<div class="bg-paper p-3 rounded-xl border border-sand">
-<span class="text-warmGray block">欧元原币总计</span>
-<span id="ledger-total-eur" class="text-lg font-bold font-mono text-olive">€0.00</span>
-</div>
-<div class="bg-paper p-3 rounded-xl border border-sand">
-<span class="text-warmGray block">记账笔数</span>
-<span id="ledger-count" class="text-lg font-bold font-mono text-ink">0 笔</span>
-</div>
-</div>
-<!-- 1. 已有记账明细列表 -->
-<div class="table-wrapper">
-<table class="tbl-min text-xs">
-<thead>
-<tr class="text-aegean">
-<th>项目</th>
-<th>原币金额</th>
-<th>折合人民币 (¥)</th>
-<th>支付方式</th>
-<th>付款人</th>
-<th>操作</th>
-</tr>
-</thead>
-<tbody id="ledger-table-body" class="text-gray-700">
-<!-- 动态渲染 -->
-</tbody>
-</table>
-</div>
-<!-- 2. 记账录入/编辑表单 -->
-<div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
-<div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
-<i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 记一笔 / 编辑消费
-</div>
-<div class="sm:col-span-3">
-<label class="font-bold block mb-1 text-stone-700">消费项目</label>
-<input type="text" id="expense-title" placeholder="如 Seajets船票/雅典卫城门票" class="w-full p-2 border border-sand rounded bg-white">
-</div>
-<div class="sm:col-span-2">
-<label class="font-bold block mb-1 text-stone-700">金额</label>
-<input type="number" id="expense-amount" placeholder="金额" step="0.01" class="w-full p-2 border border-sand rounded bg-white font-mono">
-</div>
-<div class="sm:col-span-2">
-<label class="font-bold block mb-1 text-stone-700">币种</label>
-<select id="expense-currency" class="w-full p-2 border border-sand rounded bg-white">
-<option value="EUR">欧元 (EUR)</option>
-<option value="CNY">人民币 (CNY)</option>
-</select>
-</div>
-<div class="sm:col-span-2">
-<label class="font-bold block mb-1 text-stone-700">支付方式</label>
-<select id="expense-payment" class="w-full p-2 border border-sand rounded bg-white">
-<option value="信用卡 Visa/MasterCard">信用卡 Visa/MasterCard</option>
-<option value="现金 欧元">现金 欧元</option>
-<option value="支付宝">支付宝</option>
-<option value="微信支付">微信支付</option>
-</select>
-</div>
-<div class="sm:col-span-2">
-<label class="font-bold block mb-1 text-stone-700">付款人</label>
-<select id="expense-payer" class="w-full p-2 border border-sand rounded bg-white">
-<option value="老公">老公</option>
-<option value="老婆">老婆</option>
-<option value="共同平摊 (AA)">共同平摊 (AA)</option>
-</select>
-</div>
-<div class="sm:col-span-1 flex items-end space-x-1">
-<button onclick="saveExpenseItem()" id="btn-ledger-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
-<span id="ledger-btn-label">保存</span>
-</button>
-<button onclick="cancelExpenseEdit()" id="btn-ledger-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-1.5 py-2 rounded-lg transition text-xs">取消</button>
-</div>
-</div>
-</div>
-</section>
-<!-- ================= TAB 7: 行前 Checklist ================= -->
-<section id="sec-packing" class="tab-content hidden space-y-4">
-<div class="watercolor-card p-4 md:p-6 space-y-4">
-<div class="flex justify-between items-center flex-wrap gap-2">
-<h2 class="text-base font-bold text-stone-800 flex items-center">
-<i class="fa-solid fa-list-check text-olive mr-2"></i> 🧳 希腊行前 Checklist
-</h2>
-<div class="text-xs bg-paper border border-sand px-3 py-1 rounded-full text-stone-700">
-已准备: <span id="checklist-progress" class="font-bold text-olive">0/0</span>
-</div>
-</div>
-<!-- 1. 已有清单项展示 -->
-<div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-<!-- 2. 自定义添加/编辑 Checklist 项表单 -->
-<div class="bg-paper p-3 rounded-xl border border-sand flex flex-wrap gap-2 items-center text-xs mt-4 pt-3 border-t border-sand/50">
-<div class="w-full font-bold text-stone-700 mb-0.5 flex items-center">
-<i class="fa-solid fa-pen-to-square mr-1 text-olive"></i> 新增 / 修改清单项目
-</div>
-<select id="new-check-cat" class="p-2 border border-sand rounded bg-white">
-<option value="行前打卡">行前打卡</option>
-<option value="证件财务">证件财务</option>
-<option value="电子数码">电子数码</option>
-<option value="随身衣物">随身衣物</option>
-<option value="日用药品">日用药品</option>
-</select>
-<input type="text" id="new-check-text" placeholder="输入新的待办或改写的清单项..." class="flex-1 p-2 border border-sand rounded bg-white min-w-[200px]">
-<button onclick="saveChecklistItem()" id="btn-check-save" class="bg-olive hover:bg-olive/90 text-white font-bold px-4 py-2 rounded-lg transition">
-<span id="check-btn-label">新增项</span>
-</button>
-<button onclick="cancelChecklistEdit()" id="btn-check-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-3 py-2 rounded-lg transition">取消</button>
-</div>
-</div>
-</section>
-</main>
-<footer class="max-w-5xl mx-auto mt-12 text-center text-xs text-warmGray mb-8 space-y-1">
-<p class="font-serif">🌊 浪漫爱琴海双岛与 Meteora 天空之城慢调之旅 · 祝两位旅途愉快！</p>
-<p class="text-[10px] text-stone-400">已启用 Firebase 实时无感云端双向同步引擎</p>
-</footer>
-<script>
-// ==================== 全局状态与默认数据 ====================
-let currentExchangeRate = 7.8;
-let isEditMode = false;
-let selectedDay = 1;
-let pendingDeleteAction = null;
-// 编辑 ID 缓存
-let editingPendingId = null;
-let editingHotelId = null;
-let editingTransportId = null;
-let editingFoodId = null;
-let editingExpenseId = null;
-let editingChecklistId = null;
-// 默认完整数据
-const defaultDayData = {
-1: {
-date: "10月1日 (周四)", title: "D1 广州飞北京", route: "广州白云 (CA1328 18:40) ➔ 北京首都 T3 (22:00抵达)", hotel: "宿 航站楼休整 / 转机",
-timeline: [
-{ id: 101, time: "18:40", text: "广州白云机场 T3 搭乘 CA1328 飞往北京首都机场。" },
-{ id: 102, time: "22:00", text: "抵达北京 T3，办理国际联程与核对行李直挂。" }
-],
-tips: "带好护照原件、申根签证页复印件及欧元现金。",
-mapUrl: ""
-},
-2: {
-date: "10月2日 (周五)", title: "D2 飞抵圣岛 & Fira", route: "北京 T3 (CA863) ➔ 雅典 ➔ GQ346 ➔ JTR 机场取车 ➔ Asteras Villas ➔ Fira / Firostefani / Imerovigli", hotel: "宿 Santorini / Fira - Asteras Villas 酒店",
-timeline: [
-{ id: 201, time: "02:30", text: "搭乘 CA863 直飞雅典 ATH。" },
-{ id: 202, time: "08:55", text: "顺利落地雅典机场，提取行李转内陆航段。" },
-{ id: 203, time: "12:50", text: "搭乘 Sky Express GQ346 飞往圣托里尼（行李限额 15kg/人）。" },
-{ id: 204, time: "13:45", text: "落地圣托里尼机场 JTR，办理机场自驾取车手续。" },
-{ id: 205, time: "15:00", text: "驱车前往 Fira 入住 Asteras Villas 酒店休整。" },
-{ id: 206, time: "17:00", text: "从 Fira 沿悬崖步道漫步至 Firostefani 和 Imerovigli，观赏爱琴海绝美日落并享用晚餐。" }
-],
-tips: "注意 GQ346 的 15kg 行李额限制，提前 online check-in 免排队。",
-mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Santorini+Airport&destination=Imerovigli&waypoints=Asteras+Villas+Santorini%7CFira%7CFirostefani"
-},
-3: {
-date: "10月3日 (周六)", title: "D3 出海BBQ & Oia日落", route: "Asteras Villas 退房 ➔ Catamaran 出海 ➔ 入住 Elixir Del Mar (Kamari) ➔ 驱车至 Oia ➔ Oia日落", hotel: "宿 Santorini / Kamari - Elixir Del Mar on the Beach",
-timeline: [
-{ id: 301, time: "09:00", text: "办理 Fira 酒店退房，驱车前往码头参加 Catamaran 双体帆船出海。" },
-{ id: 302, time: "10:00 - 15:00", text: "【双体帆船出海】红沙滩、白沙滩、火山温泉，享用船上海鲜 BBQ 与饮品畅饮。" },
-{ id: 303, time: "15:30", text: "前往 Kamari 海滩，入住 Elixir Del Mar on the Beach 放置行李。" },
-{ id: 304, time: "17:00", text: "驱车前往 Oia 小镇，在风车与蓝顶教堂旁等待“世界最美落日”。" }
-],
-tips: "出海请备好深色泳衣与防晒霜。Catamaran 商家在 Spiridakos 与 Santorini Star 二选一。",
-mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Asteras+Villas+Santorini&destination=Oia+Santorini&waypoints=Vlychada+Port+Santorini%7CElixir+Del+Mar+Santorini"
-},
-4: {
-date: "10月4日 (周日)", title: "D4 圣岛南岸 & 遗迹", route: "Kamari ➔ Akrotiri 遗迹 ➔ 红沙滩 / 南部海岸 ➔ Pyrgos / Megalochori 古镇 ➔ Kamari 慢逛", hotel: "宿 Santorini / Kamari - Elixir Del Mar on the Beach",
-timeline: [
-{ id: 401, time: "09:30", text: "驱车前往 Akrotiri 远古遗迹感受米诺斯文明。" },
-{ id: 402, time: "11:30", text: "探访红沙滩与南部海岸线风貌。" },
-{ id: 403, time: "14:00", text: "探访 Pyrgos 与 Megalochori 传统白色小镇，在巷弄冰淇淋与咖啡店享受慢调。" },
-{ id: 404, time: "17:30", text: "返回 Kamari 黑沙滩或 Fira，轻松海边散步与晚餐。" }
-],
-tips: "Pyrgos 制高点视野绝佳且游客较少，非常适合拍摄人文照。",
-mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Elixir+Del+Mar+Santorini&destination=Kamari+Beach&waypoints=Akrotiri+Santorini%7CRed+Beach+Santorini%7CMegalochori%7CPyrgos+Santorini"
-},
-5: {
-date: "10月5日 (周一)", title: "D5 渡轮至克里特岛", route: "圣托码头 ➔ Seajets 快艇 (15:45-17:25) ➔ 克里特岛 ➔ 驱车至 Kostakis Beach Hotel", hotel: "宿 Crete / Gerani - Kostakis Beach Hotel",
-timeline: [
-{ id: 501, time: "13:45", text: "确认 Seajets 已完成 48h Online Check-in (订单号: 1112UQMYP)。" },
-{ id: 502, time: "15:45", text: "搭乘 Seajets 高速快艇驶向克里特岛。" },
-{ id: 503, time: "17:25", text: "顺利抵达克里特岛港口，取车驱车前往 Kostakis Beach Hotel。" },
-{ id: 504, time: "19:30", text: "入住酒店，在海边听浪休息，享用克里特橄榄油慢炖美食。" }
-],
-tips: "Seajets 需提前 48h 在线 check-in 获电子船票。",
-mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Athinios+Port+Santorini&destination=Kostakis+Beach+Gerani+Chania"
-},
-6: {
-date: "10月6日 (周二)", title: "D6 Balos泻湖 & Chania", route: "Kostakis Beach ➔ Kissamos 码头 ➔ Balos Lagoon + Gramvousa 游船 ➔ 返 Chania 老城/威尼斯港", hotel: "宿 Crete / Gerani - Kostakis Beach Hotel",
-timeline: [
-{ id: 601, time: "09:00", text: "驱车前往 Kissamos 码头搭乘游船。" },
-{ id: 602, time: "10:00 - 16:30", text: "游览 Balos Lagoon 果冻海泻湖与 Gramvousa 海盗岛城堡。" },
-{ id: 603, time: "17:30", text: "返回哈尼亚老城 (Chania Old Town)，漫步威尼斯港口与灯塔。" },
-{ id: 604, time: "19:30", text: "在威尼斯港口海滨餐厅享用地道海鲜晚餐。" }
-],
-tips: "建议选择 Kissamos 码头的船游方式前往 Balos，避免自驾山路损伤底盘。",
-mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Kostakis+Beach+Gerani+Chania&destination=Chania+Old+Town&waypoints=Kissamos+Port%7CBalos+Beach"
-},
-7: {
-date: "10月7日 (周三)", title: "D7 克里特慢游 & 夜船", route: "克里特岛慢游 (雷斯蒙/伊拉克利翁) ➔ HER 港 (Heraklion Port) ➔ Minoan Lines 夜船 ➔ Piraeus 雅典", hotel: "宿 Minoan Lines 跨夜渡轮独立舱",
-timeline: [
-{ id: 701, time: "10:00", text: "退房后，驱车沿北海岸公路经雷斯蒙 (Rethymno) 往伊拉克利翁 (Heraklion)。" },
-{ id: 702, time: "15:00", text: "游览克里特岛首都 Heraklion 老城与库勒斯堡垒 (Koules Fortress) 或克诺索斯王宫。" },
-{ id: 703, time: "18:30", text: "在 HER 港口附近海鲜餐厅享用晚餐。" },
-{ id: 704, time: "20:00", text: "抵达 HER 港口 (Heraklion Port) 办理 Minoan Lines 登船，入住独立舱。" },
-{ id: 705, time: "21:30", text: "渡轮启航驶往雅典比雷埃夫斯港 (Piraeus)。" }
-],
-tips: "特别注意：夜船从 Heraklion (HER) 港口登船，非 Souda 港！预留驾车至 HER 港约 2-2.5 小时车程。",
-mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Kostakis+Beach+Gerani+Chania&destination=Port+of+Heraklion&waypoints=Rethymno%7CKoules+Fortress"
-},
-8: {
-date: "10月8日 (周四)", title: "D8 天空之城 Meteora", route: "Piraeus 港 (06:30抵) ➔ 取车 ➔ 驾车往 Meteora ➔ Hotel Kaikis ➔ 游览 3 座修道院 ➔ Meteora 日落", hotel: "宿 Meteora / Kalambaka - Hotel Kaikis",
-timeline: [
-{ id: 801, time: "06:30", text: "夜船抵达雅典比雷埃夫斯港 (Piraeus)。" },
-{ id: 802, time: "07:30", text: "办理租车取车手续，开启自驾往 Meteora。" },
-{ id: 803, time: "12:00", text: "抵达 Kalambaka 小镇，入住 Hotel Kaikis 休整与午饭。" },
-{ id: 804, time: "14:00 - 18:00", text: "探访圣尼古拉、大气象 (Great Meteoron)、瓦尔拉姆 (Varlaam) 3 座悬崖修道院。" },
-{ id: 805, time: "18:30", text: "在 Sunset Rock 观赏令人震撼的天空之城岩石落日。" }
-],
-tips: "进入修道院需注意着装，女士需穿过膝长裙或用披肩包裹，男士需穿长裤。",
-mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Piraeus+Port+Athens&destination=Sunset+Rock+Meteora&waypoints=Kalabaka%7CHotel+Kaikis%7CHoly+Monastery+of+Great+Meteoron"
-},
-9: {
-date: "10月9日 (周五)", title: "D9 返雅典 & 卫城", route: "Meteora 早餐 ➔ 驱车返雅典 ➔ City Lights Athens ➔ Acropolis 雅典卫城 ➔ Plaka & Monastiraki", hotel: "宿 Athens - City Lights Athens by YHA",
-timeline: [
-{ id: 901, time: "09:00", text: "早餐后驾车返程雅典。" },
-{ id: 902, time: "13:00", text: "抵雅典还车，入住 City Lights Athens by YHA 酒店。" },
-{ id: 903, time: "15:00 - 18:00", text: "【高光时刻】登雅典卫城 (Acropolis)，打卡帕特农神庙与伊瑞克提翁神庙。" },
-{ id: 904, time: "18:30", text: "漫步 Plaka 老城与 Monastiraki 广场，享用希腊烤肉卷 Souvlaki 晚餐。" }
-],
-tips: "卫城大理石地面较滑，请务必穿着防滑效果好的鞋子。",
-mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Kalabaka&destination=Monastiraki+Athens&waypoints=City+Lights+Athens%7CAcropolis+of+Athens%7CPlaka+Athens"
-},
-10: {
-date: "10月10日 (周六)", title: "D10 雅典采买 & 启程返航", route: "上午自由活动 / 采买纪念品 ➔ 约 10:00 离开酒店前往机场 ➔ CA864 (15:05-05:05+1)", hotel: "宿 飞机上",
-timeline: [
-{ id: 1001, time: "08:30", text: "Plaka 采买希腊橄榄油、蜂蜜与手工艺纪念品。" },
-{ id: 1002, time: "10:00", text: "退房并搭乘 M3 地铁或出租车前往雅典国际机场 ATH。" },
-{ id: 1003, time: "15:05", text: "搭乘国航 CA864 启程飞往北京。" }
-],
-tips: "建议预留 3 小时抵机场办理退税与安检手续。",
-mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Plaka+Athens&destination=Athens+International+Airport"
-},
-11: {
-date: "10月11日 (周日)", title: "D11 抵穗收官", route: "北京 T3 (CA1359 07:00) ➔ 广州白云 T3 (10:10 落地)", hotel: "回到温馨的家",
-timeline: [
-{ id: 1101, time: "05:05", text: "顺利落地北京首都机场 T3。" },
-{ id: 1102, time: "07:00", text: "转乘 CA1359 飞往广州。" },
-{ id: 1103, time: "10:10", text: "顺利落地广州白云机场，行程圆满收官！" }
-],
-tips: "整理双岛与天空之城的美好照片与回忆。",
-mapUrl: ""
-}
-};
-const defaultPendingList = [
-{ id: 1, title: "1. 10/3 圣托里尼 Catamaran 出海", status: "二选一比对中", statusColor: "bg-amber-100 text-amber-800", desc: "目标商家：Spiridakos vs Santorini Star。路线：红沙滩 ➔ 白沙滩 ➔ 火山温泉 ➔ 船上烤肉海鲜BBQ/畅饮。" },
-{ id: 2, title: "2. 10/6 克里特 Balos Lagoon 游船", status: "待预订", statusColor: "bg-blue-100 text-blue-800", desc: "自 Kissamos 码头出航前往 Balos Lagoon 泻湖与 Gramvousa 岛城堡，关注出航天气。" },
-{ id: 3, title: "3. 10/8 Meteora 悬崖修道院门票", status: "无需预订", statusColor: "bg-emerald-100 text-emerald-800", desc: "现场现金购票 (€3/人/馆)，需备好现金硬币及符合规则的服装。" },
-{ id: 4, title: "4. 10/9 雅典卫城 (Acropolis) 门票", status: "建议提前约时段", statusColor: "bg-purple-100 text-purple-800", desc: "官方预约入场时段，建议购买 15:00-16:00 入场票避开最热与暴晒时段。" }
-];
-const defaultHotels = [
-{ id: 1, dates: "10.02 - 10.03", name: "Asteras Villas", city: "圣托里尼 · Fira", address: "Fira, Santorini, Greece", note: "悬崖绝景酒店，近步道" },
-{ id: 2, dates: "10.03 - 10.05", name: "Elixir Del Mar on the Beach", city: "圣托里尼 · Kamari", address: "Kamari Beach, Santorini, Greece", note: "黑沙滩前沿度假酒店" },
-{ id: 3, dates: "10.05 - 10.07", name: "Kostakis Beach Hotel", city: "克里特岛 · Gerani", address: "Gerani, Chania, Crete, Greece", note: "Chania 海边自驾度假酒店" },
-{ id: 4, dates: "10.07 - 10.08", name: "Minoan Lines 夜船舱房", city: "HER 港 ➔ 雅典 Piraeus", address: "Heraklion Port, Crete", note: "夜船双人独立舱 (21:30发车)" },
-{ id: 5, dates: "10.08 - 10.09", name: "Hotel Kaikis", city: "Meteora · Kalambaka", address: "Kalambaka, Meteora, Greece", note: "天空之城山脚便捷酒店" },
-{ id: 6, dates: "10.09 - 10.10", name: "City Lights Athens by YHA", city: "雅典 · 市中心", address: "Athens Center, Greece", note: "靠近 Plaka 与卫城景区" }
-];
-const defaultTransport = [
-{ id: 1, date: "10/01", type: "✈️ 航班", code: "CA1328", route: "广州CAN ➔ 北京PEK", time: "18:40 - 22:00", note: "首都机场 T3 转机" },
-{ id: 2, date: "10/02", type: "✈️ 航班", code: "CA863", route: "北京PEK ➔ 雅典ATH", time: "02:30 - 08:55", note: "国航直飞" },
-{ id: 3, date: "10/02", type: "✈️ 航班", code: "GQ346", route: "雅典ATH ➔ 圣托里尼JTR", time: "12:50 - 13:45", note: "Sky Express (15kg行李额/人)" },
-{ id: 4, date: "10/05", type: "⛴️ 渡轮", code: "Seajets", route: "圣托里尼 ➔ 克里特岛", time: "15:45 - 17:25", note: "订单号: 1112UQMYP (提前48h在线Check-in)" },
-{ id: 5, date: "10/07", type: "🚢 渡轮", code: "Minoan Lines", route: "克里特HER港 ➔ 雅典Piraeus", time: "21:30 - 06:30+1", note: "Heraklion (HER) 港登船 (夜船独立舱)" },
-{ id: 6, date: "10/08", type: "🚗 自驾", code: "租车", route: "雅典Piraeus ➔ Meteora ➔ 雅典", time: "10/08 - 10/09", note: "往返天空之城自驾" },
-{ id: 7, date: "10/10", type: "✈️ 航班", code: "CA864", route: "雅典ATH ➔ 北京PEK", time: "15:05 - 05:05+1", note: "国航直飞" },
-{ id: 8, date: "10/11", type: "✈️ 航班", code: "CA1359", route: "北京PEK ➔ 广州CAN", time: "07:00 - 10:10", note: "联程返程" }
-];
-const defaultFoodList = [
-{ id: 1, city: "圣托里尼 (Santorini)", name: "Sphinx Restaurant", mapUrl: "https://maps.google.com/?q=Sphinx+Restaurant+Santorini" },
-{ id: 2, city: "圣托里尼 (Santorini)", name: "Ammoudi Fish Tavern", mapUrl: "https://maps.google.com/?q=Ammoudi+Fish+Tavern" },
-{ id: 3, city: "圣托里尼 (Santorini)", name: "Metaxi Mas", mapUrl: "https://maps.google.com/?q=Metaxi+Mas+Santorini" },
-{ id: 4, city: "克里特岛 (Crete)", name: "To Stachi", mapUrl: "https://maps.google.com/?q=To+Stachi+Chania" },
-{ id: 5, city: "克里特岛 (Crete)", name: "Thalassino Ageri", mapUrl: "https://maps.google.com/?q=Thalassino+Ageri" },
-{ id: 6, city: "Meteora天空之城", name: "Restaurant Meteora", mapUrl: "https://maps.google.com/?q=Restaurant+Meteora+Kalambaka" },
-{ id: 7, city: "雅典 (Athens)", name: "O Thanasis", mapUrl: "https://maps.google.com/?q=O+Thanasis+Athens" },
-{ id: 8, city: "雅典 (Athens)", name: "Strofi Restaurant", mapUrl: "https://maps.google.com/?q=Strofi+Restaurant+Athens" }
-];
-const defaultLedgerList = [
-{ id: 1, title: "CA863/864 往返机票", amount: 12800, currency: "CNY", payment: "信用卡 Visa/MasterCard", payer: "共同平摊 (AA)" },
-{ id: 2, title: "Asteras Villas 住宿", amount: 380, currency: "EUR", payment: "信用卡 Visa/MasterCard", payer: "老公" },
-{ id: 3, title: "Seajets 渡轮船票", amount: 178, currency: "EUR", payment: "支付宝", payer: "老婆" }
-];
-const defaultChecklist = [
-{ id: 1, cat: "行前打卡", text: "护照与申根签证页复印件", done: true },
-{ id: 2, cat: "行前打卡", text: "国际驾照翻译件及原件", done: true },
-{ id: 3, cat: "行前打卡", text: "渡轮/航班确认单PDF下载", done: false },
-{ id: 4, cat: "行前打卡", text: "申根旅游保险单（英文版）", done: true },
-{ id: 5, cat: "证件财务", text: "欧元现金 (€300-500 零钱)", done: false },
-{ id: 6, cat: "证件财务", text: "芯片信用卡 (Visa/Mastercard 双币卡)", done: true },
-{ id: 7, cat: "电子数码", text: "希腊欧标转换插头 x2", done: true },
-{ id: 8, cat: "电子数码", text: "便携排插 / 移动电源/ 充电线", done: false },
-{ id: 9, cat: "随身衣物", text: "墨镜 / 防晒衣 / 遮阳帽", done: true },
-{ id: 10, cat: "随身衣物", text: "深色出海泳衣 (火山温泉防变色)", done: false },
-{ id: 11, cat: "随身衣物", text: "舒适防滑走路鞋", done: true },
-{ id: 12, cat: "随身衣物", text: "天空之城修道院过膝长裙/长裤", done: false },
-{ id: 13, cat: "日用药品", text: "晕船药 (Seajets 快艇必备)", done: false },
-{ id: 14, cat: "日用药品", text: "常用感冒肠胃药 / 创可贴", done: true }
-];
-// 主应用数据状态对象
-let tripData = {
-exchangeRate: 7.8,
-daily: defaultDayData,
-pending: defaultPendingList,
-hotels: defaultHotels,
-transport: defaultTransport,
-food: defaultFoodList,
-ledger: defaultLedgerList,
-checklist: defaultChecklist,
-lastUpdated: Date.now()
-};
-const LOCAL_STORAGE_KEY = 'greece_trip_app_data_v2026';
-// 获取固定的双人共享房间号
-function getRoomId() {
-const urlParams = new URLSearchParams(window.location.search);
-let room = urlParams.get('room');
-if (!room) {
-// 默认固定房间，保障两人打开同一个 GitHub Pages 链接即可实时同步
-room = 'greece_couple_2026_shared';
-}
-return room;
-}
-const ROOM_ID = getRoomId();
-function initApp() {
-loadFromLocalStorage();
-calculateCountdown();
-renderAll();
-}
-// 保存并触发云端同步
-function saveAppData(notifyToast = true) {
-tripData.lastUpdated = Date.now();
-try {
-localStorage.setItem(LOCAL_STORAGE_KEY + '_' + ROOM_ID, JSON.stringify(tripData));
-} catch (e) {
-console.warn("localStorage 保存失败", e);
-}
-if (window.syncToCloud) {
-window.syncToCloud(tripData);
-}
-if (notifyToast) {
-showToast("已修改并同步至云端！");
-}
-}
-function loadFromLocalStorage() {
-try {
-const saved = localStorage.getItem(LOCAL_STORAGE_KEY + '_' + ROOM_ID);
-if (saved) {
-const parsed = JSON.parse(saved);
-if (parsed && typeof parsed === 'object') {
-tripData = parsed;
-if (tripData.exchangeRate) {
-currentExchangeRate = tripData.exchangeRate;
-document.getElementById('exchange-rate-input').value = currentExchangeRate;
-}
-}
-}
-} catch (e) {
-console.warn("读取本地缓存出错，使用默认数据", e);
-}
-}
-function renderAll() {
-renderDayPicker();
-renderDayDetails();
-renderPending();
-renderHotels();
-renderTransport();
-renderFood();
-renderLedger();
-renderChecklist();
-}
-function calculateCountdown() {
-const startDate = new Date('2026-10-01T00:00:00');
-const today = new Date();
-const diffTime = startDate - today;
-const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-const elem = document.getElementById('days-left');
-if (elem) {
-elem.innerText = diffDays > 0 ? diffDays : 0;
-}
-}
-function showToast(msg) {
-const toast = document.getElementById('toast-notification');
-const toastMsg = document.getElementById('toast-msg');
-toastMsg.innerText = msg;
-toast.classList.remove('opacity-0', 'pointer-events-none');
-setTimeout(() => {
-toast.classList.add('opacity-0', 'pointer-events-none');
-}, 2200);
-}
-function shareLink() {
-const currentUrl = window.location.href.split('?')[0]; // 获取纯净的 GitHub 链接
-if (navigator.clipboard && navigator.clipboard.writeText) {
-navigator.clipboard.writeText(currentUrl).then(() => {
-showToast("🔗 网页链接已复制！直接发送给老公即可。");
-}).catch(() => {
-prompt("请复制以下链接发给老公：", currentUrl);
-});
-} else {
-prompt("请复制以下链接发给老公：", currentUrl);
-}
-}
-function updateExchangeRate(val) {
-const parsed = parseFloat(val);
-if (!isNaN(parsed) && parsed > 0) {
-currentExchangeRate = parsed;
-tripData.exchangeRate = currentExchangeRate;
-saveAppData(true);
-renderLedger();
-}
-}
-function switchTab(tabKey) {
-document.querySelectorAll('.tab-content').forEach(sec => sec.classList.add('hidden'));
-document.querySelectorAll('.tab-btn').forEach(btn => {
-btn.classList.remove('active');
-btn.classList.add('bg-white', 'text-ink');
-});
-const activeSec = document.getElementById(⁠sec-${tabKey}⁠);
-const activeBtn = document.getElementById(⁠tab-${tabKey}⁠);
-if (activeSec) activeSec.classList.remove('hidden');
-if (activeBtn) {
-activeBtn.classList.add('active');
-activeBtn.classList.remove('bg-white', 'text-ink');
-}
-}
-function renderDayPicker() {
-const container = document.getElementById('day-picker-container');
-if (!container) return;
-let html = '';
-for (let i = 1; i <= 11; i++) {
-const dayObj = tripData.daily[i];
-const active = selectedDay === i;
-const shortTitle = dayObj ? dayObj.title.split(' ')[0] : ⁠D${i}⁠;
-html += ⁠<button onclick="selectDay(${i})" class="flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold text-xs border transition-all ${ active  ? 'bg-aegean text-white border-aegean shadow-md scale-105'  : 'bg-white text-stone-700 border-sand hover:bg-paper' }"> ${shortTitle} (10/${i < 10 ? '0'+i : i}) </button>⁠;
-}
-container.innerHTML = html;
-}
-function selectDay(dayNum) {
-selectedDay = dayNum;
-renderDayPicker();
-renderDayDetails();
-}
-function parseTimeToMinutes(timeStr) {
-if (!timeStr) return 9999;
-const match = timeStr.match(/(\d{1,2}):(\d{2})/);
-if (match) {
-return parseInt(match[1], 10) * 60 + parseInt(match[2], 10);
-}
-return 9999;
-}
-function sortTimeline(timeline) {
-if (!timeline || !Array.isArray(timeline)) return;
-timeline.sort((a, b) => parseTimeToMinutes(a.time) - parseTimeToMinutes(b.time));
-}
-function getEmbedMapUrl(mapUrl, routeText) {
-if (mapUrl && mapUrl.includes('origin=')) {
-try {
-const url = new URL(mapUrl);
-const origin = url.searchParams.get('origin') || '';
-const dest = url.searchParams.get('destination') || '';
-const waypoints = url.searchParams.get('waypoints') || '';
-let query = origin + (dest ? ' to ' + dest : '');
-if (waypoints) query += ' via ' + waypoints.replace(/|/g, ' ');
-return ⁠https://maps.google.com/maps?q=${encodeURIComponent(query)}&output=embed⁠;
-} catch(e) {}
-}
-if (mapUrl) {
-return ⁠https://maps.google.com/maps?q=${encodeURIComponent(mapUrl)}&output=embed⁠;
-}
-if (routeText) {
-return ⁠https://maps.google.com/maps?q=${encodeURIComponent(routeText)}&output=embed⁠;
-}
-return '';
-}
-function renderDayDetails() {
-const container = document.getElementById('day-details-container');
-const data = tripData.daily[selectedDay];
-if (!container || !data) return;
-if (data.timeline && Array.isArray(data.timeline)) {
-sortTimeline(data.timeline);
-}
-let timelineHtml = '';
-if (data.timeline && data.timeline.length > 0) {
-data.timeline.forEach((item, index) => {
-if (isEditMode) {
-timelineHtml += ⁠<div class="flex items-start space-x-2 bg-paper p-2.5 rounded-xl border border-sand"> <input type="text" value="${item.time}" onchange="updateTimelineItem(${selectedDay}, ${index}, 'time', this.value)" class="w-20 p-1 border rounded bg-white text-xs font-bold text-aegean"> <textarea onchange="updateTimelineItem(${selectedDay}, ${index}, 'text', this.value)" class="flex-1 p-1 border rounded bg-white text-xs" rows="2">${item.text}</textarea> <button onclick="deleteTimelineItem(${selectedDay}, ${index})" class="text-red-500 hover:text-red-700 p-1 text-sm"><i class="fa-solid fa-trash-can"></i></button> </div>⁠;
-} else {
-timelineHtml += ⁠<div class="relative pl-6 pb-4 border-l-2 border-sand last:border-l-0 last:pb-0"> <div class="absolute -left-[9px] top-0.5 w-4 h-4 rounded-full bg-aegean border-2 border-white"></div> <div class="flex items-center space-x-2"> <span class="font-bold text-aegean font-mono text-xs bg-aegean/10 px-2 py-0.5 rounded">${item.time}</span> </div> <p class="text-stone-800 text-xs md:text-sm mt-1 leading-relaxed">${item.text}</p> </div>⁠;
-}
-});
-} else {
-timelineHtml = ⁠<p class="text-xs text-warmGray">暂无具体行程安排。</p>⁠;
-}
-if (isEditMode) {
-container.innerHTML = `
-<div class="watercolor-card p-4 md:p-6 space-y-4">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-<div>
-<label class="font-bold text-stone-700 block mb-1">天数简称/标题</label>
-<input type="text" value="${data.title}" onchange="updateDayHeader(${selectedDay}, 'title', this.value)" class="w-full p-2 border rounded bg-white font-bold text-aegean">
-</div>
-<div>
-<label class="font-bold text-stone-700 block mb-1">日期文字</label>
-<input type="text" value="${data.date}" onchange="updateDayHeader(${selectedDay}, 'date', this.value)" class="w-full p-2 border rounded bg-white">
-</div>
-<div class="md:col-span-2">
-<label class="font-bold text-stone-700 block mb-1">每日总路线 / 摘要</label>
-<input type="text" value="${data.route}" onchange="updateDayHeader(${selectedDay}, 'route', this.value)" class="w-full p-2 border rounded bg-white">
-</div>
-<div>
-<label class="font-bold text-stone-700 block mb-1">住宿安排</label>
-<input type="text" value="${data.hotel}" onchange="updateDayHeader(${selectedDay}, 'hotel', this.value)" class="w-full p-2 border rounded bg-white">
-</div>
-<div>
-<label class="font-bold text-stone-700 block mb-1">谷歌地图导航链接</label>
-<input type="text" value="${data.mapUrl || ''}" onchange="updateDayHeader(${selectedDay}, 'mapUrl', this.value)" class="w-full p-2 border rounded bg-white font-mono text-[10px]">
-</div>
-<div class="md:col-span-2">
-<label class="font-bold text-stone-700 block mb-1">温馨提示 / 关键提醒</label>
-<input type="text" value="${data.tips}" onchange="updateDayHeader(${selectedDay}, 'tips', this.value)" class="w-full p-2 border rounded bg-white text-terracotta">
-</div>
-</div>
-<div class="border-t pt-4 space-y-3">
-<div class="flex justify-between items-center">
-<h4 class="font-bold text-stone-800 text-xs">⏰ 详细时间节点安排</h4>
-<button onclick="addTimelineItem(${selectedDay})" class="bg-olive hover:bg-olive/90 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-plus mr-1"></i>添加时间节点</button>
-</div>
-<div class="space-y-2">{timelineHtml}</div>
-</div>
-</div>
-`;
-} else {
-container.innerHTML = `
-<div class="watercolor-card p-4 md:p-6 space-y-4">
-<div class="border-b pb-3 flex flex-wrap justify-between items-start gap-2">
-<div>
-<div class="text-xs font-bold text-terracotta uppercase tracking-wider mb-0.5">{data.date}</div>
-<h2 class="text-lg md:text-xl font-serif font-bold text-aegean">${data.title}</h2>
-<p class="text-xs text-stone-600 mt-1"><i class="fa-solid fa-route text-olive mr-1"></i><b>路线:</b> {data.route}</p>
-</div>
-<div class="text-right">
-<span class="bg-paper border border-sand text-stone-700 px-3 py-1 rounded-xl text-xs font-medium inline-block"><i class="fa-solid fa-bed text-aegean mr-1"></i>{data.hotel}</span>
-${data.mapUrl ? ⁠<a href="${data.mapUrl}" target="_blank" class="block mt-1.5 text-xs text-blue-600 font-bold underline hover:text-blue-800"><i class="fa-solid fa-map-location-dot mr-1"></i>一键开启 Google 地图导航</a>⁠ : ''}
-</div>
-</div>
-${data.mapUrl ? ⁠<div class="mt-2 rounded-xl overflow-hidden border border-sand shadow-sm bg-stone-100"> <div class="flex justify-between items-center bg-paper px-3 py-1.5 border-b border-sand text-xs font-bold text-stone-700"> <span><i class="fa-solid fa-map-marked-alt text-aegean mr-1.5"></i>路线地图实时预览</span> <a href="${data.mapUrl}" target="_blank" class="text-blue-600 hover:underline font-normal text-[11px]"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>全屏导航</a> </div> <iframe class="w-full h-56 md:h-64 border-0" loading="lazy" allowfullscreen src="${getEmbedMapUrl(data.mapUrl, data.route)}"></iframe> </div>⁠ : ''}
-<div class="py-2 space-y-3">${timelineHtml}</div>
-${data.tips ? ⁠<div class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-xl text-xs text-stone-700"> <span class="font-bold text-amber-800"><i class="fa-solid fa-lightbulb mr-1"></i>当日贴士：</span>${data.tips} </div>⁠ : ''}
-</div>
-`;
-}
-}
-function toggleEditMode() {
-isEditMode = !isEditMode;
-document.getElementById('edit-btn-text').innerText = isEditMode ? "保存每日路线修改" : "开启每日路线编辑";
-document.getElementById('edit-mode-btn').className = isEditMode
-? "bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center"
-: "bg-aegean hover:bg-aegean/90 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center";
-if (!isEditMode) {
-sortTimeline(tripData.daily[selectedDay].timeline);
-saveAppData(true);
-}
-renderDayDetails();
-}
-function updateDayHeader(dayNum, field, value) {
-tripData.daily[dayNum][field] = value;
-saveAppData(false);
-if (field === 'title') renderDayPicker();
-}
-function updateTimelineItem(dayNum, index, field, value) {
-tripData.daily[dayNum].timeline[index][field] = value;
-if (field === 'time') {
-sortTimeline(tripData.daily[dayNum].timeline);
-}
-saveAppData(false);
-}
-function addTimelineItem(dayNum) {
-tripData.daily[dayNum].timeline.push({
-id: Date.now(),
-time: "12:00",
-text: "新增行程节点描述..."
-});
-sortTimeline(tripData.daily[dayNum].timeline);
-saveAppData(false);
-renderDayDetails();
-}
-function deleteTimelineItem(dayNum, index) {
-confirmDelete("确定删除该行程节点吗？", () => {
-tripData.daily[dayNum].timeline.splice(index, 1);
-saveAppData(true);
-renderDayDetails();
-});
-}
-function resetToDefaultItinerary() {
-confirmDelete("恢复后，每日路线将重置为初始定稿版本，确定吗？", () => {
-tripData.daily = JSON.parse(JSON.stringify(defaultDayData));
-saveAppData(true);
-renderDayPicker();
-renderDayDetails();
-});
-}
-// ================= TAB 2: 待办事项逻辑 =================
-function renderPending() {
-const container = document.getElementById('pending-cards-container');
-if (!container) return;
-let html = '';
-tripData.pending.forEach((item) => {
-html += ⁠<div class="bg-paper p-3.5 rounded-2xl border border-sand space-y-2 relative shadow-sm hover:shadow transition"> <div class="flex justify-between items-start"> <h4 class="font-bold text-stone-800 text-xs md:text-sm flex-1 pr-2">${item.title}</h4> <span class="px-2 py-0.5 rounded text-[10px] font-bold ${item.statusColor || 'bg-blue-100 text-blue-800'}">${item.status}</span> </div> <p class="text-xs text-warmGray leading-relaxed">${item.desc}</p> <div class="flex justify-end space-x-2 pt-1 border-t border-sand/50"> <button onclick="editPendingItem(${item.id})" class="text-aegean hover:underline font-bold text-[11px]"><i class="fa-solid fa-pen mr-1"></i>编辑</button> <button onclick="deletePendingItem(${item.id})" class="text-red-500 hover:underline font-bold text-[11px]"><i class="fa-solid fa-trash-can mr-1"></i>删除</button> </div> </div>⁠;
-});
-container.innerHTML = html;
-}
-function savePendingItem() {
-const title = document.getElementById('pending-title').value.trim();
-const status = document.getElementById('pending-status').value.trim();
-const desc = document.getElementById('pending-desc').value.trim();
-if (!title) { showToast("请输入事项标题"); return; }
-if (editingPendingId) {
-const idx = tripData.pending.findIndex(i => i.id === editingPendingId);
-if (idx !== -1) {
-tripData.pending[idx].title = title;
-tripData.pending[idx].status = status || "比对中";
-tripData.pending[idx].desc = desc;
-}
-} else {
-tripData.pending.push({
-id: Date.now(),
-title,
-status: status || "比对中",
-statusColor: "bg-blue-100 text-blue-800",
-desc
-});
-}
-cancelPendingEdit();
-saveAppData(true);
-renderPending();
-}
-function editPendingItem(id) {
-const item = tripData.pending.find(i => i.id === id);
-if (!item) return;
-editingPendingId = id;
-document.getElementById('pending-title').value = item.title;
-document.getElementById('pending-status').value = item.status;
-document.getElementById('pending-desc').value = item.desc;
-document.getElementById('pending-btn-label').innerText = "保存";
-document.getElementById('btn-pending-cancel').classList.remove('hidden');
-}
-function cancelPendingEdit() {
-editingPendingId = null;
-document.getElementById('pending-title').value = '';
-document.getElementById('pending-status').value = '';
-document.getElementById('pending-desc').value = '';
-document.getElementById('pending-btn-label').innerText = "新增";
-document.getElementById('btn-pending-cancel').classList.add('hidden');
-}
-function deletePendingItem(id) {
-confirmDelete("确定删除该待办事项吗？", () => {
-tripData.pending = tripData.pending.filter(i => i.id !== id);
-saveAppData(true);
-renderPending();
-});
-}
-// ================= TAB 3: 酒店看板逻辑 =================
-function renderHotels() {
-const tbody = document.getElementById('hotel-table-body');
-if (!tbody) return;
-let html = '';
-tripData.hotels.forEach(item => {
-const mapUrl = ⁠https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' ' + item.address)}⁠;
-html += ⁠<tr> <td class="font-mono text-aegean font-bold">${item.dates}</td> <td class="font-bold text-stone-800">${item.name}</td> <td>${item.city}</td> <td><a href="${mapUrl}" target="_blank" class="text-blue-600 font-bold underline hover:text-blue-800"><i class="fa-solid fa-location-dot mr-1"></i>${item.address}</a></td> <td class="text-warmGray">${item.note}</td> <td> <button onclick="editHotelItem(${item.id})" class="text-aegean font-bold mr-2 hover:underline"><i class="fa-solid fa-pen"></i></button> <button onclick="deleteHotelItem(${item.id})" class="text-red-500 font-bold hover:underline"><i class="fa-solid fa-trash-can"></i></button> </td> </tr>⁠;
-});
-tbody.innerHTML = html;
-}
-function saveHotelItem() {
-const name = document.getElementById('hotel-name').value.trim();
-const dates = document.getElementById('hotel-dates').value.trim();
-const city = document.getElementById('hotel-city').value.trim();
-const address = document.getElementById('hotel-address').value.trim();
-const note = document.getElementById('hotel-note').value.trim();
-if (!name) { showToast("请输入酒店名称"); return; }
-if (editingHotelId) {
-const idx = tripData.hotels.findIndex(i => i.id === editingHotelId);
-if (idx !== -1) {
-tripData.hotels[idx] = { id: editingHotelId, name, dates, city, address, note };
-}
-} else {
-tripData.hotels.push({ id: Date.now(), name, dates, city, address, note });
-}
-cancelHotelEdit();
-saveAppData(true);
-renderHotels();
-}
-function editHotelItem(id) {
-const item = tripData.hotels.find(i => i.id === id);
-if (!item) return;
-editingHotelId = id;
-document.getElementById('hotel-name').value = item.name;
-document.getElementById('hotel-dates').value = item.dates;
-document.getElementById('hotel-city').value = item.city;
-document.getElementById('hotel-address').value = item.address;
-document.getElementById('hotel-note').value = item.note;
-document.getElementById('hotel-btn-label').innerText = "保存";
-document.getElementById('btn-hotel-cancel').classList.remove('hidden');
-}
-function cancelHotelEdit() {
-editingHotelId = null;
-document.getElementById('hotel-name').value = '';
-document.getElementById('hotel-dates').value = '';
-document.getElementById('hotel-city').value = '';
-document.getElementById('hotel-address').value = '';
-document.getElementById('hotel-note').value = '';
-document.getElementById('hotel-btn-label').innerText = "新增";
-document.getElementById('btn-hotel-cancel').classList.add('hidden');
-}
-function deleteHotelItem(id) {
-confirmDelete("确定删除该酒店记录吗？", () => {
-tripData.hotels = tripData.hotels.filter(i => i.id !== id);
-saveAppData(true);
-renderHotels();
-});
-}
-// ================= TAB 4: 交通明细逻辑 =================
-function renderTransport() {
-const tbody = document.getElementById('transport-table-body');
-if (!tbody) return;
-let html = '';
-tripData.transport.forEach(item => {
-html += ⁠<tr> <td class="font-mono text-aegean font-bold">${item.date}</td> <td class="font-bold">${item.type}</td> <td class="font-mono font-bold text-terracotta">${item.code}</td> <td class="font-bold text-stone-800">${item.route}</td> <td class="font-mono">${item.time}</td> <td class="text-warmGray">${item.note}</td> <td> <button onclick="editTransportItem(${item.id})" class="text-aegean font-bold mr-2 hover:underline"><i class="fa-solid fa-pen"></i></button> <button onclick="deleteTransportItem(${item.id})" class="text-red-500 font-bold hover:underline"><i class="fa-solid fa-trash-can"></i></button> </td> </tr>⁠;
-});
-tbody.innerHTML = html;
-}
-function saveTransportItem() {
-const date = document.getElementById('trans-date').value.trim();
-const type = document.getElementById('trans-type').value.trim();
-const code = document.getElementById('trans-code').value.trim();
-const route = document.getElementById('trans-route').value.trim();
-const time = document.getElementById('trans-time').value.trim();
-const note = document.getElementById('trans-note').value.trim();
-if (!route) { showToast("请输入路线段信息"); return; }
-if (editingTransportId) {
-const idx = tripData.transport.findIndex(i => i.id === editingTransportId);
-if (idx !== -1) {
-tripData.transport[idx] = { id: editingTransportId, date, type, code, route, time, note };
-}
-} else {
-tripData.transport.push({ id: Date.now(), date, type, code, route, time, note });
-}
-cancelTransportEdit();
-saveAppData(true);
-renderTransport();
-}
-function editTransportItem(id) {
-const item = tripData.transport.find(i => i.id === id);
-if (!item) return;
-editingTransportId = id;
-document.getElementById('trans-date').value = item.date;
-document.getElementById('trans-type').value = item.type;
-document.getElementById('trans-code').value = item.code;
-document.getElementById('trans-route').value = item.route;
-document.getElementById('trans-time').value = item.time;
-document.getElementById('trans-note').value = item.note;
-document.getElementById('trans-btn-label').innerText = "修改";
-document.getElementById('btn-trans-cancel').classList.remove('hidden');
-}
-function cancelTransportEdit() {
-editingTransportId = null;
-document.getElementById('trans-date').value = '';
-document.getElementById('trans-type').value = '';
-document.getElementById('trans-code').value = '';
-document.getElementById('trans-route').value = '';
-document.getElementById('trans-time').value = '';
-document.getElementById('trans-note').value = '';
-document.getElementById('trans-btn-label').innerText = "保存";
-document.getElementById('btn-trans-cancel').classList.add('hidden');
-}
-function deleteTransportItem(id) {
-confirmDelete("确定删除该交通明细吗？", () => {
-tripData.transport = tripData.transport.filter(i => i.id !== id);
-saveAppData(true);
-renderTransport();
-});
-}
-// ================= TAB 5: 美食种草逻辑 =================
-function renderFood() {
-const tbody = document.getElementById('food-table-body');
-const filter = document.getElementById('food-filter-city')?.value || "ALL";
-if (!tbody) return;
-let items = tripData.food;
-if (filter !== "ALL") {
-items = items.filter(f => f.city.includes(filter) || filter.includes(f.city));
-}
-let html = '';
-items.forEach(item => {
-const targetUrl = item.mapUrl || ⁠https://maps.google.com/?q=${encodeURIComponent(item.name)}⁠;
-html += ⁠<tr> <td class="font-bold text-aegean">${item.city}</td> <td class="font-bold text-stone-800">${item.name}</td> <td><a href="${targetUrl}" target="_blank" class="text-blue-600 font-bold underline hover:text-blue-800"><i class="fa-solid fa-map-location-dot mr-1"></i>打开导航 / 笔记</a></td> <td> <button onclick="editFoodItem(${item.id})" class="text-aegean font-bold mr-2 hover:underline"><i class="fa-solid fa-pen"></i></button> <button onclick="deleteFoodItem(${item.id})" class="text-red-500 font-bold hover:underline"><i class="fa-solid fa-trash-can"></i></button> </td> </tr>⁠;
-});
-tbody.innerHTML = html;
-}
-function saveFoodItem() {
-const city = document.getElementById('food-city').value;
-const name = document.getElementById('food-name').value.trim();
-const mapUrl = document.getElementById('food-mapurl').value.trim();
-if (!name) { showToast("请输入餐厅或美食名称"); return; }
-if (editingFoodId) {
-const idx = tripData.food.findIndex(i => i.id === editingFoodId);
-if (idx !== -1) {
-tripData.food[idx] = { id: editingFoodId, city, name, mapUrl };
-}
-} else {
-tripData.food.push({ id: Date.now(), city, name, mapUrl });
-}
-cancelFoodEdit();
-saveAppData(true);
-renderFood();
-}
-function editFoodItem(id) {
-const item = tripData.food.find(i => i.id === id);
-if (!item) return;
-editingFoodId = id;
-document.getElementById('food-city').value = item.city;
-document.getElementById('food-name').value = item.name;
-document.getElementById('food-mapurl').value = item.mapUrl || '';
-document.getElementById('food-btn-label').innerText = "保存";
-document.getElementById('btn-food-cancel').classList.remove('hidden');
-}
-function cancelFoodEdit() {
-editingFoodId = null;
-document.getElementById('food-name').value = '';
-document.getElementById('food-mapurl').value = '';
-document.getElementById('food-btn-label').innerText = "保存";
-document.getElementById('btn-food-cancel').classList.add('hidden');
-}
-function deleteFoodItem(id) {
-confirmDelete("确定删除该美食种草项吗？", () => {
-tripData.food = tripData.food.filter(i => i.id !== id);
-saveAppData(true);
-renderFood();
-});
-}
-// ================= TAB 6: AA 记账本逻辑 =================
-function renderLedger() {
-const tbody = document.getElementById('ledger-table-body');
-if (!tbody) return;
-let totalCNY = 0;
-let totalEUR = 0;
-let count = tripData.ledger.length;
-let html = '';
-tripData.ledger.forEach(item => {
-let amountCNY = 0;
-if (item.currency === 'EUR') {
-totalEUR += item.amount;
-amountCNY = item.amount * currentExchangeRate;
-} else {
-amountCNY = item.amount;
-}
-totalCNY += amountCNY;
-html += ⁠<tr> <td class="font-bold text-stone-800">${item.title}</td> <td class="font-mono font-bold text-olive">${item.currency === 'EUR' ? '€' : '¥'}${item.amount.toFixed(2)}</td> <td class="font-mono font-bold text-terracotta">¥${amountCNY.toFixed(2)}</td> <td>${item.payment}</td> <td><span class="bg-paper border border-sand px-2 py-0.5 rounded text-[11px] font-bold text-aegean">${item.payer}</span></td> <td> <button onclick="editExpenseItem(${item.id})" class="text-aegean font-bold mr-2 hover:underline"><i class="fa-solid fa-pen"></i></button> <button onclick="deleteExpenseItem(${item.id})" class="text-red-500 font-bold hover:underline"><i class="fa-solid fa-trash-can"></i></button> </td> </tr>⁠;
-});
-tbody.innerHTML = html;
-document.getElementById('ledger-total-cny').innerText = ⁠¥${totalCNY.toFixed(2)}⁠;
-document.getElementById('ledger-per-person').innerText = ⁠¥${(totalCNY / 2).toFixed(2)}⁠;
-document.getElementById('ledger-total-eur').innerText = ⁠€${totalEUR.toFixed(2)}⁠;
-document.getElementById('ledger-count').innerText = ⁠${count} 笔⁠;
-}
-function saveExpenseItem() {
-const title = document.getElementById('expense-title').value.trim();
-const amount = parseFloat(document.getElementById('expense-amount').value);
-const currency = document.getElementById('expense-currency').value;
-const payment = document.getElementById('expense-payment').value;
-const payer = document.getElementById('expense-payer').value;
-if (!title || isNaN(amount) || amount <= 0) {
-showToast("请输入有效消费项目与金额");
-return;
-}
-if (editingExpenseId) {
-const idx = tripData.ledger.findIndex(i => i.id === editingExpenseId);
-if (idx !== -1) {
-tripData.ledger[idx] = { id: editingExpenseId, title, amount, currency, payment, payer };
-}
-} else {
-tripData.ledger.push({ id: Date.now(), title, amount, currency, payment, payer });
-}
-cancelExpenseEdit();
-saveAppData(true);
-renderLedger();
-}
-function editExpenseItem(id) {
-const item = tripData.ledger.find(i => i.id === id);
-if (!item) return;
-editingExpenseId = id;
-document.getElementById('expense-title').value = item.title;
-document.getElementById('expense-amount').value = item.amount;
-document.getElementById('expense-currency').value = item.currency;
-document.getElementById('expense-payment').value = item.payment;
-document.getElementById('expense-payer').value = item.payer;
-document.getElementById('ledger-btn-label').innerText = "修改";
-document.getElementById('btn-ledger-cancel').classList.remove('hidden');
-}
-function cancelExpenseEdit() {
-editingExpenseId = null;
-document.getElementById('expense-title').value = '';
-document.getElementById('expense-amount').value = '';
-document.getElementById('ledger-btn-label').innerText = "保存";
-document.getElementById('btn-ledger-cancel').classList.add('hidden');
-}
-function deleteExpenseItem(id) {
-confirmDelete("确定删除该笔记账吗？", () => {
-tripData.ledger = tripData.ledger.filter(i => i.id !== id);
-saveAppData(true);
-renderLedger();
-});
-}
-// ================= TAB 7: 行前 Checklist 逻辑 =================
-function renderChecklist() {
-const container = document.getElementById('checklist-container');
-if (!container) return;
-const categories = ["行前打卡", "证件财务", "电子数码", "随身衣物", "日用药品"];
-let total = tripData.checklist.length;
-let doneCount = tripData.checklist.filter(i => i.done).length;
-document.getElementById('checklist-progress').innerText = ⁠${doneCount}/${total}⁠;
-let html = '';
-categories.forEach(cat => {
-const items = tripData.checklist.filter(i => i.cat === cat);
-if (items.length === 0) return;
-let itemsHtml = '';
-items.forEach(item => {
-itemsHtml += ⁠<div class="flex items-center justify-between p-2 hover:bg-paper rounded-lg transition group"> <label class="flex items-center space-x-2.5 cursor-pointer flex-1"> <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklist(${item.id})" class="w-4 h-4 text-olive rounded border-sand focus:ring-olive"> <span class="text-xs ${item.done ? 'line-through text-stone-400 font-normal' : 'text-stone-800 font-medium'}">${item.text}</span> </label> <div class="opacity-80 group-hover:opacity-100 space-x-1"> <button onclick="editChecklistItem(${item.id})" class="text-aegean hover:underline text-[11px] p-1"><i class="fa-solid fa-pen"></i></button> <button onclick="deleteChecklistItem(${item.id})" class="text-red-500 hover:underline text-[11px] p-1"><i class="fa-solid fa-trash-can"></i></button> </div> </div>⁠;
-});
-html += ⁠<div class="bg-paper/80 p-3.5 rounded-2xl border border-sand space-y-2"> <h4 class="font-bold text-aegean text-xs flex items-center border-b border-sand/60 pb-1.5"> <i class="fa-solid fa-check-double mr-1.5 text-olive"></i> ${cat} </h4> <div class="space-y-1">${itemsHtml}</div> </div>⁠;
-});
-container.innerHTML = html;
-}
-function toggleChecklist(id) {
-const item = tripData.checklist.find(i => i.id === id);
-if (item) {
-item.done = !item.done;
-saveAppData(true);
-renderChecklist();
-}
-}
-function saveChecklistItem() {
-const cat = document.getElementById('new-check-cat').value;
-const text = document.getElementById('new-check-text').value.trim();
-if (!text) { showToast("请输入清单项名称"); return; }
-if (editingChecklistId) {
-const idx = tripData.checklist.findIndex(i => i.id === editingChecklistId);
-if (idx !== -1) {
-tripData.checklist[idx].cat = cat;
-tripData.checklist[idx].text = text;
-}
-} else {
-tripData.checklist.push({ id: Date.now(), cat, text, done: false });
-}
-cancelChecklistEdit();
-saveAppData(true);
-renderChecklist();
-}
-function editChecklistItem(id) {
-const item = tripData.checklist.find(i => i.id === id);
-if (!item) return;
-editingChecklistId = id;
-document.getElementById('new-check-cat').value = item.cat;
-document.getElementById('new-check-text').value = item.text;
-document.getElementById('check-btn-label').innerText = "修改";
-document.getElementById('btn-check-cancel').classList.remove('hidden');
-}
-function cancelChecklistEdit() {
-editingChecklistId = null;
-document.getElementById('new-check-text').value = '';
-document.getElementById('check-btn-label').innerText = "新增项";
-document.getElementById('btn-check-cancel').classList.add('hidden');
-}
-function deleteChecklistItem(id) {
-confirmDelete("确定删除该清单项吗？", () => {
-tripData.checklist = tripData.checklist.filter(i => i.id !== id);
-saveAppData(true);
-renderChecklist();
-});
-}
-// ================= 导入 / 导出 JSON =================
-function exportDataJSON() {
-const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tripData, null, 2));
-const downloadAnchor = document.createElement('a');
-downloadAnchor.setAttribute("href", dataStr);
-downloadAnchor.setAttribute("download", ⁠希腊路书备份_${new Date().toISOString().slice(0,10)}.json⁠);
-document.body.appendChild(downloadAnchor);
-downloadAnchor.click();
-downloadAnchor.remove();
-showToast("路书 JSON 备份已导出！");
-}
-function importDataJSON(event) {
-const file = event.target.files[0];
-if (!file) return;
-const reader = new FileReader();
-reader.onload = function(e) {
-try {
-const imported = JSON.parse(e.target.result);
-if (!isValidTripData(imported)) {
-showToast("导入失败：备份文件结构不完整！");
-return;
-}
-imported.lastUpdated = Date.now();
-tripData = imported;
-saveAppData(true);
-renderAll();
-showToast("备份导入成功！");
-} catch (err) {
-console.warn("JSON 导入失败", err);
-showToast("文件解析失败！");
-} finally {
-event.target.value = '';
-}
-};
-reader.readAsText(file);
-}
-function confirmDelete(msg, actionCallback) {
-pendingDeleteAction = actionCallback;
-document.getElementById('delete-modal-msg').innerText = msg;
-document.getElementById('delete-modal').classList.remove('hidden');
-document.getElementById('confirm-delete-btn').onclick = function() {
-if (pendingDeleteAction) pendingDeleteAction();
-closeDeleteModal();
-};
-}
-function closeDeleteModal() {
-pendingDeleteAction = null;
-document.getElementById('delete-modal').classList.add('hidden');
-}
-function isValidTripData(data) {
-if (!data || typeof data !== 'object' || !data.daily) return false;
-for (const key of ['pending', 'hotels', 'transport', 'food', 'ledger', 'checklist']) {
-if (!Array.isArray(data[key])) return false;
-}
-return true;
-}
-</script>
-<!-- Firebase 实时无感云端双向同步引擎 -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-const firebaseConfig = {
-apiKey: "AIzaSyB0BC_ATnwr5xegYNLQBKq1HyhSu_m0FrE",
-authDomain: "greece-trip-c4cc7.firebaseapp.com",
-databaseURL: "https://greece-trip-c4cc7-default-rtdb.firebaseio.com",
-projectId: "greece-trip-c4cc7",
-storageBucket: "greece-trip-c4cc7.firebasestorage.app",
-messagingSenderId: "332482796388",
-appId: "1:332482796388:web:a1df835258b2a92534b871"
-};
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const auth = getAuth(app);
-const roomPath = ⁠trips/${ROOM_ID}⁠;
-const tripRef = ref(db, roomPath);
-let isRemoteUpdate = false;
-function updateCloudUI(status, text) {
-const dot = document.getElementById('cloud-pulse-dot');
-const txt = document.getElementById('cloud-status-text');
-if (!dot || !txt) return;
-if (status === 'connected') {
-dot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5";
-txt.textContent = text;
-} else if (status === 'syncing') {
-dot.className = "w-2 h-2 rounded-full bg-amber-500 animate-ping mr-1.5";
-txt.textContent = text;
-} else {
-dot.className = "w-2 h-2 rounded-full bg-red-500 mr-1.5";
-txt.textContent = text;
-}
-}
-function setupRealtimeListener() {
-onValue(tripRef, (snapshot) => {
-const cloudData = snapshot.val();
-if (cloudData) {
-if (!tripData.lastUpdated || (cloudData.lastUpdated && cloudData.lastUpdated > tripData.lastUpdated)) {
-isRemoteUpdate = true;
-tripData = cloudData;
-if (tripData.exchangeRate) {
-currentExchangeRate = tripData.exchangeRate;
-const rateInput = document.getElementById('exchange-rate-input');
-if (rateInput) rateInput.value = currentExchangeRate;
-}
-try {
-localStorage.setItem(LOCAL_STORAGE_KEY + '_' + ROOM_ID, JSON.stringify(tripData));
-} catch (e) {}
-renderAll();
-showToast("✨ 已自动同步最新路书修改！");
-setTimeout(() => { isRemoteUpdate = false; }, 500);
-}
-}
-updateCloudUI('connected', '🟢 云端实时同步已连接');
-}, (error) => {
-console.error("Firebase 读取数据失败:", error);
-updateCloudUI('error', '🔴 云端同步失败 (请检查 Rules 配置)');
-});
-}
-// 尝试匿名登录鉴权并开启监听
-signInAnonymously(auth).then(() => {
-setupRealtimeListener();
-}).catch((err) => {
-console.warn("Firebase 匿名登录未开启，尝试直接连接...", err);
-setupRealtimeListener();
-});
-// 全局向云端推数据函数
-window.syncToCloud = function(data) {
-if (isRemoteUpdate) return;
-updateCloudUI('syncing', '⚡ 云端数据同步中...');
-set(tripRef, data)
-.then(() => {
-updateCloudUI('connected', '🟢 云端实时同步已连接');
-})
-.catch((err) => {
-console.error("云端写入失败:", err);
-updateCloudUI('error', '🔴 云端写入失败 (请检查 Rules 权限)');
-});
-};
-</script>
+
+    <!-- 全局 Toast 提示 -->
+    <div id="toast-notification" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-stone-800/90 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl backdrop-blur-sm transition-all duration-300 opacity-0 pointer-events-none flex items-center space-x-2">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+        <span id="toast-msg">操作成功！</span>
+    </div>
+
+    <!-- 全局通用删除确认 Modal -->
+    <div id="delete-modal" class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center hidden backdrop-blur-sm p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-sand space-y-4 text-center">
+            <div class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center mx-auto text-xl">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="font-bold text-stone-800 text-base">确认要删除此项吗？</h3>
+            <p id="delete-modal-msg" class="text-xs text-warmGray">删除后无法直接撤销，请确认是否继续。</p>
+            <div class="flex space-x-2 pt-2">
+                <button onclick="closeDeleteModal()" class="flex-1 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold rounded-xl text-xs transition">取消</button>
+                <button id="confirm-delete-btn" class="flex-1 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl text-xs transition shadow-md">确认删除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 顶部 Header -->
+    <header class="max-w-5xl mx-auto pt-6 px-4 text-center">
+        <div class="inline-block bg-sand/40 px-5 py-1 rounded-full text-xs font-semibold tracking-widest text-aegean mb-2 uppercase">
+            🏛️ Greece Travel Booklet · 2026.10.01 - 10.11
+        </div>
+        <h1 class="text-2xl md:text-4xl font-bold font-serif text-ink tracking-tight mb-1">
+            希腊爱琴海自驾之旅
+        </h1>
+        <p class="text-warmGray text-xs md:text-sm font-medium max-w-2xl mx-auto mb-2">
+            广州 ➔ 北京 ➔ 圣托里尼 ➔ 克里特岛 ➔ Meteora天空之城 ➔ 雅典 ➔ 广州
+        </p>
+
+        <!-- 实时信息提示栏 -->
+        <div class="bg-paper border border-sand rounded-xl p-2.5 max-w-2xl mx-auto mb-3 flex flex-wrap justify-around items-center text-xs shadow-sm gap-2">
+            <div class="flex items-center space-x-1 text-stone-700">
+                <i class="fa-solid fa-cloud-sun text-amber-500 text-sm"></i>
+                <span>当日天气: <b>晴朗 22°C ~ 26°C</b></span>
+            </div>
+            <div class="flex items-center space-x-1 text-stone-700">
+                <i class="fa-solid fa-suitcase text-aegean"></i>
+                <span>GQ346: 15kg 行李额/人</span>
+            </div>
+            <div class="flex items-center space-x-1.5 border-l pl-3 border-sand">
+                <i class="fa-solid fa-euro-sign text-olive font-bold"></i>
+                <span>汇率: 1 EUR ≈ <input type="number" id="exchange-rate-input" value="7.8" step="0.05" onchange="updateExchangeRate(this.value)" class="w-12 text-center border border-sand rounded bg-white text-xs font-mono"> CNY</span>
+            </div>
+        </div>
+
+        <!-- 倒计时与数据管理 -->
+        <div class="flex flex-wrap justify-center items-center gap-2 mb-4 text-xs">
+            <div id="countdown-badge" class="bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1 rounded-full font-medium shadow-sm">
+                ⏳ 距出发还有 <span id="days-left" class="font-bold text-terracotta">--</span> 天
+            </div>
+            <div id="cloud-sync-status" class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full font-medium shadow-sm flex items-center">
+                <span id="cloud-pulse-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>
+                <span id="cloud-status-text">☁️ 双人实时同步已激活（已开启本地+云端保存）</span>
+            </div>
+            <div class="flex space-x-1 ml-1">
+                <button onclick="exportDataJSON()" class="bg-white hover:bg-stone-50 border border-sand text-stone-700 px-2.5 py-1 rounded-full shadow-sm text-[11px] font-bold transition">
+                    <i class="fa-solid fa-download text-aegean mr-1"></i>导出路书
+                </button>
+                <label class="bg-white hover:bg-stone-50 border border-sand text-stone-700 px-2.5 py-1 rounded-full shadow-sm text-[11px] font-bold transition cursor-pointer">
+                    <i class="fa-solid fa-upload text-olive mr-1"></i>导入备份
+                    <input type="file" id="import-file-input" onchange="importDataJSON(event)" class="hidden" accept=".json">
+                </label>
+            </div>
+        </div>
+
+        <!-- 顶部主 Tabs 菜单 -->
+        <nav class="flex space-x-2 md:justify-center overflow-x-auto custom-scrollbar pb-2 px-1 text-xs md:text-sm">
+            <button onclick="switchTab('daily')" id="tab-daily" class="tab-btn active flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all">📅 每日路线</button>
+            <button onclick="switchTab('pending')" id="tab-pending" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">📌 待办与确认项</button>
+            <button onclick="switchTab('hotel')" id="tab-hotel" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🏨 酒店预订看板</button>
+            <button onclick="switchTab('transport')" id="tab-transport" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">✈️ 航班与渡轮明细</button>
+            <button onclick="switchTab('food')" id="tab-food" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🍽️ 美食种草导航</button>
+            <button onclick="switchTab('ledger')" id="tab-ledger" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">💰 双人 AA 账本</button>
+            <button onclick="switchTab('packing')" id="tab-packing" class="tab-btn flex-shrink-0 px-3.5 py-1.5 font-semibold rounded-full border border-sand transition-all bg-white text-ink">🧳 行前 Checklist</button>
+        </nav>
+    </header>
+
+    <main class="max-w-5xl mx-auto mt-4 px-4">
+
+        <!-- ================= TAB 1: 每日路线 ================= -->
+        <section id="sec-daily" class="tab-content block space-y-4">
+            <div class="flex flex-wrap justify-between items-center bg-paper p-3 rounded-2xl border border-sand gap-2 text-xs">
+                <div class="flex space-x-2">
+                    <button onclick="toggleEditMode()" id="edit-mode-btn" class="bg-aegean hover:bg-aegean/90 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center">
+                        <i class="fa-solid fa-pen-to-square mr-1.5"></i> <span id="edit-btn-text">开启每日路线编辑</span>
+                    </button>
+                </div>
+                <button onclick="resetToDefaultItinerary()" class="text-warmGray hover:text-red-600 underline text-[11px]">恢复初始定稿方案</button>
+            </div>
+
+            <!-- 天数选择器 -->
+            <div class="flex space-x-2 overflow-x-auto pb-2 custom-scrollbar" id="day-picker-container">
+                <!-- 动态渲染 11 天 Picker -->
+            </div>
+
+            <div id="day-details-container"></div>
+        </section>
+
+        <!-- ================= TAB 2: 待确认事项 Dashboard ================= -->
+        <section id="sec-pending" class="tab-content hidden space-y-4">
+            <div class="watercolor-card p-4 md:p-6 space-y-4">
+                <div class="flex justify-between items-center border-b pb-2">
+                    <h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
+                        <i class="fa-solid fa-clipboard-question mr-2 text-terracotta"></i> 📌 待确定与追踪核心事项
+                    </h3>
+                    <span class="text-xs text-warmGray">看已有事项 / 下方可编辑或新增</span>
+                </div>
+
+                <!-- 1. 已有内容：事项卡片列表（放在上面） -->
+                <div id="pending-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <!-- 动态渲染 -->
+                </div>
+
+                <!-- 2. 新增/编辑待确认事项表单（放在下面） -->
+                <div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
+                    <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
+                        <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑待确认事项
+                    </div>
+                    <div class="sm:col-span-4">
+                        <label class="font-bold block mb-1 text-stone-700">事项标题</label>
+                        <input type="text" id="pending-title" placeholder="如: 10/3 双体帆船预订确认" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">状态标签</label>
+                        <input type="text" id="pending-status" placeholder="如: 比对中 / 待预订 / 已确定" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">方案/备选/细节</label>
+                        <input type="text" id="pending-desc" placeholder="如: Spiridakos vs Santorini Star，含BBQ与接送" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2 flex items-end space-x-1">
+                        <button onclick="savePendingItem()" id="btn-pending-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <i class="fa-solid fa-plus mr-1"></i> <span id="pending-btn-label">新增</span>
+                        </button>
+                        <button onclick="cancelPendingEdit()" id="btn-pending-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-2 py-2 rounded-lg transition text-xs" title="取消编辑">
+                            取消
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: 酒店预订看板 ================= -->
+        <section id="sec-hotel" class="tab-content hidden space-y-5">
+            <div class="watercolor-card p-4 md:p-5 space-y-4">
+                <div class="flex justify-between items-center border-b pb-2">
+                    <h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
+                        <i class="fa-solid fa-hotel mr-2"></i> 🏨 已确认预订酒店列表及导航
+                    </h3>
+                    <span class="text-[10px] bg-aegean/10 text-aegean font-bold px-2 py-0.5 rounded">双人共享看板</span>
+                </div>
+
+                <!-- 1. 已有内容：酒店表格（放在上面） -->
+                <div class="table-wrapper">
+                    <table class="tbl-min text-xs">
+                        <thead>
+                            <tr class="text-aegean">
+                                <th>入住时间</th>
+                                <th>酒店 / 住宿名称</th>
+                                <th>城市/区域</th>
+                                <th>谷歌地图导航与具体地址</th>
+                                <th>备注与提示</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hotel-table-body" class="text-gray-700">
+                            <!-- 动态渲染 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 2. 添加/编辑酒店表单（放在下面） -->
+                <div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
+                    <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
+                        <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑酒店预订
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">酒店名称</label>
+                        <input type="text" id="hotel-name" placeholder="酒店名称" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">入住日期</label>
+                        <input type="text" id="hotel-dates" placeholder="如 10.02-10.03" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">城市/区域</label>
+                        <input type="text" id="hotel-city" placeholder="城市/区域" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">地址或导航关键词</label>
+                        <input type="text" id="hotel-address" placeholder="地址" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">备注提示</label>
+                        <input type="text" id="hotel-note" placeholder="备注" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-1 flex items-end space-x-1">
+                        <button onclick="saveHotelItem()" id="btn-hotel-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <span id="hotel-btn-label">新增</span>
+                        </button>
+                        <button onclick="cancelHotelEdit()" id="btn-hotel-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-2 py-2 rounded-lg transition text-xs">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: 航班与渡轮明细 ================= -->
+        <section id="sec-transport" class="tab-content hidden space-y-6">
+            <div class="bg-amber-50 border-l-4 border-aegean p-3 rounded-xl text-xs text-stone-700 space-y-1">
+                <p class="font-bold text-aegean"><i class="fa-solid fa-bell mr-1"></i> 渡轮 Online Check-in 与登船提醒：</p>
+                <p>⛴️ <b>Seajets (10/05 圣托➔克里特)：</b> 订单号 <code class="bg-white px-1.5 py-0.5 rounded border border-amber-200 font-bold text-terracotta">1112UQMYP</code> ➔ <a href="https://webcheckin.seajets.com/" target="_blank" class="text-aegean font-bold underline">Seajets 值机入口</a></p>
+                <p>🚢 <b>Minoan Lines 夜船 (10/07 克里特HER港➔雅典Piraeus)：</b> 约 21:30 发船，请由伊拉克利翁 <b>HER 港口</b> 取票登船（非 Souda 港）。</p>
+            </div>
+
+            <div class="watercolor-card p-4 md:p-6 space-y-3">
+                <div class="flex justify-between items-center border-b pb-2">
+                    <h3 class="font-serif font-bold text-aegean text-sm">✈️🚢 11 天全程航班、渡轮与自驾明细</h3>
+                </div>
+
+                <!-- 1. 已有内容：航班与交通表格（放在上面） -->
+                <div class="table-wrapper">
+                    <table class="tbl-min text-xs">
+                        <thead>
+                            <tr class="text-aegean"><th>日期</th><th>类型</th><th>班次 / 形式</th><th>航段/路线</th><th>时间</th><th>关键提示</th><th>操作</th></tr>
+                        </thead>
+                        <tbody id="transport-table-body" class="text-gray-700">
+                            <!-- 动态渲染 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 2. 新增/编辑交通项表单（放在下面） -->
+                <div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
+                    <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
+                        <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑交通航班
+                    </div>
+                    <input type="text" id="trans-date" placeholder="日期(10/01)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-type" placeholder="类型(✈️航班/⛴️渡轮/🚗自驾)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-code" placeholder="班次(CA1328)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-route" placeholder="路线(广州➔北京)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-time" placeholder="时间(18:40-22:00)" class="sm:col-span-2 p-2 border border-sand rounded bg-white">
+                    <input type="text" id="trans-note" placeholder="提示(直挂/Luggage)" class="sm:col-span-1 p-2 border border-sand rounded bg-white">
+                    <div class="sm:col-span-1 flex items-center space-x-1">
+                        <button onclick="saveTransportItem()" id="btn-trans-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <span id="trans-btn-label">保存</span>
+                        </button>
+                        <button onclick="cancelTransportEdit()" id="btn-trans-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-1.5 py-2 rounded-lg transition text-xs">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: 美食种草导航 ================= -->
+        <section id="sec-food" class="tab-content hidden space-y-5">
+            <div class="watercolor-card p-4 md:p-6 space-y-4">
+                <div class="flex justify-between items-center border-b pb-2 flex-wrap gap-2">
+                    <h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
+                        <i class="fa-solid fa-utensils mr-2"></i> 🍽️ 希腊精选特色美食与餐厅种草导航表
+                    </h3>
+                    <div class="flex items-center space-x-1 text-xs">
+                        <span class="text-warmGray">按地区筛选:</span>
+                        <select id="food-filter-city" onchange="renderFood()" class="p-1 border border-sand rounded bg-white">
+                            <option value="ALL">全部地区</option>
+                            <option value="圣托里尼 (Santorini)">圣托里尼</option>
+                            <option value="克里特岛 (Crete)">克里特岛</option>
+                            <option value="Meteora天空之城">Meteora天空之城</option>
+                            <option value="雅典 (Athens)">雅典</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 1. 已有内容：美食导航表格（放在上面） -->
+                <div class="table-wrapper">
+                    <table class="tbl-min text-xs">
+                        <thead>
+                            <tr class="text-aegean">
+                                <th>城市/区域</th>
+                                <th>餐厅名称 / 种草亮点</th>
+                                <th>谷歌地图一键导航 / 来源</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="food-table-body" class="text-gray-700">
+                            <!-- 动态渲染 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 2. 添加/编辑餐厅表单（放在下面） -->
+                <div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
+                    <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
+                        <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑美食种草
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">城市/岛屿</label>
+                        <select id="food-city" class="w-full p-2 border border-sand rounded bg-white">
+                            <option value="圣托里尼 (Santorini)">圣托里尼 (Santorini)</option>
+                            <option value="克里特岛 (Crete)">克里特岛 (Crete)</option>
+                            <option value="Meteora天空之城">Meteora天空之城</option>
+                            <option value="雅典 (Athens)">雅典 (Athens)</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-4">
+                        <label class="font-bold block mb-1 text-stone-700">餐厅名称 / 种草特色</label>
+                        <input type="text" id="food-name" placeholder="如: Sphinx Restaurant 或小红书笔记标题" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-blue-600"><i class="fa-solid fa-link"></i> 地图/小红书链接 (可选)</label>
+                        <input type="text" id="food-mapurl" placeholder="可粘贴链接，留空自动生成Google地图" class="w-full p-2 border border-blue-200 rounded bg-white text-blue-600 font-mono text-[10px]">
+                    </div>
+                    <div class="sm:col-span-2 flex items-end space-x-1">
+                        <button onclick="saveFoodItem()" id="btn-food-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <span id="food-btn-label">保存</span>
+                        </button>
+                        <button onclick="cancelFoodEdit()" id="btn-food-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-2 py-2 rounded-lg transition text-xs">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 6: 双人 AA 记账本 ================= -->
+        <section id="sec-ledger" class="tab-content hidden space-y-5">
+            <div class="watercolor-card p-4 md:p-5 space-y-4">
+                <div class="flex justify-between items-center border-b pb-2">
+                    <h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
+                        <i class="fa-solid fa-wallet mr-2"></i> 💰 希腊双人旅途 AA 小账本
+                    </h3>
+                </div>
+
+                <!-- 汇总仪表盘 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                    <div class="bg-paper p-3 rounded-xl border border-sand">
+                        <span class="text-warmGray block">总消费折合 (CNY)</span>
+                        <span id="ledger-total-cny" class="text-lg font-bold font-mono text-terracotta">¥0.00</span>
+                    </div>
+                    <div class="bg-paper p-3 rounded-xl border border-sand">
+                        <span class="text-warmGray block">人均支出 (CNY)</span>
+                        <span id="ledger-per-person" class="text-lg font-bold font-mono text-aegean">¥0.00</span>
+                    </div>
+                    <div class="bg-paper p-3 rounded-xl border border-sand">
+                        <span class="text-warmGray block">欧元原币总计</span>
+                        <span id="ledger-total-eur" class="text-lg font-bold font-mono text-olive">€0.00</span>
+                    </div>
+                    <div class="bg-paper p-3 rounded-xl border border-sand">
+                        <span class="text-warmGray block">记账笔数</span>
+                        <span id="ledger-count" class="text-lg font-bold font-mono text-ink">0 笔</span>
+                    </div>
+                </div>
+
+                <!-- 1. 已有记账明细列表（放在上面） -->
+                <div class="table-wrapper">
+                    <table class="tbl-min text-xs">
+                        <thead>
+                            <tr class="text-aegean">
+                                <th>项目</th>
+                                <th>原币金额</th>
+                                <th>折合人民币 (¥)</th>
+                                <th>支付方式</th>
+                                <th>付款人</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ledger-table-body" class="text-gray-700">
+                            <!-- 动态渲染 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 2. 记账录入/编辑表单（放在下面） -->
+                <div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
+                    <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
+                        <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 记一笔 / 编辑消费
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="font-bold block mb-1 text-stone-700">消费项目</label>
+                        <input type="text" id="expense-title" placeholder="如 Seajets船票/雅典卫城门票" class="w-full p-2 border border-sand rounded bg-white">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">金额</label>
+                        <input type="number" id="expense-amount" placeholder="金额" step="0.01" class="w-full p-2 border border-sand rounded bg-white font-mono">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">币种</label>
+                        <select id="expense-currency" class="w-full p-2 border border-sand rounded bg-white">
+                            <option value="EUR">欧元 (EUR)</option>
+                            <option value="CNY">人民币 (CNY)</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">支付方式</label>
+                        <select id="expense-payment" class="w-full p-2 border border-sand rounded bg-white">
+                            <option value="信用卡 Visa/MasterCard">信用卡 Visa/MasterCard</option>
+                            <option value="现金 欧元">现金 欧元</option>
+                            <option value="支付宝">支付宝</option>
+                            <option value="微信支付">微信支付</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="font-bold block mb-1 text-stone-700">付款人</label>
+                        <select id="expense-payer" class="w-full p-2 border border-sand rounded bg-white">
+                            <option value="老公">老公</option>
+                            <option value="老婆">老婆</option>
+                            <option value="共同平摊 (AA)">共同平摊 (AA)</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-1 flex items-end space-x-1">
+                        <button onclick="saveExpenseItem()" id="btn-ledger-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
+                            <span id="ledger-btn-label">保存</span>
+                        </button>
+                        <button onclick="cancelExpenseEdit()" id="btn-ledger-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-1.5 py-2 rounded-lg transition text-xs">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 7: 行前 Checklist ================= -->
+        <section id="sec-packing" class="tab-content hidden space-y-4">
+            <div class="watercolor-card p-4 md:p-6 space-y-4">
+                <div class="flex justify-between items-center flex-wrap gap-2">
+                    <h2 class="text-base font-bold text-stone-800 flex items-center">
+                        <i class="fa-solid fa-list-check text-olive mr-2"></i> 🧳 希腊行前 Checklist
+                    </h2>
+                    <div class="text-xs bg-paper border border-sand px-3 py-1 rounded-full text-stone-700">
+                        已准备: <span id="checklist-progress" class="font-bold text-olive">0/0</span>
+                    </div>
+                </div>
+
+                <!-- 1. 已有清单项展示（放在上面） -->
+                <div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+                <!-- 2. 自定义添加/编辑 Checklist 项表单（放在下面） -->
+                <div class="bg-paper p-3 rounded-xl border border-sand flex flex-wrap gap-2 items-center text-xs mt-4 pt-3 border-t border-sand/50">
+                    <div class="w-full font-bold text-stone-700 mb-0.5 flex items-center">
+                        <i class="fa-solid fa-pen-to-square mr-1 text-olive"></i> 新增 / 修改清单项目
+                    </div>
+                    <select id="new-check-cat" class="p-2 border border-sand rounded bg-white">
+                        <option value="行前打卡">行前打卡</option>
+                        <option value="证件财务">证件财务</option>
+                        <option value="电子数码">电子数码</option>
+                        <option value="随身衣物">随身衣物</option>
+                        <option value="日用药品">日用药品</option>
+                    </select>
+                    <input type="text" id="new-check-text" placeholder="输入新的待办或改写的清单项..." class="flex-1 p-2 border border-sand rounded bg-white min-w-[200px]">
+                    <button onclick="saveChecklistItem()" id="btn-check-save" class="bg-olive hover:bg-olive/90 text-white font-bold px-4 py-2 rounded-lg transition">
+                        <span id="check-btn-label">新增项</span>
+                    </button>
+                    <button onclick="cancelChecklistEdit()" id="btn-check-cancel" class="hidden bg-stone-300 text-stone-700 hover:bg-stone-400 font-bold px-3 py-2 rounded-lg transition">取消</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-5xl mx-auto mt-12 text-center text-xs text-warmGray mb-8 space-y-1">
+        <p class="font-serif">🌊 浪漫爱琴海双岛与 Meteora 天空之城慢调之旅 · 祝两位旅途愉快！</p>
+        <p class="text-[10px] text-stone-400">已启用全局在线数据同步与自动保存</p>
+    </footer>
+
+    <script>
+        // ==================== 全局状态与默认数据 ====================
+        let currentExchangeRate = 7.8;
+        let isEditMode = false;
+        let selectedDay = 1;
+        let pendingDeleteAction = null;
+
+        // 编辑 ID 缓存
+        let editingPendingId = null;
+        let editingHotelId = null;
+        let editingTransportId = null;
+        let editingFoodId = null;
+        let editingExpenseId = null;
+        let editingChecklistId = null;
+
+        // 简化版天数标题与默认完整数据
+        const defaultDayData = {
+            1: {
+                date: "10月1日 (周四)", title: "D1 广州飞北京", route: "广州白云 (CA1328 18:40) ➔ 北京首都 T3 (22:00抵达)", hotel: "宿 航站楼休整 / 转机",
+                timeline: [
+                    { id: 101, time: "18:40", text: "广州白云机场 T3 搭乘 CA1328 飞往北京首都机场。" }, 
+                    { id: 102, time: "22:00", text: "抵达北京 T3，办理国际联程与核对行李直挂。" }
+                ], 
+                tips: "带好护照原件、申根签证页复印件及欧元现金。",
+                mapUrl: ""
+            },
+            2: {
+                date: "10月2日 (周五)", title: "D2 飞抵圣岛 & Fira", route: "北京 T3 (CA863) ➔ 雅典 ➔ GQ346 ➔ JTR 机场取车 ➔ Asteras Villas ➔ Fira / Firostefani / Imerovigli", hotel: "宿 Santorini / Fira - Asteras Villas 酒店",
+                timeline: [
+                    { id: 201, time: "02:30", text: "搭乘 CA863 直飞雅典 ATH。" }, 
+                    { id: 202, time: "08:55", text: "顺利落地雅典机场，提取行李转内陆航段。" }, 
+                    { id: 203, time: "12:50", text: "搭乘 Sky Express GQ346 飞往圣托里尼（行李限额 15kg/人）。" }, 
+                    { id: 204, time: "13:45", text: "落地圣托里尼机场 JTR，办理机场自驾取车手续。" }, 
+                    { id: 205, time: "15:00", text: "驱车前往 Fira 入住 Asteras Villas 酒店休整。" }, 
+                    { id: 206, time: "17:00", text: "从 Fira 沿悬崖步道漫步至 Firostefani 和 Imerovigli，观赏爱琴海绝美日落并享用晚餐。" }
+                ], 
+                tips: "注意 GQ346 的 15kg 行李额限制，提前 online check-in 免排队。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Santorini+Airport&destination=Imerovigli&waypoints=Asteras+Villas+Santorini%7CFira%7CFirostefani"
+            },
+            3: {
+                date: "10月3日 (周六)", title: "D3 出海BBQ & Oia日落", route: "Asteras Villas 退房 ➔ Catamaran 出海 ➔ 入住 Elixir Del Mar (Kamari) ➔ 驱车至 Oia ➔ Oia日落", hotel: "宿 Santorini / Kamari - Elixir Del Mar on the Beach",
+                timeline: [
+                    { id: 301, time: "09:00", text: "办理 Fira 酒店退房，驱车前往码头参加 Catamaran 双体帆船出海。" }, 
+                    { id: 302, time: "10:00 - 15:00", text: "【双体帆船出海】红沙滩、白沙滩、火山温泉，享用船上海鲜 BBQ 与饮品畅饮。" }, 
+                    { id: 303, time: "15:30", text: "前往 Kamari 海滩，入住 Elixir Del Mar on the Beach 放置行李。" }, 
+                    { id: 304, time: "17:00", text: "驱车前往 Oia 小镇，在风车与蓝顶教堂旁等待“世界最美落日”。" }
+                ], 
+                tips: "出海请备好深色泳衣与防晒霜。Catamaran 商家在 Spiridakos 与 Santorini Star 二选一。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Asteras+Villas+Santorini&destination=Oia+Santorini&waypoints=Vlychada+Port+Santorini%7CElixir+Del+Mar+Santorini"
+            },
+            4: {
+                date: "10月4日 (周日)", title: "D4 圣岛南岸 & 遗迹", route: "Kamari ➔ Akrotiri 遗迹 ➔ 红沙滩 / 南部海岸 ➔ Pyrgos / Megalochori 古镇 ➔ Kamari 慢逛", hotel: "宿 Santorini / Kamari - Elixir Del Mar on the Beach",
+                timeline: [
+                    { id: 401, time: "09:30", text: "驱车前往 Akrotiri 远古遗迹感受米诺斯文明。" }, 
+                    { id: 402, time: "11:30", text: "探访红沙滩与南部海岸线风貌。" }, 
+                    { id: 403, time: "14:00", text: "探访 Pyrgos 与 Megalochori 传统白色小镇，在巷弄冰淇淋与咖啡店享受慢调。" }, 
+                    { id: 404, time: "17:30", text: "返回 Kamari 黑沙滩或 Fira，轻松海边散步与晚餐。" }
+                ], 
+                tips: "Pyrgos 制高点视野绝佳且游客较少，非常适合拍摄人文照。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Elixir+Del+Mar+Santorini&destination=Kamari+Beach&waypoints=Akrotiri+Santorini%7CRed+Beach+Santorini%7CMegalochori%7CPyrgos+Santorini"
+            },
+            5: {
+                date: "10月5日 (周一)", title: "D5 渡轮至克里特岛", route: "圣托码头 ➔ Seajets 快艇 (15:45-17:25) ➔ 克里特岛 ➔ 驱车至 Kostakis Beach Hotel", hotel: "宿 Crete / Gerani - Kostakis Beach Hotel",
+                timeline: [
+                    { id: 501, time: "13:45", text: "确认 Seajets 已完成 48h Online Check-in (订单号: 1112UQMYP)。" }, 
+                    { id: 502, time: "15:45", text: "搭乘 Seajets 高速快艇驶向克里特岛。" }, 
+                    { id: 503, time: "17:25", text: "顺利抵达克里特岛港口，取车驱车前往 Kostakis Beach Hotel。" }, 
+                    { id: 504, time: "19:30", text: "入住酒店，在海边听浪休息，享用克里特橄榄油慢炖美食。" }
+                ], 
+                tips: "Seajets 需提前 48h 在线 check-in 获电子船票。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Athinios+Port+Santorini&destination=Kostakis+Beach+Gerani+Chania"
+            },
+            6: {
+                date: "10月6日 (周二)", title: "D6 Balos泻湖 & Chania", route: "Kostakis Beach ➔ Kissamos 码头 ➔ Balos Lagoon + Gramvousa 游船 ➔ 返 Chania 老城/威尼斯港", hotel: "宿 Crete / Gerani - Kostakis Beach Hotel",
+                timeline: [
+                    { id: 601, time: "09:00", text: "驱车前往 Kissamos 码头搭乘游船。" }, 
+                    { id: 602, time: "10:00 - 16:30", text: "游览 Balos Lagoon 果冻海泻湖与 Gramvousa 海盗岛城堡。" }, 
+                    { id: 603, time: "17:30", text: "返回哈尼亚老城 (Chania Old Town)，漫步威尼斯港口与灯塔。" }, 
+                    { id: 604, time: "19:30", text: "在威尼斯港口海滨餐厅享用地道海鲜晚餐。" }
+                ], 
+                tips: "建议选择 Kissamos 码头的船游方式前往 Balos，避免自驾山路损伤底盘。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Kostakis+Beach+Gerani+Chania&destination=Chania+Old+Town&waypoints=Kissamos+Port%7CBalos+Beach"
+            },
+            7: {
+                date: "10月7日 (周三)", title: "D7 克里特慢游 & 夜船", route: "克里特岛慢游 (雷斯蒙/伊拉克利翁) ➔ HER 港 (Heraklion Port) ➔ Minoan Lines 夜船 ➔ Piraeus 雅典", hotel: "宿 Minoan Lines 跨夜渡轮独立舱",
+                timeline: [
+                    { id: 701, time: "10:00", text: "退房后，驱车沿北海岸公路经雷斯蒙 (Rethymno) 往伊拉克利翁 (Heraklion)。" }, 
+                    { id: 702, time: "15:00", text: "游览克里特岛首都 Heraklion 老城与库勒斯堡垒 (Koules Fortress) 或克诺索斯王宫。" }, 
+                    { id: 703, time: "18:30", text: "在 HER 港口附近海鲜餐厅享用晚餐。" }, 
+                    { id: 704, time: "20:00", text: "抵达 HER 港口 (Heraklion Port) 办理 Minoan Lines 登船，入住独立舱。" },
+                    { id: 705, time: "21:30", text: "渡轮启航驶往雅典比雷埃夫斯港 (Piraeus)。" }
+                ], 
+                tips: "特别注意：夜船从 Heraklion (HER) 港口登船，非 Souda 港！预留驾车至 HER 港约 2-2.5 小时车程。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Kostakis+Beach+Gerani+Chania&destination=Port+of+Heraklion&waypoints=Rethymno%7CKoules+Fortress"
+            },
+            8: {
+                date: "10月8日 (周四)", title: "D8 天空之城 Meteora", route: "Piraeus 港 (06:30抵) ➔ 取车 ➔ 驾车往 Meteora ➔ Hotel Kaikis ➔ 游览 3 座修道院 ➔ Meteora 日落", hotel: "宿 Meteora / Kalambaka - Hotel Kaikis",
+                timeline: [
+                    { id: 801, time: "06:30", text: "夜船抵达雅典比雷埃夫斯港 (Piraeus)。" }, 
+                    { id: 802, time: "07:30", text: "办理租车取车手续，开启自驾往 Meteora。" }, 
+                    { id: 803, time: "12:00", text: "抵达 Kalambaka 小镇，入住 Hotel Kaikis 休整与午饭。" }, 
+                    { id: 804, time: "14:00 - 18:00", text: "探访圣尼古拉、大气象 (Great Meteoron)、瓦尔拉姆 (Varlaam) 3 座悬崖修道院。" }, 
+                    { id: 805, time: "18:30", text: "在 Sunset Rock 观赏令人震撼的天空之城岩石落日。" }
+                ], 
+                tips: "进入修道院需注意着装，女士需穿过膝长裙或用披肩包裹，男士需穿长裤。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Piraeus+Port+Athens&destination=Sunset+Rock+Meteora&waypoints=Kalabaka%7CHotel+Kaikis%7CHoly+Monastery+of+Great+Meteoron"
+            },
+            9: {
+                date: "10月9日 (周五)", title: "D9 返雅典 & 卫城", route: "Meteora 早餐 ➔ 驱车返雅典 ➔ City Lights Athens ➔ Acropolis 雅典卫城 ➔ Plaka & Monastiraki", hotel: "宿 Athens - City Lights Athens by YHA",
+                timeline: [
+                    { id: 901, time: "09:00", text: "早餐后驾车返程雅典。" }, 
+                    { id: 902, time: "13:00", text: "抵雅典还车，入住 City Lights Athens by YHA 酒店。" }, 
+                    { id: 903, time: "15:00 - 18:00", text: "【高光时刻】登雅典卫城 (Acropolis)，打卡帕特农神庙与伊瑞克提翁神庙。" }, 
+                    { id: 904, time: "18:30", text: "漫步 Plaka 老城与 Monastiraki 广场，享用希腊烤肉卷 Souvlaki 晚餐。" }
+                ], 
+                tips: "卫城大理石地面较滑，请务必穿着防滑效果好的鞋子。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Kalabaka&destination=Monastiraki+Athens&waypoints=City+Lights+Athens%7CAcropolis+of+Athens%7CPlaka+Athens"
+            },
+            10: {
+                date: "10月10日 (周六)", title: "D10 雅典采买 & 启程返航", route: "上午自由活动 / 采买纪念品 ➔ 约 10:00 离开酒店前往机场 ➔ CA864 (15:05-05:05+1)", hotel: "宿 飞机上",
+                timeline: [
+                    { id: 1001, time: "08:30", text: "Plaka 采买希腊橄榄油、蜂蜜与手工艺纪念品。" }, 
+                    { id: 1002, time: "10:00", text: "退房并搭乘 M3 地铁或出租车前往雅典国际机场 ATH。" }, 
+                    { id: 1003, time: "15:05", text: "搭乘国航 CA864 启程飞往北京。" }
+                ], 
+                tips: "建议预留 3 小时抵机场办理退税与安检手续。",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&origin=Plaka+Athens&destination=Athens+International+Airport"
+            },
+            11: {
+                date: "10月11日 (周日)", title: "D11 抵穗收官", route: "北京 T3 (CA1359 07:00) ➔ 广州白云 T3 (10:10 落地)", hotel: "回到温馨的家",
+                timeline: [
+                    { id: 1101, time: "05:05", text: "顺利落地北京首都机场 T3。" }, 
+                    { id: 1102, time: "07:00", text: "转乘 CA1359 飞往广州。" }, 
+                    { id: 1103, time: "10:10", text: "顺利落地广州白云机场，行程圆满收官！" }
+                ], 
+                tips: "整理双岛与天空之城的美好照片与回忆。",
+                mapUrl: ""
+            }
+        };
+
+        const defaultPendingList = [
+            { id: 1, title: "1. 10/3 圣托里尼 Catamaran 出海", status: "二选一比对中", statusColor: "bg-amber-100 text-amber-800", desc: "目标商家：Spiridakos vs Santorini Star。路线：红沙滩 ➔ 白沙滩 ➔ 火山温泉 ➔ 船上烤肉海鲜BBQ/畅饮。" },
+            { id: 2, title: "2. 10/6 克里特 Balos Lagoon 游船", status: "待预订", statusColor: "bg-blue-100 text-blue-800", desc: "自 Kissamos 码头出航前往 Balos Lagoon 泻湖与 Gramvousa 岛城堡，关注出航天气。" },
+            { id: 3, title: "3. 10/8 Meteora 悬崖修道院门票", status: "无需预订", statusColor: "bg-emerald-100 text-emerald-800", desc: "现场现金购票 (€3/人/馆)，需备好现金硬币及符合规则的服装。" },
+            { id: 4, title: "4. 10/9 雅典卫城 (Acropolis) 门票", status: "建议提前约时段", statusColor: "bg-purple-100 text-purple-800", desc: "官方预约入场时段，建议购买 15:00-16:00 入场票避开最热与暴晒时段。" }
+        ];
+
+        const defaultHotels = [
+            { id: 1, dates: "10.02 - 10.03", name: "Asteras Villas", city: "圣托里尼 · Fira", address: "Fira, Santorini, Greece", note: "悬崖绝景酒店，近步道" },
+            { id: 2, dates: "10.03 - 10.05", name: "Elixir Del Mar on the Beach", city: "圣托里尼 · Kamari", address: "Kamari Beach, Santorini, Greece", note: "黑沙滩前沿度假酒店" },
+            { id: 3, dates: "10.05 - 10.07", name: "Kostakis Beach Hotel", city: "克里特岛 · Gerani", address: "Gerani, Chania, Crete, Greece", note: "Chania 海边自驾度假酒店" },
+            { id: 4, dates: "10.07 - 10.08", name: "Minoan Lines 夜船舱房", city: "HER 港 ➔ 雅典 Piraeus", address: "Heraklion Port, Crete", note: "夜船双人独立舱 (21:30发车)" },
+            { id: 5, dates: "10.08 - 10.09", name: "Hotel Kaikis", city: "Meteora · Kalambaka", address: "Kalambaka, Meteora, Greece", note: "天空之城山脚便捷酒店" },
+            { id: 6, dates: "10.09 - 10.10", name: "City Lights Athens by YHA", city: "雅典 · 市中心", address: "Athens Center, Greece", note: "靠近 Plaka 与卫城景区" }
+        ];
+
+        const defaultTransport = [
+            { id: 1, date: "10/01", type: "✈️ 航班", code: "CA1328", route: "广州CAN ➔ 北京PEK", time: "18:40 - 22:00", note: "首都机场 T3 转机" },
+            { id: 2, date: "10/02", type: "✈️ 航班", code: "CA863", route: "北京PEK ➔ 雅典ATH", time: "02:30 - 08:55", note: "国航直飞" },
+            { id: 3, date: "10/02", type: "✈️ 航班", code: "GQ346", route: "雅典ATH ➔ 圣托里尼JTR", time: "12:50 - 13:45", note: "Sky Express (15kg行李额/人)" },
+            { id: 4, date: "10/05", type: "⛴️ 渡轮", code: "Seajets", route: "圣托里尼 ➔ 克里特岛", time: "15:45 - 17:25", note: "订单号: 1112UQMYP (提前48h在线Check-in)" },
+            { id: 5, date: "10/07", type: "🚢 渡轮", code: "Minoan Lines", route: "克里特HER港 ➔ 雅典Piraeus", time: "21:30 - 06:30+1", note: "Heraklion (HER) 港登船 (夜船独立舱)" },
+            { id: 6, date: "10/08", type: "🚗 自驾", code: "租车", route: "雅典Piraeus ➔ Meteora ➔ 雅典", time: "10/08 - 10/09", note: "往返天空之城自驾" },
+            { id: 7, date: "10/10", type: "✈️ 航班", code: "CA864", route: "雅典ATH ➔ 北京PEK", time: "15:05 - 05:05+1", note: "国航直飞" },
+            { id: 8, date: "10/11", type: "✈️ 航班", code: "CA1359", route: "北京PEK ➔ 广州CAN", time: "07:00 - 10:10", note: "联程返程" }
+        ];
+
+        const defaultFoodList = [
+            { id: 1, city: "圣托里尼 (Santorini)", name: "Sphinx Restaurant", mapUrl: "https://maps.google.com/?q=Sphinx+Restaurant+Santorini" },
+            { id: 2, city: "圣托里尼 (Santorini)", name: "Ammoudi Fish Tavern", mapUrl: "https://maps.google.com/?q=Ammoudi+Fish+Tavern" },
+            { id: 3, city: "圣托里尼 (Santorini)", name: "Metaxi Mas", mapUrl: "https://maps.google.com/?q=Metaxi+Mas+Santorini" },
+            { id: 4, city: "克里特岛 (Crete)", name: "To Stachi", mapUrl: "https://maps.google.com/?q=To+Stachi+Chania" },
+            { id: 5, city: "克里特岛 (Crete)", name: "Thalassino Ageri", mapUrl: "https://maps.google.com/?q=Thalassino+Ageri" },
+            { id: 6, city: "Meteora天空之城", name: "Restaurant Meteora", mapUrl: "https://maps.google.com/?q=Restaurant+Meteora+Kalambaka" },
+            { id: 7, city: "雅典 (Athens)", name: "O Thanasis", mapUrl: "https://maps.google.com/?q=O+Thanasis+Athens" },
+            { id: 8, city: "雅典 (Athens)", name: "Strofi Restaurant", mapUrl: "https://maps.google.com/?q=Strofi+Restaurant+Athens" }
+        ];
+
+        const defaultLedgerList = [
+            { id: 1, title: "CA863/864 往返机票", amount: 12800, currency: "CNY", payment: "信用卡 Visa/MasterCard", payer: "共同平摊 (AA)" },
+            { id: 2, title: "Asteras Villas 住宿", amount: 380, currency: "EUR", payment: "信用卡 Visa/MasterCard", payer: "老公" },
+            { id: 3, title: "Seajets 渡轮船票", amount: 178, currency: "EUR", payment: "支付宝", payer: "老婆" }
+        ];
+
+        const defaultChecklist = [
+            { id: 1, cat: "行前打卡", text: "护照与申根签证页复印件", done: true },
+            { id: 2, cat: "行前打卡", text: "国际驾照翻译件及原件", done: true },
+            { id: 3, cat: "行前打卡", text: "渡轮/航班确认单PDF下载", done: false },
+            { id: 4, cat: "行前打卡", text: "申根旅游保险单（英文版）", done: true },
+            { id: 5, cat: "证件财务", text: "欧元现金 (€300-500 零钱)", done: false },
+            { id: 6, cat: "证件财务", text: "芯片信用卡 (Visa/Mastercard 双币卡)", done: true },
+            { id: 7, cat: "电子数码", text: "希腊欧标转换插头 x2", done: true },
+            { id: 8, cat: "电子数码", text: "便携排插 / 移动电源/ 充电线", done: false },
+            { id: 9, cat: "随身衣物", text: "墨镜 / 防晒衣 / 遮阳帽", done: true },
+            { id: 10, cat: "随身衣物", text: "深色出海泳衣 (火山温泉防变色)", done: false },
+            { id: 11, cat: "随身衣物", text: "舒适防滑走路鞋", done: true },
+            { id: 12, cat: "随身衣物", text: "天空之城修道院过膝长裙/长裤", done: false },
+            { id: 13, cat: "日用药品", text: "晕船药 (Seajets 快艇必备)", done: false },
+            { id: 14, cat: "日用药品", text: "常用感冒肠胃药 / 创可贴", done: true }
+        ];
+
+        // 主应用数据状态对象
+        let tripData = {
+            exchangeRate: 7.8,
+            daily: defaultDayData,
+            pending: defaultPendingList,
+            hotels: defaultHotels,
+            transport: defaultTransport,
+            food: defaultFoodList,
+            ledger: defaultLedgerList,
+            checklist: defaultChecklist,
+            lastUpdated: Date.now()
+        };
+
+        const LOCAL_STORAGE_KEY = 'greece_trip_app_data_v2026';
+
+        // 初始化应用
+        function initApp() {
+            loadFromLocalStorage();
+            calculateCountdown();
+            renderAll();
+        }
+
+        // 保存到 localStorage 并推送至 Firebase
+        function saveAppData(notifyToast = true) {
+            tripData.lastUpdated = Date.now();
+            try {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tripData));
+            } catch (e) {
+                console.warn("localStorage 保存失败", e);
+            }
+
+            if (window.syncToCloud) {
+                window.syncToCloud(tripData);
+            }
+
+            if (notifyToast) {
+                showToast("已修改并保存！");
+            }
+        }
+
+        // 从 localStorage 加载
+        function loadFromLocalStorage() {
+            try {
+                const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (parsed && typeof parsed === 'object') {
+                        tripData = parsed;
+                        if (tripData.exchangeRate) {
+                            currentExchangeRate = tripData.exchangeRate;
+                            document.getElementById('exchange-rate-input').value = currentExchangeRate;
+                        }
+                    }
+                }
+            } catch (e) {
+                console.warn("读取本地缓存出错，使用默认数据", e);
+            }
+        }
+
+        // 重新渲染整页
+        function renderAll() {
+            renderDayPicker();
+            renderDayDetails();
+            renderPending();
+            renderHotels();
+            renderTransport();
+            renderFood();
+            renderLedger();
+            renderChecklist();
+        }
+
+        // 倒计时计算
+        function calculateCountdown() {
+            const startDate = new Date('2026-10-01T00:00:00');
+            const today = new Date();
+            const diffTime = startDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const elem = document.getElementById('days-left');
+            if (elem) {
+                elem.innerText = diffDays > 0 ? diffDays : 0;
+            }
+        }
+
+        // 提示 Toast
+        function showToast(msg) {
+            const toast = document.getElementById('toast-notification');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.innerText = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2200);
+        }
+
+        // 修改汇率
+        function updateExchangeRate(val) {
+            const parsed = parseFloat(val);
+            if (!isNaN(parsed) && parsed > 0) {
+                currentExchangeRate = parsed;
+                tripData.exchangeRate = currentExchangeRate;
+                saveAppData(true);
+                renderLedger();
+            }
+        }
+
+        // 切换 Tab
+        function switchTab(tabKey) {
+            document.querySelectorAll('.tab-content').forEach(sec => sec.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('bg-white', 'text-ink');
+            });
+
+            const activeSec = document.getElementById(`sec-${tabKey}`);
+            const activeBtn = document.getElementById(`tab-${tabKey}`);
+            if (activeSec) activeSec.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                activeBtn.classList.remove('bg-white', 'text-ink');
+            }
+        }
+
+        // 渲染天数 Picker
+        function renderDayPicker() {
+            const container = document.getElementById('day-picker-container');
+            if (!container) return;
+            let html = '';
+            for (let i = 1; i <= 11; i++) {
+                const dayObj = tripData.daily[i];
+                const active = selectedDay === i;
+                const shortTitle = dayObj ? dayObj.title.split(' ')[0] : `D${i}`;
+                html += `
+                    <button onclick="selectDay(${i})" class="flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold text-xs border transition-all ${
+                        active 
+                        ? 'bg-aegean text-white border-aegean shadow-md scale-105' 
+                        : 'bg-white text-stone-700 border-sand hover:bg-paper'
+                    }">
+                        ${shortTitle} (10/${i < 10 ? '0'+i : i})
+                    </button>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        function selectDay(dayNum) {
+            selectedDay = dayNum;
+            renderDayPicker();
+            renderDayDetails();
+        }
+
+        function parseTimeToMinutes(timeStr) {
+            if (!timeStr) return 9999;
+            const match = timeStr.match(/(\d{1,2}):(\d{2})/);
+            if (match) {
+                return parseInt(match[1], 10) * 60 + parseInt(match[2], 10);
+            }
+            return 9999;
+        }
+
+        function sortTimeline(timeline) {
+            if (!timeline || !Array.isArray(timeline)) return;
+            timeline.sort((a, b) => parseTimeToMinutes(a.time) - parseTimeToMinutes(b.time));
+        }
+
+        function getEmbedMapUrl(mapUrl, routeText) {
+            if (mapUrl && mapUrl.includes('origin=')) {
+                try {
+                    const url = new URL(mapUrl);
+                    const origin = url.searchParams.get('origin') || '';
+                    const dest = url.searchParams.get('destination') || '';
+                    const waypoints = url.searchParams.get('waypoints') || '';
+                    let query = origin + (dest ? ' to ' + dest : '');
+                    if (waypoints) query += ' via ' + waypoints.replace(/\|/g, ' ');
+                    return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+                } catch(e) {}
+            }
+            if (mapUrl) {
+                return `https://maps.google.com/maps?q=${encodeURIComponent(mapUrl)}&output=embed`;
+            }
+            if (routeText) {
+                return `https://maps.google.com/maps?q=${encodeURIComponent(routeText)}&output=embed`;
+            }
+            return '';
+        }
+
+        // 渲染每日具体行程
+        function renderDayDetails() {
+            const container = document.getElementById('day-details-container');
+            const data = tripData.daily[selectedDay];
+            if (!container || !data) return;
+
+            if (data.timeline && Array.isArray(data.timeline)) {
+                sortTimeline(data.timeline);
+            }
+
+            let timelineHtml = '';
+            if (data.timeline && data.timeline.length > 0) {
+                data.timeline.forEach((item, index) => {
+                    if (isEditMode) {
+                        timelineHtml += `
+                            <div class="flex items-start space-x-2 bg-paper p-2.5 rounded-xl border border-sand">
+                                <input type="text" value="${item.time}" onchange="updateTimelineItem(${selectedDay}, ${index}, 'time', this.value)" class="w-20 p-1 border rounded bg-white text-xs font-bold text-aegean">
+                                <textarea onchange="updateTimelineItem(${selectedDay}, ${index}, 'text', this.value)" class="flex-1 p-1 border rounded bg-white text-xs" rows="2">${item.text}</textarea>
+                                <button onclick="deleteTimelineItem(${selectedDay}, ${index})" class="text-red-500 hover:text-red-700 p-1 text-sm"><i class="fa-solid fa-trash-can"></i></button>
+                            </div>
+                        `;
+                    } else {
+                        timelineHtml += `
+                            <div class="relative pl-6 pb-4 border-l-2 border-sand last:border-l-0 last:pb-0">
+                                <div class="absolute -left-[9px] top-0.5 w-4 h-4 rounded-full bg-aegean border-2 border-white"></div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="font-bold text-aegean font-mono text-xs bg-aegean/10 px-2 py-0.5 rounded">${item.time}</span>
+                                </div>
+                                <p class="text-stone-800 text-xs md:text-sm mt-1 leading-relaxed">${item.text}</p>
+                            </div>
+                        `;
+                    }
+                });
+            } else {
+                timelineHtml = `<p class="text-xs text-warmGray">暂无具体行程安排。</p>`;
+            }
+
+            if (isEditMode) {
+                container.innerHTML = `
+                    <div class="watercolor-card p-4 md:p-6 space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                            <div>
+                                <label class="font-bold text-stone-700 block mb-1">天数简称/标题 (如 D1 广州飞北京)</label>
+                                <input type="text" value="${data.title}" onchange="updateDayHeader(${selectedDay}, 'title', this.value)" class="w-full p-2 border rounded bg-white font-bold text-aegean">
+                            </div>
+                            <div>
+                                <label class="font-bold text-stone-700 block mb-1">日期文字 (如 10月1日)</label>
+                                <input type="text" value="${data.date}" onchange="updateDayHeader(${selectedDay}, 'date', this.value)" class="w-full p-2 border rounded bg-white">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="font-bold text-stone-700 block mb-1">每日总路线 / 摘要</label>
+                                <input type="text" value="${data.route}" onchange="updateDayHeader(${selectedDay}, 'route', this.value)" class="w-full p-2 border rounded bg-white">
+                            </div>
+                            <div>
+                                <label class="font-bold text-stone-700 block mb-1">住宿安排</label>
+                                <input type="text" value="${data.hotel}" onchange="updateDayHeader(${selectedDay}, 'hotel', this.value)" class="w-full p-2 border rounded bg-white">
+                            </div>
+                            <div>
+                                <label class="font-bold text-stone-700 block mb-1">谷歌地图导航链接 (可选)</label>
+                                <input type="text" value="${data.mapUrl || ''}" onchange="updateDayHeader(${selectedDay}, 'mapUrl', this.value)" class="w-full p-2 border rounded bg-white font-mono text-[10px]">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="font-bold text-stone-700 block mb-1">温馨提示 / 关键提醒</label>
+                                <input type="text" value="${data.tips}" onchange="updateDayHeader(${selectedDay}, 'tips', this.value)" class="w-full p-2 border rounded bg-white text-terracotta">
+                            </div>
+                        </div>
+
+                        <div class="border-t pt-4 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-stone-800 text-xs">⏰ 详细时间节点安排</h4>
+                                <button onclick="addTimelineItem(${selectedDay})" class="bg-olive hover:bg-olive/90 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-plus mr-1"></i>添加时间节点</button>
+                            </div>
+                            <div class="space-y-2">${timelineHtml}</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="watercolor-card p-4 md:p-6 space-y-4">
+                        <div class="border-b pb-3 flex flex-wrap justify-between items-start gap-2">
+                            <div>
+                                <div class="text-xs font-bold text-terracotta uppercase tracking-wider mb-0.5">${data.date}</div>
+                                <h2 class="text-lg md:text-xl font-serif font-bold text-aegean">${data.title}</h2>
+                                <p class="text-xs text-stone-600 mt-1"><i class="fa-solid fa-route text-olive mr-1"></i><b>路线:</b> ${data.route}</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="bg-paper border border-sand text-stone-700 px-3 py-1 rounded-xl text-xs font-medium inline-block"><i class="fa-solid fa-bed text-aegean mr-1"></i>${data.hotel}</span>
+                                ${data.mapUrl ? `<a href="${data.mapUrl}" target="_blank" class="block mt-1.5 text-xs text-blue-600 font-bold underline hover:text-blue-800"><i class="fa-solid fa-map-location-dot mr-1"></i>一键开启 Google 地图导航</a>` : ''}
+                            </div>
+                        </div>
+
+                        ${data.mapUrl ? `
+                            <div class="mt-2 rounded-xl overflow-hidden border border-sand shadow-sm bg-stone-100">
+                                <div class="flex justify-between items-center bg-paper px-3 py-1.5 border-b border-sand text-xs font-bold text-stone-700">
+                                    <span><i class="fa-solid fa-map-marked-alt text-aegean mr-1.5"></i>路线地图实时预览</span>
+                                    <a href="${data.mapUrl}" target="_blank" class="text-blue-600 hover:underline font-normal text-[11px]"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>全屏导航</a>
+                                </div>
+                                <iframe class="w-full h-56 md:h-64 border-0" loading="lazy" allowfullscreen src="${getEmbedMapUrl(data.mapUrl, data.route)}"></iframe>
+                            </div>
+                        ` : ''}
+
+                        <div class="py-2 space-y-3">${timelineHtml}</div>
+
+                        ${data.tips ? `
+                            <div class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-xl text-xs text-stone-700">
+                                <span class="font-bold text-amber-800"><i class="fa-solid fa-lightbulb mr-1"></i>当日贴士：</span>${data.tips}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+        }
+
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            document.getElementById('edit-btn-text').innerText = isEditMode ? "保存每日路线修改" : "开启每日路线编辑";
+            document.getElementById('edit-mode-btn').className = isEditMode 
+                ? "bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center"
+                : "bg-aegean hover:bg-aegean/90 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center";
+            if (!isEditMode) {
+                sortTimeline(tripData.daily[selectedDay].timeline);
+                saveAppData(true);
+            }
+            renderDayDetails();
+        }
+
+        function updateDayHeader(dayNum, field, value) {
+            tripData.daily[dayNum][field] = value;
+            saveAppData(false);
+            if (field === 'title') renderDayPicker();
+        }
+
+        function updateTimelineItem(dayNum, index, field, value) {
+            tripData.daily[dayNum].timeline[index][field] = value;
+            if (field === 'time') {
+                sortTimeline(tripData.daily[dayNum].timeline);
+            }
+            saveAppData(false);
+        }
+
+        function addTimelineItem(dayNum) {
+            tripData.daily[dayNum].timeline.push({
+                id: Date.now(),
+                time: "12:00",
+                text: "新增行程节点描述..."
+            });
+            sortTimeline(tripData.daily[dayNum].timeline);
+            saveAppData(false);
+            renderDayDetails();
+        }
+
+        function deleteTimelineItem(dayNum, index) {
+            confirmDelete("确定删除该行程节点吗？", () => {
+                tripData.daily[dayNum].timeline.splice(index, 1);
+                saveAppData(true);
+                renderDayDetails();
+            });
+        }
+
+        function resetToDefaultItinerary() {
+            confirmDelete("恢复后，每日路线将重置为初始定稿版本，确定吗？", () => {
+                tripData.daily = JSON.parse(JSON.stringify(defaultDayData));
+                saveAppData(true);
+                renderDayPicker();
+                renderDayDetails();
+            });
+        }
+
+        // ================= TAB 2: 待办事项逻辑 =================
+        function renderPending() {
+            const container = document.getElementById('pending-cards-container');
+            if (!container) return;
+            let html = '';
+            tripData.pending.forEach((item) => {
+                html += `
+                    <div class="bg-paper p-3.5 rounded-2xl border border-sand space-y-2 relative shadow-sm hover:shadow transition">
+                        <div class="flex justify-between items-start">
+                            <h4 class="font-bold text-stone-800 text-xs md:text-sm flex-1 pr-2">${item.title}</h4>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${item.statusColor || 'bg-blue-100 text-blue-800'}">${item.status}</span>
+                        </div>
+                        <p class="text-xs text-warmGray leading-relaxed">${item.desc}</p>
+                        <div class="flex justify-end space-x-2 pt-1 border-t border-sand/50">
+                            <button onclick="editPendingItem(${item.id})" class="text-aegean hover:underline font-bold text-[11px]"><i class="fa-solid fa-pen mr-1"></i>编辑</button>
+                            <button onclick="deletePendingItem(${item.id})" class="text-red-500 hover:underline font-bold text-[11px]"><i class="fa-solid fa-trash-can mr-1"></i>删除</button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function savePendingItem() {
+            const title = document.getElementById('pending-title').value.trim();
+            const status = document.getElementById('pending-status').value.trim();
+            const desc = document.getElementById('pending-desc').value.trim();
+            if (!title) { showToast("请输入事项标题"); return; }
+
+            if (editingPendingId) {
+                const idx = tripData.pending.findIndex(i => i.id === editingPendingId);
+                if (idx !== -1) {
+                    tripData.pending[idx].title = title;
+                    tripData.pending[idx].status = status || "比对中";
+                    tripData.pending[idx].desc = desc;
+                }
+            } else {
+                tripData.pending.push({
+                    id: Date.now(),
+                    title,
+                    status: status || "比对中",
+                    statusColor: "bg-blue-100 text-blue-800",
+                    desc
+                });
+            }
+            cancelPendingEdit();
+            saveAppData(true);
+            renderPending();
+        }
+
+        function editPendingItem(id) {
+            const item = tripData.pending.find(i => i.id === id);
+            if (!item) return;
+            editingPendingId = id;
+            document.getElementById('pending-title').value = item.title;
+            document.getElementById('pending-status').value = item.status;
+            document.getElementById('pending-desc').value = item.desc;
+            document.getElementById('pending-btn-label').innerText = "保存";
+            document.getElementById('btn-pending-cancel').classList.remove('hidden');
+        }
+
+        function cancelPendingEdit() {
+            editingPendingId = null;
+            document.getElementById('pending-title').value = '';
+            document.getElementById('pending-status').value = '';
+            document.getElementById('pending-desc').value = '';
+            document.getElementById('pending-btn-label').innerText = "新增";
+            document.getElementById('btn-pending-cancel').classList.add('hidden');
+        }
+
+        function deletePendingItem(id) {
+            confirmDelete("确定删除该待办事项吗？", () => {
+                tripData.pending = tripData.pending.filter(i => i.id !== id);
+                saveAppData(true);
+                renderPending();
+            });
+        }
+
+        // ================= TAB 3: 酒店看板逻辑 =================
+        function renderHotels() {
+            const tbody = document.getElementById('hotel-table-body');
+            if (!tbody) return;
+            let html = '';
+            tripData.hotels.forEach(item => {
+                const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' ' + item.address)}`;
+                html += `
+                    <tr>
+                        <td class="font-mono text-aegean font-bold">${item.dates}</td>
+                        <td class="font-bold text-stone-800">${item.name}</td>
+                        <td>${item.city}</td>
+                        <td><a href="${mapUrl}" target="_blank" class="text-blue-600 font-bold underline hover:text-blue-800"><i class="fa-solid fa-location-dot mr-1"></i>${item.address}</a></td>
+                        <td class="text-warmGray">${item.note}</td>
+                        <td>
+                            <button onclick="editHotelItem(${item.id})" class="text-aegean font-bold mr-2 hover:underline"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteHotelItem(${item.id})" class="text-red-500 font-bold hover:underline"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function saveHotelItem() {
+            const name = document.getElementById('hotel-name').value.trim();
+            const dates = document.getElementById('hotel-dates').value.trim();
+            const city = document.getElementById('hotel-city').value.trim();
+            const address = document.getElementById('hotel-address').value.trim();
+            const note = document.getElementById('hotel-note').value.trim();
+
+            if (!name) { showToast("请输入酒店名称"); return; }
+
+            if (editingHotelId) {
+                const idx = tripData.hotels.findIndex(i => i.id === editingHotelId);
+                if (idx !== -1) {
+                    tripData.hotels[idx] = { id: editingHotelId, name, dates, city, address, note };
+                }
+            } else {
+                tripData.hotels.push({ id: Date.now(), name, dates, city, address, note });
+            }
+
+            cancelHotelEdit();
+            saveAppData(true);
+            renderHotels();
+        }
+
+        function editHotelItem(id) {
+            const item = tripData.hotels.find(i => i.id === id);
+            if (!item) return;
+            editingHotelId = id;
+            document.getElementById('hotel-name').value = item.name;
+            document.getElementById('hotel-dates').value = item.dates;
+            document.getElementById('hotel-city').value = item.city;
+            document.getElementById('hotel-address').value = item.address;
+            document.getElementById('hotel-note').value = item.note;
+            document.getElementById('hotel-btn-label').innerText = "保存";
+            document.getElementById('btn-hotel-cancel').classList.remove('hidden');
+        }
+
+        function cancelHotelEdit() {
+            editingHotelId = null;
+            document.getElementById('hotel-name').value = '';
+            document.getElementById('hotel-dates').value = '';
+            document.getElementById('hotel-city').value = '';
+            document.getElementById('hotel-address').value = '';
+            document.getElementById('hotel-note').value = '';
+            document.getElementById('hotel-btn-label').innerText = "新增";
+            document.getElementById('btn-hotel-cancel').classList.add('hidden');
+        }
+
+        function deleteHotelItem(id) {
+            confirmDelete("确定删除该酒店记录吗？", () => {
+                tripData.hotels = tripData.hotels.filter(i => i.id !== id);
+                saveAppData(true);
+                renderHotels();
+            });
+        }
+
+        // ================= TAB 4: 交通明细逻辑 =================
+        function renderTransport() {
+            const tbody = document.getElementById('transport-table-body');
+            if (!tbody) return;
+            let html = '';
+            tripData.transport.forEach(item => {
+                html += `
+                    <tr>
+                        <td class="font-mono text-aegean font-bold">${item.date}</td>
+                        <td class="font-bold">${item.type}</td>
+                        <td class="font-mono font-bold text-terracotta">${item.code}</td>
+                        <td class="font-bold text-stone-800">${item.route}</td>
+                        <td class="font-mono">${item.time}</td>
+                        <td class="text-warmGray">${item.note}</td>
+                        <td>
+                            <button onclick="editTransportItem(${item.id})" class="text-aegean font-bold mr-2 hover:underline"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteTransportItem(${item.id})" class="text-red-500 font-bold hover:underline"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function saveTransportItem() {
+            const date = document.getElementById('trans-date').value.trim();
+            const type = document.getElementById('trans-type').value.trim();
+            const code = document.getElementById('trans-code').value.trim();
+            const route = document.getElementById('trans-route').value.trim();
+            const time = document.getElementById('trans-time').value.trim();
+            const note = document.getElementById('trans-note').value.trim();
+
+            if (!route) { showToast("请输入路线段信息"); return; }
+
+            if (editingTransportId) {
+                const idx = tripData.transport.findIndex(i => i.id === editingTransportId);
+                if (idx !== -1) {
+                    tripData.transport[idx] = { id: editingTransportId, date, type, code, route, time, note };
+                }
+            } else {
+                tripData.transport.push({ id: Date.now(), date, type, code, route, time, note });
+            }
+
+            cancelTransportEdit();
+            saveAppData(true);
+            renderTransport();
+        }
+
+        function editTransportItem(id) {
+            const item = tripData.transport.find(i => i.id === id);
+            if (!item) return;
+            editingTransportId = id;
+            document.getElementById('trans-date').value = item.date;
+            document.getElementById('trans-type').value = item.type;
+            document.getElementById('trans-code').value = item.code;
+            document.getElementById('trans-route').value = item.route;
+            document.getElementById('trans-time').value = item.time;
+            document.getElementById('trans-note').value = item.note;
+            document.getElementById('trans-btn-label').innerText = "修改";
+            document.getElementById('btn-trans-cancel').classList.remove('hidden');
+        }
+
+        function cancelTransportEdit() {
+            editingTransportId = null;
+            document.getElementById('trans-date').value = '';
+            document.getElementById('trans-type').value = '';
+            document.getElementById('trans-code').value = '';
+            document.getElementById('trans-route').value = '';
+            document.getElementById('trans-time').value = '';
+            document.getElementById('trans-note').value = '';
+            document.getElementById('trans-btn-label').innerText = "保存";
+            document.getElementById('btn-trans-cancel').classList.add('hidden');
+        }
+
+        function deleteTransportItem(id) {
+            confirmDelete("确定删除该交通明细吗？", () => {
+                tripData.transport = tripData.transport.filter(i => i.id !== id);
+                saveAppData(true);
+                renderTransport();
+            });
+        }
+
+        // ================= TAB 5: 美食种草逻辑 =================
+        function renderFood() {
+            const tbody = document.getElementById('food-table-body');
+            const filter = document.getElementById('food-filter-city')?.value || "ALL";
+            if (!tbody) return;
+
+            let items = tripData.food;
+            if (filter !== "ALL") {
+                items = items.filter(f => f.city.includes(filter) || filter.includes(f.city));
+            }
+
+            let html = '';
+            items.forEach(item => {
+                const targetUrl = item.mapUrl || `https://maps.google.com/?q=${encodeURIComponent(item.name)}`;
+                html += `
+                    <tr>
+                        <td class="font-bold text-aegean">${item.city}</td>
+                        <td class="font-bold text-stone-800">${item.name}</td>
+                        <td><a href="${targetUrl}" target="_blank" class="text-blue-600 font-bold underline hover:text-blue-800"><i class="fa-solid fa-map-location-dot mr-1"></i>打开导航 / 笔记</a></td>
+                        <td>
+                            <button onclick="editFoodItem(${item.id})" class="text-aegean font-bold mr-2 hover:underline"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteFoodItem(${item.id})" class="text-red-500 font-bold hover:underline"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function saveFoodItem() {
+            const city = document.getElementById('food-city').value;
+            const name = document.getElementById('food-name').value.trim();
+            const mapUrl = document.getElementById('food-mapurl').value.trim();
+
+            if (!name) { showToast("请输入餐厅或美食名称"); return; }
+
+            if (editingFoodId) {
+                const idx = tripData.food.findIndex(i => i.id === editingFoodId);
+                if (idx !== -1) {
+                    tripData.food[idx] = { id: editingFoodId, city, name, mapUrl };
+                }
+            } else {
+                tripData.food.push({ id: Date.now(), city, name, mapUrl });
+            }
+
+            cancelFoodEdit();
+            saveAppData(true);
+            renderFood();
+        }
+
+        function editFoodItem(id) {
+            const item = tripData.food.find(i => i.id === id);
+            if (!item) return;
+            editingFoodId = id;
+            document.getElementById('food-city').value = item.city;
+            document.getElementById('food-name').value = item.name;
+            document.getElementById('food-mapurl').value = item.mapUrl || '';
+            document.getElementById('food-btn-label').innerText = "保存";
+            document.getElementById('btn-food-cancel').classList.remove('hidden');
+        }
+
+        function cancelFoodEdit() {
+            editingFoodId = null;
+            document.getElementById('food-name').value = '';
+            document.getElementById('food-mapurl').value = '';
+            document.getElementById('food-btn-label').innerText = "保存";
+            document.getElementById('btn-food-cancel').classList.add('hidden');
+        }
+
+        function deleteFoodItem(id) {
+            confirmDelete("确定删除该美食种草项吗？", () => {
+                tripData.food = tripData.food.filter(i => i.id !== id);
+                saveAppData(true);
+                renderFood();
+            });
+        }
+
+        // ================= TAB 6: AA 记账本逻辑 =================
+        function renderLedger() {
+            const tbody = document.getElementById('ledger-table-body');
+            if (!tbody) return;
+
+            let totalCNY = 0;
+            let totalEUR = 0;
+            let count = tripData.ledger.length;
+
+            let html = '';
+            tripData.ledger.forEach(item => {
+                let amountCNY = 0;
+                if (item.currency === 'EUR') {
+                    totalEUR += item.amount;
+                    amountCNY = item.amount * currentExchangeRate;
+                } else {
+                    amountCNY = item.amount;
+                }
+                totalCNY += amountCNY;
+
+                html += `
+                    <tr>
+                        <td class="font-bold text-stone-800">${item.title}</td>
+                        <td class="font-mono font-bold text-olive">${item.currency === 'EUR' ? '€' : '¥'}${item.amount.toFixed(2)}</td>
+                        <td class="font-mono font-bold text-terracotta">¥${amountCNY.toFixed(2)}</td>
+                        <td>${item.payment}</td>
+                        <td><span class="bg-paper border border-sand px-2 py-0.5 rounded text-[11px] font-bold text-aegean">${item.payer}</span></td>
+                        <td>
+                            <button onclick="editExpenseItem(${item.id})" class="text-aegean font-bold mr-2 hover:underline"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteExpenseItem(${item.id})" class="text-red-500 font-bold hover:underline"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+            document.getElementById('ledger-total-cny').innerText = `¥${totalCNY.toFixed(2)}`;
+            document.getElementById('ledger-per-person').innerText = `¥${(totalCNY / 2).toFixed(2)}`;
+            document.getElementById('ledger-total-eur').innerText = `€${totalEUR.toFixed(2)}`;
+            document.getElementById('ledger-count').innerText = `${count} 笔`;
+        }
+
+        function saveExpenseItem() {
+            const title = document.getElementById('expense-title').value.trim();
+            const amount = parseFloat(document.getElementById('expense-amount').value);
+            const currency = document.getElementById('expense-currency').value;
+            const payment = document.getElementById('expense-payment').value;
+            const payer = document.getElementById('expense-payer').value;
+
+            if (!title || isNaN(amount) || amount <= 0) {
+                showToast("请输入有效消费项目与金额");
+                return;
+            }
+
+            if (editingExpenseId) {
+                const idx = tripData.ledger.findIndex(i => i.id === editingExpenseId);
+                if (idx !== -1) {
+                    tripData.ledger[idx] = { id: editingExpenseId, title, amount, currency, payment, payer };
+                }
+            } else {
+                tripData.ledger.push({ id: Date.now(), title, amount, currency, payment, payer });
+            }
+
+            cancelExpenseEdit();
+            saveAppData(true);
+            renderLedger();
+        }
+
+        function editExpenseItem(id) {
+            const item = tripData.ledger.find(i => i.id === id);
+            if (!item) return;
+            editingExpenseId = id;
+            document.getElementById('expense-title').value = item.title;
+            document.getElementById('expense-amount').value = item.amount;
+            document.getElementById('expense-currency').value = item.currency;
+            document.getElementById('expense-payment').value = item.payment;
+            document.getElementById('expense-payer').value = item.payer;
+            document.getElementById('ledger-btn-label').innerText = "修改";
+            document.getElementById('btn-ledger-cancel').classList.remove('hidden');
+        }
+
+        function cancelExpenseEdit() {
+            editingExpenseId = null;
+            document.getElementById('expense-title').value = '';
+            document.getElementById('expense-amount').value = '';
+            document.getElementById('ledger-btn-label').innerText = "保存";
+            document.getElementById('btn-ledger-cancel').classList.add('hidden');
+        }
+
+        function deleteExpenseItem(id) {
+            confirmDelete("确定删除该笔记账吗？", () => {
+                tripData.ledger = tripData.ledger.filter(i => i.id !== id);
+                saveAppData(true);
+                renderLedger();
+            });
+        }
+
+        // ================= TAB 7: 行前 Checklist 逻辑 =================
+        function renderChecklist() {
+            const container = document.getElementById('checklist-container');
+            if (!container) return;
+
+            const categories = ["行前打卡", "证件财务", "电子数码", "随身衣物", "日用药品"];
+            let total = tripData.checklist.length;
+            let doneCount = tripData.checklist.filter(i => i.done).length;
+
+            document.getElementById('checklist-progress').innerText = `${doneCount}/${total}`;
+
+            let html = '';
+            categories.forEach(cat => {
+                const items = tripData.checklist.filter(i => i.cat === cat);
+                if (items.length === 0) return;
+
+                let itemsHtml = '';
+                items.forEach(item => {
+                    itemsHtml += `
+                        <div class="flex items-center justify-between p-2 hover:bg-paper rounded-lg transition group">
+                            <label class="flex items-center space-x-2.5 cursor-pointer flex-1">
+                                <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklist(${item.id})" class="w-4 h-4 text-olive rounded border-sand focus:ring-olive">
+                                <span class="text-xs ${item.done ? 'line-through text-stone-400 font-normal' : 'text-stone-800 font-medium'}">${item.text}</span>
+                            </label>
+                            <div class="opacity-80 group-hover:opacity-100 space-x-1">
+                                <button onclick="editChecklistItem(${item.id})" class="text-aegean hover:underline text-[11px] p-1"><i class="fa-solid fa-pen"></i></button>
+                                <button onclick="deleteChecklistItem(${item.id})" class="text-red-500 hover:underline text-[11px] p-1"><i class="fa-solid fa-trash-can"></i></button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                    <div class="bg-paper/80 p-3.5 rounded-2xl border border-sand space-y-2">
+                        <h4 class="font-bold text-aegean text-xs flex items-center border-b border-sand/60 pb-1.5">
+                            <i class="fa-solid fa-check-double mr-1.5 text-olive"></i> ${cat}
+                        </h4>
+                        <div class="space-y-1">${itemsHtml}</div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function toggleChecklist(id) {
+            const item = tripData.checklist.find(i => i.id === id);
+            if (item) {
+                item.done = !item.done;
+                saveAppData(true);
+                renderChecklist();
+            }
+        }
+
+        function saveChecklistItem() {
+            const cat = document.getElementById('new-check-cat').value;
+            const text = document.getElementById('new-check-text').value.trim();
+            if (!text) { showToast("请输入清单项名称"); return; }
+
+            if (editingChecklistId) {
+                const idx = tripData.checklist.findIndex(i => i.id === editingChecklistId);
+                if (idx !== -1) {
+                    tripData.checklist[idx].cat = cat;
+                    tripData.checklist[idx].text = text;
+                }
+            } else {
+                tripData.checklist.push({ id: Date.now(), cat, text, done: false });
+            }
+
+            cancelChecklistEdit();
+            saveAppData(true);
+            renderChecklist();
+        }
+
+        function editChecklistItem(id) {
+            const item = tripData.checklist.find(i => i.id === id);
+            if (!item) return;
+            editingChecklistId = id;
+            document.getElementById('new-check-cat').value = item.cat;
+            document.getElementById('new-check-text').value = item.text;
+            document.getElementById('check-btn-label').innerText = "修改";
+            document.getElementById('btn-check-cancel').classList.remove('hidden');
+        }
+
+        function cancelChecklistEdit() {
+            editingChecklistId = null;
+            document.getElementById('new-check-text').value = '';
+            document.getElementById('check-btn-label').innerText = "新增项";
+            document.getElementById('btn-check-cancel').classList.add('hidden');
+        }
+
+        function deleteChecklistItem(id) {
+            confirmDelete("确定删除该清单项吗？", () => {
+                tripData.checklist = tripData.checklist.filter(i => i.id !== id);
+                saveAppData(true);
+                renderChecklist();
+            });
+        }
+
+        // ================= 导入 / 导出 JSON =================
+        function exportDataJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tripData, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `希腊路书备份_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            showToast("路书 JSON 备份已导出！");
+        }
+
+        function importDataJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if (imported && typeof imported === 'object' && imported.daily) {
+                        tripData = imported;
+                        saveAppData(true);
+                        renderAll();
+                        showToast("备份导入成功！");
+                    } else {
+                        showToast("导入的文件格式有误！");
+                    }
+                } catch (err) {
+                    showToast("文件解析失败！");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // 全局通用 Modal 删除弹窗
+        function confirmDelete(msg, actionCallback) {
+            pendingDeleteAction = actionCallback;
+            document.getElementById('delete-modal-msg').innerText = msg;
+            document.getElementById('delete-modal').classList.remove('hidden');
+            document.getElementById('confirm-delete-btn').onclick = function() {
+                if (pendingDeleteAction) pendingDeleteAction();
+                closeDeleteModal();
+            };
+        }
+
+        function closeDeleteModal() {
+            pendingDeleteAction = null;
+            document.getElementById('delete-modal').classList.add('hidden');
+        }
+    </script>
+
+    <!-- Firebase 实时无感云端同步（基于用户的 greece-trip-c4cc7 Firebase 配置） -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
+
+        // 用户专属 Firebase 配置
+        const firebaseConfig = {
+            apiKey: "AIzaSyB0BC_ATnwr5xegYNLQBKq1HyhSu_m0FrE",
+            authDomain: "greece-trip-c4cc7.firebaseapp.com",
+            databaseURL: "https://greece-trip-c4cc7-default-rtdb.firebaseio.com",
+            projectId: "greece-trip-c4cc7",
+            storageBucket: "greece-trip-c4cc7.firebasestorage.app",
+            messagingSenderId: "332482796388",
+            appId: "1:332482796388:web:a1df835258b2a92534b871"
+        };
+
+        let dbRef = null;
+        let isWritingLocal = false;
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+            dbRef = ref(db, 'greece_trip_sync_v1');
+
+            // 1. 注册全局云端同步推送方法
+            window.syncToCloud = function(data) {
+                if (!dbRef || isWritingLocal) return;
+                set(dbRef, data).then(() => {
+                    updateCloudBadge(true, "🟢 云端已同步");
+                }).catch(err => {
+                    console.warn("云端写入失败，已保存在本地缓存", err);
+                    updateCloudBadge(false, "☁️ 本地已保存 (网络同步中)");
+                });
+            };
+
+            // 2. 监听云端变动实现双人实时无缝同步
+            onValue(dbRef, (snapshot) => {
+                const cloudVal = snapshot.val();
+                if (cloudVal && typeof cloudVal === 'object') {
+                    if (!tripData.lastUpdated || (cloudVal.lastUpdated && cloudVal.lastUpdated > tripData.lastUpdated)) {
+                        isWritingLocal = true;
+                        tripData = cloudVal;
+                        try {
+                            localStorage.setItem('greece_trip_app_data_v2026', JSON.stringify(tripData));
+                        } catch(e) {}
+                        renderAll();
+                        showToast("⚡ 已自动同步对方的最新修改！");
+                        isWritingLocal = false;
+                    }
+                    updateCloudBadge(true, "🟢 云端实时同步已连接");
+                } else {
+                    if (tripData) {
+                        set(dbRef, tripData);
+                    }
+                    updateCloudBadge(true, "🟢 云端同步已连接");
+                }
+            }, (error) => {
+                console.warn("云端连接监听警告:", error);
+                updateCloudBadge(false, "☁️ 仅本地保存 (已自动就绪)");
+            });
+
+        } catch (e) {
+            console.warn("Firebase 模块初始化提示:", e);
+            updateCloudBadge(false, "☁️ 仅本地保存");
+        }
+
+        function updateCloudBadge(isOnline, text) {
+            const badgeText = document.getElementById('cloud-status-text');
+            const pulseDot = document.getElementById('cloud-pulse-dot');
+            if (badgeText) badgeText.innerText = text;
+            if (pulseDot) {
+                pulseDot.className = isOnline 
+                    ? "w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5" 
+                    : "w-2 h-2 rounded-full bg-amber-500 mr-1.5";
+            }
+        }
+    </script>
 </body>
 </html>
+```eoc
+
+### 变更说明：
+1. **📌 待确定与追踪核心事项 (Pending)：** 已将卡片列表置顶，新增/修改输入框移至底部。
+2. **🏨 酒店预订看板 (Hotel)：** 酒店预订表格现在直接展示在最上方，添加表单置于底部。
+3. **✈️ 航班与渡轮明细 (Transport)：** 交通/航班明细列表置于最上方，录入表单移至底部。
+4. **🍽️ 美食种草导航 (Food)：** 美食列表和地图链接置于最上方，新增/编辑输入框移至底部。
+5. 同时保持了 AA 账本与 Checklist 板块布局的一致性，确保第一眼均可直接阅读内容。
