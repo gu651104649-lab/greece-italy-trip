@@ -150,7 +150,7 @@
             </div>
             <div id="cloud-sync-status" class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full font-medium shadow-sm flex items-center">
                 <span id="cloud-pulse-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>
-                <span id="cloud-status-text">☁️ 双人实时同步已激活（已开启本地+云端保存）</span>
+                <span id="cloud-status-text">☁️ 双人云端实时同步已激活</span>
             </div>
             <div class="flex space-x-1 ml-1">
                 <button onclick="exportDataJSON()" class="bg-white hover:bg-stone-50 border border-sand text-stone-700 px-2.5 py-1 rounded-full shadow-sm text-[11px] font-bold transition">
@@ -203,15 +203,13 @@
                     <h3 class="font-serif font-bold text-aegean text-sm md:text-base flex items-center">
                         <i class="fa-solid fa-clipboard-question mr-2 text-terracotta"></i> 📌 待确定与追踪核心事项
                     </h3>
-                    <span class="text-xs text-warmGray">看已有事项 / 下方可编辑或新增</span>
+                    <span class="text-xs text-warmGray">云端双人实时看与改</span>
                 </div>
 
-                <!-- 1. 已有内容：事项卡片列表（放在上面） -->
                 <div id="pending-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                     <!-- 动态渲染 -->
                 </div>
 
-                <!-- 2. 新增/编辑待确认事项表单（放在下面） -->
                 <div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
                     <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
                         <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑待确认事项
@@ -226,7 +224,7 @@
                     </div>
                     <div class="sm:col-span-3">
                         <label class="font-bold block mb-1 text-stone-700">方案/备选/细节</label>
-                        <input type="text" id="pending-desc" placeholder="如: Spiridakos vs Santorini Star，含BBQ与接送" class="w-full p-2 border border-sand rounded bg-white">
+                        <input type="text" id="pending-desc" placeholder="如: Spiridakos vs Santorini Star" class="w-full p-2 border border-sand rounded bg-white">
                     </div>
                     <div class="sm:col-span-2 flex items-end space-x-1">
                         <button onclick="savePendingItem()" id="btn-pending-save" class="w-full bg-aegean hover:bg-aegean/90 text-white font-bold py-2 rounded-lg transition text-xs flex justify-center items-center">
@@ -250,7 +248,6 @@
                     <span class="text-[10px] bg-aegean/10 text-aegean font-bold px-2 py-0.5 rounded">双人共享看板</span>
                 </div>
 
-                <!-- 1. 已有内容：酒店表格（放在上面） -->
                 <div class="table-wrapper">
                     <table class="tbl-min text-xs">
                         <thead>
@@ -269,7 +266,6 @@
                     </table>
                 </div>
 
-                <!-- 2. 添加/编辑酒店表单（放在下面） -->
                 <div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
                     <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
                         <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑酒店预订
@@ -317,7 +313,6 @@
                     <h3 class="font-serif font-bold text-aegean text-sm">✈️🚢 11 天全程航班、渡轮与自驾明细</h3>
                 </div>
 
-                <!-- 1. 已有内容：航班与交通表格（放在上面） -->
                 <div class="table-wrapper">
                     <table class="tbl-min text-xs">
                         <thead>
@@ -329,7 +324,6 @@
                     </table>
                 </div>
 
-                <!-- 2. 新增/编辑交通项表单（放在下面） -->
                 <div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
                     <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
                         <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑交通航班
@@ -369,7 +363,6 @@
                     </div>
                 </div>
 
-                <!-- 1. 已有内容：美食导航表格（放在上面） -->
                 <div class="table-wrapper">
                     <table class="tbl-min text-xs">
                         <thead>
@@ -386,7 +379,6 @@
                     </table>
                 </div>
 
-                <!-- 2. 添加/编辑餐厅表单（放在下面） -->
                 <div class="bg-paper p-3.5 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
                     <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
                         <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 新增 / 编辑美食种草
@@ -447,7 +439,6 @@
                     </div>
                 </div>
 
-                <!-- 1. 已有记账明细列表（放在上面） -->
                 <div class="table-wrapper">
                     <table class="tbl-min text-xs">
                         <thead>
@@ -466,7 +457,6 @@
                     </table>
                 </div>
 
-                <!-- 2. 记账录入/编辑表单（放在下面） -->
                 <div class="bg-paper p-3 rounded-xl border border-sand grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs pt-3 mt-4 border-t border-sand/50">
                     <div class="sm:col-span-12 font-bold text-stone-700 mb-1 flex items-center">
                         <i class="fa-solid fa-pen-to-square mr-1 text-aegean"></i> 记一笔 / 编辑消费
@@ -525,10 +515,8 @@
                     </div>
                 </div>
 
-                <!-- 1. 已有清单项展示（放在上面） -->
                 <div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
 
-                <!-- 2. 自定义添加/编辑 Checklist 项表单（放在下面） -->
                 <div class="bg-paper p-3 rounded-xl border border-sand flex flex-wrap gap-2 items-center text-xs mt-4 pt-3 border-t border-sand/50">
                     <div class="w-full font-bold text-stone-700 mb-0.5 flex items-center">
                         <i class="fa-solid fa-pen-to-square mr-1 text-olive"></i> 新增 / 修改清单项目
@@ -553,25 +541,126 @@
 
     <footer class="max-w-5xl mx-auto mt-12 text-center text-xs text-warmGray mb-8 space-y-1">
         <p class="font-serif">🌊 浪漫爱琴海双岛与 Meteora 天空之城慢调之旅 · 祝两位旅途愉快！</p>
-        <p class="text-[10px] text-stone-400">已启用全局在线数据同步与自动保存</p>
+        <p class="text-[10px] text-stone-400">已集成 Firebase Realtime Database 双人云端实时同步系统</p>
     </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
+
+        // 用户配置的 Firebase 密钥
+        const firebaseConfig = {
+            apiKey: "AIzaSyB0BC_ATnwr5xegYNLQBKq1HyhSu_m0FrE",
+            authDomain: "greece-trip-c4cc7.firebaseapp.com",
+            databaseURL: "https://greece-trip-c4cc7-default-rtdb.firebaseio.com",
+            projectId: "greece-trip-c4cc7",
+            storageBucket: "greece-trip-c4cc7.firebasestorage.app",
+            messagingSenderId: "332482796388",
+            appId: "1:332482796388:web:a1df835258b2a92534b871"
+        };
+
+        let app, db, tripRef;
+        let isInitialLoad = true;
+        let isLocalUpdate = false;
+
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getDatabase(app);
+            tripRef = ref(db, 'greece_trip_2026/shared_data');
+
+            // 监听 Realtime Database 变化 (推送与拉取)
+            onValue(tripRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    // 如果是本地发起的操作，忽略 Firebase 广播回包
+                    if (isLocalUpdate) {
+                        isLocalUpdate = false;
+                        updateCloudStatus(true);
+                        return;
+                    }
+                    
+                    // 接收到对方修改，比较时间戳并更新本地 UI
+                    if (!window.tripData || !window.tripData.lastUpdated || (data.lastUpdated && data.lastUpdated > window.tripData.lastUpdated)) {
+                        window.tripData = data;
+                        if (window.tripData.exchangeRate) {
+                            window.currentExchangeRate = window.tripData.exchangeRate;
+                            const rateInput = document.getElementById('exchange-rate-input');
+                            if (rateInput) rateInput.value = window.currentExchangeRate;
+                        }
+                        try {
+                            localStorage.setItem(window.LOCAL_STORAGE_KEY, JSON.stringify(window.tripData));
+                        } catch(e) {}
+
+                        if (typeof window.renderAll === 'function') {
+                            window.renderAll();
+                        }
+
+                        if (!isInitialLoad && typeof window.showToast === 'function') {
+                            window.showToast("☁️ 已实时同步对方最新修改！");
+                        }
+                    }
+                } else {
+                    // 第一次初始化数据库，写入初始数据
+                    if (window.tripData) {
+                        set(tripRef, window.tripData);
+                    }
+                }
+                isInitialLoad = false;
+                updateCloudStatus(true);
+            }, (error) => {
+                console.error("Firebase Realtime Database 同步失败:", error);
+                updateCloudStatus(false);
+            });
+
+            // 全局云端同步发送函数
+            window.syncToCloud = function(dataToSync) {
+                if (!tripRef) return;
+                isLocalUpdate = true;
+                set(tripRef, dataToSync)
+                    .then(() => {
+                        updateCloudStatus(true);
+                    })
+                    .catch((err) => {
+                        console.error("写入云端失败:", err);
+                        updateCloudStatus(false);
+                    });
+            };
+        } catch(e) {
+            console.error("Firebase 初始化失败:", e);
+            updateCloudStatus(false);
+        }
+
+        function updateCloudStatus(isOnline) {
+            const statusText = document.getElementById('cloud-status-text');
+            const statusDot = document.getElementById('cloud-pulse-dot');
+            const statusBadge = document.getElementById('cloud-sync-status');
+            if (isOnline) {
+                if (statusText) statusText.innerText = "☁️ 双人云端实时同步已激活（在线）";
+                if (statusDot) statusDot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5";
+                if (statusBadge) statusBadge.className = "bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full font-medium shadow-sm flex items-center";
+            } else {
+                if (statusText) statusText.innerText = "⚠️ 云端连接中断（已转离线保存）";
+                if (statusDot) statusDot.className = "w-2 h-2 rounded-full bg-amber-500 mr-1.5";
+                if (statusBadge) statusBadge.className = "bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1 rounded-full font-medium shadow-sm flex items-center";
+            }
+        }
+    </script>
 
     <script>
         // ==================== 全局状态与默认数据 ====================
-        let currentExchangeRate = 7.8;
-        let isEditMode = false;
-        let selectedDay = 1;
-        let pendingDeleteAction = null;
+        window.currentExchangeRate = 7.8;
+        window.isEditMode = false;
+        window.selectedDay = 1;
+        window.pendingDeleteAction = null;
 
         // 编辑 ID 缓存
-        let editingPendingId = null;
-        let editingHotelId = null;
-        let editingTransportId = null;
-        let editingFoodId = null;
-        let editingExpenseId = null;
-        let editingChecklistId = null;
+        window.editingPendingId = null;
+        window.editingHotelId = null;
+        window.editingTransportId = null;
+        window.editingFoodId = null;
+        window.editingExpenseId = null;
+        window.editingChecklistId = null;
 
-        // 简化版天数标题与默认完整数据
         const defaultDayData = {
             1: {
                 date: "10月1日 (周四)", title: "D1 广州飞北京", route: "广州白云 (CA1328 18:40) ➔ 北京首都 T3 (22:00抵达)", hotel: "宿 航站楼休整 / 转机",
@@ -758,7 +847,7 @@
         ];
 
         // 主应用数据状态对象
-        let tripData = {
+        window.tripData = {
             exchangeRate: 7.8,
             daily: defaultDayData,
             pending: defaultPendingList,
@@ -770,44 +859,45 @@
             lastUpdated: Date.now()
         };
 
-        const LOCAL_STORAGE_KEY = 'greece_trip_app_data_v2026';
+        window.LOCAL_STORAGE_KEY = 'greece_trip_app_data_v2026';
 
         // 初始化应用
-        function initApp() {
+        window.initApp = function() {
             loadFromLocalStorage();
             calculateCountdown();
             renderAll();
-        }
+        };
 
         // 保存到 localStorage 并推送至 Firebase
-        function saveAppData(notifyToast = true) {
-            tripData.lastUpdated = Date.now();
+        window.saveAppData = function(notifyToast = true) {
+            window.tripData.lastUpdated = Date.now();
             try {
-                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tripData));
+                localStorage.setItem(window.LOCAL_STORAGE_KEY, JSON.stringify(window.tripData));
             } catch (e) {
                 console.warn("localStorage 保存失败", e);
             }
 
             if (window.syncToCloud) {
-                window.syncToCloud(tripData);
+                window.syncToCloud(window.tripData);
             }
 
             if (notifyToast) {
-                showToast("已修改并保存！");
+                showToast("已修改并同步！");
             }
-        }
+        };
 
         // 从 localStorage 加载
         function loadFromLocalStorage() {
             try {
-                const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+                const saved = localStorage.getItem(window.LOCAL_STORAGE_KEY);
                 if (saved) {
                     const parsed = JSON.parse(saved);
                     if (parsed && typeof parsed === 'object') {
-                        tripData = parsed;
-                        if (tripData.exchangeRate) {
-                            currentExchangeRate = tripData.exchangeRate;
-                            document.getElementById('exchange-rate-input').value = currentExchangeRate;
+                        window.tripData = parsed;
+                        if (window.tripData.exchangeRate) {
+                            window.currentExchangeRate = window.tripData.exchangeRate;
+                            const input = document.getElementById('exchange-rate-input');
+                            if (input) input.value = window.currentExchangeRate;
                         }
                     }
                 }
@@ -817,7 +907,7 @@
         }
 
         // 重新渲染整页
-        function renderAll() {
+        window.renderAll = function() {
             renderDayPicker();
             renderDayDetails();
             renderPending();
@@ -826,7 +916,7 @@
             renderFood();
             renderLedger();
             renderChecklist();
-        }
+        };
 
         // 倒计时计算
         function calculateCountdown() {
@@ -841,29 +931,30 @@
         }
 
         // 提示 Toast
-        function showToast(msg) {
+        window.showToast = function(msg) {
             const toast = document.getElementById('toast-notification');
             const toastMsg = document.getElementById('toast-msg');
+            if (!toast || !toastMsg) return;
             toastMsg.innerText = msg;
             toast.classList.remove('opacity-0', 'pointer-events-none');
             setTimeout(() => {
                 toast.classList.add('opacity-0', 'pointer-events-none');
             }, 2200);
-        }
+        };
 
         // 修改汇率
-        function updateExchangeRate(val) {
+        window.updateExchangeRate = function(val) {
             const parsed = parseFloat(val);
             if (!isNaN(parsed) && parsed > 0) {
-                currentExchangeRate = parsed;
-                tripData.exchangeRate = currentExchangeRate;
+                window.currentExchangeRate = parsed;
+                window.tripData.exchangeRate = window.currentExchangeRate;
                 saveAppData(true);
                 renderLedger();
             }
-        }
+        };
 
         // 切换 Tab
-        function switchTab(tabKey) {
+        window.switchTab = function(tabKey) {
             document.querySelectorAll('.tab-content').forEach(sec => sec.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
@@ -877,16 +968,15 @@
                 activeBtn.classList.add('active');
                 activeBtn.classList.remove('bg-white', 'text-ink');
             }
-        }
+        };
 
-        // 渲染天数 Picker
         function renderDayPicker() {
             const container = document.getElementById('day-picker-container');
             if (!container) return;
             let html = '';
             for (let i = 1; i <= 11; i++) {
-                const dayObj = tripData.daily[i];
-                const active = selectedDay === i;
+                const dayObj = window.tripData.daily[i];
+                const active = window.selectedDay === i;
                 const shortTitle = dayObj ? dayObj.title.split(' ')[0] : `D${i}`;
                 html += `
                     <button onclick="selectDay(${i})" class="flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold text-xs border transition-all ${
@@ -901,11 +991,11 @@
             container.innerHTML = html;
         }
 
-        function selectDay(dayNum) {
-            selectedDay = dayNum;
+        window.selectDay = function(dayNum) {
+            window.selectedDay = dayNum;
             renderDayPicker();
             renderDayDetails();
-        }
+        };
 
         function parseTimeToMinutes(timeStr) {
             if (!timeStr) return 9999;
@@ -942,10 +1032,9 @@
             return '';
         }
 
-        // 渲染每日具体行程
         function renderDayDetails() {
             const container = document.getElementById('day-details-container');
-            const data = tripData.daily[selectedDay];
+            const data = window.tripData.daily[window.selectedDay];
             if (!container || !data) return;
 
             if (data.timeline && Array.isArray(data.timeline)) {
@@ -955,12 +1044,12 @@
             let timelineHtml = '';
             if (data.timeline && data.timeline.length > 0) {
                 data.timeline.forEach((item, index) => {
-                    if (isEditMode) {
+                    if (window.isEditMode) {
                         timelineHtml += `
                             <div class="flex items-start space-x-2 bg-paper p-2.5 rounded-xl border border-sand">
-                                <input type="text" value="${item.time}" onchange="updateTimelineItem(${selectedDay}, ${index}, 'time', this.value)" class="w-20 p-1 border rounded bg-white text-xs font-bold text-aegean">
-                                <textarea onchange="updateTimelineItem(${selectedDay}, ${index}, 'text', this.value)" class="flex-1 p-1 border rounded bg-white text-xs" rows="2">${item.text}</textarea>
-                                <button onclick="deleteTimelineItem(${selectedDay}, ${index})" class="text-red-500 hover:text-red-700 p-1 text-sm"><i class="fa-solid fa-trash-can"></i></button>
+                                <input type="text" value="${item.time}" onchange="updateTimelineItem(${window.selectedDay}, ${index}, 'time', this.value)" class="w-20 p-1 border rounded bg-white text-xs font-bold text-aegean">
+                                <textarea onchange="updateTimelineItem(${window.selectedDay}, ${index}, 'text', this.value)" class="flex-1 p-1 border rounded bg-white text-xs" rows="2">${item.text}</textarea>
+                                <button onclick="deleteTimelineItem(${window.selectedDay}, ${index})" class="text-red-500 hover:text-red-700 p-1 text-sm"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
                         `;
                     } else {
@@ -979,40 +1068,40 @@
                 timelineHtml = `<p class="text-xs text-warmGray">暂无具体行程安排。</p>`;
             }
 
-            if (isEditMode) {
+            if (window.isEditMode) {
                 container.innerHTML = `
                     <div class="watercolor-card p-4 md:p-6 space-y-4">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                             <div>
                                 <label class="font-bold text-stone-700 block mb-1">天数简称/标题 (如 D1 广州飞北京)</label>
-                                <input type="text" value="${data.title}" onchange="updateDayHeader(${selectedDay}, 'title', this.value)" class="w-full p-2 border rounded bg-white font-bold text-aegean">
+                                <input type="text" value="${data.title}" onchange="updateDayHeader(${window.selectedDay}, 'title', this.value)" class="w-full p-2 border rounded bg-white font-bold text-aegean">
                             </div>
                             <div>
                                 <label class="font-bold text-stone-700 block mb-1">日期文字 (如 10月1日)</label>
-                                <input type="text" value="${data.date}" onchange="updateDayHeader(${selectedDay}, 'date', this.value)" class="w-full p-2 border rounded bg-white">
+                                <input type="text" value="${data.date}" onchange="updateDayHeader(${window.selectedDay}, 'date', this.value)" class="w-full p-2 border rounded bg-white">
                             </div>
                             <div class="md:col-span-2">
                                 <label class="font-bold text-stone-700 block mb-1">每日总路线 / 摘要</label>
-                                <input type="text" value="${data.route}" onchange="updateDayHeader(${selectedDay}, 'route', this.value)" class="w-full p-2 border rounded bg-white">
+                                <input type="text" value="${data.route}" onchange="updateDayHeader(${window.selectedDay}, 'route', this.value)" class="w-full p-2 border rounded bg-white">
                             </div>
                             <div>
                                 <label class="font-bold text-stone-700 block mb-1">住宿安排</label>
-                                <input type="text" value="${data.hotel}" onchange="updateDayHeader(${selectedDay}, 'hotel', this.value)" class="w-full p-2 border rounded bg-white">
+                                <input type="text" value="${data.hotel}" onchange="updateDayHeader(${window.selectedDay}, 'hotel', this.value)" class="w-full p-2 border rounded bg-white">
                             </div>
                             <div>
                                 <label class="font-bold text-stone-700 block mb-1">谷歌地图导航链接 (可选)</label>
-                                <input type="text" value="${data.mapUrl || ''}" onchange="updateDayHeader(${selectedDay}, 'mapUrl', this.value)" class="w-full p-2 border rounded bg-white font-mono text-[10px]">
+                                <input type="text" value="${data.mapUrl || ''}" onchange="updateDayHeader(${window.selectedDay}, 'mapUrl', this.value)" class="w-full p-2 border rounded bg-white font-mono text-[10px]">
                             </div>
                             <div class="md:col-span-2">
                                 <label class="font-bold text-stone-700 block mb-1">温馨提示 / 关键提醒</label>
-                                <input type="text" value="${data.tips}" onchange="updateDayHeader(${selectedDay}, 'tips', this.value)" class="w-full p-2 border rounded bg-white text-terracotta">
+                                <input type="text" value="${data.tips}" onchange="updateDayHeader(${window.selectedDay}, 'tips', this.value)" class="w-full p-2 border rounded bg-white text-terracotta">
                             </div>
                         </div>
 
                         <div class="border-t pt-4 space-y-3">
                             <div class="flex justify-between items-center">
                                 <h4 class="font-bold text-stone-800 text-xs">⏰ 详细时间节点安排</h4>
-                                <button onclick="addTimelineItem(${selectedDay})" class="bg-olive hover:bg-olive/90 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-plus mr-1"></i>添加时间节点</button>
+                                <button onclick="addTimelineItem(${window.selectedDay})" class="bg-olive hover:bg-olive/90 text-white font-bold px-3 py-1 rounded-lg text-xs"><i class="fa-solid fa-plus mr-1"></i>添加时间节点</button>
                             </div>
                             <div class="space-y-2">${timelineHtml}</div>
                         </div>
@@ -1055,67 +1144,66 @@
             }
         }
 
-        function toggleEditMode() {
-            isEditMode = !isEditMode;
-            document.getElementById('edit-btn-text').innerText = isEditMode ? "保存每日路线修改" : "开启每日路线编辑";
-            document.getElementById('edit-mode-btn').className = isEditMode 
+        window.toggleEditMode = function() {
+            window.isEditMode = !window.isEditMode;
+            document.getElementById('edit-btn-text').innerText = window.isEditMode ? "保存每日路线修改" : "开启每日路线编辑";
+            document.getElementById('edit-mode-btn').className = window.isEditMode 
                 ? "bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center"
                 : "bg-aegean hover:bg-aegean/90 text-white font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center";
-            if (!isEditMode) {
-                sortTimeline(tripData.daily[selectedDay].timeline);
+            if (!window.isEditMode) {
+                sortTimeline(window.tripData.daily[window.selectedDay].timeline);
                 saveAppData(true);
             }
             renderDayDetails();
-        }
+        };
 
-        function updateDayHeader(dayNum, field, value) {
-            tripData.daily[dayNum][field] = value;
+        window.updateDayHeader = function(dayNum, field, value) {
+            window.tripData.daily[dayNum][field] = value;
             saveAppData(false);
             if (field === 'title') renderDayPicker();
-        }
+        };
 
-        function updateTimelineItem(dayNum, index, field, value) {
-            tripData.daily[dayNum].timeline[index][field] = value;
+        window.updateTimelineItem = function(dayNum, index, field, value) {
+            window.tripData.daily[dayNum].timeline[index][field] = value;
             if (field === 'time') {
-                sortTimeline(tripData.daily[dayNum].timeline);
+                sortTimeline(window.tripData.daily[dayNum].timeline);
             }
             saveAppData(false);
-        }
+        };
 
-        function addTimelineItem(dayNum) {
-            tripData.daily[dayNum].timeline.push({
+        window.addTimelineItem = function(dayNum) {
+            window.tripData.daily[dayNum].timeline.push({
                 id: Date.now(),
                 time: "12:00",
                 text: "新增行程节点描述..."
             });
-            sortTimeline(tripData.daily[dayNum].timeline);
+            sortTimeline(window.tripData.daily[dayNum].timeline);
             saveAppData(false);
             renderDayDetails();
-        }
+        };
 
-        function deleteTimelineItem(dayNum, index) {
+        window.deleteTimelineItem = function(dayNum, index) {
             confirmDelete("确定删除该行程节点吗？", () => {
-                tripData.daily[dayNum].timeline.splice(index, 1);
+                window.tripData.daily[dayNum].timeline.splice(index, 1);
                 saveAppData(true);
                 renderDayDetails();
             });
-        }
+        };
 
-        function resetToDefaultItinerary() {
+        window.resetToDefaultItinerary = function() {
             confirmDelete("恢复后，每日路线将重置为初始定稿版本，确定吗？", () => {
-                tripData.daily = JSON.parse(JSON.stringify(defaultDayData));
+                window.tripData.daily = JSON.parse(JSON.stringify(defaultDayData));
                 saveAppData(true);
                 renderDayPicker();
                 renderDayDetails();
             });
-        }
+        };
 
-        // ================= TAB 2: 待办事项逻辑 =================
         function renderPending() {
             const container = document.getElementById('pending-cards-container');
             if (!container) return;
             let html = '';
-            tripData.pending.forEach((item) => {
+            window.tripData.pending.forEach((item) => {
                 html += `
                     <div class="bg-paper p-3.5 rounded-2xl border border-sand space-y-2 relative shadow-sm hover:shadow transition">
                         <div class="flex justify-between items-start">
@@ -1133,21 +1221,21 @@
             container.innerHTML = html;
         }
 
-        function savePendingItem() {
+        window.savePendingItem = function() {
             const title = document.getElementById('pending-title').value.trim();
             const status = document.getElementById('pending-status').value.trim();
             const desc = document.getElementById('pending-desc').value.trim();
             if (!title) { showToast("请输入事项标题"); return; }
 
-            if (editingPendingId) {
-                const idx = tripData.pending.findIndex(i => i.id === editingPendingId);
+            if (window.editingPendingId) {
+                const idx = window.tripData.pending.findIndex(i => i.id === window.editingPendingId);
                 if (idx !== -1) {
-                    tripData.pending[idx].title = title;
-                    tripData.pending[idx].status = status || "比对中";
-                    tripData.pending[idx].desc = desc;
+                    window.tripData.pending[idx].title = title;
+                    window.tripData.pending[idx].status = status || "比对中";
+                    window.tripData.pending[idx].desc = desc;
                 }
             } else {
-                tripData.pending.push({
+                window.tripData.pending.push({
                     id: Date.now(),
                     title,
                     status: status || "比对中",
@@ -1158,42 +1246,41 @@
             cancelPendingEdit();
             saveAppData(true);
             renderPending();
-        }
+        };
 
-        function editPendingItem(id) {
-            const item = tripData.pending.find(i => i.id === id);
+        window.editPendingItem = function(id) {
+            const item = window.tripData.pending.find(i => i.id === id);
             if (!item) return;
-            editingPendingId = id;
+            window.editingPendingId = id;
             document.getElementById('pending-title').value = item.title;
             document.getElementById('pending-status').value = item.status;
             document.getElementById('pending-desc').value = item.desc;
             document.getElementById('pending-btn-label').innerText = "保存";
             document.getElementById('btn-pending-cancel').classList.remove('hidden');
-        }
+        };
 
-        function cancelPendingEdit() {
-            editingPendingId = null;
+        window.cancelPendingEdit = function() {
+            window.editingPendingId = null;
             document.getElementById('pending-title').value = '';
             document.getElementById('pending-status').value = '';
             document.getElementById('pending-desc').value = '';
             document.getElementById('pending-btn-label').innerText = "新增";
             document.getElementById('btn-pending-cancel').classList.add('hidden');
-        }
+        };
 
-        function deletePendingItem(id) {
+        window.deletePendingItem = function(id) {
             confirmDelete("确定删除该待办事项吗？", () => {
-                tripData.pending = tripData.pending.filter(i => i.id !== id);
+                window.tripData.pending = window.tripData.pending.filter(i => i.id !== id);
                 saveAppData(true);
                 renderPending();
             });
-        }
+        };
 
-        // ================= TAB 3: 酒店看板逻辑 =================
         function renderHotels() {
             const tbody = document.getElementById('hotel-table-body');
             if (!tbody) return;
             let html = '';
-            tripData.hotels.forEach(item => {
+            window.tripData.hotels.forEach(item => {
                 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' ' + item.address)}`;
                 html += `
                     <tr>
@@ -1212,7 +1299,7 @@
             tbody.innerHTML = html;
         }
 
-        function saveHotelItem() {
+        window.saveHotelItem = function() {
             const name = document.getElementById('hotel-name').value.trim();
             const dates = document.getElementById('hotel-dates').value.trim();
             const city = document.getElementById('hotel-city').value.trim();
@@ -1221,24 +1308,24 @@
 
             if (!name) { showToast("请输入酒店名称"); return; }
 
-            if (editingHotelId) {
-                const idx = tripData.hotels.findIndex(i => i.id === editingHotelId);
+            if (window.editingHotelId) {
+                const idx = window.tripData.hotels.findIndex(i => i.id === window.editingHotelId);
                 if (idx !== -1) {
-                    tripData.hotels[idx] = { id: editingHotelId, name, dates, city, address, note };
+                    window.tripData.hotels[idx] = { id: window.editingHotelId, name, dates, city, address, note };
                 }
             } else {
-                tripData.hotels.push({ id: Date.now(), name, dates, city, address, note });
+                window.tripData.hotels.push({ id: Date.now(), name, dates, city, address, note });
             }
 
             cancelHotelEdit();
             saveAppData(true);
             renderHotels();
-        }
+        };
 
-        function editHotelItem(id) {
-            const item = tripData.hotels.find(i => i.id === id);
+        window.editHotelItem = function(id) {
+            const item = window.tripData.hotels.find(i => i.id === id);
             if (!item) return;
-            editingHotelId = id;
+            window.editingHotelId = id;
             document.getElementById('hotel-name').value = item.name;
             document.getElementById('hotel-dates').value = item.dates;
             document.getElementById('hotel-city').value = item.city;
@@ -1246,10 +1333,10 @@
             document.getElementById('hotel-note').value = item.note;
             document.getElementById('hotel-btn-label').innerText = "保存";
             document.getElementById('btn-hotel-cancel').classList.remove('hidden');
-        }
+        };
 
-        function cancelHotelEdit() {
-            editingHotelId = null;
+        window.cancelHotelEdit = function() {
+            window.editingHotelId = null;
             document.getElementById('hotel-name').value = '';
             document.getElementById('hotel-dates').value = '';
             document.getElementById('hotel-city').value = '';
@@ -1257,22 +1344,21 @@
             document.getElementById('hotel-note').value = '';
             document.getElementById('hotel-btn-label').innerText = "新增";
             document.getElementById('btn-hotel-cancel').classList.add('hidden');
-        }
+        };
 
-        function deleteHotelItem(id) {
+        window.deleteHotelItem = function(id) {
             confirmDelete("确定删除该酒店记录吗？", () => {
-                tripData.hotels = tripData.hotels.filter(i => i.id !== id);
+                window.tripData.hotels = window.tripData.hotels.filter(i => i.id !== id);
                 saveAppData(true);
                 renderHotels();
             });
-        }
+        };
 
-        // ================= TAB 4: 交通明细逻辑 =================
         function renderTransport() {
             const tbody = document.getElementById('transport-table-body');
             if (!tbody) return;
             let html = '';
-            tripData.transport.forEach(item => {
+            window.tripData.transport.forEach(item => {
                 html += `
                     <tr>
                         <td class="font-mono text-aegean font-bold">${item.date}</td>
@@ -1291,7 +1377,7 @@
             tbody.innerHTML = html;
         }
 
-        function saveTransportItem() {
+        window.saveTransportItem = function() {
             const date = document.getElementById('trans-date').value.trim();
             const type = document.getElementById('trans-type').value.trim();
             const code = document.getElementById('trans-code').value.trim();
@@ -1301,24 +1387,24 @@
 
             if (!route) { showToast("请输入路线段信息"); return; }
 
-            if (editingTransportId) {
-                const idx = tripData.transport.findIndex(i => i.id === editingTransportId);
+            if (window.editingTransportId) {
+                const idx = window.tripData.transport.findIndex(i => i.id === window.editingTransportId);
                 if (idx !== -1) {
-                    tripData.transport[idx] = { id: editingTransportId, date, type, code, route, time, note };
+                    window.tripData.transport[idx] = { id: window.editingTransportId, date, type, code, route, time, note };
                 }
             } else {
-                tripData.transport.push({ id: Date.now(), date, type, code, route, time, note });
+                window.tripData.transport.push({ id: Date.now(), date, type, code, route, time, note });
             }
 
             cancelTransportEdit();
             saveAppData(true);
             renderTransport();
-        }
+        };
 
-        function editTransportItem(id) {
-            const item = tripData.transport.find(i => i.id === id);
+        window.editTransportItem = function(id) {
+            const item = window.tripData.transport.find(i => i.id === id);
             if (!item) return;
-            editingTransportId = id;
+            window.editingTransportId = id;
             document.getElementById('trans-date').value = item.date;
             document.getElementById('trans-type').value = item.type;
             document.getElementById('trans-code').value = item.code;
@@ -1327,10 +1413,10 @@
             document.getElementById('trans-note').value = item.note;
             document.getElementById('trans-btn-label').innerText = "修改";
             document.getElementById('btn-trans-cancel').classList.remove('hidden');
-        }
+        };
 
-        function cancelTransportEdit() {
-            editingTransportId = null;
+        window.cancelTransportEdit = function() {
+            window.editingTransportId = null;
             document.getElementById('trans-date').value = '';
             document.getElementById('trans-type').value = '';
             document.getElementById('trans-code').value = '';
@@ -1339,23 +1425,22 @@
             document.getElementById('trans-note').value = '';
             document.getElementById('trans-btn-label').innerText = "保存";
             document.getElementById('btn-trans-cancel').classList.add('hidden');
-        }
+        };
 
-        function deleteTransportItem(id) {
+        window.deleteTransportItem = function(id) {
             confirmDelete("确定删除该交通明细吗？", () => {
-                tripData.transport = tripData.transport.filter(i => i.id !== id);
+                window.tripData.transport = window.tripData.transport.filter(i => i.id !== id);
                 saveAppData(true);
                 renderTransport();
             });
-        }
+        };
 
-        // ================= TAB 5: 美食种草逻辑 =================
         function renderFood() {
             const tbody = document.getElementById('food-table-body');
             const filter = document.getElementById('food-filter-city')?.value || "ALL";
             if (!tbody) return;
 
-            let items = tripData.food;
+            let items = window.tripData.food;
             if (filter !== "ALL") {
                 items = items.filter(f => f.city.includes(filter) || filter.includes(f.city));
             }
@@ -1378,81 +1463,79 @@
             tbody.innerHTML = html;
         }
 
-        function saveFoodItem() {
+        window.saveFoodItem = function() {
             const city = document.getElementById('food-city').value;
             const name = document.getElementById('food-name').value.trim();
             const mapUrl = document.getElementById('food-mapurl').value.trim();
 
             if (!name) { showToast("请输入餐厅或美食名称"); return; }
 
-            if (editingFoodId) {
-                const idx = tripData.food.findIndex(i => i.id === editingFoodId);
+            if (window.editingFoodId) {
+                const idx = window.tripData.food.findIndex(i => i.id === window.editingFoodId);
                 if (idx !== -1) {
-                    tripData.food[idx] = { id: editingFoodId, city, name, mapUrl };
+                    window.tripData.food[idx] = { id: window.editingFoodId, city, name, mapUrl };
                 }
             } else {
-                tripData.food.push({ id: Date.now(), city, name, mapUrl });
+                window.tripData.food.push({ id: Date.now(), city, name, mapUrl });
             }
 
             cancelFoodEdit();
             saveAppData(true);
             renderFood();
-        }
+        };
 
-        function editFoodItem(id) {
-            const item = tripData.food.find(i => i.id === id);
+        window.editFoodItem = function(id) {
+            const item = window.tripData.food.find(i => i.id === id);
             if (!item) return;
-            editingFoodId = id;
+            window.editingFoodId = id;
             document.getElementById('food-city').value = item.city;
             document.getElementById('food-name').value = item.name;
             document.getElementById('food-mapurl').value = item.mapUrl || '';
             document.getElementById('food-btn-label').innerText = "保存";
             document.getElementById('btn-food-cancel').classList.remove('hidden');
-        }
+        };
 
-        function cancelFoodEdit() {
-            editingFoodId = null;
+        window.cancelFoodEdit = function() {
+            window.editingFoodId = null;
             document.getElementById('food-name').value = '';
             document.getElementById('food-mapurl').value = '';
             document.getElementById('food-btn-label').innerText = "保存";
             document.getElementById('btn-food-cancel').classList.add('hidden');
-        }
+        };
 
-        function deleteFoodItem(id) {
+        window.deleteFoodItem = function(id) {
             confirmDelete("确定删除该美食种草项吗？", () => {
-                tripData.food = tripData.food.filter(i => i.id !== id);
+                window.tripData.food = window.tripData.food.filter(i => i.id !== id);
                 saveAppData(true);
                 renderFood();
             });
-        }
+        };
 
-        // ================= TAB 6: AA 记账本逻辑 =================
         function renderLedger() {
             const tbody = document.getElementById('ledger-table-body');
             if (!tbody) return;
 
             let totalCNY = 0;
             let totalEUR = 0;
-            let count = tripData.ledger.length;
 
             let html = '';
-            tripData.ledger.forEach(item => {
-                let amountCNY = 0;
+            window.tripData.ledger.forEach(item => {
+                let amountInCNY = 0;
                 if (item.currency === 'EUR') {
+                    amountInCNY = item.amount * window.currentExchangeRate;
                     totalEUR += item.amount;
-                    amountCNY = item.amount * currentExchangeRate;
                 } else {
-                    amountCNY = item.amount;
+                    amountInCNY = item.amount;
                 }
-                totalCNY += amountCNY;
+                totalCNY += amountInCNY;
 
                 html += `
                     <tr>
                         <td class="font-bold text-stone-800">${item.title}</td>
-                        <td class="font-mono font-bold text-olive">${item.currency === 'EUR' ? '€' : '¥'}${item.amount.toFixed(2)}</td>
-                        <td class="font-mono font-bold text-terracotta">¥${amountCNY.toFixed(2)}</td>
+                        <td class="font-mono font-bold text-aegean">${item.currency === 'EUR' ? '€' : '¥'}${item.amount.toFixed(2)}</td>
+                        <td class="font-mono font-bold text-terracotta">¥${amountInCNY.toFixed(2)}</td>
                         <td>${item.payment}</td>
-                        <td><span class="bg-paper border border-sand px-2 py-0.5 rounded text-[11px] font-bold text-aegean">${item.payer}</span></td>
+                        <td><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">${item.payer}</span></td>
                         <td>
                             <button onclick="editExpenseItem(${item.id})" class="text-aegean font-bold mr-2 hover:underline"><i class="fa-solid fa-pen"></i></button>
                             <button onclick="deleteExpenseItem(${item.id})" class="text-red-500 font-bold hover:underline"><i class="fa-solid fa-trash-can"></i></button>
@@ -1462,13 +1545,14 @@
             });
 
             tbody.innerHTML = html;
+
             document.getElementById('ledger-total-cny').innerText = `¥${totalCNY.toFixed(2)}`;
             document.getElementById('ledger-per-person').innerText = `¥${(totalCNY / 2).toFixed(2)}`;
             document.getElementById('ledger-total-eur').innerText = `€${totalEUR.toFixed(2)}`;
-            document.getElementById('ledger-count').innerText = `${count} 笔`;
+            document.getElementById('ledger-count').innerText = `${window.tripData.ledger.length} 笔`;
         }
 
-        function saveExpenseItem() {
+        window.saveExpenseItem = function() {
             const title = document.getElementById('expense-title').value.trim();
             const amount = parseFloat(document.getElementById('expense-amount').value);
             const currency = document.getElementById('expense-currency').value;
@@ -1476,28 +1560,28 @@
             const payer = document.getElementById('expense-payer').value;
 
             if (!title || isNaN(amount) || amount <= 0) {
-                showToast("请输入有效消费项目与金额");
+                showToast("请填写完整的名称和有效金额");
                 return;
             }
 
-            if (editingExpenseId) {
-                const idx = tripData.ledger.findIndex(i => i.id === editingExpenseId);
+            if (window.editingExpenseId) {
+                const idx = window.tripData.ledger.findIndex(i => i.id === window.editingExpenseId);
                 if (idx !== -1) {
-                    tripData.ledger[idx] = { id: editingExpenseId, title, amount, currency, payment, payer };
+                    window.tripData.ledger[idx] = { id: window.editingExpenseId, title, amount, currency, payment, payer };
                 }
             } else {
-                tripData.ledger.push({ id: Date.now(), title, amount, currency, payment, payer });
+                window.tripData.ledger.push({ id: Date.now(), title, amount, currency, payment, payer });
             }
 
             cancelExpenseEdit();
             saveAppData(true);
             renderLedger();
-        }
+        };
 
-        function editExpenseItem(id) {
-            const item = tripData.ledger.find(i => i.id === id);
+        window.editExpenseItem = function(id) {
+            const item = window.tripData.ledger.find(i => i.id === id);
             if (!item) return;
-            editingExpenseId = id;
+            window.editingExpenseId = id;
             document.getElementById('expense-title').value = item.title;
             document.getElementById('expense-amount').value = item.amount;
             document.getElementById('expense-currency').value = item.currency;
@@ -1505,258 +1589,169 @@
             document.getElementById('expense-payer').value = item.payer;
             document.getElementById('ledger-btn-label').innerText = "修改";
             document.getElementById('btn-ledger-cancel').classList.remove('hidden');
-        }
+        };
 
-        function cancelExpenseEdit() {
-            editingExpenseId = null;
+        window.cancelExpenseEdit = function() {
+            window.editingExpenseId = null;
             document.getElementById('expense-title').value = '';
             document.getElementById('expense-amount').value = '';
             document.getElementById('ledger-btn-label').innerText = "保存";
             document.getElementById('btn-ledger-cancel').classList.add('hidden');
-        }
+        };
 
-        function deleteExpenseItem(id) {
-            confirmDelete("确定删除该笔记账吗？", () => {
-                tripData.ledger = tripData.ledger.filter(i => i.id !== id);
+        window.deleteExpenseItem = function(id) {
+            confirmDelete("确定删除该笔消费账目吗？", () => {
+                window.tripData.ledger = window.tripData.ledger.filter(i => i.id !== id);
                 saveAppData(true);
                 renderLedger();
             });
-        }
+        };
 
-        // ================= TAB 7: 行前 Checklist 逻辑 =================
         function renderChecklist() {
             const container = document.getElementById('checklist-container');
             if (!container) return;
 
             const categories = ["行前打卡", "证件财务", "电子数码", "随身衣物", "日用药品"];
-            let total = tripData.checklist.length;
-            let doneCount = tripData.checklist.filter(i => i.done).length;
-
-            document.getElementById('checklist-progress').innerText = `${doneCount}/${total}`;
-
             let html = '';
+            let totalCount = window.tripData.checklist.length;
+            let doneCount = window.tripData.checklist.filter(i => i.done).length;
+
             categories.forEach(cat => {
-                const items = tripData.checklist.filter(i => i.cat === cat);
-                if (items.length === 0) return;
-
-                let itemsHtml = '';
-                items.forEach(item => {
-                    itemsHtml += `
-                        <div class="flex items-center justify-between p-2 hover:bg-paper rounded-lg transition group">
-                            <label class="flex items-center space-x-2.5 cursor-pointer flex-1">
-                                <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklist(${item.id})" class="w-4 h-4 text-olive rounded border-sand focus:ring-olive">
-                                <span class="text-xs ${item.done ? 'line-through text-stone-400 font-normal' : 'text-stone-800 font-medium'}">${item.text}</span>
-                            </label>
-                            <div class="opacity-80 group-hover:opacity-100 space-x-1">
-                                <button onclick="editChecklistItem(${item.id})" class="text-aegean hover:underline text-[11px] p-1"><i class="fa-solid fa-pen"></i></button>
-                                <button onclick="deleteChecklistItem(${item.id})" class="text-red-500 hover:underline text-[11px] p-1"><i class="fa-solid fa-trash-can"></i></button>
-                            </div>
-                        </div>
+                const items = window.tripData.checklist.filter(i => i.cat === cat);
+                if (items.length > 0) {
+                    html += `
+                        <div class="bg-paper p-3.5 rounded-2xl border border-sand space-y-2">
+                            <h4 class="font-bold text-aegean text-xs border-b border-sand pb-1.5 flex items-center">
+                                <i class="fa-solid fa-folder-open mr-1.5"></i> ${cat}
+                            </h4>
+                            <div class="space-y-1.5">
                     `;
-                });
-
-                html += `
-                    <div class="bg-paper/80 p-3.5 rounded-2xl border border-sand space-y-2">
-                        <h4 class="font-bold text-aegean text-xs flex items-center border-b border-sand/60 pb-1.5">
-                            <i class="fa-solid fa-check-double mr-1.5 text-olive"></i> ${cat}
-                        </h4>
-                        <div class="space-y-1">${itemsHtml}</div>
-                    </div>
-                `;
+                    items.forEach(item => {
+                        html += `
+                            <div class="flex items-center justify-between text-xs py-1 px-1.5 hover:bg-white rounded transition">
+                                <label class="flex items-center space-x-2 cursor-pointer flex-1 mr-2">
+                                    <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleChecklistItem(${item.id})" class="w-4 h-4 text-olive rounded border-sand focus:ring-olive">
+                                    <span class="${item.done ? 'line-through text-stone-400' : 'text-stone-800 font-medium'}">${item.text}</span>
+                                </label>
+                                <div class="flex space-x-1.5">
+                                    <button onclick="editChecklistItem(${item.id})" class="text-aegean hover:underline"><i class="fa-solid fa-pen text-[10px]"></i></button>
+                                    <button onclick="deleteChecklistItem(${item.id})" class="text-red-500 hover:underline"><i class="fa-solid fa-trash-can text-[10px]"></i></button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += `</div></div>`;
+                }
             });
 
             container.innerHTML = html;
+            document.getElementById('checklist-progress').innerText = `${doneCount}/${totalCount}`;
         }
 
-        function toggleChecklist(id) {
-            const item = tripData.checklist.find(i => i.id === id);
+        window.toggleChecklistItem = function(id) {
+            const item = window.tripData.checklist.find(i => i.id === id);
             if (item) {
                 item.done = !item.done;
                 saveAppData(true);
                 renderChecklist();
             }
-        }
+        };
 
-        function saveChecklistItem() {
+        window.saveChecklistItem = function() {
             const cat = document.getElementById('new-check-cat').value;
             const text = document.getElementById('new-check-text').value.trim();
-            if (!text) { showToast("请输入清单项名称"); return; }
+            if (!text) { showToast("请输入清单内容"); return; }
 
-            if (editingChecklistId) {
-                const idx = tripData.checklist.findIndex(i => i.id === editingChecklistId);
+            if (window.editingChecklistId) {
+                const idx = window.tripData.checklist.findIndex(i => i.id === window.editingChecklistId);
                 if (idx !== -1) {
-                    tripData.checklist[idx].cat = cat;
-                    tripData.checklist[idx].text = text;
+                    window.tripData.checklist[idx].cat = cat;
+                    window.tripData.checklist[idx].text = text;
                 }
             } else {
-                tripData.checklist.push({ id: Date.now(), cat, text, done: false });
+                window.tripData.checklist.push({ id: Date.now(), cat, text, done: false });
             }
 
             cancelChecklistEdit();
             saveAppData(true);
             renderChecklist();
-        }
+        };
 
-        function editChecklistItem(id) {
-            const item = tripData.checklist.find(i => i.id === id);
+        window.editChecklistItem = function(id) {
+            const item = window.tripData.checklist.find(i => i.id === id);
             if (!item) return;
-            editingChecklistId = id;
+            window.editingChecklistId = id;
             document.getElementById('new-check-cat').value = item.cat;
             document.getElementById('new-check-text').value = item.text;
-            document.getElementById('check-btn-label').innerText = "修改";
+            document.getElementById('check-btn-label').innerText = "保存";
             document.getElementById('btn-check-cancel').classList.remove('hidden');
-        }
+        };
 
-        function cancelChecklistEdit() {
-            editingChecklistId = null;
+        window.cancelChecklistEdit = function() {
+            window.editingChecklistId = null;
             document.getElementById('new-check-text').value = '';
             document.getElementById('check-btn-label').innerText = "新增项";
             document.getElementById('btn-check-cancel').classList.add('hidden');
-        }
+        };
 
-        function deleteChecklistItem(id) {
+        window.deleteChecklistItem = function(id) {
             confirmDelete("确定删除该清单项吗？", () => {
-                tripData.checklist = tripData.checklist.filter(i => i.id !== id);
+                window.tripData.checklist = window.tripData.checklist.filter(i => i.id !== id);
                 saveAppData(true);
                 renderChecklist();
             });
-        }
-
-        // ================= 导入 / 导出 JSON =================
-        function exportDataJSON() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tripData, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `希腊路书备份_${new Date().toISOString().slice(0,10)}.json`);
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
-            showToast("路书 JSON 备份已导出！");
-        }
-
-        function importDataJSON(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const imported = JSON.parse(e.target.result);
-                    if (imported && typeof imported === 'object' && imported.daily) {
-                        tripData = imported;
-                        saveAppData(true);
-                        renderAll();
-                        showToast("备份导入成功！");
-                    } else {
-                        showToast("导入的文件格式有误！");
-                    }
-                } catch (err) {
-                    showToast("文件解析失败！");
-                }
-            };
-            reader.readAsText(file);
-        }
-
-        // 全局通用 Modal 删除弹窗
-        function confirmDelete(msg, actionCallback) {
-            pendingDeleteAction = actionCallback;
-            document.getElementById('delete-modal-msg').innerText = msg;
-            document.getElementById('delete-modal').classList.remove('hidden');
-            document.getElementById('confirm-delete-btn').onclick = function() {
-                if (pendingDeleteAction) pendingDeleteAction();
-                closeDeleteModal();
-            };
-        }
-
-        function closeDeleteModal() {
-            pendingDeleteAction = null;
-            document.getElementById('delete-modal').classList.add('hidden');
-        }
-    </script>
-
-    <!-- Firebase 实时无感云端同步（基于用户的 greece-trip-c4cc7 Firebase 配置） -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
-
-        // 用户专属 Firebase 配置
-        const firebaseConfig = {
-            apiKey: "AIzaSyB0BC_ATnwr5xegYNLQBKq1HyhSu_m0FrE",
-            authDomain: "greece-trip-c4cc7.firebaseapp.com",
-            databaseURL: "https://greece-trip-c4cc7-default-rtdb.firebaseio.com",
-            projectId: "greece-trip-c4cc7",
-            storageBucket: "greece-trip-c4cc7.firebasestorage.app",
-            messagingSenderId: "332482796388",
-            appId: "1:332482796388:web:a1df835258b2a92534b871"
         };
 
-        let dbRef = null;
-        let isWritingLocal = false;
-
-        try {
-            const app = initializeApp(firebaseConfig);
-            const db = getDatabase(app);
-            dbRef = ref(db, 'greece_trip_sync_v1');
-
-            // 1. 注册全局云端同步推送方法
-            window.syncToCloud = function(data) {
-                if (!dbRef || isWritingLocal) return;
-                set(dbRef, data).then(() => {
-                    updateCloudBadge(true, "🟢 云端已同步");
-                }).catch(err => {
-                    console.warn("云端写入失败，已保存在本地缓存", err);
-                    updateCloudBadge(false, "☁️ 本地已保存 (网络同步中)");
-                });
-            };
-
-            // 2. 监听云端变动实现双人实时无缝同步
-            onValue(dbRef, (snapshot) => {
-                const cloudVal = snapshot.val();
-                if (cloudVal && typeof cloudVal === 'object') {
-                    if (!tripData.lastUpdated || (cloudVal.lastUpdated && cloudVal.lastUpdated > tripData.lastUpdated)) {
-                        isWritingLocal = true;
-                        tripData = cloudVal;
-                        try {
-                            localStorage.setItem('greece_trip_app_data_v2026', JSON.stringify(tripData));
-                        } catch(e) {}
-                        renderAll();
-                        showToast("⚡ 已自动同步对方的最新修改！");
-                        isWritingLocal = false;
-                    }
-                    updateCloudBadge(true, "🟢 云端实时同步已连接");
-                } else {
-                    if (tripData) {
-                        set(dbRef, tripData);
-                    }
-                    updateCloudBadge(true, "🟢 云端同步已连接");
-                }
-            }, (error) => {
-                console.warn("云端连接监听警告:", error);
-                updateCloudBadge(false, "☁️ 仅本地保存 (已自动就绪)");
-            });
-
-        } catch (e) {
-            console.warn("Firebase 模块初始化提示:", e);
-            updateCloudBadge(false, "☁️ 仅本地保存");
+        function confirmDelete(message, onConfirm) {
+            window.pendingDeleteAction = onConfirm;
+            document.getElementById('delete-modal-msg').innerText = message;
+            document.getElementById('delete-modal').classList.remove('hidden');
         }
 
-        function updateCloudBadge(isOnline, text) {
-            const badgeText = document.getElementById('cloud-status-text');
-            const pulseDot = document.getElementById('cloud-pulse-dot');
-            if (badgeText) badgeText.innerText = text;
-            if (pulseDot) {
-                pulseDot.className = isOnline 
-                    ? "w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-1.5" 
-                    : "w-2 h-2 rounded-full bg-amber-500 mr-1.5";
+        window.closeDeleteModal = function() {
+            window.pendingDeleteAction = null;
+            document.getElementById('delete-modal').classList.add('hidden');
+        };
+
+        document.getElementById('confirm-delete-btn').addEventListener('click', () => {
+            if (typeof window.pendingDeleteAction === 'function') {
+                window.pendingDeleteAction();
             }
-        }
+            closeDeleteModal();
+        });
+
+        // 导出路书 JSON
+        window.exportDataJSON = function() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.tripData, null, 2));
+            const dlAnchorElem = document.createElement('a');
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", `Greece_Trip_Backup_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(dlAnchorElem);
+            dlAnchorElem.click();
+            dlAnchorElem.remove();
+            showToast("路书备份已成功导出！");
+        };
+
+        // 导入路书 JSON
+        window.importDataJSON = function(event) {
+            const fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed && typeof parsed === 'object') {
+                        window.tripData = parsed;
+                        saveAppData(true);
+                        renderAll();
+                        showToast("备份数据导入成功！");
+                    }
+                } catch(err) {
+                    showToast("导入失败，文件格式不符合要求");
+                }
+            };
+            if (event.target.files && event.target.files[0]) {
+                fileReader.readAsText(event.target.files[0]);
+            }
+        };
     </script>
 </body>
 </html>
-```eoc
-
-### 变更说明：
-1. **📌 待确定与追踪核心事项 (Pending)：** 已将卡片列表置顶，新增/修改输入框移至底部。
-2. **🏨 酒店预订看板 (Hotel)：** 酒店预订表格现在直接展示在最上方，添加表单置于底部。
-3. **✈️ 航班与渡轮明细 (Transport)：** 交通/航班明细列表置于最上方，录入表单移至底部。
-4. **🍽️ 美食种草导航 (Food)：** 美食列表和地图链接置于最上方，新增/编辑输入框移至底部。
-5. 同时保持了 AA 账本与 Checklist 板块布局的一致性，确保第一眼均可直接阅读内容。
